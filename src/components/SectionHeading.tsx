@@ -1,6 +1,7 @@
 type SectionHeadingProps = {
   kicker: string;
   title?: string;
+  align?: "center" | "left";
   className?: string;
 };
 
@@ -11,13 +12,15 @@ type SectionHeadingProps = {
 export default function SectionHeading({
   kicker,
   title,
+  align = "center",
   className = "",
 }: SectionHeadingProps) {
+  const centered = align === "center";
   return (
-    <div className={`text-center ${className}`}>
+    <div className={`${centered ? "text-center" : "text-left"} ${className}`}>
       <div
         aria-hidden="true"
-        className="mx-auto w-8 border-t border-compass-gold"
+        className={`w-8 border-t border-compass-gold ${centered ? "mx-auto" : ""}`}
       />
       <h2 className="mt-4 text-kicker font-medium uppercase text-deep-harbor">
         {kicker}
