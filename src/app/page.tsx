@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import Button from "@/components/Button";
 import EmailSignupForm from "@/components/EmailSignupForm";
 import JourneyCard, { type Journey } from "@/components/JourneyCard";
@@ -91,18 +93,16 @@ export default async function Home() {
             </p>
           </div>
 
-          {/* Placeholder — replaced by the engraved portrait when an approved asset exists */}
+          {/* A higher-res export can replace this file at the same path. */}
           <div className="flex justify-center">
-            <div
-              aria-hidden="true"
-              className="flex h-40 w-40 items-center justify-center rounded-full border border-sea-glass bg-linen p-3 sm:h-60 sm:w-60"
-            >
-              <div className="flex h-full w-full items-center justify-center rounded-full border border-sea-glass">
-                <span className="font-serif text-4xl text-sun-faded sm:text-5xl">
-                  JY
-                </span>
-              </div>
-            </div>
+            <Image
+              src="/portrait-engraved.png"
+              alt="Engraved passport-style portrait of Jordan Yates"
+              width={316}
+              height={245}
+              priority
+              className="h-auto w-56 mix-blend-multiply sm:w-72"
+            />
           </div>
         </div>
       </section>
