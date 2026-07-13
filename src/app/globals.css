@@ -1,22 +1,46 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   The Aegean Passport — Color System (Brand Bible v1.0)
+   Naturally faded, printed, never glossy. Gold is never metallic.
+   ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Blues */
+  --aegean-ink: #223e67;
+  --deep-harbor: #1b3154;
+  --sun-faded-passport: #607d99;
+  --sea-glass: #8ea6b4;
+  --salt-air: #c9d6dc;
+
+  /* Papers */
+  --vintage-passport: #f6f1e8;
+  --linen: #efe8dd;
+  --weathered-ivory: #e6ddd0;
+
+  /* Accent */
+  --compass-gold: #b78b42;
+
+  /* Semantic defaults — cream paper, ink text */
+  --background: var(--vintage-passport);
+  --foreground: var(--deep-harbor);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-aegean-ink: var(--aegean-ink);
+  --color-deep-harbor: var(--deep-harbor);
+  --color-sun-faded: var(--sun-faded-passport);
+  --color-sea-glass: var(--sea-glass);
+  --color-salt-air: var(--salt-air);
+  --color-vintage-passport: var(--vintage-passport);
+  --color-linen: var(--linen);
+  --color-weathered-ivory: var(--weathered-ivory);
+  --color-compass-gold: var(--compass-gold);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
