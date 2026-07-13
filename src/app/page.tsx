@@ -6,7 +6,6 @@ import EmailSignupForm from "@/components/EmailSignupForm";
 import JourneyCard, { type Journey } from "@/components/JourneyCard";
 import PassportStamp from "@/components/PassportStamp";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
-import Rule from "@/components/Rule";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
 import { createPublicClient } from "@/lib/supabase/public";
@@ -127,6 +126,12 @@ export default async function Home() {
               complimentary, and every recommendation is one I&rsquo;d be glad
               to defend over dinner.
             </p>
+            <p>
+              Working together is simple: write or call with where
+              you&rsquo;re leaning, and I&rsquo;ll come back with a short list
+              worth your time. When one feels right, I take care of
+              everything until you&rsquo;re home again.
+            </p>
           </div>
           {/* Placeholder — replaced by Jordan's script-signature asset when approved */}
           <p className="mt-8 text-right font-serif text-xl italic text-aegean-ink">
@@ -184,54 +189,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="bg-linen px-6 py-14 sm:py-20">
-        <div className="mx-auto max-w-[62ch]">
-          <SectionHeading kicker="How It Works" align="left" />
-          <ol className="mt-8">
-            {[
-              {
-                step: "01",
-                title: "Correspond",
-                copy: "Write or call with where you're leaning — or the trip you've been circling for years. I'll ask the questions that matter.",
-              },
-              {
-                step: "02",
-                title: "Curate",
-                copy: "I return with a short list of sailings worth your time: dates, fares, and my honest read on each — including what I'd skip.",
-              },
-              {
-                step: "03",
-                title: "Confirm",
-                copy: "When one feels right, I take care of the rest — the booking, the details, the follow-through — until you're home again.",
-              },
-            ].map(({ step, title, copy }, i) => (
-              <li key={step}>
-                {i > 0 && <Rule className="my-7" />}
-                <div className="flex items-baseline gap-5">
-                  <span
-                    aria-hidden="true"
-                    className="font-serif text-2xl text-sun-faded oldstyle-nums"
-                  >
-                    {step}
-                  </span>
-                  <div>
-                    <h3 className="text-kicker font-medium uppercase text-deep-harbor">
-                      {title}
-                    </h3>
-                    <p className="mt-2 font-serif text-lg leading-relaxed text-aegean-ink">
-                      {copy}
-                    </p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       {/* Margin notes — the advisor's line and a client's, side by side */}
-      <section className="px-6 py-14 sm:py-20">
+      <section className="bg-linen px-6 py-14 sm:py-20">
         <div className="mx-auto grid max-w-5xl gap-10 sm:grid-cols-2 sm:gap-0">
           <div className="sm:pr-12">
             <div className="flex items-end gap-4">
