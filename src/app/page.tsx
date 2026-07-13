@@ -99,8 +99,8 @@ export default async function Home() {
             <Image
               src="/portrait-engraved.png"
               alt="Engraved passport-style portrait of Jordan Yates"
-              width={316}
-              height={245}
+              width={1739}
+              height={1739}
               priority
               className="h-auto w-56 mix-blend-multiply sm:w-72"
             />
@@ -197,8 +197,8 @@ export default async function Home() {
               <Image
                 src="/portrait-engraved.png"
                 alt=""
-                width={316}
-                height={245}
+                width={1739}
+                height={1739}
                 className="h-auto w-14 mix-blend-multiply"
               />
               <SectionHeading kicker="Jordan&rsquo;s Take" align="left" />
@@ -224,21 +224,49 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* The Dispatch — bound-in subscription card; form arrives in Phase 4 */}
+      {/* Stamped by Jordan — the weekly negotiated-fares letter, set as mail */}
       <section id="dispatch" className="px-6 py-14 sm:py-20">
-        <div className="mx-auto max-w-[40rem] border border-salt-air bg-linen p-1">
-          <div className="border border-salt-air/60 px-6 py-10 text-center sm:px-10">
-            <SectionHeading
-              kicker="The Dispatch"
-              title="The week&rsquo;s negotiated fares"
-            />
-            <p className="mt-5 font-serif text-lg leading-relaxed">
-              Once a week, the savings worth writing about &mdash; suite
-              fares at balcony money, quiet shipboard credits, and rates
-              I&rsquo;ve negotiated that the brochures don&rsquo;t print. No
-              noise, and you can leave anytime.
-            </p>
-            <EmailSignupForm />
+        <div className="mx-auto max-w-[46rem] border border-salt-air bg-linen p-1">
+          <div className="relative border border-salt-air/60 px-6 py-10 sm:px-10">
+            {/* Postage stamp with postmark, top-right like an envelope */}
+            <div className="absolute right-6 top-6 hidden md:block">
+              <PassportStamp
+                text="· STAMPED BY JORDAN · STAMPED BY JORDAN"
+                className="absolute -left-14 top-3 h-16 w-16 -rotate-12 text-sun-faded opacity-50"
+              />
+              <div className="rotate-2 border border-dashed border-sun-faded/80 bg-vintage-passport p-1">
+                <div className="flex flex-col items-center border border-salt-air/70 px-2 pb-1.5 pt-2">
+                  <Image
+                    src="/portrait-engraved.png"
+                    alt=""
+                    width={1739}
+                    height={1739}
+                    className="h-auto w-14 mix-blend-multiply"
+                  />
+                  <span className="mt-1 text-[0.5rem] uppercase tracking-[0.18em] text-deep-harbor">
+                    First Class
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-8 sm:grid-cols-[1.3fr_1fr] sm:items-center">
+              <div>
+                <SectionHeading
+                  kicker="The Weekly Dispatch"
+                  title="Stamped by Jordan"
+                  align="left"
+                />
+                <p className="mt-5 font-serif text-lg leading-relaxed">
+                  Once a week I mail the fares I&rsquo;ve negotiated &mdash;
+                  suite fares at balcony money, quiet shipboard credits,
+                  rates the brochures don&rsquo;t print. Nothing makes the
+                  letter without my stamp of approval, and you can leave
+                  anytime.
+                </p>
+              </div>
+              <EmailSignupForm />
+            </div>
           </div>
         </div>
       </section>

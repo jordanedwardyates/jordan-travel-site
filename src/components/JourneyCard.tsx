@@ -128,8 +128,8 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
             <Image
               src="/portrait-engraved.png"
               alt=""
-              width={316}
-              height={245}
+              width={1739}
+              height={1739}
               className="mt-1 h-auto w-11 shrink-0 mix-blend-multiply"
             />
             <p className="font-serif italic leading-relaxed">
