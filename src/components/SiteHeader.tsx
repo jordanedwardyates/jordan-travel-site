@@ -3,7 +3,7 @@ import Link from "next/link";
 import Rule from "./Rule";
 
 const NAV_LINKS = [
-  { href: "#about", label: "About" },
+  { href: "#about", label: "About Jordan" },
   { href: "#journeys", label: "Journeys" },
 ];
 

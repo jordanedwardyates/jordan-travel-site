@@ -79,15 +79,16 @@ export default function Home() {
       <section className="px-6 py-12 sm:px-10 sm:py-20">
         <div className="mx-auto grid max-w-5xl items-center gap-10 sm:grid-cols-[3fr_2fr] sm:gap-16">
           <div className="text-center sm:text-left">
-            <div className="relative">
-              <PassportStamp className="absolute -top-14 right-0 hidden h-24 w-24 -rotate-12 text-sun-faded opacity-30 sm:block" />
+            {/* pt reserves the stamp's band so it can never touch the headline */}
+            <div className="relative sm:pt-20">
+              <PassportStamp className="absolute top-0 right-0 hidden h-20 w-20 -rotate-12 text-sun-faded opacity-30 sm:block" />
               <h1 className="font-serif text-display">
                 A more thoughtful way to travel
               </h1>
             </div>
             <p className="mx-auto mt-6 max-w-[52ch] text-lg leading-relaxed text-aegean-ink sm:mx-0">
-              I help clients find exceptional cruise experiences &mdash; not
-              just good deals, but the right journeys.
+              I&rsquo;m Jordan Yates. I help clients find exceptional cruise
+              experiences &mdash; not just good deals, but the right journeys.
             </p>
             <div className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:items-baseline sm:gap-8">
               <Button href="#request-a-quote">Request a Quote</Button>
@@ -95,6 +96,16 @@ export default function Home() {
                 See recently quoted journeys
               </TextLink>
             </div>
+            <p className="mt-5 text-sm text-aegean-ink">
+              Prefer to talk? Call or text{" "}
+              <a
+                href="tel:+19046141219"
+                className="underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold oldstyle-nums"
+              >
+                904-614-1219
+              </a>
+              .
+            </p>
           </div>
 
           {/* Placeholder — replaced by the engraved portrait when an approved asset exists */}
@@ -273,7 +284,10 @@ export default function Home() {
           >
             Write to Jordan
           </Button>
-          <p className="mt-6 text-sm text-aegean-ink">
+          <p className="mt-4 text-sm text-aegean-ink">
+            Advisor services are complimentary.
+          </p>
+          <p className="mt-2 text-sm text-aegean-ink">
             Prefer to talk? Call or text{" "}
             <a
               href="tel:+19046141219"
