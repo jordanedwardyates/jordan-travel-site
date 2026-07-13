@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import TextLink from "./TextLink";
 
 export type Journey = {
@@ -122,12 +124,21 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
             </div>
           </dl>
 
-          <p className="mt-4 border-t border-salt-air pt-3 font-serif italic leading-relaxed">
-            <span className="mr-2 font-sans text-[0.6rem] not-italic uppercase tracking-[0.25em] text-deep-harbor">
-              Jordan&rsquo;s Take
-            </span>
-            &ldquo;{j.jordansTake}&rdquo;
-          </p>
+          <div className="mt-4 flex items-start gap-3 border-t border-salt-air pt-3">
+            <Image
+              src="/portrait-engraved.png"
+              alt=""
+              width={316}
+              height={245}
+              className="mt-1 h-auto w-11 shrink-0 mix-blend-multiply"
+            />
+            <p className="font-serif italic leading-relaxed">
+              <span className="mr-2 font-sans text-[0.6rem] not-italic uppercase tracking-[0.25em] text-deep-harbor">
+                Jordan&rsquo;s Take
+              </span>
+              &ldquo;{j.jordansTake}&rdquo;
+            </p>
+          </div>
 
           <footer className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
             {j.availabilityNote ? (

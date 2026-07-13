@@ -17,7 +17,7 @@ export default function SiteFooter() {
           >
             37°26&prime; N &middot; 25°19&prime; E
           </p>
-          <p className="mt-5 text-sm leading-relaxed text-aegean-ink">
+          <p className="mt-5 font-serif text-base leading-relaxed text-aegean-ink">
             <a
               href="mailto:jordan.yates@luxurycruiseconnections.com"
               className="underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold"
@@ -32,7 +32,7 @@ export default function SiteFooter() {
               904-614-1219
             </a>
           </p>
-          <p className="mt-4 max-w-[60ch] text-xs leading-relaxed text-aegean-ink">
+          <p className="mt-4 max-w-[60ch] font-serif text-sm italic leading-relaxed text-aegean-ink">
             Virtuoso member &middot; Affiliated with Luxury Cruise Connections
             &middot; Advisor services are complimentary
           </p>

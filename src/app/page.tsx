@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import Button from "@/components/Button";
+import ChartTexture from "@/components/ChartTexture";
 import EmailSignupForm from "@/components/EmailSignupForm";
 import JourneyCard, { type Journey } from "@/components/JourneyCard";
 import PassportStamp from "@/components/PassportStamp";
@@ -61,8 +62,9 @@ export default async function Home() {
   return (
     <>
       {/* Opening spread */}
-      <section className="px-6 py-12 sm:px-10 sm:py-20">
-        <div className="mx-auto grid max-w-5xl items-center gap-10 sm:grid-cols-[3fr_2fr] sm:gap-16">
+      <section className="relative overflow-hidden px-6 py-12 sm:px-10 sm:py-20">
+        <ChartTexture className="pointer-events-none absolute inset-0 h-full w-full text-salt-air/60" />
+        <div className="relative mx-auto grid max-w-5xl items-center gap-10 sm:grid-cols-[3fr_2fr] sm:gap-16">
           <div className="text-center sm:text-left">
             {/* pt reserves the stamp's band so it can never touch the headline */}
             <div className="relative sm:pt-20">
@@ -71,7 +73,7 @@ export default async function Home() {
                 A more thoughtful way to travel
               </h1>
             </div>
-            <p className="mx-auto mt-6 max-w-[52ch] text-lg leading-relaxed text-aegean-ink sm:mx-0">
+            <p className="mx-auto mt-6 max-w-[52ch] font-serif text-xl leading-relaxed text-aegean-ink sm:mx-0">
               I&rsquo;m Jordan Yates. I help clients find exceptional cruise
               experiences &mdash; not just good deals, but the right journeys.
             </p>
@@ -81,7 +83,7 @@ export default async function Home() {
                 See recently quoted journeys
               </TextLink>
             </div>
-            <p className="mt-5 text-sm text-aegean-ink">
+            <p className="mt-5 font-serif text-base italic text-aegean-ink">
               Prefer to talk? Call or text{" "}
               <a
                 href="tel:+19046141219"
@@ -146,7 +148,7 @@ export default async function Home() {
               title="A few sailings worth your attention"
             />
           </div>
-          <p className="mx-auto mt-6 max-w-[52ch] text-center leading-relaxed text-aegean-ink">
+          <p className="mx-auto mt-6 max-w-[52ch] text-center font-serif text-lg leading-relaxed text-aegean-ink">
             Itineraries I&rsquo;ve recently prepared for clients &mdash; the
             dates, the fares, and my honest read on each.
           </p>
@@ -169,7 +171,7 @@ export default async function Home() {
                 <p className="font-serif text-xl leading-relaxed">
                   A fresh set of quotes is being prepared.
                 </p>
-                <p className="mx-auto mt-3 max-w-[44ch] text-sm leading-relaxed text-aegean-ink">
+                <p className="mx-auto mt-3 max-w-[44ch] font-serif text-base leading-relaxed text-aegean-ink">
                   Write to me in the meantime and I&rsquo;ll send you the
                   sailings currently worth your attention.
                 </p>
@@ -217,7 +219,7 @@ export default async function Home() {
                     <h3 className="text-kicker font-medium uppercase text-deep-harbor">
                       {title}
                     </h3>
-                    <p className="mt-2 leading-relaxed text-aegean-ink">
+                    <p className="mt-2 font-serif text-lg leading-relaxed text-aegean-ink">
                       {copy}
                     </p>
                   </div>
@@ -267,9 +269,14 @@ export default async function Home() {
       <section id="dispatch" className="px-6 py-14 sm:py-20">
         <div className="mx-auto max-w-[40rem] border border-salt-air bg-linen p-1">
           <div className="border border-salt-air/60 px-6 py-10 text-center sm:px-10">
-            <SectionHeading kicker="The Dispatch" title="One letter a month" />
-            <p className="mt-5 leading-relaxed text-aegean-ink">
-              Places worth knowing about, seasons worth planning around. No
+            <SectionHeading
+              kicker="The Dispatch"
+              title="The week&rsquo;s negotiated fares"
+            />
+            <p className="mt-5 font-serif text-lg leading-relaxed">
+              Once a week, the savings worth writing about &mdash; suite
+              fares at balcony money, quiet shipboard credits, and rates
+              I&rsquo;ve negotiated that the brochures don&rsquo;t print. No
               noise, and you can leave anytime.
             </p>
             <EmailSignupForm />
@@ -284,16 +291,16 @@ export default async function Home() {
             kicker="Request a Quote"
             title="Begin the conversation"
           />
-          <p className="mt-6 leading-relaxed text-aegean-ink">
+          <p className="mt-6 font-serif text-lg leading-relaxed text-aegean-ink">
             Write to me with where you&rsquo;re thinking of going &mdash; or
             where you&rsquo;ve always meant to &mdash; and I&rsquo;ll reply
             personally.
           </p>
           <QuoteRequestForm journeys={journeyOptions} />
-          <p className="mt-4 text-sm text-aegean-ink">
+          <p className="mt-4 font-serif text-base italic text-aegean-ink">
             Advisor services are complimentary.
           </p>
-          <p className="mt-2 text-sm text-aegean-ink">
+          <p className="mt-2 font-serif text-base italic text-aegean-ink">
             Prefer to talk? Call or text{" "}
             <a
               href="tel:+19046141219"
