@@ -1,6 +1,7 @@
 import TextLink from "./TextLink";
 
 export type Journey = {
+  id: string;
   region: string;
   dates: string;
   routeTitle: string;
@@ -56,9 +57,8 @@ function RouteStrip({ portCount }: { portCount: number }) {
 /** A quoted sailing set as a ledger entry / travel dossier, not a product tile. */
 export default function JourneyCard({ journey }: { journey: Journey }) {
   const j = journey;
-  const mailto = `mailto:jordan.yates@luxurycruiseconnections.com?subject=${encodeURIComponent(
-    `Quote request — ${j.voyageTitle} (${j.dates})`
-  )}`;
+  // Lands on the quote form with this sailing preselected.
+  const inquiryHref = `/?journey=${j.id}#request-a-quote`;
 
   return (
     <article className="border border-salt-air bg-linen p-1">
@@ -135,7 +135,7 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
             ) : (
               <span />
             )}
-            <TextLink href={mailto} className="text-sm">
+            <TextLink href={inquiryHref} className="text-sm">
               Request this itinerary &rarr;
             </TextLink>
           </footer>

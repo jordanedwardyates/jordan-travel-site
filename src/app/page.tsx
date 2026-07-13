@@ -1,78 +1,61 @@
 import Button from "@/components/Button";
+import EmailSignupForm from "@/components/EmailSignupForm";
 import JourneyCard, { type Journey } from "@/components/JourneyCard";
 import PassportStamp from "@/components/PassportStamp";
+import QuoteRequestForm from "@/components/QuoteRequestForm";
 import Rule from "@/components/Rule";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
+import { createPublicClient } from "@/lib/supabase/public";
 
-/*
- * PLACEHOLDER DATA — sample sailings for layout and copy direction only.
- * Prices, staterooms, sizes, and notes are illustrative and must be
- * replaced with live quotes in Phase 4.
- */
-const SAMPLE_JOURNEYS: Journey[] = [
-  {
-    region: "Mediterranean",
-    dates: "3–10 Oct 2026",
-    routeTitle: "Trieste to Athens",
-    voyageTitle: "Mediterranean Jewels",
-    cruiseLine: "Oceania Cruises",
-    ship: "Oceania Allura",
-    nights: 7,
-    embark: "Trieste, Italy",
-    disembark: "Athens, Greece",
-    portCount: 4,
-    stateroom: "Veranda Stateroom",
-    roomSize: "approx. 27 m²",
-    theirPrice: "$2,999",
-    yourPrice: "$2,749",
-    priceNote: "plus shipboard credit",
-    jordansTake:
-      "The Adriatic in October light — after the summer ferries thin out and the harbor towns get their evenings back.",
-    availabilityNote:
-      "Veranda categories on autumn sailings are often the first to fill.",
-  },
-  {
-    region: "The Danube",
-    dates: "6–13 Sep 2026",
-    routeTitle: "Budapest to Vilshofen",
-    voyageTitle: "Gems of the Danube",
-    cruiseLine: "Scenic",
-    ship: "Scenic Opal",
-    nights: 7,
-    embark: "Budapest, Hungary",
-    disembark: "Vilshofen, Germany",
-    portCount: 6,
-    stateroom: "Royal Balcony Suite",
-    roomSize: "approx. 21 m²",
-    theirPrice: "$9,480",
-    yourPrice: "$8,880",
-    jordansTake:
-      "River ships live or die by their moorings — it's the first thing I check on any Danube sailing.",
-    availabilityNote: "Suites on river ships are always limited.",
-  },
-  {
-    region: "Greece & Turkey",
-    dates: "15–25 Aug 2026",
-    routeTitle: "Istanbul to Athens",
-    voyageTitle: "Iconic Greece & Turkey",
-    cruiseLine: "Regent Seven Seas",
-    ship: "Seven Seas Voyager",
-    nights: 10,
-    embark: "Istanbul, Turkey",
-    disembark: "Athens, Greece",
-    portCount: 5,
-    stateroom: "Veranda Suite",
-    roomSize: "approx. 33 m²",
-    theirPrice: "$7,999",
-    yourPrice: "$7,591",
-    priceNote: "all-inclusive fare",
-    jordansTake:
-      "Ten nights lets this one breathe — an overnight in Istanbul rather than a drive-by is the whole point.",
-  },
-];
+// Re-render at most every 5 minutes so published journeys stay fresh.
+export const revalidate = 300;
 
-export default function Home() {
+async function getJourneys(): Promise<Journey[]> {
+  try {
+    const supabase = createPublicClient();
+    const { data, error } = await supabase
+      .from("journeys")
+      .select(
+        "id, region, dates, route_title, voyage_title, cruise_line, ship, nights, embark, disembark, port_count, stateroom, room_size, their_price, your_price, price_note, jordans_take, availability_note"
+      )
+      .eq("is_published", true)
+      .order("sort_order", { ascending: true })
+      .order("created_at", { ascending: false })
+      .limit(6);
+    if (error) throw error;
+    return (data ?? []).map((row) => ({
+      id: row.id,
+      region: row.region,
+      dates: row.dates,
+      routeTitle: row.route_title,
+      voyageTitle: row.voyage_title,
+      cruiseLine: row.cruise_line,
+      ship: row.ship,
+      nights: row.nights,
+      embark: row.embark,
+      disembark: row.disembark,
+      portCount: row.port_count,
+      stateroom: row.stateroom,
+      roomSize: row.room_size ?? undefined,
+      theirPrice: row.their_price,
+      yourPrice: row.your_price,
+      priceNote: row.price_note ?? undefined,
+      jordansTake: row.jordans_take,
+      availabilityNote: row.availability_note ?? undefined,
+    }));
+  } catch (err) {
+    console.error("Failed to load journeys:", err);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const journeys = await getJourneys();
+  const journeyOptions = journeys.map((j) => ({
+    id: j.id,
+    label: `${j.routeTitle} — ${j.dates}`,
+  }));
   return (
     <>
       {/* Opening spread */}
@@ -168,16 +151,34 @@ export default function Home() {
             dates, the fares, and my honest read on each.
           </p>
 
-          <div className="mt-10 space-y-8">
-            {SAMPLE_JOURNEYS.map((journey) => (
-              <JourneyCard key={journey.voyageTitle} journey={journey} />
-            ))}
-          </div>
-
-          <p className="mt-6 text-center text-xs leading-relaxed text-aegean-ink">
-            Recently quoted examples. Pricing and availability are subject to
-            change.
-          </p>
+          {journeys.length > 0 ? (
+            <>
+              <div className="mt-10 space-y-8">
+                {journeys.map((journey) => (
+                  <JourneyCard key={journey.id} journey={journey} />
+                ))}
+              </div>
+              <p className="mt-6 text-center text-xs leading-relaxed text-aegean-ink">
+                Recently quoted examples. Pricing and availability are subject
+                to change.
+              </p>
+            </>
+          ) : (
+            <div className="mx-auto mt-10 max-w-[44rem] border border-salt-air bg-linen p-1 text-center">
+              <div className="border border-salt-air/60 px-6 py-10">
+                <p className="font-serif text-xl leading-relaxed">
+                  A fresh set of quotes is being prepared.
+                </p>
+                <p className="mx-auto mt-3 max-w-[44ch] text-sm leading-relaxed text-aegean-ink">
+                  Write to me in the meantime and I&rsquo;ll send you the
+                  sailings currently worth your attention.
+                </p>
+                <TextLink href="#request-a-quote" className="mt-5 inline-block text-sm">
+                  Request a quote &rarr;
+                </TextLink>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -259,9 +260,10 @@ export default function Home() {
           <div className="border border-salt-air/60 px-6 py-10 text-center sm:px-10">
             <SectionHeading kicker="The Dispatch" title="One letter a month" />
             <p className="mt-5 leading-relaxed text-aegean-ink">
-              Places worth knowing about, seasons worth planning around.
-              Subscriptions open shortly.
+              Places worth knowing about, seasons worth planning around. No
+              noise, and you can leave anytime.
             </p>
+            <EmailSignupForm />
           </div>
         </div>
       </section>
@@ -278,12 +280,7 @@ export default function Home() {
             where you&rsquo;ve always meant to &mdash; and I&rsquo;ll reply
             personally.
           </p>
-          <Button
-            href="mailto:jordan.yates@luxurycruiseconnections.com"
-            className="mt-8"
-          >
-            Write to Jordan
-          </Button>
+          <QuoteRequestForm journeys={journeyOptions} />
           <p className="mt-4 text-sm text-aegean-ink">
             Advisor services are complimentary.
           </p>
