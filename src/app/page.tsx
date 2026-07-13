@@ -252,17 +252,24 @@ export default async function Home() {
 
             <div className="grid gap-8 sm:grid-cols-[1.3fr_1fr] sm:items-center">
               <div>
-                <SectionHeading
-                  kicker="The Weekly Dispatch"
-                  title="Stamped by Jordan"
-                  align="left"
-                />
-                <p className="mt-5 font-serif text-lg leading-relaxed">
+                <SectionHeading kicker="The Weekly Dispatch" align="left" />
+                <p className="mt-3 font-serif tracking-tight">
+                  <span className="text-3xl font-medium text-deep-harbor sm:text-4xl">
+                    STAMPED:
+                  </span>{" "}
+                  <span className="text-xl italic text-aegean-ink sm:text-2xl">
+                    by Jordan
+                  </span>
+                </p>
+                <p className="mt-3 font-serif text-lg italic leading-relaxed text-aegean-ink">
+                  Passport-worthy journeys with Jordan&rsquo;s stamp of
+                  approval.
+                </p>
+                <p className="mt-4 font-serif text-lg leading-relaxed">
                   Once a week I mail the fares I&rsquo;ve negotiated &mdash;
                   suite fares at balcony money, quiet shipboard credits,
-                  rates the brochures don&rsquo;t print. Nothing makes the
-                  letter without my stamp of approval, and you can leave
-                  anytime.
+                  rates the brochures don&rsquo;t print. No noise, and you
+                  can leave anytime.
                 </p>
               </div>
               <EmailSignupForm />
