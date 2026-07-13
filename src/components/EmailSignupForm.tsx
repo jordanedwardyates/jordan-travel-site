@@ -20,7 +20,7 @@ export default function EmailSignupForm() {
   }
 
   return (
-    <form action={formAction} className="mx-auto mt-6 max-w-[26rem]">
+    <form action={formAction} className="mx-auto mt-6 w-full max-w-[26rem]">
       {/* Honeypot — hidden from people, tempting to bots */}
       <div
         aria-hidden="true"
@@ -42,7 +42,7 @@ export default function EmailSignupForm() {
       >
         Email
       </label>
-      <div className="mt-1.5 flex flex-col gap-3 sm:flex-row">
+      <div className="mt-1.5 flex flex-col gap-3">
         <input
           id="dispatch-email"
           name="email"
@@ -55,14 +55,14 @@ export default function EmailSignupForm() {
           aria-describedby={
             state.fieldErrors?.email ? "dispatch-email-error" : undefined
           }
-          className={`w-full border bg-vintage-passport px-4 py-3 text-base text-deep-harbor ${
+          className={`w-full border bg-vintage-passport px-4 py-3.5 text-base text-deep-harbor ${
             state.fieldErrors?.email ? "border-compass-gold" : "border-salt-air"
           }`}
         />
         <button
           type="submit"
           disabled={pending}
-          className="whitespace-nowrap bg-aegean-ink px-8 py-3 text-sm uppercase tracking-[0.15em] text-vintage-passport transition-colors hover:bg-deep-harbor disabled:opacity-60"
+          className="w-full whitespace-nowrap bg-aegean-ink px-8 py-3.5 text-sm uppercase tracking-[0.15em] text-vintage-passport transition-colors hover:bg-deep-harbor disabled:opacity-60"
         >
           {pending ? "Sending…" : "Subscribe"}
         </button>

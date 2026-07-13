@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { EB_Garamond, Geist } from "next/font/google";
+import { EB_Garamond, Geist, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -11,6 +11,14 @@ const geistSans = Geist({
 
 const ebGaramond = EB_Garamond({
   variable: "--font-serif",
+  subsets: ["latin"],
+});
+
+// Signature script — used only for Jordan's hand: the letter sign-off
+// and "by Jordan" on the weekly-letter card.
+const mrsSaintDelafield = Mrs_Saint_Delafield({
+  variable: "--font-script",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -28,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${ebGaramond.variable} antialiased`}
+        className={`${geistSans.variable} ${ebGaramond.variable} ${mrsSaintDelafield.variable} antialiased`}
       >
         <a
           href="#main"

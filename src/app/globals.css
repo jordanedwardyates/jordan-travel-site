@@ -41,6 +41,7 @@
 
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-serif);
+  --font-script: var(--font-script);
 
   /* Type scale — display for the hero, title for section heads,
      kicker for letter-spaced small caps */

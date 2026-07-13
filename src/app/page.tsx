@@ -133,9 +133,8 @@ export default async function Home() {
               everything until you&rsquo;re home again.
             </p>
           </div>
-          {/* Placeholder — replaced by Jordan's script-signature asset when approved */}
-          <p className="mt-8 text-right font-serif text-xl italic text-aegean-ink">
-            &mdash; Jordan
+          <p className="mt-8 text-right font-script text-4xl text-aegean-ink">
+            Jordan
           </p>
         </div>
       </section>
@@ -252,15 +251,18 @@ export default async function Home() {
 
             <div className="grid gap-8 sm:grid-cols-[1.3fr_1fr] sm:items-center">
               <div>
-                <SectionHeading kicker="The Weekly Dispatch" align="left" />
-                <p className="mt-3 font-serif tracking-tight">
+                <div
+                  aria-hidden="true"
+                  className="w-8 border-t border-compass-gold"
+                />
+                <h2 className="mt-4 font-serif tracking-tight">
                   <span className="text-3xl font-medium text-deep-harbor sm:text-4xl">
                     STAMPED:
                   </span>{" "}
                   <span className="text-xl italic text-aegean-ink sm:text-2xl">
-                    by Jordan
+                    The Weekly Edit
                   </span>
-                </p>
+                </h2>
                 <p className="mt-3 font-serif text-lg italic leading-relaxed text-aegean-ink">
                   Passport-worthy journeys with Jordan&rsquo;s stamp of
                   approval.
