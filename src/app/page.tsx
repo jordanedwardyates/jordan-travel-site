@@ -232,7 +232,16 @@ export default async function Home() {
       <section className="px-6 py-14 sm:py-20">
         <div className="mx-auto grid max-w-5xl gap-10 sm:grid-cols-2 sm:gap-0">
           <div className="sm:pr-12">
-            <SectionHeading kicker="Jordan&rsquo;s Take" align="left" />
+            <div className="flex items-end gap-4">
+              <Image
+                src="/portrait-engraved.png"
+                alt=""
+                width={316}
+                height={245}
+                className="h-auto w-14 mix-blend-multiply"
+              />
+              <SectionHeading kicker="Jordan&rsquo;s Take" align="left" />
+            </div>
             <blockquote className="mt-6 font-serif text-xl italic leading-relaxed">
               &ldquo;The difference between a good trip and a memorable one
               usually comes down to time &mdash; time in port, time at dinner,
