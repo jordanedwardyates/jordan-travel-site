@@ -227,24 +227,27 @@ export default async function Home() {
       <section id="dispatch" className="px-6 py-14 sm:py-20">
         <div className="mx-auto max-w-[46rem] border border-salt-air bg-linen p-1">
           <div className="relative border border-salt-air/60 px-6 py-10 sm:px-10">
-            {/* Postage stamp with postmark, top-right like an envelope */}
-            <div className="absolute right-6 top-6 hidden md:block">
-              <PassportStamp
-                text="· STAMPED BY JORDAN · STAMPED BY JORDAN"
-                className="absolute -left-14 top-3 h-16 w-16 -rotate-12 text-sun-faded opacity-50"
-              />
-              <div className="rotate-2 border border-dashed border-sun-faded/80 bg-vintage-passport p-1">
-                <div className="flex flex-col items-center border border-salt-air/70 px-2 pb-1.5 pt-2">
-                  <Image
-                    src="/portrait-engraved.png"
-                    alt=""
-                    width={1739}
-                    height={1739}
-                    className="h-auto w-14 mix-blend-multiply"
-                  />
-                  <span className="mt-1 text-[0.5rem] uppercase tracking-[0.18em] text-deep-harbor">
-                    First Class
-                  </span>
+            {/* Postage stamp with postmark — in-flow on mobile like postage
+                on an envelope, pinned to the corner on desktop */}
+            <div className="mb-3 flex justify-end md:absolute md:right-6 md:top-6 md:mb-0 md:block">
+              <div className="relative">
+                <PassportStamp
+                  text="· STAMPED BY JORDAN · STAMPED BY JORDAN"
+                  className="absolute -left-14 top-3 h-16 w-16 -rotate-12 text-sun-faded opacity-50"
+                />
+                <div className="rotate-2 border border-dashed border-sun-faded/80 bg-vintage-passport p-1">
+                  <div className="flex flex-col items-center border border-salt-air/70 px-2 pb-1.5 pt-2">
+                    <Image
+                      src="/portrait-engraved.png"
+                      alt=""
+                      width={1739}
+                      height={1739}
+                      className="h-auto w-14 mix-blend-multiply"
+                    />
+                    <span className="mt-1 text-[0.5rem] uppercase tracking-[0.18em] text-deep-harbor">
+                      First Class
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
