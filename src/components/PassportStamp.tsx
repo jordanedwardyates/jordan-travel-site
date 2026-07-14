@@ -10,7 +10,7 @@ type PassportStampProps = {
  * always behind or beside text. Size, rotation, and opacity via className.
  */
 export default function PassportStamp({
-  text = "· JORDAN YATES · LUXURY CRUISE ADVISOR",
+  text = "· JORDAN YATES · LUXURY VOYAGE ADVISOR",
   className = "",
 }: PassportStampProps) {
   const arcId = useId();

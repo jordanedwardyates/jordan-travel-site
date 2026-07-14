@@ -320,8 +320,8 @@ export default async function Home() {
               className="underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold oldstyle-nums"
             >
               904-614-1219
-            </a>
-            .
+            </a>{" "}
+            &middot; at your service 11 am&ndash;8 pm ET.
           </p>
         </div>
       </section>

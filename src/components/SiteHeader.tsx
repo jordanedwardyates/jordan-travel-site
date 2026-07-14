@@ -18,7 +18,7 @@ export default function SiteHeader() {
               Jordan Yates
             </span>
             <span className="mt-1 block text-[0.65rem] uppercase tracking-[0.3em] text-aegean-ink">
-              Luxury Cruise Advisor
+              Luxury Voyage Advisor
             </span>
           </Link>
           <nav

@@ -9,7 +9,7 @@ export default function SiteFooter() {
         <div className="mt-10 flex flex-col items-center gap-2 text-center">
           <p className="font-serif text-lg tracking-tight">Jordan Yates</p>
           <p className="text-[0.65rem] uppercase tracking-[0.3em] text-aegean-ink">
-            Luxury Cruise Advisor
+            Luxury Voyage Advisor
           </p>
           <p
             aria-hidden="true"
@@ -33,8 +33,12 @@ export default function SiteFooter() {
             </a>
           </p>
           <p className="mt-4 max-w-[60ch] font-serif text-sm italic leading-relaxed text-aegean-ink">
-            Virtuoso member &middot; Affiliated with Luxury Cruise Connections
-            &middot; Advisor services are complimentary
+            In partnership with Luxury Cruise Connections &middot; Virtuoso
+            member &middot; Est. 2011 &middot; Advisor services are
+            complimentary
+          </p>
+          <p className="mt-6 text-kicker uppercase text-deep-harbor">
+            We&rsquo;ve got places to be.
           </p>
         </div>
       </div>
