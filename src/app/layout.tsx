@@ -23,7 +23,7 @@ const mrsSaintDelafield = Mrs_Saint_Delafield({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jordan-travel-site.vercel.app"),
+  metadataBase: new URL("https://www.bonvtravelcompany.com"),
   title: "Jordan Yates — A more thoughtful way to travel",
   description:
     "Jordan Yates helps clients find exceptional cruise experiences — not just good deals, but the right journeys.",
