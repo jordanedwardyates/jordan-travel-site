@@ -6,8 +6,8 @@ The identity system lives in the Brand Bible:
 
 **Naming rule:** "The Aegean Passport" is the Brand Bible's internal working
 name — inspiration only, NOT a brand. It must never appear in published
-output: no page copy, titles, metadata, share images, or stamp text. The
-public identity is "Jordan Yates · Luxury Voyage Advisor". (Internal code
+output: no page copy, titles, metadata, share images, or stamp text. The public
+identity is "BON V: A Travel Company" / "Jordan Yates · Luxury Voyage Advisor". (Internal code
 tokens like `--aegean-ink` and code comments are fine.)
 
 ## What this site is

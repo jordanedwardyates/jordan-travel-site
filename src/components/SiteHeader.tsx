@@ -14,11 +14,14 @@ export default function SiteHeader() {
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-baseline sm:justify-between">
           <Link href="/" className="text-center sm:text-left">
-            <span className="font-serif text-2xl tracking-tight">
-              Jordan Yates
+            <span className="font-serif text-2xl tracking-tight text-deep-harbor">
+              BON V:
+            </span>{" "}
+            <span className="font-serif text-lg italic text-aegean-ink">
+              A Travel Company
             </span>
             <span className="mt-1 block text-[0.65rem] uppercase tracking-[0.3em] text-aegean-ink">
-              Luxury Voyage Advisor
+              Jordan Yates &middot; Luxury Voyage Advisor
             </span>
           </Link>
           <nav

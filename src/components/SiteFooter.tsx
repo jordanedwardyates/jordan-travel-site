@@ -7,9 +7,14 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-5xl">
         <Rule variant="double" />
         <div className="mt-10 flex flex-col items-center gap-2 text-center">
-          <p className="font-serif text-lg tracking-tight">Jordan Yates</p>
+          <p className="font-serif tracking-tight">
+            <span className="text-xl text-deep-harbor">BON V:</span>{" "}
+            <span className="text-base italic text-aegean-ink">
+              A Travel Company
+            </span>
+          </p>
           <p className="text-[0.65rem] uppercase tracking-[0.3em] text-aegean-ink">
-            Luxury Voyage Advisor
+            Jordan Yates &middot; Luxury Voyage Advisor
           </p>
           <p
             aria-hidden="true"
