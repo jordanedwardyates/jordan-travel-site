@@ -186,7 +186,7 @@ export default function QuoteRequestForm({
       <button
         type="submit"
         disabled={pending}
-        className="mt-6 inline-block whitespace-nowrap bg-aegean-ink px-10 py-4 text-sm uppercase tracking-[0.15em] text-vintage-passport transition-colors hover:bg-deep-harbor disabled:opacity-60"
+        className="relative mt-6 inline-block whitespace-nowrap bg-aegean-ink px-10 py-4 text-sm uppercase tracking-[0.15em] text-vintage-passport transition-all duration-150 before:pointer-events-none before:absolute before:inset-[4px] before:border before:border-vintage-passport/40 before:transition-colors before:duration-150 hover:bg-deep-harbor hover:before:border-compass-gold/70 active:translate-y-px disabled:opacity-60"
       >
         {pending ? "Sending…" : "Send to Jordan"}
       </button>

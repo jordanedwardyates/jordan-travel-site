@@ -3,57 +3,18 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import ChartTexture from "@/components/ChartTexture";
 import EmailSignupForm from "@/components/EmailSignupForm";
-import JourneyCard, { type Journey } from "@/components/JourneyCard";
+import JourneyCard from "@/components/JourneyCard";
 import PassportStamp from "@/components/PassportStamp";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
-import { createPublicClient } from "@/lib/supabase/public";
+import { getPublishedJourneys } from "@/lib/journeys";
 
 // Re-render at most every 5 minutes so published journeys stay fresh.
 export const revalidate = 300;
 
-async function getJourneys(): Promise<Journey[]> {
-  try {
-    const supabase = createPublicClient();
-    const { data, error } = await supabase
-      .from("journeys")
-      .select(
-        "id, region, dates, route_title, voyage_title, cruise_line, ship, nights, embark, disembark, port_count, stateroom, room_size, their_price, your_price, price_note, jordans_take, availability_note"
-      )
-      .eq("is_published", true)
-      .order("sort_order", { ascending: true })
-      .order("created_at", { ascending: false })
-      .limit(6);
-    if (error) throw error;
-    return (data ?? []).map((row) => ({
-      id: row.id,
-      region: row.region,
-      dates: row.dates,
-      routeTitle: row.route_title,
-      voyageTitle: row.voyage_title,
-      cruiseLine: row.cruise_line,
-      ship: row.ship,
-      nights: row.nights,
-      embark: row.embark,
-      disembark: row.disembark,
-      portCount: row.port_count,
-      stateroom: row.stateroom,
-      roomSize: row.room_size ?? undefined,
-      theirPrice: row.their_price,
-      yourPrice: row.your_price,
-      priceNote: row.price_note ?? undefined,
-      jordansTake: row.jordans_take,
-      availabilityNote: row.availability_note ?? undefined,
-    }));
-  } catch (err) {
-    console.error("Failed to load journeys:", err);
-    return [];
-  }
-}
-
 export default async function Home() {
-  const journeys = await getJourneys();
+  const journeys = await getPublishedJourneys(6);
   const journeyOptions = journeys.map((j) => ({
     id: j.id,
     label: `${j.routeTitle} — ${j.dates}`,

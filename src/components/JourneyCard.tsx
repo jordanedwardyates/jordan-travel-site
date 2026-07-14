@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import TextLink from "./TextLink";
 
 export type Journey = {
   id: string;
+  slug?: string;
   region: string;
   dates: string;
   routeTitle: string;
@@ -56,11 +58,22 @@ function RouteStrip({ portCount }: { portCount: number }) {
   );
 }
 
+/** "$9,480" → 9480; null when the display string has no clean number. */
+function parsePrice(display: string): number | null {
+  const digits = display.replace(/[^0-9]/g, "");
+  return digits.length > 0 ? parseInt(digits, 10) : null;
+}
+
 /** A quoted sailing set as a ledger entry / travel dossier, not a product tile. */
 export default function JourneyCard({ journey }: { journey: Journey }) {
   const j = journey;
   // Lands on the quote form with this sailing preselected.
   const inquiryHref = `/?journey=${j.id}#request-a-quote`;
+
+  const theirs = parsePrice(j.theirPrice);
+  const yours = parsePrice(j.yourPrice);
+  const savings =
+    theirs !== null && yours !== null && theirs > yours ? theirs - yours : null;
 
   return (
     <article className="border border-salt-air bg-linen p-1">
@@ -89,7 +102,16 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
             <span className="oldstyle-nums">{j.dates}</span>
           </p>
           <h3 className="mt-1.5 font-serif text-2xl tracking-tight sm:text-3xl">
-            {j.routeTitle}
+            {j.slug ? (
+              <Link
+                href={`/journeys/${j.slug}`}
+                className="transition-colors hover:text-aegean-ink"
+              >
+                {j.routeTitle}
+              </Link>
+            ) : (
+              j.routeTitle
+            )}
           </h3>
           <p className="mt-1 text-sm text-aegean-ink">
             &ldquo;{j.voyageTitle}&rdquo; &middot; {j.ship}, {j.cruiseLine}
@@ -114,15 +136,40 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
               </dt>
               <dd className="mt-0.5 text-lg font-medium text-deep-harbor oldstyle-nums">
                 {j.yourPrice} per person
-                {j.priceNote && (
-                  <span className="text-sm font-normal text-aegean-ink">
-                    {" "}
-                    &middot; {j.priceNote}
-                  </span>
-                )}
               </dd>
+              {(savings !== null || j.priceNote) && (
+                <dd className="mt-2 flex flex-wrap items-center gap-2">
+                  {savings !== null && (
+                    <span className="border border-dashed border-compass-gold/80 bg-vintage-passport px-2.5 py-1 text-[0.6rem] font-medium uppercase tracking-[0.15em] text-deep-harbor oldstyle-nums">
+                      You save ${savings.toLocaleString("en-US")}
+                    </span>
+                  )}
+                  {j.priceNote && (
+                    <span className="inline-flex items-center gap-1.5 border border-dashed border-compass-gold/80 bg-vintage-passport px-2.5 py-1 text-[0.6rem] font-medium uppercase tracking-[0.15em] text-deep-harbor">
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        className="h-2.5 w-2.5 text-compass-gold"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"
+                        />
+                      </svg>
+                      {j.priceNote}
+                    </span>
+                  )}
+                </dd>
+              )}
             </div>
           </dl>
+
+          {savings !== null && (
+            <p className="mt-3 font-serif text-sm italic leading-relaxed text-aegean-ink">
+              Book direct and you&rsquo;d pay retail &mdash; and get none of
+              this back.
+            </p>
+          )}
 
           <div className="mt-4 flex items-start gap-3 border-t border-salt-air pt-3">
             <Image

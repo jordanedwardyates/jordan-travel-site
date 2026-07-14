@@ -35,7 +35,9 @@ create table if not exists public.journeys (
   jordans_take text not null check (char_length(jordans_take) between 1 and 600),
   availability_note text check (char_length(availability_note) <= 200),
   is_published boolean not null default false,
-  sort_order integer not null default 0
+  sort_order integer not null default 0,
+  slug text unique check (slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
+  featured boolean not null default false
 );
 
 create index if not exists journeys_published_sort_idx
