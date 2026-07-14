@@ -23,6 +23,7 @@ const mrsSaintDelafield = Mrs_Saint_Delafield({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jordan-travel-site.vercel.app"),
   title: "The Aegean Passport — A more thoughtful way to travel",
   description:
     "Jordan Yates helps clients find exceptional cruise experiences — not just good deals, but the right journeys.",

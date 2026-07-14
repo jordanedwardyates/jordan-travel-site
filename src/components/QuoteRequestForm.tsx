@@ -117,7 +117,7 @@ export default function QuoteRequestForm({
         </div>
         <div>
           <label htmlFor="quote-phone" className={labelClasses}>
-            Phone <span className="text-sun-faded">(optional)</span>
+            Phone <span className="text-aegean-ink">(optional)</span>
           </label>
           <input
             id="quote-phone"
@@ -134,14 +134,14 @@ export default function QuoteRequestForm({
         </div>
         <div>
           <label htmlFor="quote-journey" className={labelClasses}>
-            Journey of interest <span className="text-sun-faded">(optional)</span>
+            Journey of interest <span className="text-aegean-ink">(optional)</span>
           </label>
           <select
             id="quote-journey"
             name="journey"
             value={journeyValue}
             onChange={(e) => setJourneyValue(e.target.value)}
-            className={`${inputClasses(false)} appearance-none`}
+            className={inputClasses(false)}
           >
             <option value="">A general inquiry</option>
             {journeys.map((j) => (

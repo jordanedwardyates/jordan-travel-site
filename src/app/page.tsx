@@ -61,7 +61,7 @@ export default async function Home() {
   return (
     <>
       {/* Opening spread */}
-      <section className="relative overflow-hidden px-6 py-12 sm:px-10 sm:py-20">
+      <section className="weathered relative overflow-hidden px-6 py-12 sm:px-10 sm:py-20">
         <ChartTexture className="pointer-events-none absolute inset-0 h-full w-full text-salt-air/60" />
         <div className="relative mx-auto grid max-w-5xl items-center gap-10 sm:grid-cols-[3fr_2fr] sm:gap-16">
           <div className="text-center sm:text-left">
@@ -215,7 +215,7 @@ export default async function Home() {
                 &ldquo;Jordan&rsquo;s knowledge, candor, and attention to
                 detail made all the difference. He truly cares.&rdquo;
               </blockquote>
-              <figcaption className="mt-5 text-kicker uppercase text-sun-faded">
+              <figcaption className="mt-5 text-kicker uppercase text-aegean-ink">
                 &mdash; Nancy &amp; Werner
               </figcaption>
             </figure>

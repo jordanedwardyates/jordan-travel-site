@@ -20,7 +20,7 @@ values
    'Gems of the Danube', 'Scenic', 'Scenic Opal', 7,
    'Budapest, Hungary', 'Vilshofen, Germany', 6, 'Royal Balcony Suite',
    'approx. 21 m²', '$9,480', '$8,880', null,
-   'River ships live or die by their moorings — it''s the first thing I check on any Danube sailing.',
+   'September is harvest on the Danube — the Wachau terraces are picking grapes, the summer crowds are gone, and the light on the river is the whole reason painters moved here.',
    'Suites on river ships are always limited.',
    true, 2),
   ('Greece & Turkey', '15–25 Aug 2026', 'Istanbul to Athens',

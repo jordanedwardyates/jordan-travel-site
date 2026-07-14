@@ -17,7 +17,7 @@ export default function SiteHeader() {
             <span className="font-serif text-2xl tracking-tight">
               Jordan Yates
             </span>
-            <span className="mt-1 block text-[0.65rem] uppercase tracking-[0.3em] text-sun-faded">
+            <span className="mt-1 block text-[0.65rem] uppercase tracking-[0.3em] text-aegean-ink">
               Luxury Cruise Advisor
             </span>
           </Link>

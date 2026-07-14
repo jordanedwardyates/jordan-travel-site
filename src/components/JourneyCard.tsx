@@ -78,7 +78,7 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
           <p className="text-right text-[0.6rem] uppercase tracking-[0.2em] text-deep-harbor">
             {j.disembark}
           </p>
-          <p className="mt-3 text-center text-[0.6rem] uppercase tracking-[0.2em] text-sun-faded oldstyle-nums">
+          <p className="mt-3 text-center text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink oldstyle-nums">
             {j.portCount} ports of call
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
 
           <dl className="mt-4 flex flex-wrap items-end gap-x-8 gap-y-2">
             <div>
-              <dt className="text-[0.6rem] uppercase tracking-[0.2em] text-sun-faded">
+              <dt className="text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink">
                 Their price
               </dt>
               <dd className="mt-0.5 text-sm text-aegean-ink oldstyle-nums">
@@ -109,7 +109,7 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
               </dd>
             </div>
             <div>
-              <dt className="text-[0.6rem] uppercase tracking-[0.2em] text-sun-faded">
+              <dt className="text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink">
                 Your price
               </dt>
               <dd className="mt-0.5 text-lg font-medium text-deep-harbor oldstyle-nums">
