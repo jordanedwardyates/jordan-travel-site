@@ -72,6 +72,20 @@ export default async function Home() {
                 A more thoughtful way to travel
               </h1>
             </div>
+            {/* Compass divider, from the reference mockup */}
+            <div
+              aria-hidden="true"
+              className="mt-6 flex items-center justify-center gap-3 sm:justify-start"
+            >
+              <span className="w-20 border-t border-compass-gold/70" />
+              <svg viewBox="0 0 24 24" className="h-4 w-4 text-compass-gold">
+                <path
+                  fill="currentColor"
+                  d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"
+                />
+              </svg>
+              <span className="w-20 border-t border-compass-gold/70" />
+            </div>
             <p className="mx-auto mt-6 max-w-[52ch] font-serif text-xl leading-relaxed text-aegean-ink sm:mx-0">
               I&rsquo;m Jordan Yates. I help clients find exceptional cruise
               experiences &mdash; not just good deals, but the right journeys.
@@ -102,7 +116,7 @@ export default async function Home() {
               width={1739}
               height={1739}
               priority
-              className="h-auto w-56 mix-blend-multiply sm:w-72"
+              className="h-auto w-56 mix-blend-multiply sm:w-80"
             />
           </div>
         </div>
@@ -271,10 +285,10 @@ export default async function Home() {
                   approval.
                 </p>
                 <p className="mt-4 font-serif text-lg leading-relaxed">
-                  Once a week I mail the fares I&rsquo;ve negotiated &mdash;
-                  suite fares at balcony money, quiet shipboard credits,
-                  rates the brochures don&rsquo;t print. No noise, and you
-                  can leave anytime.
+                  Once a week, the best fares I&rsquo;ve negotiated on the
+                  world&rsquo;s finest cruise lines &mdash; genuine savings
+                  on sailings worth taking, delivered before they&rsquo;re
+                  gone. One email, no filler.
                 </p>
               </div>
               <EmailSignupForm />

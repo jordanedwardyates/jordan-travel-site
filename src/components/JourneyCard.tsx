@@ -132,7 +132,7 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
               height={1739}
               className="mt-1 h-auto w-11 shrink-0 mix-blend-multiply"
             />
-            <p className="font-serif italic leading-relaxed">
+            <p className="max-w-[60ch] font-serif italic leading-relaxed">
               <span className="mr-2 font-sans text-[0.6rem] not-italic uppercase tracking-[0.25em] text-deep-harbor">
                 Jordan&rsquo;s Take
               </span>
