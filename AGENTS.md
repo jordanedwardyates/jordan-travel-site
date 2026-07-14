@@ -1,8 +1,14 @@
-# The Aegean Passport — Jordan Yates Luxury Travel
+# Jordan Yates — Luxury Cruise Travel Site
 
-Marketing/editorial website for Jordan Yates' luxury travel company. The full
-identity system lives in the Brand Bible:
+Marketing/editorial website for Jordan Yates' cruise-focused travel agency.
+The identity system lives in the Brand Bible:
 `~/Library/Mobile Documents/com~apple~CloudDocs/BRAND BIBLE/BRAND BIBLE.md`
+
+**Naming rule:** "The Aegean Passport" is the Brand Bible's internal working
+name — inspiration only, NOT a brand. It must never appear in published
+output: no page copy, titles, metadata, share images, or stamp text. The
+public identity is "Jordan Yates · Luxury Cruise Advisor". (Internal code
+tokens like `--aegean-ink` and code comments are fine.)
 
 ## What this site is
 

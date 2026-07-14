@@ -9,7 +9,7 @@ export default function SiteFooter() {
         <div className="mt-10 flex flex-col items-center gap-2 text-center">
           <p className="font-serif text-lg tracking-tight">Jordan Yates</p>
           <p className="text-[0.65rem] uppercase tracking-[0.3em] text-aegean-ink">
-            The Aegean Passport
+            Luxury Cruise Advisor
           </p>
           <p
             aria-hidden="true"

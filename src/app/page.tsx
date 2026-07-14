@@ -144,7 +144,7 @@ export default async function Home() {
         <div className="mx-auto max-w-4xl">
           <div className="relative">
             <PassportStamp
-              text="· RECENTLY QUOTED · THE AEGEAN PASSPORT"
+              text="· RECENTLY QUOTED · JORDAN YATES ·"
               className="absolute -top-6 right-0 hidden h-20 w-20 rotate-12 text-sun-faded opacity-25 lg:block"
             />
             <SectionHeading
