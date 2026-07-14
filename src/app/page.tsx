@@ -87,8 +87,9 @@ export default async function Home() {
               <span className="w-20 border-t border-compass-gold/70" />
             </div>
             <p className="mx-auto mt-6 max-w-[52ch] font-serif text-xl leading-relaxed text-aegean-ink sm:mx-0">
-              I&rsquo;m Jordan Yates. I help clients find exceptional cruise
-              experiences &mdash; not just good deals, but the right journeys.
+              Exceptional voyages on the world&rsquo;s finest cruise lines
+              &mdash; expertly chosen, personally negotiated. My clients
+              never pay retail.
             </p>
             <div className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:items-baseline sm:gap-8">
               <Button href="#request-a-quote">Request a Quote</Button>
@@ -128,6 +129,12 @@ export default async function Home() {
           <SectionHeading kicker="The Advisor&rsquo;s Note" align="left" />
           <div className="mt-8 space-y-6 font-serif text-lg leading-relaxed">
             <p>
+              I&rsquo;m Jordan Yates, and I&rsquo;ve been matching travelers
+              with the right ships since 2011 &mdash; years of sailings,
+              ship visits, and kept notes, now a Virtuoso practice in
+              partnership with Luxury Cruise Connections.
+            </p>
+            <p>
               Most of what I do isn&rsquo;t booking travel &mdash; it&rsquo;s
               editing it. Any search engine can surface a hundred sailings;
               the work is knowing which three deserve your attention, and why.
@@ -136,9 +143,10 @@ export default async function Home() {
               When we plan together, you&rsquo;ll get honest counsel on ships,
               seasons, and itineraries &mdash; including which celebrated ones
               to skip, and when a smaller ship or a shoulder-season date buys
-              you more than any upgrade. My advice is candid, my services are
-              complimentary, and every recommendation is one I&rsquo;d be glad
-              to defend over dinner.
+              you more than any upgrade. And because every fare I quote is one
+              I&rsquo;ve negotiated, my clients never pay retail. My advice is
+              candid, my services are complimentary, and every recommendation
+              is one I&rsquo;d be glad to defend over dinner.
             </p>
             <p>
               Working together is simple: write or call with where

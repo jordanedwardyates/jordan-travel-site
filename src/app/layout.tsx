@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.bonvtravelcompany.com"),
   title: "BON V: A Travel Company — A more thoughtful way to travel",
   description:
-    "Jordan Yates helps clients find exceptional cruise experiences — not just good deals, but the right journeys.",
+    "Exceptional voyages on the world's finest cruise lines — expertly chosen, personally negotiated by Jordan Yates. Never pay retail.",
 };
 
 export default function RootLayout({
