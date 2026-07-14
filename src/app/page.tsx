@@ -129,10 +129,11 @@ export default async function Home() {
           <SectionHeading kicker="The Advisor&rsquo;s Note" align="left" />
           <div className="mt-8 space-y-6 font-serif text-lg leading-relaxed">
             <p>
-              I&rsquo;m Jordan Yates, and I&rsquo;ve been matching travelers
-              with the right ships since 2011 &mdash; years of sailings,
-              ship visits, and kept notes, now a Virtuoso practice in
-              partnership with Luxury Cruise Connections.
+              I&rsquo;ve been matching travelers with the right ships since
+              2011 &mdash; years of sailings, ship visits, and kept notes,
+              now a Virtuoso practice in partnership with Luxury Cruise
+              Connections. My name is Jordan Yates, and it&rsquo;s on every
+              quote that leaves this desk.
             </p>
             <p>
               Most of what I do isn&rsquo;t booking travel &mdash; it&rsquo;s
