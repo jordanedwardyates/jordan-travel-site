@@ -49,3 +49,9 @@ next-env.d.ts
 
 # Agent tooling scaffolding (local, not site source)
 .agents/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
