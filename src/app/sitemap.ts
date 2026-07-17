@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { getDestinations } from "@/lib/destinations";
 import { getFieldNotes } from "@/lib/fieldNotes";
+import { FIELD_NOTES_ENABLED } from "@/lib/flags";
 import { getPublishedJourneys } from "@/lib/journeys";
 
 const BASE = "https://www.bonvtravelcompany.com";
@@ -30,11 +31,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  const fieldNoteEntries: MetadataRoute.Sitemap = getFieldNotes().map((n) => ({
-    url: `${BASE}/field-notes/${n.slug}`,
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
+  const fieldNoteEntries: MetadataRoute.Sitemap = FIELD_NOTES_ENABLED
+    ? getFieldNotes().map((n) => ({
+        url: `${BASE}/field-notes/${n.slug}`,
+        changeFrequency: "monthly",
+        priority: 0.6,
+      }))
+    : [];
 
   return [
     { url: BASE, changeFrequency: "weekly", priority: 1 },
@@ -51,11 +54,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     ...journeyEntries,
-    {
-      url: `${BASE}/field-notes`,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
+    ...(FIELD_NOTES_ENABLED
+      ? [
+          {
+            url: `${BASE}/field-notes`,
+            changeFrequency: "weekly" as const,
+            priority: 0.7,
+          },
+        ]
+      : []),
     ...fieldNoteEntries,
   ];
 }

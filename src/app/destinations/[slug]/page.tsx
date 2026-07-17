@@ -8,6 +8,7 @@ import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
 import { getDestination, getDestinations } from "@/lib/destinations";
 import { getFieldNote } from "@/lib/fieldNotes";
+import { FIELD_NOTES_ENABLED } from "@/lib/flags";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -38,7 +39,10 @@ export default async function DestinationPage({ params }: Props) {
   const dest = getDestination(slug);
   if (!dest) notFound();
 
-  const related = dest.relatedNote ? getFieldNote(dest.relatedNote) : null;
+  const related =
+    FIELD_NOTES_ENABLED && dest.relatedNote
+      ? getFieldNote(dest.relatedNote)
+      : null;
 
   return (
     <article className="px-6 py-14 sm:py-20">

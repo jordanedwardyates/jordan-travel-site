@@ -8,10 +8,12 @@ import Rule from "@/components/Rule";
 import TextLink from "@/components/TextLink";
 import { getDestination } from "@/lib/destinations";
 import { getFieldNote, getFieldNotes } from "@/lib/fieldNotes";
+import { FIELD_NOTES_ENABLED } from "@/lib/flags";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
+  if (!FIELD_NOTES_ENABLED) return [];
   return getFieldNotes().map((n) => ({ slug: n.slug }));
 }
 
@@ -34,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function FieldNotePage({ params }: Props) {
+  if (!FIELD_NOTES_ENABLED) notFound();
   const { slug } = await params;
   const note = getFieldNote(slug);
   if (!note) notFound();

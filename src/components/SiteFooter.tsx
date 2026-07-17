@@ -1,12 +1,16 @@
 import Link from "next/link";
 
+import { FIELD_NOTES_ENABLED } from "@/lib/flags";
+
 import Rule from "./Rule";
 
 const FOOTER_LINKS = [
   { href: "/about", label: "About" },
   { href: "/destinations", label: "Destinations" },
   { href: "/journeys", label: "Journeys" },
-  { href: "/field-notes", label: "Field Notes" },
+  ...(FIELD_NOTES_ENABLED
+    ? [{ href: "/field-notes", label: "Field Notes" }]
+    : []),
   { href: "/#request-a-quote", label: "Request a Quote" },
 ];
 

@@ -6,6 +6,7 @@ import PassportStamp from "@/components/PassportStamp";
 import Rule from "@/components/Rule";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
+import { FIELD_NOTES_ENABLED } from "@/lib/flags";
 
 const DESCRIPTION =
   "Jordan Yates — a Virtuoso cruise advisor since 2011. Honest counsel on ships, seasons, and itineraries, and fares negotiated so his clients never pay retail.";
@@ -186,10 +187,12 @@ export default function AboutPage() {
           <Button href="/#request-a-quote" className="mt-8">
             Request a Quote
           </Button>
-          <p className="mt-6 font-serif text-base italic text-aegean-ink">
-            Or read a little further in the{" "}
-            <TextLink href="/field-notes">Field Notes</TextLink>.
-          </p>
+          {FIELD_NOTES_ENABLED && (
+            <p className="mt-6 font-serif text-base italic text-aegean-ink">
+              Or read a little further in the{" "}
+              <TextLink href="/field-notes">Field Notes</TextLink>.
+            </p>
+          )}
         </div>
       </section>
     </>

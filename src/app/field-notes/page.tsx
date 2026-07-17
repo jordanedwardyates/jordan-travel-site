@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import PassportStamp from "@/components/PassportStamp";
 import SectionHeading from "@/components/SectionHeading";
 import { getFieldNotes } from "@/lib/fieldNotes";
+import { FIELD_NOTES_ENABLED } from "@/lib/flags";
 
 const DESCRIPTION =
   "Field Notes — Jordan Yates' house journal. Short, opinionated essays on ships, seasons, and the places worth the trouble.";
@@ -21,6 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function FieldNotesPage() {
+  if (!FIELD_NOTES_ENABLED) notFound();
   const notes = getFieldNotes();
 
   return (

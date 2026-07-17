@@ -1,14 +1,18 @@
 import Link from "next/link";
 
+import { FIELD_NOTES_ENABLED } from "@/lib/flags";
+
 import Rule from "./Rule";
 
 // Real pages now; the Quote link stays a root-relative anchor so it resolves
-// from anywhere, not just home.
+// from anywhere, not just home. Field Notes is gated until launch.
 const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/destinations", label: "Destinations" },
   { href: "/journeys", label: "Journeys" },
-  { href: "/field-notes", label: "Field Notes" },
+  ...(FIELD_NOTES_ENABLED
+    ? [{ href: "/field-notes", label: "Field Notes" }]
+    : []),
 ];
 
 /** Masthead — publication nameplate with a double rule beneath. */
