@@ -1,5 +1,9 @@
 "use server";
 
+import {
+  subscribeHubSpotEmail,
+  upsertHubSpotContact,
+} from "@/lib/hubspot";
 import { createPublicClient } from "@/lib/supabase/public";
 
 export type FormState = {
@@ -18,6 +22,30 @@ const GENERIC_ERROR =
 function field(formData: FormData, name: string): string {
   const value = formData.get(name);
   return typeof value === "string" ? value.trim() : "";
+}
+
+async function syncQuoteRequestToHubSpot(input: {
+  email: string;
+  name: string;
+  phone?: string;
+}): Promise<void> {
+  try {
+    await upsertHubSpotContact(input);
+  } catch (err) {
+    // Supabase remains the source of truth. A temporary HubSpot outage must not
+    // make a valid website inquiry look like it failed.
+    console.error("HubSpot quote-request sync failed:", err);
+  }
+}
+
+async function syncSubscriberToHubSpot(email: string): Promise<void> {
+  try {
+    await upsertHubSpotContact({ email });
+    await subscribeHubSpotEmail(email);
+  } catch (err) {
+    // Keep the successful Supabase signup even if HubSpot is unavailable.
+    console.error("HubSpot subscriber sync failed:", err);
+  }
 }
 
 export async function submitQuoteRequest(
@@ -77,6 +105,13 @@ export async function submitQuoteRequest(
       message,
     });
     if (error) throw error;
+
+    await syncQuoteRequestToHubSpot({
+      email,
+      name,
+      phone: phone || undefined,
+    });
+
     return { status: "success" };
   } catch (err) {
     console.error("Quote request insert failed:", err);
@@ -109,6 +144,9 @@ export async function subscribeToDispatch(
     // 23505 = unique violation: already subscribed. Treat as success so the
     // response never reveals whether an address is on the list.
     if (error && error.code !== "23505") throw error;
+
+    await syncSubscriberToHubSpot(email);
+
     return { status: "success" };
   } catch (err) {
     console.error("Dispatch signup insert failed:", err);
