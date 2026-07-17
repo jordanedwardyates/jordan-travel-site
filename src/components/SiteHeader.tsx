@@ -2,8 +2,9 @@ import Link from "next/link";
 
 import Rule from "./Rule";
 
+// Root-relative anchors so About/Quote resolve from any page, not just home.
 const NAV_LINKS = [
-  { href: "#about", label: "About Jordan" },
+  { href: "/#about", label: "About Jordan" },
   { href: "/journeys", label: "Journeys" },
 ];
 
@@ -29,20 +30,20 @@ export default function SiteHeader() {
             className="flex items-center gap-6 text-sm sm:gap-8"
           >
             {NAV_LINKS.map(({ href, label }) => (
-              <a
+              <Link
                 key={href}
                 href={href}
                 className="text-aegean-ink transition-colors hover:text-deep-harbor"
               >
                 {label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#request-a-quote"
+            <Link
+              href="/#request-a-quote"
               className="text-xs uppercase tracking-[0.15em] text-deep-harbor underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold"
             >
               Request a Quote
-            </a>
+            </Link>
           </nav>
         </div>
         <Rule variant="double" className="mt-6" />

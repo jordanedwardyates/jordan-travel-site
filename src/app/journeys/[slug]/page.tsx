@@ -22,9 +22,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const journey = await getJourneyBySlug(slug);
   if (!journey) return { title: "Journey not found" };
+  const description = `${journey.voyageTitle} · ${journey.ship}, ${journey.cruiseLine} · ${journey.nights} nights · ${journey.dates}. ${journey.jordansTake}`;
+  const url = `/journeys/${slug}`;
   return {
-    title: `${journey.routeTitle} — BON V: A Travel Company`,
-    description: `${journey.voyageTitle} · ${journey.ship}, ${journey.cruiseLine} · ${journey.nights} nights · ${journey.dates}. ${journey.jordansTake}`,
+    title: journey.routeTitle,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: `${journey.routeTitle} — BON V: A Travel Company`,
+      description,
+    },
   };
 }
 

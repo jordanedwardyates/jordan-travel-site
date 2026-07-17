@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { EB_Garamond, Geist, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
@@ -22,11 +22,46 @@ const mrsSaintDelafield = Mrs_Saint_Delafield({
   subsets: ["latin"],
 });
 
+const SITE_NAME = "BON V: A Travel Company";
+const SITE_TITLE = "BON V: A Travel Company — A more thoughtful way to travel";
+const SITE_DESCRIPTION =
+  "Exceptional voyages on the world's finest cruise lines — expertly chosen, personally negotiated by Jordan Yates. Never pay retail.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bonvtravelcompany.com"),
-  title: "BON V: A Travel Company — A more thoughtful way to travel",
-  description:
-    "Exceptional voyages on the world's finest cruise lines — expertly chosen, personally negotiated by Jordan Yates. Never pay retail.",
+  title: {
+    default: SITE_TITLE,
+    // Subpages set their own title; this frames it as the publication.
+    template: "%s — BON V: A Travel Company",
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: "Jordan Yates" }],
+  creator: "Jordan Yates",
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    url: "/",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f6f1e8",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
