@@ -2,10 +2,13 @@ import Link from "next/link";
 
 import Rule from "./Rule";
 
-// Root-relative anchors so About/Quote resolve from any page, not just home.
+// Real pages now; the Quote link stays a root-relative anchor so it resolves
+// from anywhere, not just home.
 const NAV_LINKS = [
-  { href: "/#about", label: "About Jordan" },
+  { href: "/about", label: "About" },
+  { href: "/destinations", label: "Destinations" },
   { href: "/journeys", label: "Journeys" },
+  { href: "/field-notes", label: "Field Notes" },
 ];
 
 /** Masthead — publication nameplate with a double rule beneath. */
@@ -27,7 +30,7 @@ export default function SiteHeader() {
           </Link>
           <nav
             aria-label="Main"
-            className="flex items-center gap-6 text-sm sm:gap-8"
+            className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm sm:gap-x-7"
           >
             {NAV_LINKS.map(({ href, label }) => (
               <Link

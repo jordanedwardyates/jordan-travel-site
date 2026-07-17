@@ -1,4 +1,14 @@
+import Link from "next/link";
+
 import Rule from "./Rule";
+
+const FOOTER_LINKS = [
+  { href: "/about", label: "About" },
+  { href: "/destinations", label: "Destinations" },
+  { href: "/journeys", label: "Journeys" },
+  { href: "/field-notes", label: "Field Notes" },
+  { href: "/#request-a-quote", label: "Request a Quote" },
+];
 
 /** Colophon footer — printer's imprint, not a booking-site basement. */
 export default function SiteFooter() {
@@ -6,7 +16,21 @@ export default function SiteFooter() {
     <footer className="px-6 pb-14 pt-4 sm:px-10">
       <div className="mx-auto max-w-5xl">
         <Rule variant="double" />
-        <div className="mt-10 flex flex-col items-center gap-2 text-center">
+        <nav
+          aria-label="Footer"
+          className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm"
+        >
+          {FOOTER_LINKS.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="text-aegean-ink transition-colors hover:text-deep-harbor"
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+        <div className="mt-8 flex flex-col items-center gap-2 text-center">
           <p className="font-serif tracking-tight">
             <span className="text-xl text-deep-harbor">BON V:</span>{" "}
             <span className="text-base italic text-aegean-ink">
