@@ -1,6 +1,7 @@
 "use server";
 
 import { createPublicClient } from "@/lib/supabase/public";
+import { notifyQuoteRequest } from "@/lib/email/quoteRequestEmails";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -77,6 +78,15 @@ export async function submitQuoteRequest(
       message,
     });
     if (error) throw error;
+
+    notifyQuoteRequest({
+      name,
+      email,
+      phone,
+      journeyLabel,
+      message,
+    }).catch((err) => console.error("Quote request email notify failed:", err));
+
     return { status: "success" };
   } catch (err) {
     console.error("Quote request insert failed:", err);
