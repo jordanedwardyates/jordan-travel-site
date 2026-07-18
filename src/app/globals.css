@@ -28,7 +28,9 @@
      Grain is cotton-paper tooth; foxing is the sparse age-blotch layer. */
   --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
   --texture-foxing: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
-  --texture-foxing-alt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  /* Linen variant runs fainter (0.4/-0.26 alpha ramp vs 0.5/-0.28) —
+     the weave already carries texture, so its foxing stays sparser. */
+  --texture-foxing-alt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.4 -0.26'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
 }
 
 @theme inline {
@@ -293,6 +295,41 @@ body {
     .voyage-progress::after {
       animation: voyage-line linear both;
       animation-timeline: scroll(root);
+    }
+  }
+}
+
+/* Reveal fallback for engines without scroll timelines — driven by
+   <ScrollRevealFallback>, which adds `js-reveal` to <html> only when
+   the fallback is active. Nothing is ever hidden without JS running,
+   and the @supports-not guard keeps this inert where the scrubbed
+   CSS version above is in charge. */
+@supports not (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal .ink-rise {
+      opacity: 0;
+      transform: translateY(0.9rem);
+      transition:
+        opacity 0.7s ease-out,
+        transform 0.7s ease-out;
+    }
+
+    .js-reveal .ink-rise.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .js-reveal .stamp-settle {
+      scale: 1.3;
+      filter: opacity(0);
+      transition:
+        scale 0.6s ease-out,
+        filter 0.6s ease-out;
+    }
+
+    .js-reveal .stamp-settle.is-revealed {
+      scale: 1;
+      filter: opacity(1);
     }
   }
 }

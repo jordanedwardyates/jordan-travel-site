@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Geist, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
+import ScrollRevealFallback from "@/components/ScrollRevealFallback";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import VoyageProgress from "@/components/VoyageProgress";
@@ -46,6 +47,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <ScrollRevealFallback />
         <VoyageProgress />
         <SiteHeader />
         <main id="main">{children}</main>

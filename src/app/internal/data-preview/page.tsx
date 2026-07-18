@@ -94,7 +94,7 @@ export default async function DataPreviewPage({
   ];
 
   return (
-    <section className="px-6 py-14">
+    <section className="weathered px-6 py-14">
       <div className="mx-auto max-w-4xl">
         <p className="text-kicker uppercase text-compass-gold">
           Internal &middot; not public
