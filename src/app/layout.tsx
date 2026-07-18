@@ -3,6 +3,7 @@ import { EB_Garamond, Geist, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import VoyageProgress from "@/components/VoyageProgress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,6 +46,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <VoyageProgress />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

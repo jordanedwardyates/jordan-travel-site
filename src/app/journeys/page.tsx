@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import JourneyCard from "@/components/JourneyCard";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
+import WeatheredBackground from "@/components/WeatheredBackground";
 import { getPublishedJourneys } from "@/lib/journeys";
 
 export const revalidate = 300;
@@ -17,7 +18,8 @@ export default async function JourneysPage() {
   const journeys = await getPublishedJourneys(50);
 
   return (
-    <section className="px-6 py-14 sm:py-20">
+    <section className="weathered clip-section px-6 py-14 sm:py-20">
+      <WeatheredBackground variant="rose" />
       <div className="mx-auto max-w-4xl">
         <SectionHeading
           kicker="Journeys"
@@ -32,7 +34,9 @@ export default async function JourneysPage() {
           <>
             <div className="mt-10 space-y-8">
               {journeys.map((journey) => (
-                <JourneyCard key={journey.id} journey={journey} />
+                <div key={journey.id} className="ink-rise">
+                  <JourneyCard journey={journey} />
+                </div>
               ))}
             </div>
             <p className="mt-6 text-center text-xs leading-relaxed text-aegean-ink">

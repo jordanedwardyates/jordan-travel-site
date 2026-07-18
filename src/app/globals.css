@@ -23,6 +23,12 @@
   /* Semantic defaults — cream paper, ink text */
   --background: var(--vintage-passport);
   --foreground: var(--deep-harbor);
+
+  /* Texture plates — tiled SVG data URIs shared by the paper recipes below.
+     Grain is cotton-paper tooth; foxing is the sparse age-blotch layer. */
+  --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
+  --texture-foxing: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  --texture-foxing-alt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
 }
 
 @theme inline {
@@ -57,8 +63,8 @@
 
 body {
   background-color: var(--background);
-  /* Cotton-paper grain — tiled SVG noise at ~4%, never enough to dim ink */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
+  /* Cotton-paper grain at ~4% — never enough to dim ink */
+  background-image: var(--texture-grain);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
@@ -68,14 +74,44 @@ body {
   outline-offset: 2px;
 }
 
-/* Aged paper: sparse foxing blotches and sun-bleached corners.
-   Subtle evidence of age — never dirty, never grungy (Brand Bible).
-   Apply to a position:relative section; sits under the content. */
-.weathered::before {
+/* ------------------------------------------------------------------
+   Weathered paper surfaces
+
+   Sections are sheets of stock, not colored rectangles. Each recipe
+   layers weave/grain on the element and aging (plate-tone vignette,
+   sun bleach, foxing) on ::before. Subtle evidence of age — never
+   dirty, never grungy (Brand Bible).
+
+   `isolation` + z-index:-1 keeps every layer under the content, and
+   lets a section host a full-bleed <WeatheredBackground> at -z-10
+   beneath the aging so the artwork weathers with the paper.
+   ------------------------------------------------------------------ */
+.weathered,
+.weathered-linen {
+  position: relative;
+  isolation: isolate;
+}
+
+.weathered::before,
+.weathered-linen::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1;
   pointer-events: none;
+}
+
+/* Cream plate: sun-bleached corners, sparse foxing, and a whisper of
+   plate-tone — edges a shade deeper, like an intaglio plate wiped
+   toward the middle. Paints its own paper (not just body's) so
+   mix-blend-multiply content inside the isolated section still has
+   cream in its backdrop. */
+.weathered {
+  background-color: var(--vintage-passport);
+  background-image: var(--texture-grain);
+}
+
+.weathered::before {
   background-image: radial-gradient(
       ellipse 60% 50% at 0% 0%,
       rgba(183, 139, 66, 0.06),
@@ -91,5 +127,172 @@ body {
       rgba(183, 139, 66, 0.04),
       transparent 70%
     ),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+    radial-gradient(
+      ellipse 130% 120% at 50% 45%,
+      transparent 62%,
+      rgba(27, 49, 84, 0.05) 100%
+    ),
+    var(--texture-foxing);
+}
+
+/* Linen sheet: perpendicular thread lines in ink at ~2% over the linen
+   base, its own grain, then aging above. Replaces flat bg-linen. */
+.weathered-linen {
+  background-color: var(--linen);
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(27, 49, 84, 0.02) 0 1px,
+      transparent 1px 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(27, 49, 84, 0.025) 0 1px,
+      transparent 1px 4px
+    ),
+    var(--texture-grain);
+}
+
+.weathered-linen::before {
+  background-image: radial-gradient(
+      ellipse 55% 45% at 100% 0%,
+      rgba(183, 139, 66, 0.05),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 0% 100%,
+      rgba(96, 125, 153, 0.05),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 130% 120% at 50% 50%,
+      transparent 60%,
+      rgba(27, 49, 84, 0.06) 100%
+    ),
+    var(--texture-foxing-alt);
+}
+
+/* Clips full-bleed background art without becoming a scroll container —
+   `view()` timelines inside an overflow:hidden ancestor would track that
+   ancestor instead of the page. `hidden` is the fallback for engines
+   without `clip` (which also lack scroll-driven animations). */
+.clip-section {
+  overflow: hidden;
+  overflow: clip;
+}
+
+/* ------------------------------------------------------------------
+   Scroll-driven motion — progressive enhancement only.
+
+   Everything below is decorative and scrubbed by the reader's own
+   scrolling, like plates shifting as a book's pages turn. Without
+   support (or with reduced motion) the page is simply static — no JS,
+   no observers, nothing hidden.
+   ------------------------------------------------------------------ */
+
+/* Copy settles onto the page like ink taking to paper. */
+@keyframes ink-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.9rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Background chart layers drift at unequal rates — parallax, gently. */
+@keyframes drift-up {
+  from {
+    transform: translateY(1.75rem);
+  }
+  to {
+    transform: translateY(-1.75rem);
+  }
+}
+
+@keyframes drift-down {
+  from {
+    transform: translateY(-1.25rem);
+  }
+  to {
+    transform: translateY(1.25rem);
+  }
+}
+
+/* A cancellation mark pressed onto the page as it scrolls into view.
+   Animates `scale` and `filter` only, so utility `rotate-*` and
+   `opacity-*` on the stamp keep their designed values. */
+@keyframes stamp-settle {
+  from {
+    scale: 1.3;
+    filter: opacity(0);
+  }
+  to {
+    scale: 1;
+    filter: opacity(1);
+  }
+}
+
+/* The voyage line is revealed left-to-right as the reader travels. */
+@keyframes voyage-line {
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Dashed gold route line across the very top of the page — reading
+   progress as a passage under way. Invisible until animated, so
+   engines without scroll timelines never show it. */
+.voyage-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: 50;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.voyage-progress::after {
+  content: "";
+  display: block;
+  height: 100%;
+  opacity: 0.75;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--compass-gold) 0 8px,
+    transparent 8px 14px
+  );
+  transform: translateX(-100%);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .ink-rise {
+      animation: ink-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+
+    .drift-up {
+      animation: drift-up linear both;
+      animation-timeline: view();
+    }
+
+    .drift-down {
+      animation: drift-down linear both;
+      animation-timeline: view();
+    }
+
+    .stamp-settle {
+      animation: stamp-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 60%;
+    }
+
+    .voyage-progress::after {
+      animation: voyage-line linear both;
+      animation-timeline: scroll(root);
+    }
+  }
 }

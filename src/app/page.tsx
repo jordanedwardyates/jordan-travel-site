@@ -1,13 +1,14 @@
 import Image from "next/image";
 
 import Button from "@/components/Button";
-import ChartTexture from "@/components/ChartTexture";
 import EmailSignupForm from "@/components/EmailSignupForm";
 import JourneyCard from "@/components/JourneyCard";
 import PassportStamp from "@/components/PassportStamp";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
+import TornEdge from "@/components/TornEdge";
+import WeatheredBackground from "@/components/WeatheredBackground";
 import { getPublishedJourneys } from "@/lib/journeys";
 
 // Re-render at most every 5 minutes so published journeys stay fresh.
@@ -21,9 +22,9 @@ export default async function Home() {
   }));
   return (
     <>
-      {/* Opening spread */}
-      <section className="weathered relative overflow-hidden px-6 py-12 sm:px-10 sm:py-20">
-        <ChartTexture className="pointer-events-none absolute inset-0 h-full w-full text-salt-air/60" />
+      {/* Opening spread — the paper itself is the chart */}
+      <section className="weathered clip-section px-6 py-12 sm:px-10 sm:py-20">
+        <WeatheredBackground variant="chart" />
         <div className="relative mx-auto grid max-w-5xl items-center gap-10 sm:grid-cols-[3fr_2fr] sm:gap-16">
           <div className="text-center sm:text-left">
             {/* pt reserves the stamp's band so it can never touch the headline */}
@@ -85,8 +86,10 @@ export default async function Home() {
       </section>
 
       {/* The Advisor's Note */}
-      <section id="about" className="bg-linen px-6 py-14 sm:py-20">
-        <div className="mx-auto max-w-[62ch]">
+      <section id="about" className="weathered-linen px-6 py-14 sm:py-20">
+        <TornEdge side="top" />
+        <TornEdge side="bottom" />
+        <div className="ink-rise mx-auto max-w-[62ch]">
           <SectionHeading kicker="The Advisor&rsquo;s Note" align="left" />
           <div className="mt-8 space-y-6 font-serif text-lg leading-relaxed">
             <p>
@@ -124,12 +127,16 @@ export default async function Home() {
       </section>
 
       {/* Recently Quoted — the centerpiece */}
-      <section id="journeys" className="px-6 py-14 sm:py-20">
+      <section
+        id="journeys"
+        className="weathered clip-section px-6 py-14 sm:py-20"
+      >
+        <WeatheredBackground variant="rose" />
         <div className="mx-auto max-w-4xl">
           <div className="relative">
             <PassportStamp
               text="· RECENTLY QUOTED · JORDAN YATES ·"
-              className="absolute -top-6 right-0 hidden h-20 w-20 rotate-12 text-sun-faded opacity-25 lg:block"
+              className="stamp-settle absolute -top-6 right-0 hidden h-20 w-20 rotate-12 text-sun-faded opacity-25 lg:block"
             />
             <SectionHeading
               kicker="Recently Quoted"
@@ -145,7 +152,9 @@ export default async function Home() {
             <>
               <div className="mt-10 space-y-8">
                 {journeys.map((journey) => (
-                  <JourneyCard key={journey.id} journey={journey} />
+                  <div key={journey.id} className="ink-rise">
+                    <JourneyCard journey={journey} />
+                  </div>
                 ))}
               </div>
               <p className="mt-6 text-center text-xs leading-relaxed text-aegean-ink">
@@ -173,8 +182,10 @@ export default async function Home() {
       </section>
 
       {/* Margin notes — the advisor's line and a client's, side by side */}
-      <section className="bg-linen px-6 py-14 sm:py-20">
-        <div className="mx-auto grid max-w-5xl gap-10 sm:grid-cols-2 sm:gap-0">
+      <section className="weathered-linen px-6 py-14 sm:py-20">
+        <TornEdge side="top" />
+        <TornEdge side="bottom" />
+        <div className="ink-rise mx-auto grid max-w-5xl gap-10 sm:grid-cols-2 sm:gap-0">
           <div className="sm:pr-12">
             <div className="flex items-end gap-4">
               <Image
@@ -208,8 +219,12 @@ export default async function Home() {
       </section>
 
       {/* Stamped by Jordan — the weekly negotiated-fares letter, set as mail */}
-      <section id="dispatch" className="px-6 py-14 sm:py-20">
-        <div className="mx-auto max-w-[46rem] border border-salt-air bg-linen p-1">
+      <section
+        id="dispatch"
+        className="weathered clip-section px-6 py-14 sm:py-20"
+      >
+        <WeatheredBackground variant="post" />
+        <div className="ink-rise mx-auto max-w-[46rem] border border-salt-air bg-linen p-1">
           <div className="relative border border-salt-air/60 px-6 py-10 sm:px-10">
             {/* Postage stamp with postmark — in-flow on mobile like postage
                 on an envelope, pinned to the corner on desktop */}
@@ -217,7 +232,7 @@ export default async function Home() {
               <div className="relative">
                 <PassportStamp
                   text="· STAMPED BY JORDAN · STAMPED BY JORDAN"
-                  className="absolute -left-14 top-3 h-16 w-16 -rotate-12 text-sun-faded opacity-50"
+                  className="stamp-settle absolute -left-14 top-3 h-16 w-16 -rotate-12 text-sun-faded opacity-50"
                 />
                 <div className="rotate-2 border border-dashed border-sun-faded/80 bg-vintage-passport p-1">
                   <div className="flex flex-col items-center border border-salt-air/70 px-2 pb-1.5 pt-2">
@@ -268,8 +283,13 @@ export default async function Home() {
       </section>
 
       {/* Begin the Conversation — quote form arrives in Phase 4 */}
-      <section id="request-a-quote" className="bg-linen px-6 py-16 sm:py-24">
-        <div className="mx-auto flex max-w-[52ch] flex-col items-center text-center">
+      <section
+        id="request-a-quote"
+        className="weathered-linen px-6 py-16 sm:py-24"
+      >
+        <TornEdge side="top" />
+        <TornEdge side="bottom" />
+        <div className="ink-rise mx-auto flex max-w-[52ch] flex-col items-center text-center">
           <SectionHeading
             kicker="Request a Quote"
             title="Begin the conversation"
