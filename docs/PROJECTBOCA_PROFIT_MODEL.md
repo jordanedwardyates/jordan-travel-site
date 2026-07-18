@@ -27,24 +27,23 @@ P&L with base / conservative / aggressive scenarios and a break-even analysis.
 
 ## 2. Business summary
 
-_Fill this section in first — everything downstream depends on it._
-
 | Field | Value |
 |---|---|
-| Public property | **Projectboca.com** |
-| Internal / working name | **ACOB** |
-| One-line description | `⟨what ACOB sells, in one sentence⟩` |
-| Stage | `⟨pre-launch / early revenue / established⟩` |
-| Primary customer | `⟨who pays, and what job they're hiring ACOB to do⟩` |
-| Core offer(s) | `⟨the 1–3 things a customer can actually buy⟩` |
-| Geography / market | `⟨where customers are⟩` |
-| Founder / operator model | `⟨solo, founder + contractors, small team⟩` |
+| Public property | **Projectboca.com** (live in production) |
+| Product name | **ACOB — AI Choice. One Bite.** |
+| One-line description | Dish-first dinner-decision app: swipe real dishes (prices shown, restaurant hidden), finish a Lightning Round, get exactly **one** winning restaurant |
+| Stage | MVP shipped; seeded catalog; pre-revenue; pre-real-market launch |
+| Primary customers | Diners (premium subscription) and restaurants (dish-level demand analytics) |
+| Core offers | E1 consumer premium `⟨$4.99/mo⟩` · E2 restaurant "Menu Intelligence" `⟨$99/mo⟩` · E3 decided-diner handoff fees `⟨$1.00/handoff⟩` |
+| Geography / market | U.S.; launch-metro wedge strategy `⟨Boca Raton, FL — assumption⟩` |
+| Founder / operator model | Solo founder (Jordan Yates) + contractors; separate from the BON V travel business |
 
-**Modeling posture used in this draft:** a **digital / services business** — low
-cost of goods sold, revenue driven by a mix of one-time and recurring offers,
-customer acquisition through paid + organic channels. If ACOB is instead a
-physical-goods or inventory business, swap the "COGS" and "working capital"
-sections for landed-cost and inventory-turn logic (noted inline where it matters).
+**Modeling posture:** consumer app + B2B SaaS hybrid — near-zero marginal COGS
+on software, real per-restaurant onboarding COGS (dish photography), recurring
+revenue on both sides. See `docs/PROJECTBOCA_INVESTOR_NARRATIVE.md` for the
+full investor story and `docs/investor/ACOB_Investor_Model.xlsx` for the live
+numbers. The generic revenue-stream labels below (R1–R4) predate the engine
+framing (E1–E3); read R2 ≈ E1+E2 recurring, R4 ≈ E3.
 
 ---
 
