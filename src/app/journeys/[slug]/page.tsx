@@ -47,10 +47,10 @@ export default async function JourneyPage({ params }: Props) {
           align="left"
           className="mt-8"
         />
-        <div className="mt-8">
+        <div className="ink-rise mt-8">
           <JourneyCard journey={journey} />
         </div>
-        <div className="mt-10 flex flex-col items-center gap-4 text-center">
+        <div className="ink-rise mt-10 flex flex-col items-center gap-4 text-center">
           <Button href={`/?journey=${journey.id}#request-a-quote`}>
             Request this itinerary
           </Button>
