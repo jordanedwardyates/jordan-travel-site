@@ -1,0 +1,72 @@
+<!--
+  Quote Request — Internal Notify (sent to Jordan, not the client)
+  Fires alongside quote-request-received.html so Jordan sees the full
+  submission immediately instead of checking Supabase manually.
+
+  Merge fields: {{name}} {{email}} {{phone}} {{journey_label}} {{message}}
+  {{phone}} and {{journey_label}} are optional in actions.ts — render
+  "Not provided" rather than omitting the row, since this is a working
+  reference doc for Jordan, not a polished client read.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>New quote request — {{name}}</title>
+</head>
+<body style="margin:0; padding:0; background-color:#efe8dd; -webkit-text-size-adjust:100%;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#efe8dd;">
+  <tr>
+    <td align="center" style="padding:24px 12px;">
+
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="width:560px; max-width:560px; background-color:#f6f1e8; border:1px solid #c9d6dc;">
+
+        <tr>
+          <td style="padding:20px 32px; font-family:Arial,Helvetica,sans-serif;">
+            <div style="font-size:11px; letter-spacing:2px; color:#223e67;">NEW QUOTE REQUEST</div>
+            <h1 style="margin:8px 0 0 0; font-family:Georgia,'Times New Roman',serif; font-size:22px; font-weight:normal; color:#1b3154;">{{name}}</h1>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:0 32px 8px 32px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif; font-size:14px; color:#1b3154;">
+              <tr>
+                <td style="padding:8px 0; border-top:1px solid #d8cdbb; width:110px; color:#607d99;">Email</td>
+                <td style="padding:8px 0; border-top:1px solid #d8cdbb;"><a href="mailto:{{email}}" style="color:#223e67;">{{email}}</a></td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0; border-top:1px solid #d8cdbb; color:#607d99;">Phone</td>
+                <td style="padding:8px 0; border-top:1px solid #d8cdbb;">{{phone}}</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 0; border-top:1px solid #d8cdbb; color:#607d99;">Journey</td>
+                <td style="padding:8px 0; border-top:1px solid #d8cdbb;">{{journey_label}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:12px 32px 28px 32px;">
+            <div style="font-family:Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:1px; color:#607d99; margin-bottom:6px;">MESSAGE</div>
+            <div style="font-family:Georgia,'Times New Roman',serif; font-size:15px; line-height:1.6; color:#1b3154; white-space:pre-wrap;">{{message}}</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:16px 32px 24px 32px; border-top:1px solid #c9d6dc;">
+            <a href="mailto:{{email}}" style="display:inline-block; background-color:#223e67; color:#f6f1e8; font-family:Arial,Helvetica,sans-serif; font-size:12px; letter-spacing:1px; text-decoration:none; padding:12px 24px;">REPLY TO {{name}}</a>
+          </td>
+        </tr>
+
+      </table>
+
+    </td>
+  </tr>
+</table>
+</body>
+</html>
