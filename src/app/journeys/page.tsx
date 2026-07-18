@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import JourneyCard from "@/components/JourneyCard";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
-import { getPublishedJourneys } from "@/lib/journeys";
+import { getFeaturedJourneys } from "@/lib/data/featured";
 
 export const revalidate = 300;
 
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function JourneysPage() {
-  const journeys = await getPublishedJourneys(50);
+  const journeys = await getFeaturedJourneys(50);
 
   return (
     <section className="px-6 py-14 sm:py-20">

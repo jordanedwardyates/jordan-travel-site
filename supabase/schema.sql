@@ -64,6 +64,20 @@ create table if not exists public.quote_requests (
 create index if not exists quote_requests_created_idx
   on public.quote_requests (created_at desc);
 
+-- Phase H (applied as migration quote_requests_voyage_fk): a request may
+-- reference a normalized voyage instead of a legacy journey. Guarded so this
+-- file stays runnable on a database without the normalized tables.
+do $$
+begin
+  if to_regclass('public.voyages') is not null then
+    alter table public.quote_requests
+      add column if not exists voyage_id uuid
+        references public.voyages (id) on delete set null;
+    create index if not exists quote_requests_voyage_idx
+      on public.quote_requests (voyage_id);
+  end if;
+end $$;
+
 -- ------------------------------------------------------------------
 -- subscribers — The Dispatch signups
 -- ------------------------------------------------------------------

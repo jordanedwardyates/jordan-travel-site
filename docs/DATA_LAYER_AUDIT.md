@@ -14,8 +14,9 @@ _Audited July 14, 2026 against commit `f4f8d55`._
 
 | Table | Access | Where |
 |---|---|---|
-| `journeys` | read (published only) | `src/lib/journeys.ts` → homepage (`src/app/page.tsx`), `/journeys`, `/journeys/[slug]` |
-| `quote_requests` | insert | `src/app/actions.ts` (`submitQuoteRequest`) |
+| `homepage_features` + normalized tree | read (RLS-gated, anon) | `src/lib/data/featured.ts` → homepage (`src/app/page.tsx`), `/journeys` (Phase G) |
+| `journeys` | read (published only) | fallback in `src/lib/data/featured.ts` while no 2.0 content is approved; `/journeys/[slug]` detail pages |
+| `quote_requests` | insert (dual-write `journey_id` / `voyage_id`, Phase H) | `src/app/actions.ts` (`submitQuoteRequest`) |
 | `subscribers` | insert | `src/app/actions.ts` (`subscribeToDispatch`) |
 | `cruises` | **none** | no code references |
 | `inquiries` | **none** | no code references |

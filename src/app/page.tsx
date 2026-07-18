@@ -8,13 +8,13 @@ import PassportStamp from "@/components/PassportStamp";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
-import { getPublishedJourneys } from "@/lib/journeys";
+import { getFeaturedJourneys } from "@/lib/data/featured";
 
 // Re-render at most every 5 minutes so published journeys stay fresh.
 export const revalidate = 300;
 
 export default async function Home() {
-  const journeys = await getPublishedJourneys(6);
+  const journeys = await getFeaturedJourneys(6);
   const journeyOptions = journeys.map((j) => ({
     id: j.id,
     label: `${j.routeTitle} — ${j.dates}`,

@@ -15,13 +15,15 @@ export type Journey = {
   nights: number;
   embark: string;
   disembark: string;
-  portCount: number;
+  /** Omitted when the itinerary's port list isn't loaded yet (2.0 voyages). */
+  portCount?: number;
   stateroom: string;
   roomSize?: string;
-  theirPrice: string;
+  /** Omitted when no retail comparison exists for the featured offer. */
+  theirPrice?: string;
   yourPrice: string;
   priceNote?: string;
-  jordansTake: string;
+  jordansTake?: string;
   availabilityNote?: string;
 };
 
@@ -70,7 +72,7 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
   // Lands on the quote form with this sailing preselected.
   const inquiryHref = `/?journey=${j.id}#request-a-quote`;
 
-  const theirs = parsePrice(j.theirPrice);
+  const theirs = j.theirPrice !== undefined ? parsePrice(j.theirPrice) : null;
   const yours = parsePrice(j.yourPrice);
   const savings =
     theirs !== null && yours !== null && theirs > yours ? theirs - yours : null;
@@ -87,13 +89,15 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
           <p className="text-[0.6rem] uppercase tracking-[0.2em] text-deep-harbor">
             {j.embark}
           </p>
-          <RouteStrip portCount={j.portCount} />
+          <RouteStrip portCount={j.portCount ?? 2} />
           <p className="text-right text-[0.6rem] uppercase tracking-[0.2em] text-deep-harbor">
             {j.disembark}
           </p>
-          <p className="mt-3 text-center text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink oldstyle-nums">
-            {j.portCount} ports of call
-          </p>
+          {j.portCount !== undefined && (
+            <p className="mt-3 text-center text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink oldstyle-nums">
+              {j.portCount} ports of call
+            </p>
+          )}
         </div>
 
         <div className="px-6 py-5 sm:px-7">
@@ -122,14 +126,16 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
           </p>
 
           <dl className="mt-4 flex flex-wrap items-end gap-x-8 gap-y-2">
-            <div>
-              <dt className="text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink">
-                Their price
-              </dt>
-              <dd className="mt-0.5 text-sm text-aegean-ink oldstyle-nums">
-                {j.theirPrice} per person
-              </dd>
-            </div>
+            {j.theirPrice !== undefined && (
+              <div>
+                <dt className="text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink">
+                  Their price
+                </dt>
+                <dd className="mt-0.5 text-sm text-aegean-ink oldstyle-nums">
+                  {j.theirPrice} per person
+                </dd>
+              </div>
+            )}
             <div>
               <dt className="text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink">
                 Your price
@@ -171,21 +177,23 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
             </p>
           )}
 
-          <div className="mt-4 flex items-start gap-3 border-t border-salt-air pt-3">
-            <Image
-              src="/portrait-engraved.png"
-              alt=""
-              width={1739}
-              height={1739}
-              className="mt-1 h-auto w-11 shrink-0 mix-blend-multiply"
-            />
-            <p className="max-w-[60ch] font-serif italic leading-relaxed">
-              <span className="mr-2 font-sans text-[0.6rem] not-italic uppercase tracking-[0.25em] text-deep-harbor">
-                Jordan&rsquo;s Take
-              </span>
-              &ldquo;{j.jordansTake}&rdquo;
-            </p>
-          </div>
+          {j.jordansTake && (
+            <div className="mt-4 flex items-start gap-3 border-t border-salt-air pt-3">
+              <Image
+                src="/portrait-engraved.png"
+                alt=""
+                width={1739}
+                height={1739}
+                className="mt-1 h-auto w-11 shrink-0 mix-blend-multiply"
+              />
+              <p className="max-w-[60ch] font-serif italic leading-relaxed">
+                <span className="mr-2 font-sans text-[0.6rem] not-italic uppercase tracking-[0.25em] text-deep-harbor">
+                  Jordan&rsquo;s Take
+                </span>
+                &ldquo;{j.jordansTake}&rdquo;
+              </p>
+            </div>
+          )}
 
           <footer className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
             {j.availabilityNote ? (

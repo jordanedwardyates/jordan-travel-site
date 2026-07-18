@@ -56,23 +56,40 @@ export async function submitQuoteRequest(
   }
 
   // The select submits "uuid|label"; anything malformed becomes a general inquiry.
-  let journeyId: string | null = null;
+  let selectedId: string | null = null;
   let journeyLabel: string | null = null;
   if (journey) {
     const [id, ...rest] = journey.split("|");
     if (UUID_RE.test(id)) {
-      journeyId = id;
+      selectedId = id;
       journeyLabel = rest.join("|").slice(0, 200) || null;
     }
   }
 
   try {
     const supabase = createPublicClient();
+
+    // The id may point at a legacy journey or a 2.0 voyage. Resolve it before
+    // inserting so an unknown id degrades to a labeled general inquiry
+    // instead of a foreign-key violation. RLS scopes both lookups to rows
+    // the public site can show.
+    let journeyId: string | null = null;
+    let voyageId: string | null = null;
+    if (selectedId) {
+      const [journeyHit, voyageHit] = await Promise.all([
+        supabase.from("journeys").select("id").eq("id", selectedId).maybeSingle(),
+        supabase.from("voyages").select("id").eq("id", selectedId).maybeSingle(),
+      ]);
+      journeyId = journeyHit.data?.id ?? null;
+      voyageId = journeyId === null ? voyageHit.data?.id ?? null : null;
+    }
+
     const { error } = await supabase.from("quote_requests").insert({
       name,
       email,
       phone: phone || null,
       journey_id: journeyId,
+      voyage_id: voyageId,
       journey_label: journeyLabel,
       message,
     });
