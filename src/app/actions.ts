@@ -2,6 +2,7 @@
 
 import { createPublicClient } from "@/lib/supabase/public";
 import { notifyQuoteRequest } from "@/lib/email/quoteRequestEmails";
+import { notifyDispatchConfirmation } from "@/lib/email/dispatchEmails";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -12,6 +13,8 @@ export type FormState = {
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+const BASE = "https://www.bonvtravelcompany.com";
 
 const GENERIC_ERROR =
   "Something went wrong on my end. Please email jordan.yates@luxurycruiseconnections.com or call 904-614-1219 — I'll take care of it.";
@@ -112,13 +115,26 @@ export async function subscribeToDispatch(
   }
 
   try {
+    const confirmationToken = crypto.randomUUID();
     const supabase = createPublicClient();
-    const { error } = await supabase
-      .from("subscribers")
-      .insert({ email, source: "homepage" });
+    const { error } = await supabase.from("subscribers").insert({
+      email,
+      source: "homepage",
+      confirmation_token: confirmationToken,
+    });
     // 23505 = unique violation: already subscribed. Treat as success so the
-    // response never reveals whether an address is on the list.
+    // response never reveals whether an address is on the list, and don't
+    // re-pester an existing pending/confirmed subscriber with another
+    // confirmation email.
     if (error && error.code !== "23505") throw error;
+
+    if (!error) {
+      const confirmUrl = `${BASE}/api/dispatch/confirm?token=${confirmationToken}`;
+      notifyDispatchConfirmation({ email, confirmUrl }).catch((err) =>
+        console.error("Dispatch confirmation email notify failed:", err)
+      );
+    }
+
     return { status: "success" };
   } catch (err) {
     console.error("Dispatch signup insert failed:", err);
