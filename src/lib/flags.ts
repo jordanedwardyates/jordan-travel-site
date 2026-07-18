@@ -6,4 +6,4 @@
  * it everywhere at once: nav, footer, sitemap, cross-links, and the routes
  * themselves. Nothing else needs to change.
  */
-export const FIELD_NOTES_ENABLED = false;
+export const FIELD_NOTES_ENABLED = true;
