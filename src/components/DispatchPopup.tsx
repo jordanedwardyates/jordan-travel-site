@@ -62,7 +62,8 @@ export default function DispatchPopup() {
 
   useEffect(() => {
     if (state.status === "success") {
-      const timer = setTimeout(close, 2600);
+      // Long enough to watch the stamp land before the card slips away.
+      const timer = setTimeout(close, 3400);
       return () => clearTimeout(timer);
     }
   }, [state.status]);
@@ -88,12 +89,12 @@ export default function DispatchPopup() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="dispatch-popup-heading"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-deep-harbor/50 px-6"
+      className="animate-backdrop-in fixed inset-0 z-50 flex items-center justify-center bg-deep-harbor/50 px-6"
       onClick={(e) => {
         if (e.target === e.currentTarget) close();
       }}
     >
-      <div className="relative w-full max-w-[28rem] border border-salt-air bg-vintage-passport p-8 shadow-xl sm:p-10">
+      <div className="animate-card-in relative w-full max-w-[28rem] border border-salt-air bg-vintage-passport p-8 shadow-xl sm:p-10">
         <button
           type="button"
           onClick={close}
@@ -104,9 +105,22 @@ export default function DispatchPopup() {
         </button>
 
         {state.status === "success" ? (
-          <p role="status" className="font-serif text-lg italic">
-            You&rsquo;re on the list &mdash; the next letter will find you.
-          </p>
+          <div role="status" className="py-2 text-center">
+            {/* Passport-stamp confirmation — lands with the stamp-in press */}
+            <div className="animate-stamp-in mx-auto inline-block border-2 border-aegean-ink px-5 py-3">
+              <div className="border border-aegean-ink/40 px-4 py-2">
+                <p className="text-[0.65rem] uppercase tracking-[0.3em] text-aegean-ink">
+                  Stamped
+                </p>
+                <p className="mt-1 text-[0.55rem] uppercase tracking-[0.2em] text-aegean-ink/70 oldstyle-nums">
+                  The Weekly Edit &middot; No.&nbsp;1 of many
+                </p>
+              </div>
+            </div>
+            <p className="mt-5 font-serif text-lg italic">
+              You&rsquo;re on the list &mdash; the next letter will find you.
+            </p>
+          </div>
         ) : (
           <>
             <p className="text-[0.65rem] uppercase tracking-[0.25em] text-compass-gold">

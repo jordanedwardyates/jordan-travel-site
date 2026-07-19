@@ -68,6 +68,56 @@ body {
   outline-offset: 2px;
 }
 
+/* Popup motion — quiet and papery, never springy. The card settles like
+   a letter laid on a desk; the success mark lands like a rubber stamp:
+   fast approach, one soft press, done. Guarded for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-backdrop-in {
+    animation: backdrop-in 240ms ease-out both;
+  }
+  .animate-card-in {
+    animation: card-in 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .animate-stamp-in {
+    animation: stamp-in 320ms cubic-bezier(0.2, 0.85, 0.3, 1) both;
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stamp-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.45) rotate(-7deg);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(0.97) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-2deg);
+  }
+}
+
 /* Aged paper: sparse foxing blotches and sun-bleached corners.
    Subtle evidence of age — never dirty, never grungy (Brand Bible).
    Apply to a position:relative section; sits under the content. */
