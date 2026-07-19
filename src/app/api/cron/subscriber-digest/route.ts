@@ -4,16 +4,18 @@ import { Resend } from "resend";
 import { createAdminClient } from "@/lib/supabase/admin";
 
 /**
- * Runs twice a day (see vercel.json). Emails any Dispatch signups from the
- * lookback window to Jordan, plus HUBSPOT_INGEST_EMAIL if configured, so
- * HubSpot's email-to-contact ingestion picks them up. The 13h lookback
- * (vs. the 12h cadence) gives a buffer against a delayed or skipped run —
- * duplicates in a digest email are harmless, a dropped signup isn't.
+ * Runs once a day at 8:00 UTC (see vercel.json — Vercel's Hobby plan caps
+ * crons at daily; on Pro, restore "0 8,20 * * *" there and drop this to 13).
+ * Emails any Dispatch signups from the lookback window to Jordan, plus
+ * HUBSPOT_INGEST_EMAIL if configured, so HubSpot's email-to-contact
+ * ingestion picks them up. The lookback exceeds the cadence by an hour to
+ * buffer a delayed run — duplicates in a digest email are harmless, a
+ * dropped signup isn't.
  */
 
 export const dynamic = "force-dynamic";
 
-const LOOKBACK_HOURS = 13;
+const LOOKBACK_HOURS = 25;
 
 // Subscriber-supplied strings land in the digest's HTML. Escape them: a
 // direct POST to the server action can store an email/source containing
