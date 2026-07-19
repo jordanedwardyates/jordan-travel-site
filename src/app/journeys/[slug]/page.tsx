@@ -5,6 +5,7 @@ import Button from "@/components/Button";
 import JourneyCard from "@/components/JourneyCard";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
+import TrackView from "@/components/TrackView";
 import { getJourneyBySlug, getPublishedJourneys } from "@/lib/journeys";
 
 export const revalidate = 300;
@@ -22,9 +23,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const journey = await getJourneyBySlug(slug);
   if (!journey) return { title: "Journey not found" };
+  const description = `${journey.voyageTitle} · ${journey.ship}, ${journey.cruiseLine} · ${journey.nights} nights · ${journey.dates}. ${journey.jordansTake}`;
+  const url = `/journeys/${slug}`;
   return {
-    title: `${journey.routeTitle} — BON V: A Travel Company`,
-    description: `${journey.voyageTitle} · ${journey.ship}, ${journey.cruiseLine} · ${journey.nights} nights · ${journey.dates}. ${journey.jordansTake}`,
+    title: journey.routeTitle,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: `${journey.routeTitle} — BON V: A Travel Company`,
+      description,
+    },
   };
 }
 
@@ -35,6 +45,7 @@ export default async function JourneyPage({ params }: Props) {
 
   return (
     <section className="px-6 py-14 sm:py-20">
+      <TrackView entityType="journey" slug={journey.slug} />
       <div className="mx-auto max-w-4xl">
         <TextLink href="/journeys" className="text-sm">
           &larr; All journeys

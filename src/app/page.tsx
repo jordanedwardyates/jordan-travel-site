@@ -120,6 +120,9 @@ export default async function Home() {
           <p className="mt-8 text-right font-script text-4xl text-aegean-ink">
             Jordan
           </p>
+          <p className="mt-6 text-center font-serif text-base italic text-aegean-ink sm:text-left">
+            <TextLink href="/about">More about how I work &rarr;</TextLink>
+          </p>
         </div>
       </section>
 

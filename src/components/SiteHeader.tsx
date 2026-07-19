@@ -1,10 +1,18 @@
 import Link from "next/link";
 
+import { FIELD_NOTES_ENABLED } from "@/lib/flags";
+
 import Rule from "./Rule";
 
+// Real pages now; the Quote link stays a root-relative anchor so it resolves
+// from anywhere, not just home. Field Notes is gated until launch.
 const NAV_LINKS = [
-  { href: "#about", label: "About Jordan" },
+  { href: "/about", label: "About" },
+  { href: "/destinations", label: "Destinations" },
   { href: "/journeys", label: "Journeys" },
+  ...(FIELD_NOTES_ENABLED
+    ? [{ href: "/field-notes", label: "Field Notes" }]
+    : []),
 ];
 
 /** Masthead — publication nameplate with a double rule beneath. */
@@ -26,23 +34,23 @@ export default function SiteHeader() {
           </Link>
           <nav
             aria-label="Main"
-            className="flex items-center gap-6 text-sm sm:gap-8"
+            className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm sm:gap-x-7"
           >
             {NAV_LINKS.map(({ href, label }) => (
-              <a
+              <Link
                 key={href}
                 href={href}
                 className="text-aegean-ink transition-colors hover:text-deep-harbor"
               >
                 {label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#request-a-quote"
+            <Link
+              href="/#request-a-quote"
               className="text-xs uppercase tracking-[0.15em] text-deep-harbor underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold"
             >
               Request a Quote
-            </a>
+            </Link>
           </nav>
         </div>
         <Rule variant="double" className="mt-6" />

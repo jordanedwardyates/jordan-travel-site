@@ -1,6 +1,15 @@
 "use server";
 
 import { createPublicClient } from "@/lib/supabase/public";
+import { notifyQuoteRequest } from "@/lib/email/quoteRequestEmails";
+import { notifyDispatchConfirmation } from "@/lib/email/dispatchEmails";
+import { upsertContact } from "@/lib/hubspot/client";
+import {
+  getVisitorInterest,
+  identifyVisitor,
+} from "@/lib/siteEvents";
+import { describeInterest } from "@/lib/taxonomy";
+import { readVisitorId } from "@/lib/visitor";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -11,6 +20,8 @@ export type FormState = {
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+const BASE = "https://www.bonvtravelcompany.com";
 
 const GENERIC_ERROR =
   "Something went wrong on my end. Please email jordan.yates@luxurycruiseconnections.com or call 904-614-1219 — I'll take care of it.";
@@ -77,6 +88,40 @@ export async function submitQuoteRequest(
       message,
     });
     if (error) throw error;
+
+    // Pull the visitor's normalized browsing interest (Mediterranean · Autumn
+    // · $5k–$10k), so both Jordan's notify email and the HubSpot record carry
+    // what they were actually looking at — not just what the form captured.
+    const visitorId = await readVisitorId();
+    const interestSummary = describeInterest(
+      await getVisitorInterest(visitorId)
+    );
+
+    if (visitorId) {
+      identifyVisitor(visitorId, email).catch((err) =>
+        console.error("Visitor identify failed:", err)
+      );
+    }
+
+    notifyQuoteRequest({
+      name,
+      email,
+      phone,
+      journeyLabel,
+      message,
+      interestSummary,
+    }).catch((err) => console.error("Quote request email notify failed:", err));
+
+    // Ownership: get the contact into Jordan's HubSpot immediately.
+    upsertContact({
+      email,
+      name,
+      phone: phone || null,
+      source: "Website quote request",
+      interestSummary,
+      message,
+    }).catch((err) => console.error("HubSpot sync failed:", err));
+
     return { status: "success" };
   } catch (err) {
     console.error("Quote request insert failed:", err);
@@ -102,13 +147,45 @@ export async function subscribeToDispatch(
   }
 
   try {
+    const confirmationToken = crypto.randomUUID();
     const supabase = createPublicClient();
-    const { error } = await supabase
-      .from("subscribers")
-      .insert({ email, source: "homepage" });
+    const { error } = await supabase.from("subscribers").insert({
+      email,
+      source: "homepage",
+      confirmation_token: confirmationToken,
+    });
     // 23505 = unique violation: already subscribed. Treat as success so the
-    // response never reveals whether an address is on the list.
+    // response never reveals whether an address is on the list, and don't
+    // re-pester an existing pending/confirmed subscriber with another
+    // confirmation email.
     if (error && error.code !== "23505") throw error;
+
+    if (!error) {
+      const confirmUrl = `${BASE}/api/dispatch/confirm?token=${confirmationToken}`;
+      notifyDispatchConfirmation({ email, confirmUrl }).catch((err) =>
+        console.error("Dispatch confirmation email notify failed:", err)
+      );
+
+      // Same ownership + interest capture as the quote form. Only on a fresh
+      // signup — the 23505 path deliberately falls through untouched.
+      const visitorId = await readVisitorId();
+      const interestSummary = describeInterest(
+        await getVisitorInterest(visitorId)
+      );
+
+      if (visitorId) {
+        identifyVisitor(visitorId, email).catch((err) =>
+          console.error("Visitor identify failed:", err)
+        );
+      }
+
+      upsertContact({
+        email,
+        source: "STAMPED signup",
+        interestSummary,
+      }).catch((err) => console.error("HubSpot sync failed:", err));
+    }
+
     return { status: "success" };
   } catch (err) {
     console.error("Dispatch signup insert failed:", err);
