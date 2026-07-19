@@ -3,6 +3,7 @@ import { EB_Garamond, Geist, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import DispatchPopup from "@/components/DispatchPopup";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,6 +49,7 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <DispatchPopup />
       </body>
     </html>
   );

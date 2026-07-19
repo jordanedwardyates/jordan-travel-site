@@ -101,11 +101,13 @@ export async function subscribeToDispatch(
     };
   }
 
+  const source = field(formData, "source") || "homepage";
+
   try {
     const supabase = createPublicClient();
     const { error } = await supabase
       .from("subscribers")
-      .insert({ email, source: "homepage" });
+      .insert({ email, source });
     // 23505 = unique violation: already subscribed. Treat as success so the
     // response never reveals whether an address is on the list.
     if (error && error.code !== "23505") throw error;
