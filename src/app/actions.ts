@@ -3,6 +3,13 @@
 import { createPublicClient } from "@/lib/supabase/public";
 import { notifyQuoteRequest } from "@/lib/email/quoteRequestEmails";
 import { notifyDispatchConfirmation } from "@/lib/email/dispatchEmails";
+import { upsertContact } from "@/lib/hubspot/client";
+import {
+  getVisitorInterest,
+  identifyVisitor,
+} from "@/lib/siteEvents";
+import { describeInterest } from "@/lib/taxonomy";
+import { readVisitorId } from "@/lib/visitor";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -82,13 +89,38 @@ export async function submitQuoteRequest(
     });
     if (error) throw error;
 
+    // Pull the visitor's normalized browsing interest (Mediterranean · Autumn
+    // · $5k–$10k), so both Jordan's notify email and the HubSpot record carry
+    // what they were actually looking at — not just what the form captured.
+    const visitorId = await readVisitorId();
+    const interestSummary = describeInterest(
+      await getVisitorInterest(visitorId)
+    );
+
+    if (visitorId) {
+      identifyVisitor(visitorId, email).catch((err) =>
+        console.error("Visitor identify failed:", err)
+      );
+    }
+
     notifyQuoteRequest({
       name,
       email,
       phone,
       journeyLabel,
       message,
+      interestSummary,
     }).catch((err) => console.error("Quote request email notify failed:", err));
+
+    // Ownership: get the contact into Jordan's HubSpot immediately.
+    upsertContact({
+      email,
+      name,
+      phone: phone || null,
+      source: "Website quote request",
+      interestSummary,
+      message,
+    }).catch((err) => console.error("HubSpot sync failed:", err));
 
     return { status: "success" };
   } catch (err) {
@@ -133,6 +165,25 @@ export async function subscribeToDispatch(
       notifyDispatchConfirmation({ email, confirmUrl }).catch((err) =>
         console.error("Dispatch confirmation email notify failed:", err)
       );
+
+      // Same ownership + interest capture as the quote form. Only on a fresh
+      // signup — the 23505 path deliberately falls through untouched.
+      const visitorId = await readVisitorId();
+      const interestSummary = describeInterest(
+        await getVisitorInterest(visitorId)
+      );
+
+      if (visitorId) {
+        identifyVisitor(visitorId, email).catch((err) =>
+          console.error("Visitor identify failed:", err)
+        );
+      }
+
+      upsertContact({
+        email,
+        source: "STAMPED signup",
+        interestSummary,
+      }).catch((err) => console.error("HubSpot sync failed:", err));
     }
 
     return { status: "success" };

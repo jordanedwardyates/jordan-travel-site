@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import Rule from "@/components/Rule";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
+import TrackView from "@/components/TrackView";
 import { getDestination, getDestinations } from "@/lib/destinations";
 import { getFieldNote } from "@/lib/fieldNotes";
 import { FIELD_NOTES_ENABLED } from "@/lib/flags";
@@ -46,6 +47,7 @@ export default async function DestinationPage({ params }: Props) {
 
   return (
     <article className="px-6 py-14 sm:py-20">
+      <TrackView entityType="destination" slug={dest.slug} />
       <div className="mx-auto max-w-[68ch]">
         <TextLink href="/destinations" className="text-sm">
           &larr; All destinations

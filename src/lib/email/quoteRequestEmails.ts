@@ -10,6 +10,8 @@ export type QuoteRequestEmailData = {
   phone: string;
   journeyLabel: string | null;
   message: string;
+  /** Normalized browsing interest, e.g. "Mediterranean · Autumn · $5k–$10k". */
+  interestSummary?: string | null;
 };
 
 function escapeHtml(value: string): string {
@@ -125,6 +127,16 @@ export function renderInternalNotify(data: QuoteRequestEmailData): {
     ? escapeHtml(data.journeyLabel)
     : "Not provided (general inquiry)";
   const message = escapeHtml(data.message).replace(/\n/g, "<br>");
+  const interest = data.interestSummary
+    ? escapeHtml(data.interestSummary)
+    : null;
+  const interestRow = interest
+    ? `
+              <tr>
+                <td style="padding:8px 0; border-top:1px solid #d8cdbb; color:#607d99;">Browsing</td>
+                <td style="padding:8px 0; border-top:1px solid #d8cdbb;">${interest}</td>
+              </tr>`
+    : "";
 
   const html = `<!doctype html>
 <html lang="en">
@@ -163,7 +175,7 @@ export function renderInternalNotify(data: QuoteRequestEmailData): {
               <tr>
                 <td style="padding:8px 0; border-top:1px solid #d8cdbb; color:#607d99;">Journey</td>
                 <td style="padding:8px 0; border-top:1px solid #d8cdbb;">${journey}</td>
-              </tr>
+              </tr>${interestRow}
             </table>
           </td>
         </tr>
