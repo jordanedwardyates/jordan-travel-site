@@ -8,6 +8,7 @@ import QuoteRequestForm from "@/components/QuoteRequestForm";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
 import TornEdge from "@/components/TornEdge";
+import VisitorTracker from "@/components/VisitorTracker";
 import WeatheredBackground from "@/components/WeatheredBackground";
 import { getPublishedJourneys } from "@/lib/journeys";
 
@@ -180,6 +181,9 @@ export default async function Home() {
           )}
         </div>
       </section>
+
+      {/* Charted for you — visitor-specific recommendations */}
+      <VisitorTracker />
 
       {/* Margin notes — the advisor's line and a client's, side by side */}
       <section className="weathered-linen px-6 py-14 sm:py-20">

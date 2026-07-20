@@ -76,7 +76,11 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
     theirs !== null && yours !== null && theirs > yours ? theirs - yours : null;
 
   return (
-    <article className="border border-salt-air bg-linen p-1">
+    <article
+      className="border border-salt-air bg-linen p-1"
+      data-journey-id={j.id}
+      data-region={j.region}
+    >
       <div className="grid border border-salt-air/60 sm:grid-cols-[220px_1fr]">
         {/*
           Defined image area. Until approved destination photography exists,
