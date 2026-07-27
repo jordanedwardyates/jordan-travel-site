@@ -9,6 +9,10 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
+    // Test files import source with an explicit `.ts` extension so Node's
+    // native type stripping can resolve them (`npm test`). Safe here because
+    // `noEmit` is on and Next compiles via SWC, not tsc.
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
