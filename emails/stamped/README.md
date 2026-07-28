@@ -27,7 +27,7 @@ and the required `{{unsubscribe_url}}` / `{{manage_url}}` / `{{confirm_url}}`.
 
 ## Before sending for real
 
-- Fill the footer `[Mailing address]` (CAN-SPAM requires a physical address).
+- Footer mailing address is filled in (CAN-SPAM requires a physical address) — done.
 - Wire `{{unsubscribe_url}}` to one-click unsubscribe + the `List-Unsubscribe`
   header.
 - Send from the dedicated subdomain with SPF/DKIM/DMARC configured.
