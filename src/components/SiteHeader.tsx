@@ -33,14 +33,14 @@ export default function SiteHeader() {
               <a
                 key={href}
                 href={href}
-                className="text-aegean-ink transition-colors hover:text-deep-harbor"
+                className="font-serif text-xs uppercase tracking-[0.15em] text-aegean-ink transition-colors hover:text-deep-harbor"
               >
                 {label}
               </a>
             ))}
             <a
               href="#request-a-quote"
-              className="text-xs uppercase tracking-[0.15em] text-deep-harbor underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold"
+              className="font-serif text-xs uppercase tracking-[0.15em] text-deep-harbor underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold"
             >
               Request a Quote
             </a>
