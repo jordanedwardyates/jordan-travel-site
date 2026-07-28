@@ -11,7 +11,7 @@ export type ArchivedEmail = {
   slug: string;
   file: string;
   title: string;
-  kind: "campaign" | "one-off-invitation" | "one-off-quote-options";
+  kind: "campaign" | "broadcast" | "one-off-invitation" | "one-off-quote-options";
   recipient: string | null;
   sentAt: string | null;
   trackedInDb: boolean;
@@ -32,11 +32,13 @@ export const ARCHIVED_EMAILS: ArchivedEmail[] = [
   {
     slug: "sonata-inaugural-invitation",
     file: "emails/sonata-inaugural-invitation.html",
-    title: "Robert Glass — Sonata inaugural invitation",
-    kind: "one-off-invitation",
-    recipient: "Robert Glass",
+    title: "Oceania Sonata — inaugural invitation",
+    kind: "broadcast",
+    recipient: "~500+ contacts",
     sentAt: "2026-07-27",
     trackedInDb: false,
+    notes:
+      "Sent via Gmail — opens/clicks not tracked. Success shows up as replies and quotes below.",
   },
   {
     slug: "eddy-february-options",

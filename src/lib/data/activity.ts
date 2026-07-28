@@ -22,9 +22,9 @@ export const ACTIVITY_LOG: ActivityEntry[] = [
   },
   {
     date: "2026-07-27",
-    title: "Sent the Sonata inaugural invitation",
+    title: "Sent the Oceania Sonata inaugural blast",
     detail:
-      "One-off personal invitation email to Robert Glass with a hosted signature asset.",
+      "Personalized invitation to 500+ contacts — a phone-call CTA for the 2027 inaugural, with three autumn 2026 options attached. Gmail send, so not click-tracked.",
     tag: "marketing",
   },
   {

@@ -56,6 +56,7 @@ const QUOTE_STATUS_STYLE: Record<string, string> = {
 
 const EMAIL_KIND_LABEL: Record<string, string> = {
   campaign: "Dispatch",
+  broadcast: "Broadcast",
   "one-off-invitation": "Invitation",
   "one-off-quote-options": "Quote options",
 };
