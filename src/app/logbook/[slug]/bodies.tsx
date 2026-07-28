@@ -35,6 +35,148 @@ function Lead({ children }: { children: ReactNode }) {
  * src/lib/logbook.ts; this holds only the prose.
  */
 export const LOGBOOK_BODIES: Record<string, ReactNode> = {
+  "river-vs-ocean-how-to-choose": (
+    <>
+      <Lead>
+        The word &ldquo;cruise&rdquo; covers two experiences that have almost
+        nothing in common except that both float. A 200-guest ship gliding down
+        the Danube and a 3,000-guest ship crossing the Aegean are not the same
+        trip at different sizes &mdash; they are different trips entirely, built
+        for different travellers with different ideas of a good week. Most people
+        who ask me &ldquo;which cruise should I take&rdquo; are really asking a
+        question they haven&rsquo;t quite named yet: river, or ocean?
+      </Lead>
+
+      <P>
+        I don&rsquo;t ask which you&rsquo;d prefer first. I ask what you actually
+        want the days to feel like &mdash; because the two formats answer to
+        completely different instincts.
+      </P>
+
+      <H>What a river cruise actually is</H>
+      <P>
+        A river ship carries somewhere between a hundred and two hundred guests,
+        which means it never stops feeling like a small, well-run hotel rather
+        than a resort. There is one dining room, one lounge, a sundeck, and a
+        crew who know your name by the second evening. The ship docks in the
+        centre of a city or town most mornings &mdash; not a port miles out, the
+        actual centre &mdash; and a great deal is simply included: a daily
+        excursion with a genuinely expert local guide, often the drinks, often
+        the Wi-Fi, often the transfers. You wake up in Vienna, you wake up in
+        Budapest, you wake up in a different country by lunch, and someone has
+        already planned how you&rsquo;ll see it well.
+      </P>
+      <P>
+        It rewards travellers who want the destination to be the whole point
+        &mdash; who would rather spend an afternoon in a Danube village than at a
+        pool, and who find a smaller, quieter ship a comfort rather than a
+        limitation. There is no rock wall, no water slide, no midnight buffet.
+        That absence is the feature, not the gap.
+      </P>
+
+      <H>What an ocean cruise actually is</H>
+      <P>
+        An ocean ship is built to be the destination as much as the itinerary.
+        Multiple restaurants, a real spa, entertainment built for an evening
+        rather than an hour, and days at sea that are meant to be enjoyed rather
+        than endured. The ports are further apart and the days ashore are
+        optional in a way a river sailing&rsquo;s aren&rsquo;t &mdash; you can
+        stay aboard, and the ship keeps working. On the luxury lines especially,
+        the ship itself &mdash; the food, the service, the quiet &mdash; is
+        often the better half of the memory, with the ports as a very good
+        supporting cast.
+      </P>
+      <P>
+        It rewards travellers who want range within a single week &mdash; a
+        different mood each night, company for the ones travelling with them who
+        may want a very different day than they do, and a ship worth simply being
+        on. A quiet couple, a big family, a milestone celebration &mdash; ocean
+        ships flex to fit more kinds of traveller within one sailing than a
+        river ship can.
+      </P>
+
+      <H>The honest tell</H>
+      <P>
+        If you find yourself picturing mornings in small towns, one table for
+        dinner, and a itinerary someone has thought through for you &mdash;
+        that&rsquo;s a river cruise, whether or not you&rsquo;ve used the word
+        yet. If you&rsquo;re picturing a ship you don&rsquo;t want to leave, a
+        week with real range in it, and ports as the bonus rather than the
+        assignment &mdash; that&rsquo;s ocean. Neither is the more sophisticated
+        choice. They are simply different answers to &ldquo;what makes a week
+        away feel worth it,&rdquo; and the right one depends entirely on you.
+      </P>
+
+      <P>
+        Tell me what the week is for &mdash; the destination, or the ship
+        &mdash; and I&rsquo;ll point you at the format, then the line, then the
+        actual sailing.{" "}
+        <TextLink href="/journeys">See what I have quoted in both</TextLink>{" "}
+        right now.
+      </P>
+    </>
+  ),
+  "what-negotiated-fare-really-means": (
+    <>
+      <Lead>
+        I use the phrase often enough that I owe it a real explanation:
+        &ldquo;negotiated fare.&rdquo; It sounds like something that happens in a
+        back room, and in a sense it does &mdash; but the mechanics are simple,
+        legitimate, and worth understanding, because knowing how it works is
+        exactly why it costs you nothing to ask for it.
+      </Lead>
+
+      <H>The published fare is a starting point, not the price</H>
+      <P>
+        Every sailing has a public price &mdash; the number on the cruise
+        line&rsquo;s own website. What that number doesn&rsquo;t show is the
+        layer underneath it: block space that advisors hold at a negotiated
+        rate, amenity points earned on volume that convert into onboard credit
+        or perks, and promotions the line releases to trade partners before
+        they&rsquo;re ever made public. A &ldquo;negotiated fare&rdquo; is simply
+        what you get when someone applies that layer to your booking instead of
+        letting you pay the number at the top of the page.
+      </P>
+
+      <H>Where the room to negotiate comes from</H>
+      <P>
+        Cruise lines want their ships full, and they would rather fill a cabin
+        at a slightly better rate through a trusted advisor than let it sail
+        empty. So they set aside inventory &mdash; group space &mdash; and price
+        it to move through the trade. The advisor&rsquo;s job is knowing which
+        block exists, which rep to call, and when a line is hungry enough for
+        bookings that the amenity points on offer are worth more than usual.
+        None of that is visible from the consumer-facing site. It only exists on
+        the other side of a phone call.
+      </P>
+      <P>
+        This is also why the fare on the exact same cabin can differ from one
+        advisor to another. It isn&rsquo;t a trick &mdash; it reflects which
+        group space an advisor has access to, how much volume they do with a
+        given line, and how current their relationship with that line&rsquo;s
+        sales desk actually is.
+      </P>
+
+      <H>What it turns into for you</H>
+      <P>
+        In practice, a negotiated fare rarely shows up as a lower sticker price
+        &mdash; the lines are protective of the number they publish everywhere.
+        It shows up instead as onboard credit, prepaid gratuities, a beverage or
+        Wi-Fi package, or a cabin upgrade at no extra cost. Same fare on paper,
+        materially more in your pocket by the time you board. And because the
+        cruise line pays the advisor&rsquo;s commission rather than you, none of
+        this costs you anything to receive.
+      </P>
+
+      <P>
+        So the question worth asking &mdash; on every cabin, every sailing, before
+        every deposit &mdash; isn&rsquo;t whether a negotiated fare exists. It&rsquo;s
+        who is currently holding the best one.{" "}
+        <TextLink href="/journeys">Send me the sailing you&rsquo;re considering</TextLink>{" "}
+        and I&rsquo;ll tell you.
+      </P>
+    </>
+  ),
   "never-pay-retail": (
     <>
       <Lead>

@@ -24,6 +24,38 @@ export type LogbookEntry = {
 
 export const LOGBOOK_ENTRIES: LogbookEntry[] = [
   {
+    slug: "river-vs-ocean-how-to-choose",
+    title: "River vs. Ocean: How to Choose",
+    dek: "Two entirely different kinds of trip share the word “cruise.” Here's how to tell which one you actually want — before you book the wrong one.",
+    date: "July 2026",
+    datePublished: "2026-07-27",
+    region: "How to Choose",
+    readingMinutes: 6,
+    keywords: [
+      "river cruise vs ocean cruise",
+      "difference between river and ocean cruise",
+      "which cruise is right for me",
+      "European river cruise or ocean cruise",
+      "small ship vs big ship cruise",
+    ],
+  },
+  {
+    slug: "what-negotiated-fare-really-means",
+    title: "What “Negotiated Fare” Really Means",
+    dek: "It's a phrase advisors use often and explain rarely. Here's exactly where the savings come from, and why it costs you nothing to ask.",
+    date: "July 2026",
+    datePublished: "2026-07-27",
+    region: "What I Do",
+    readingMinutes: 5,
+    keywords: [
+      "what is a negotiated cruise fare",
+      "how do travel agents negotiate cruise prices",
+      "cruise group rate explained",
+      "travel agent cruise savings",
+      "negotiated fare meaning",
+    ],
+  },
+  {
     slug: "never-pay-retail",
     title: "Never Pay Retail",
     dek: "A cruise fare is not a fixed price on a shelf. Here's why booking direct costs you the same or more — and how the right advisor gets you the better deal at no cost to you.",
