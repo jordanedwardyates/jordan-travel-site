@@ -28,7 +28,7 @@ collapse that into three macro buckets:
 
 `summarizeInterest()` frequency-ranks a visitor's views into one profile, so
 three Adriatic views and one fjord view read as Mediterranean-leaning.
-Unit-tested (25 assertions) — this is the piece that must be right.
+Unit-tested (29 assertions, `npm test`) — this is the piece that must be right.
 
 ## The event log — `supabase/migrations/0003_site_events.sql`
 
@@ -53,20 +53,41 @@ quote form / STAMPED signup (server action)
    ├─ identifyVisitor(visitorId, email)  → stitch anon history to email
    ├─ getVisitorInterest(visitorId)      → "Mediterranean · Autumn · $5k–$10k"
    ├─ notify email (adds a "Browsing" row for Jordan)
-   └─ upsertContact() ──► HubSpot: contact (idempotent, keyed on email)
-                                    + Note (source, interest, message)
+   └─ upsertContact() ──► HubSpot: contact, keyed on email
+                                    (message field carries source + interest)
 ```
 
 ## Configuration
 
-Both external hops are **inert until configured**, same pattern as Resend:
+Both external hops are **inert until configured**, same pattern as Resend.
 
-- `HUBSPOT_PRIVATE_APP_TOKEN` — Settings → Integrations → Private Apps →
-  create, scope `crm.objects.contacts` read+write. Until set, `upsertContact`
-  logs a warning and no-ops.
-- `site_events` needs migration `0003` applied and `SUPABASE_SERVICE_ROLE_KEY`
-  present (already used elsewhere). Until then, tracking fails soft — pages
-  never break.
+### HubSpot — no admin rights required
+
+`upsertContact()` auto-selects its transport, in this order:
+
+1. **Forms Submissions API** (`HUBSPOT_PORTAL_ID` + `HUBSPOT_FORM_GUID`) — no
+   token, no auth header, works on any ordinary HubSpot seat. This is the
+   path for a portal owned/administered by someone else (e.g. a host
+   agency), where Super Admin to create a Private App isn't available.
+   Get both IDs from a form's embed code: Marketing → Forms → create a form
+   with email / first name / last name / phone / message → Share → Embed
+   code. (If Forms isn't in your left nav at all, your seat likely doesn't
+   have Marketing tool access — ask whoever administers the portal to
+   create the form for you, or to grant that access.)
+2. **CRM v3 Private App token** (`HUBSPOT_PRIVATE_APP_TOKEN`) — used only if
+   the two vars above aren't set. Requires Super Admin to create
+   (Settings → Integrations → Private Apps), scope
+   `crm.objects.contacts` read+write. Upgrade path if that access is ever
+   granted; not required today.
+
+If neither is configured, `upsertContact` logs a warning and no-ops — pages
+never break.
+
+### Supabase
+
+`site_events` needs migration `0003` applied and `SUPABASE_SERVICE_ROLE_KEY`
+present (already used elsewhere). Until then, tracking fails soft — pages
+never break.
 
 ## Privacy posture
 
@@ -80,6 +101,8 @@ Both external hops are **inert until configured**, same pattern as Resend:
 
 - A dashboard view over `visitor_interest` (the rollup view exists; no UI).
 - De-anonymizing return visits across devices (only same-browser stitching).
-- HubSpot custom properties — interest currently rides in a Note so nothing
-  needs configuring in the portal first; promoting it to a real property is a
-  later refinement.
+- HubSpot custom properties — interest currently rides in the built-in
+  `message` field so nothing needs configuring in the portal first (and the
+  Forms API path can't write custom properties anyway); promoting it to a
+  real property is a later refinement, available once the Private App
+  upgrade path is in use.
