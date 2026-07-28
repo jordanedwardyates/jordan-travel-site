@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   description:
     "Exceptional voyages on the world's finest cruise lines — expertly chosen, personally negotiated by Jordan Yates. Never pay retail.",
   alternates: { canonical: "/" },
+  verification: {
+    google: "zoqB_9bIEmBqRtL6JRzXZ0VIW6DQr4p6QgJHakZDuUQ",
+  },
 };
 
 // Organization + founder identity for rich results. Uses the public brand
