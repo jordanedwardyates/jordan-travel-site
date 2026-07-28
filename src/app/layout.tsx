@@ -25,9 +25,32 @@ const mrsSaintDelafield = Mrs_Saint_Delafield({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bonvtravelcompany.com"),
-  title: "BON V: A Travel Company — A more thoughtful way to travel",
+  title: {
+    default: "BON V: A Travel Company — A more thoughtful way to travel",
+    template: "%s — BON V: A Travel Company",
+  },
   description:
     "Exceptional voyages on the world's finest cruise lines — expertly chosen, personally negotiated by Jordan Yates. Never pay retail.",
+  alternates: { canonical: "/" },
+};
+
+// Organization + founder identity for rich results. Uses the public brand
+// name only — the Brand Bible's internal working name must never appear here.
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  name: "BON V: A Travel Company",
+  url: "https://www.bonvtravelcompany.com",
+  description:
+    "A boutique advisory for exceptional voyages on the world's finest cruise lines — expertly chosen and personally negotiated.",
+  telephone: "+1-904-614-1219",
+  priceRange: "$$$$",
+  founder: {
+    "@type": "Person",
+    name: "Jordan Yates",
+    jobTitle: "Luxury Voyage Advisor",
+  },
+  areaServed: "Worldwide",
 };
 
 export default function RootLayout({
@@ -40,6 +63,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${ebGaramond.variable} ${mrsSaintDelafield.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-vintage-passport focus:px-4 focus:py-2"

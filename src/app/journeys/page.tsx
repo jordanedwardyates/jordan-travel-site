@@ -8,9 +8,10 @@ import { getPublishedJourneys } from "@/lib/journeys";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Journeys — BON V: A Travel Company",
+  title: "Journeys",
   description:
     "Every sailing currently quoted — dates, negotiated fares, and Jordan's honest read on each.",
+  alternates: { canonical: "/journeys" },
 };
 
 export default async function JourneysPage() {

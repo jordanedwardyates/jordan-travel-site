@@ -5,6 +5,7 @@ import Rule from "./Rule";
 const NAV_LINKS = [
   { href: "#about", label: "About Jordan" },
   { href: "/journeys", label: "Journeys" },
+  { href: "/logbook", label: "The Logbook" },
 ];
 
 /** Masthead — publication nameplate with a double rule beneath. */

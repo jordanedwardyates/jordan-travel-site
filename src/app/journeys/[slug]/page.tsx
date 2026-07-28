@@ -23,8 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const journey = await getJourneyBySlug(slug);
   if (!journey) return { title: "Journey not found" };
   return {
-    title: `${journey.routeTitle} — BON V: A Travel Company`,
+    title: journey.routeTitle,
     description: `${journey.voyageTitle} · ${journey.ship}, ${journey.cruiseLine} · ${journey.nights} nights · ${journey.dates}. ${journey.jordansTake}`,
+    alternates: { canonical: `/journeys/${slug}` },
   };
 }
 
@@ -33,8 +34,40 @@ export default async function JourneyPage({ params }: Props) {
   const journey = await getJourneyBySlug(slug);
   if (!journey) notFound();
 
+  const journeyJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: journey.routeTitle,
+    description: journey.voyageTitle,
+    url: `https://www.bonvtravelcompany.com/journeys/${slug}`,
+    touristType: "Luxury cruise travellers",
+    itinerary: {
+      "@type": "ItemList",
+      numberOfItems: journey.portCount,
+    },
+    provider: {
+      "@type": "TravelAgency",
+      name: "BON V: A Travel Company",
+      url: "https://www.bonvtravelcompany.com",
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: String(journey.yourPrice).replace(/[^0-9.]/g, ""),
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "TravelAgency",
+        name: "BON V: A Travel Company",
+      },
+    },
+  };
+
   return (
     <section className="px-6 py-14 sm:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(journeyJsonLd) }}
+      />
       <div className="mx-auto max-w-4xl">
         <TextLink href="/journeys" className="text-sm">
           &larr; All journeys
