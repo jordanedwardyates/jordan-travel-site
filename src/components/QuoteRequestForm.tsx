@@ -33,13 +33,22 @@ export default function QuoteRequestForm({
     submitQuoteRequest,
     INITIAL
   );
-  // Read ?journey=<id> after hydration rather than via useSearchParams —
-  // this keeps the form in the static HTML for no-JS visitors.
+  // Read ?journey=<id> (and ?utm_campaign=/?utm_content= if the visitor
+  // arrived from a Dispatch link) after hydration rather than via
+  // useSearchParams — this keeps the form in the static HTML for no-JS
+  // visitors, and it's the same tag pair the Dispatch webhook already
+  // reads off clicked links, so a submitted quote can be traced back to
+  // the letter that drove it.
   const [journeyValue, setJourneyValue] = useState("");
+  const [utmCampaign, setUtmCampaign] = useState("");
+  const [utmContent, setUtmContent] = useState("");
   useEffect(() => {
-    const id = new URLSearchParams(window.location.search).get("journey");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("journey");
     const match = journeys.find((j) => j.id === id);
     if (match) setJourneyValue(`${match.id}|${match.label}`);
+    setUtmCampaign(params.get("utm_campaign") ?? "");
+    setUtmContent(params.get("utm_content") ?? "");
   }, [journeys]);
   const errors = state.fieldErrors ?? {};
 
@@ -78,6 +87,12 @@ export default function QuoteRequestForm({
           autoComplete="off"
         />
       </div>
+
+      {/* Dispatch attribution — silent unless the visitor arrived via a
+          tagged link, in which case these carry the campaign/voyage
+          through to the insert. */}
+      <input type="hidden" name="utmCampaign" value={utmCampaign} />
+      <input type="hidden" name="utmContent" value={utmContent} />
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>

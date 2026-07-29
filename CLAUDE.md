@@ -36,10 +36,57 @@ influencer aesthetics.
 ## Stack
 
 - Next.js 15 (App Router, `src/` dir), TypeScript, Tailwind CSS v4, npm
-- Supabase: clients in `src/lib/supabase/` (`client.ts` browser,
-  `server.ts` RSC/actions). Env vars in `.env.local`
-  (see `.env.local.example`).
-- Deploys to Vercel.
+- Supabase: four clients in `src/lib/supabase/` — pick deliberately:
+  - `public.ts` — anon, cookie-free. **The only client for public reads.**
+    RLS is what makes a read safe; this client is subject to it.
+  - `admin.ts` — service role, **bypasses RLS**. Internal desks + server-side
+    lookups only. Never import into a Client Component or a public read path.
+  - `client.ts` (browser) / `server.ts` (RSC/actions) — cookie-based, legacy.
+  - Env vars in `.env.local` (see `.env.local.example`).
+- Deploys to Vercel (production = `main`; pushing `main` deploys).
+
+## Quote capture → curate → publish
+
+The core model, and the thing to keep straight: **capture every quote, publish
+only a chosen few, curate by hand.** Nothing a client is quoted appears on the
+public site until Jordan explicitly approves and features it.
+
+**Data model** (live Supabase; `supabase/schema.sql` mirrors it — keep it in
+sync when you change the DB). A quote decomposes into normalized rows:
+`voyages` → `accommodations` → `price_offers` (the fares), grouped by
+`quote_packages`/`quote_items`. `homepage_features` is the front-page selection.
+
+**Three publish gates, each enforced by an RLS policy** (so the gate is the
+database, not the UI — the anon client physically cannot read past them):
+1. `voyages.website_status = 'approved'` — sailing allowed on the site at all
+   (plus `source_status = 'trusted'`).
+2. `price_offers.website_approved = true` — this specific fare is safe to show.
+3. `homepage_features.active = true` — currently on the front page
+   (auto-expires via `hard_expires_at`; `review_on` drives the reminder).
+
+**Where it lives:**
+- `src/lib/data/curation.ts` — the whole layer. `listCuratedVoyages()` (admin,
+  internal) sees everything; `getFeaturedJourneys()` (anon, via the
+  `website_featured_voyages` view) is the public read. `blockersFor()` is the
+  single source of truth for "why can't this be featured yet."
+- `/internal/quotes` (`src/app/internal/quotes/`) — the curation desk Jordan
+  uses. Server actions in its `actions.ts` **re-check the token** (`?key=`), since
+  a server action is a public endpoint the page's own gate doesn't cover.
+- `src/app/page.tsx` — homepage renders curated features first, then falls back
+  to legacy `journeys` so the section never runs dry.
+- `/api/cron/curation-review` (weekly, `vercel.json`) — emails Jordan when a
+  feature is due for review, expiring, or when nothing is featured.
+
+**Attribution:** the quote form (`src/app/actions.ts` + `QuoteRequestForm.tsx`)
+captures `utm_campaign`/`utm_content` off the landing URL and resolves them to
+`source_campaign_id`/`voyage_id`, closing the email→click→quote loop the
+Dispatch webhook (`/api/webhooks/resend`) starts.
+
+**Internal pages** (`/internal/*`) are token-gated (`?key=<INTERNAL_PREVIEW_TOKEN>`)
+and noindexed; the gate is bypassed in development.
+
+**When curating against live data, remember it IS live** — approving/featuring
+writes to production. Revert test writes, or leave real selections to Jordan.
 
 ## Commands
 

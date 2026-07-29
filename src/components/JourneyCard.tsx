@@ -15,7 +15,8 @@ export type Journey = {
   nights: number;
   embark: string;
   disembark: string;
-  portCount: number;
+  /** Omitted when the itinerary isn't known well enough to count stops. */
+  portCount?: number;
   stateroom: string;
   roomSize?: string;
   theirPrice: string;
@@ -87,13 +88,22 @@ export default function JourneyCard({ journey }: { journey: Journey }) {
           <p className="text-[0.6rem] uppercase tracking-[0.2em] text-deep-harbor">
             {j.embark}
           </p>
-          <RouteStrip portCount={j.portCount} />
+          {j.portCount ? (
+            <RouteStrip portCount={j.portCount} />
+          ) : (
+            <span
+              aria-hidden="true"
+              className="my-1 block border-t border-dashed border-sun-faded"
+            />
+          )}
           <p className="text-right text-[0.6rem] uppercase tracking-[0.2em] text-deep-harbor">
             {j.disembark}
           </p>
-          <p className="mt-3 text-center text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink oldstyle-nums">
-            {j.portCount} ports of call
-          </p>
+          {j.portCount ? (
+            <p className="mt-3 text-center text-[0.6rem] uppercase tracking-[0.2em] text-aegean-ink oldstyle-nums">
+              {j.portCount} ports of call
+            </p>
+          ) : null}
         </div>
 
         <div className="px-6 py-5 sm:px-7">

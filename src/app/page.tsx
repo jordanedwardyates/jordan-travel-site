@@ -9,12 +9,25 @@ import QuoteRequestForm from "@/components/QuoteRequestForm";
 import SectionHeading from "@/components/SectionHeading";
 import TextLink from "@/components/TextLink";
 import { getPublishedJourneys } from "@/lib/journeys";
+import { getFeaturedJourneys } from "@/lib/data/curation";
 
 // Re-render at most every 5 minutes so published journeys stay fresh.
 export const revalidate = 300;
 
 export default async function Home() {
-  const journeys = await getPublishedJourneys(6);
+  // Curated sailings (approved from /internal/quotes) lead; the legacy
+  // hand-written journeys fill in behind them so the section never runs
+  // dry while curation is still new. Once enough sailings are featured,
+  // the legacy fallback naturally stops contributing anything.
+  const [featured, legacy] = await Promise.all([
+    getFeaturedJourneys(6),
+    getPublishedJourneys(6),
+  ]);
+  const seen = new Set(featured.map((j) => j.id));
+  const journeys = [...featured, ...legacy.filter((j) => !seen.has(j.id))].slice(
+    0,
+    6
+  );
   const journeyOptions = journeys.map((j) => ({
     id: j.id,
     label: `${j.routeTitle} — ${j.dates}`,

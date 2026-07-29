@@ -1,6 +1,7 @@
 "use server";
 
 import { createPublicClient } from "@/lib/supabase/public";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -34,6 +35,12 @@ export async function submitQuoteRequest(
   const phone = field(formData, "phone");
   const journey = field(formData, "journey");
   const message = field(formData, "message");
+  // Carried from the landing URL's ?utm_campaign=<slug>&utm_content=<voyage
+  // code> — the same tags the Dispatch webhook already parses off clicked
+  // links (see api/webhooks/resend). Capturing them here is what lets a
+  // quote get attributed back to the letter that drove it.
+  const utmCampaign = field(formData, "utmCampaign").slice(0, 100);
+  const utmContent = field(formData, "utmContent").slice(0, 100);
 
   const fieldErrors: Record<string, string> = {};
   if (!name) fieldErrors.name = "Please tell me your name.";
@@ -66,6 +73,35 @@ export async function submitQuoteRequest(
     }
   }
 
+  // Resolve the utm tags to real rows before the insert. This needs the
+  // admin client: a Dispatch sailing is often quoted and sent before it's
+  // approved for public display, so the anon-facing RLS policies (which
+  // require website_status = 'approved') would hide it here even though
+  // attribution should still work. The insert itself stays on the public
+  // client below — this is a read-only lookup, not a privilege change to
+  // who can write a quote_requests row.
+  let sourceCampaignId: string | null = null;
+  let voyageId: string | null = null;
+  if (utmCampaign || utmContent) {
+    try {
+      const admin = createAdminClient();
+      const [campaignRes, voyageRes] = await Promise.all([
+        utmCampaign
+          ? admin.from("campaigns").select("id").eq("slug", utmCampaign).maybeSingle()
+          : Promise.resolve({ data: null, error: null }),
+        utmContent
+          ? admin.from("voyages").select("id").eq("voyage_code", utmContent).maybeSingle()
+          : Promise.resolve({ data: null, error: null }),
+      ]);
+      sourceCampaignId = campaignRes.data?.id ?? null;
+      voyageId = voyageRes.data?.id ?? null;
+    } catch (err) {
+      // Attribution is a bonus, not a blocker — a lookup failure should
+      // never stop the inquiry itself from reaching Jordan.
+      console.error("Quote request attribution lookup failed:", err);
+    }
+  }
+
   try {
     const supabase = createPublicClient();
     const { error } = await supabase.from("quote_requests").insert({
@@ -75,6 +111,8 @@ export async function submitQuoteRequest(
       journey_id: journeyId,
       journey_label: journeyLabel,
       message,
+      source_campaign_id: sourceCampaignId,
+      voyage_id: voyageId,
     });
     if (error) throw error;
     return { status: "success" };
