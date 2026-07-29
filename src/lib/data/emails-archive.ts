@@ -50,4 +50,15 @@ export const ARCHIVED_EMAILS: ArchivedEmail[] = [
     trackedInDb: false,
     notes: "Send date unconfirmed",
   },
+  {
+    slug: "liebig-panama-marina-options",
+    file: "emails/liebig-panama-marina-options.html",
+    title: "Nancy Liebig — Marina, Panama Canal options",
+    kind: "one-off-quote-options",
+    recipient: "Nancy Liebig",
+    sentAt: null,
+    trackedInDb: false,
+    notes:
+      "Oceania Marina MNA270305 (Miami→Panama, Mar 5 2027) + optional return MNA270315 (Panama→Miami, Mar 15 2027). Confirms the Oct 2026 OceaniaNEXT refit she asked about. Draft — not yet sent.",
+  },
 ];
