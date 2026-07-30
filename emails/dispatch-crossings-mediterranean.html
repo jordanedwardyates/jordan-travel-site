@@ -14,10 +14,12 @@
   a { color:inherit; }
   img { filter:none !important; -webkit-filter:none !important; }
   /* Gmail runs its own dark-mode color inversion and ignores the
-     color-scheme meta tags above. These rules re-assert the paper palette
-     for clients that DO read prefers-color-scheme (Gmail iOS/Android app),
-     and [data-ogsc]/[data-ogsb] are Gmail's own hooks for overriding colors
-     it has already auto-inverted. Paper doesn't invert. */
+     color-scheme meta tags above; it offers no override hook, so the
+     bgcolor attributes on the tables below are what actually defend the
+     paper palette there. The media query catches clients that DO read
+     prefers-color-scheme (Gmail iOS/Android app, Apple Mail), and
+     [data-ogsc] is Outlook.com's hook for colors it has already
+     inverted. Paper doesn't invert. */
   @media (prefers-color-scheme: dark) {
     body, .paper { background-color:#f1ebdf !important; }
     .weathered { background-color:#f6f1e8 !important; }

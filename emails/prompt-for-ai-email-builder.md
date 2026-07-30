@@ -61,50 +61,8 @@ self-contained HTML file (all CSS inline in a `<style>` block, email-safe tables
 ### Signature block asset (use as-is, don't recreate/recolor/crop)
 `https://images.squarespace-cdn.com/content/v1/5cfd848d3b35680001da3f7d/9c23922a-987b-4532-830c-6e5415363a97/Background+removed+Signature_Block_Photo_July_13_with_LCC_website-removebg.png?format=2500w`
 
-Its background is transparent — always place it inside a wrapper with an
-explicit `bgcolor="#f6f1e8"` (see Gmail section below). Never leave it sitting
-directly on a CSS-only background with no `bgcolor`.
-
----
-
-## Gmail dark-mode safety (required — do not skip)
-
-Gmail runs its own heuristic color-inversion pass and does **not** honor
-`<meta name="color-scheme">` / `supported-color-schemes` the way Apple Mail and
-Outlook do. Left undefended, this exact cream/ink "paper" palette gets flipped
-into a muddy dark-olive inversion, and the transparent signature PNG gets
-inverted into a washed-out negative image. This has actually happened in a
-sent email — treat every rule below as required, not optional polish.
-
-Every email you generate must include **all** of the following:
-
-1. **Both meta tags** in `<head>`:
-   ```html
-   <meta name="color-scheme" content="light">
-   <meta name="supported-color-schemes" content="light">
-   ```
-2. **`bgcolor` HTML attributes** on every outer paper/card table and `<td>`,
-   matching the inline `background-color` exactly (e.g. `bgcolor="#f1ebdf"`
-   alongside `style="background-color:#f1ebdf;"`). Gmail's inversion is less
-   likely to flip a background where the legacy attribute and the CSS agree.
-3. **A dark-mode override block** in `<style>`, plus Gmail's own `[data-ogsc]`
-   hook (the attribute Gmail stamps on elements after it inverts them):
-   ```css
-   img { filter:none !important; -webkit-filter:none !important; }
-   @media (prefers-color-scheme: dark) {
-     body, .paper { background-color:#f1ebdf !important; }
-     .weathered { background-color:#f6f1e8 !important; }
-   }
-   [data-ogsc] .paper, [data-ogsc][class="paper"] { background-color:#f1ebdf !important; }
-   [data-ogsc] .weathered, [data-ogsc][class="weathered"] { background-color:#f6f1e8 !important; }
-   ```
-4. **Opaque backing behind the signature image** — the `<td>` and wrapping
-   `<div>` around it must carry `bgcolor="#f6f1e8"` and
-   `background-color:#f6f1e8` inline, so the transparent PNG never floats
-   directly on an inverted background.
-
-The goal is defeating Gmail's inversion entirely, not designing a dark
-variant — same "paper doesn't invert" principle as the site itself.
+Its background is transparent, so the `<td>` and `<div>` around it must carry
+`bgcolor="#f6f1e8"` and `background-color:#f6f1e8`.
 
 ---
 
@@ -131,16 +89,20 @@ variant — same "paper doesn't invert" principle as the site itself.
     body, .paper { background-color:#f1ebdf !important; }
     .weathered { background-color:#f6f1e8 !important; }
   }
-  [data-ogsc] .paper, [data-ogsc][class="paper"] { background-color:#f1ebdf !important; }
-  [data-ogsc] .weathered, [data-ogsc][class="weathered"] { background-color:#f6f1e8 !important; }
 </style>
 </head>
 ```
 - Outer layout: a full-width `.paper` table, centered, holding one **640px** `.weathered`
-  card with `border:1px solid #d9cdb8`. Section padding ~`52px` left/right.
-- Put `bgcolor="#f1ebdf"` on the outer `.paper` table and its `<td>`, and
-  `bgcolor="#f6f1e8"` on the inner `.weathered` table — every time, not just
-  once at the top.
+  card with `border:1px solid #d9cdb8`. Section padding ~`52px` left/right. Every
+  paper/card table and `<td>` carries a `bgcolor` attribute matching its
+  `background-color` — `bgcolor="#f1ebdf"` on the outer table and its `<td>`,
+  `bgcolor="#f6f1e8"` on the inner card:
+
+```html
+<table role="presentation" width="100%" class="paper" bgcolor="#f1ebdf" style="background-color:#f1ebdf;">
+<tr><td align="center" bgcolor="#f1ebdf" style="padding:36px 16px; background-color:#f1ebdf;">
+<table role="presentation" width="640" class="weathered" bgcolor="#f6f1e8" style="max-width:640px; width:100%; border:1px solid #d9cdb8; background-color:#f6f1e8;">
+```
 
 ### Fare-card pattern (repeat per sailing)
 - Wrapper: `<table>` with `border:1px solid #1b3154; background:rgba(255,255,255,0.35);`
@@ -195,3 +157,22 @@ of the cruise line's own offer.**
 Ask me who the email is for and what sailings to include, then produce the finished
 HTML email following everything above. If I just want edits to the Eddy email, use the
 data above. Keep it warm and unhurried — a letter from a trusted advisor, not a flyer.
+
+---
+
+## Before you output — render check
+
+Gmail auto-inverts light backgrounds in dark mode and ignores the `color-scheme`
+meta tag, which turns this cream/ink palette into a muddy mess. Four things
+survive it — confirm all four are in your HTML:
+
+1. Both `color-scheme` and `supported-color-schemes` meta tags, set to `light`.
+2. A `bgcolor` attribute on every paper/card table and `<td>`, matching its
+   inline `background-color`.
+3. The `img { filter:none !important; }` reset and the
+   `@media (prefers-color-scheme: dark)` block that re-asserts the light palette.
+4. `bgcolor="#f6f1e8"` on the cell and div wrapping the signature PNG — it's
+   transparent and will invert without opaque backing.
+
+Apply these to any element you add that isn't in the recipe above. Paper doesn't
+invert.

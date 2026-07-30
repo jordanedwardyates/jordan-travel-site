@@ -7,11 +7,36 @@ exact HTML that went out, a rendered preview, and its results.
 1. Link to the official cruise-line voyage page.
 2. Always show the savings — struck retail + dollars saved, beside that room's
    price. If retail is missing, get it before sending.
-3. Defend against Gmail's dark-mode color inversion — see the "Emails"
-   section in `CLAUDE.md`/`AGENTS.md` for the required `bgcolor` attributes,
-   `@media (prefers-color-scheme: dark)` block, and image-filter reset.
-   Without these, the cream paper background and signature stamp invert into
-   a muddy, washed-out mess in Gmail.
+3. Defend against Gmail's dark-mode inversion — see the checklist below.
+
+## Gmail dark-mode safety (required on every template)
+
+Gmail runs its own heuristic color-inversion pass, does **not** honor
+`<meta name="color-scheme">` the way Apple Mail and Outlook do, and offers no
+override hook of its own. Left undefended, the cream/ink paper palette flips
+into a muddy dark inversion and the transparent-background signature PNG
+becomes a washed negative image — this shipped once already. Every template
+must:
+
+1. Carry `bgcolor` HTML attributes on the outer `.paper`/`.weathered` tables
+   and cells matching their inline `background-color`. **This is the
+   load-bearing defense in Gmail** — it's less likely to flip a background
+   where the legacy attribute and the CSS agree.
+2. Include a `@media (prefers-color-scheme: dark)` block re-asserting the
+   same light palette with `!important` — catches Gmail's iOS/Android apps
+   and Apple Mail, which do read the media query even though Gmail webmail
+   doesn't.
+3. Neutralize image filtering: `img { filter:none !important;
+   -webkit-filter:none !important; }`.
+4. Back the signature/stamp image with an explicit opaque
+   `bgcolor="#f6f1e8"` + `background-color:#f6f1e8` on its wrapping cell and
+   div — don't rely on the PNG's own transparency.
+
+`[data-ogsc]` selectors in the templates are **Outlook.com's** hook, not
+Gmail's; they're kept because they help there, but they do nothing for Gmail.
+
+The goal is defeating the inversion, not designing a dark variant — same
+"paper doesn't invert" principle as the site.
 
 ## Where to read the results
 
