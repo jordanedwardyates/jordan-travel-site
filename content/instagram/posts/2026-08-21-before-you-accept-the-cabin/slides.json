@@ -4,7 +4,10 @@
     "kicker": "Cabin truths",
     "title": "Five questions, asked before the deposit clears.",
     "subtitle": "After that the good cabins are gone and you are negotiating from the back of the queue.",
-    "stamp": { "top": "Advisor's Note", "bottom": "No. 08" }
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 08"
+    }
   },
   {
     "template": "statement",
@@ -17,36 +20,81 @@
     "kicker": "Ask these, in this order",
     "title": "Five questions",
     "items": [
-      { "head": "What is directly above and below?", "body": "Pool deck, galley, lounge, crew stair. Any of the four is a reason to move one deck." },
-      { "head": "Does it have a connecting door?", "body": "You inherit whoever is behind it. On the plan it is a small mark that is easy to miss." },
-      { "head": "Is the view qualified in any way?", "body": "Obstructed, partially obstructed, or overhung. All three are disclosed, in one quiet word." },
-      { "head": "How far along the hull is it?", "body": "Forward for the drama, midship for the sleep. Aft if the water on that route is kind." },
-      { "head": "Is it an accessible cabin?", "body": "Wider doors, a roll-in bathroom, and often a better position. Do not book one you don't need." }
+      {
+        "head": "What is directly above and below?",
+        "body": "Pool deck, galley, lounge, crew stair. Any of the four is a reason to move one deck."
+      },
+      {
+        "head": "Does it have a connecting door?",
+        "body": "You inherit whoever is behind it. On the plan it is a small mark that is easy to miss."
+      },
+      {
+        "head": "Is the view qualified in any way?",
+        "body": "Obstructed, partially obstructed, or overhung. All three are disclosed, in one quiet word."
+      },
+      {
+        "head": "How far along the hull is it?",
+        "body": "Forward for the drama, midship for the sleep. Aft if the water on that route is kind."
+      },
+      {
+        "head": "Is it an accessible cabin?",
+        "body": "Wider doors, a roll-in bathroom, and often a better position. Do not book one you don't need."
+      }
     ]
   },
   {
     "template": "compare",
     "kicker": "The accessible-cabin point",
     "title": "Held for a reason",
-    "left": { "label": "If you need it", "items": ["Ask on the first call", "Confirm turning space", "Confirm the bathroom type", "Check the route to the lift", "Get it in writing"] },
-    "right": { "label": "If you don't", "items": ["Leave it on the plan", "Someone else cannot flex", "Lines may reassign you", "The saving is nil", "It is simply bad manners"] }
+    "left": {
+      "label": "If you need it",
+      "items": [
+        "Ask on the first call",
+        "Confirm turning space",
+        "Confirm the bathroom type",
+        "Check the route to the lift",
+        "Get it in writing"
+      ]
+    },
+    "right": {
+      "label": "If you don't",
+      "items": [
+        "Leave it on the plan",
+        "Someone else cannot flex",
+        "Lines may reassign you",
+        "The saving is nil",
+        "It is simply bad manners"
+      ]
+    }
   },
   {
     "template": "plot",
     "kicker": "Timing, plainly",
     "title": "When position disappears",
     "points": [
-      { "label": "Twelve months out", "value": "The plan is open. Every quiet cabin and every good aft terrace is available." },
-      { "label": "Six months out", "value": "Midship goes first, then the accessible cabins, then the aft corners." },
-      { "label": "Inside ninety days", "value": "What remains is the guarantee pool, and the guarantee pool is what nobody chose." },
-      { "label": "Final fortnight", "value": "Fares may fall. Position will not come back. That is the whole trade." }
+      {
+        "label": "Twelve months out",
+        "value": "The plan is open. Every quiet cabin and every good aft terrace is available."
+      },
+      {
+        "label": "Six months out",
+        "value": "Midship goes first, then the accessible cabins, then the aft corners."
+      },
+      {
+        "label": "Inside ninety days",
+        "value": "What remains is the guarantee pool, and the guarantee pool is what nobody chose."
+      },
+      {
+        "label": "Final fortnight",
+        "value": "Fares may fall. Position will not come back. That is the whole trade."
+      }
     ]
   },
   {
     "template": "statement",
     "kicker": "The payoff",
     "text": "Book the ship early for the cabin, not for the fare.",
-    "sub": "Fares can be watched and repriced downwards after you book — I do it routinely. A cabin position cannot be recovered once the plan has filled. Secure the position; chase the price afterwards."
+    "sub": "A fare can be watched and repriced after you book — I do it routinely. A cabin position cannot be recovered once the deck plan has filled. Take the position; chase the price after."
   },
   {
     "template": "cta",

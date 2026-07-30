@@ -1,0 +1,539 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1350px; }
+  body {
+    background-color:#f6f1e8;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
+    color:#1b3154;
+    font-family:'Bitstream Charter', 'Charter', Georgia, 'Liberation Serif', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage {
+    position:relative; width:1080px; height:1350px; overflow:hidden;
+    padding:96px 96px 96px 96px;
+    display:flex; flex-direction:column;
+  }
+  /* foxing + sun-bleached corners, straight from globals.css .weathered */
+  .stage::before {
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 0% 0%, rgba(183,139,66,0.06), transparent 70%),
+      radial-gradient(ellipse 50% 45% at 100% 10%, rgba(96,125,153,0.05), transparent 70%),
+      radial-gradient(ellipse 55% 40% at 90% 100%, rgba(183,139,66,0.04), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  }
+  .chart { position:absolute; inset:0; opacity:0.05; z-index:0; }
+  /* Lift in-flow content above the ::before foxing layer. The exclusions
+     matter: a bare ".stage > *" outranks ".chart"/".stamp" (same specificity,
+     declared later), which would drop both back into normal flow — the chart
+     as a full-height flex item shoving every layout down the page, and the
+     stamp as a block landing on top of the footer. */
+  .stage > *:not(.chart):not(.stamp) { position:relative; z-index:1; }
+
+  .kicker {
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.25em;
+    text-transform:uppercase; color:#b78b42; font-weight:600;
+  }
+  .rule { width:78px; height:2px; background:#b78b42; opacity:0.55; }
+  .rule-wide { width:100%; height:1px; background:#607d99; opacity:0.3; }
+
+  h1 { font-size:104px; line-height:1.04; letter-spacing:-0.015em; font-weight:400; }
+  h2 { font-size:76px; line-height:1.1; letter-spacing:-0.01em; font-weight:400; }
+  .lede { font-size:40px; line-height:1.42; color:#223e67; }
+  .body { font-size:34px; line-height:1.5; color:#223e67; }
+  .muted { color:#607d99; }
+  em { font-style:italic; }
+  strong { font-weight:600; color:#1b3154; }
+
+  .spacer { flex:1; }
+  .foot {
+    display:flex; align-items:baseline; justify-content:space-between;
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:21px; letter-spacing:0.18em;
+    text-transform:uppercase; color:#607d99;
+  }
+  .index { font-variant-numeric:tabular-nums; }
+
+  /* Passport stamp — rotated double rule, gold at 75%/45% like PassportStamp.tsx.
+     Sits top-right: bottom-right collided with the subtitle and the footer. */
+  .stamp {
+    position:absolute; right:96px; top:96px;
+    transform:rotate(-5deg); border:3px solid rgba(183,139,66,0.75); padding:7px; z-index:1;
+  }
+  .stamp-in { border:1.5px solid rgba(183,139,66,0.45); padding:14px 20px; text-align:center; }
+  .stamp-a { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:17px; letter-spacing:0.3em; text-transform:uppercase; color:#b78b42; white-space:nowrap; }
+  .stamp-b { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.2em; text-transform:uppercase; color:#a97f39; white-space:nowrap; margin-top:3px; }
+  
+</style></head><body><div class="stage"><svg class="chart" width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg"><line x1="-240" y1="0" x2="570" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-240" y1="1350" x2="570" y2="0" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="0" x2="690" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="1350" x2="690" y2="0" stroke="#607d99" stroke-width="1"/><line x1="0" y1="0" x2="810" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="0" y1="1350" x2="810" y2="0" stroke="#607d99" stroke-width="1"/><line x1="120" y1="0" x2="930" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="120" y1="1350" x2="930" y2="0" stroke="#607d99" stroke-width="1"/><line x1="240" y1="0" x2="1050" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="240" y1="1350" x2="1050" y2="0" stroke="#607d99" stroke-width="1"/><line x1="360" y1="0" x2="1170" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="360" y1="1350" x2="1170" y2="0" stroke="#607d99" stroke-width="1"/><line x1="480" y1="0" x2="1290" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="480" y1="1350" x2="1290" y2="0" stroke="#607d99" stroke-width="1"/><line x1="600" y1="0" x2="1410" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="600" y1="1350" x2="1410" y2="0" stroke="#607d99" stroke-width="1"/><line x1="720" y1="0" x2="1530" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="720" y1="1350" x2="1530" y2="0" stroke="#607d99" stroke-width="1"/><line x1="840" y1="0" x2="1650" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="840" y1="1350" x2="1650" y2="0" stroke="#607d99" stroke-width="1"/><line x1="960" y1="0" x2="1770" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="960" y1="1350" x2="1770" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="0" x2="1890" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="1350" x2="1890" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="0" x2="2010" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="1350" x2="2010" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="0" x2="2130" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="1350" x2="2130" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="0" x2="2250" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="1350" x2="2250" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="0" x2="2370" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="1350" x2="2370" y2="0" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="194.4" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="324" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="453.59999999999997" fill="none" stroke="#607d99" stroke-width="1"/></svg>
+      <div class="kicker">Mistakes to avoid</div>
+      <div class="rule" style="margin:28px 0 44px"></div>
+      <h1>The queue you’re standing in is usually self-made.</h1>
+      <p class="lede" style="margin-top:40px;max-width:88%">Arrival windows exist. Ignoring yours builds the line — and fills the confiscation bin.</p>
+      <div class="spacer"></div>
+      <div class="stamp"><div class="stamp-in"><div class="stamp-a">Errors of Judgement</div><div class="stamp-b">No. 05</div></div></div>
+      <div class="foot"><span>BON V · A Travel Company</span><span class="index">1 / 7</span></div></div></body></html>
+<hr>
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1350px; }
+  body {
+    background-color:#f6f1e8;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
+    color:#1b3154;
+    font-family:'Bitstream Charter', 'Charter', Georgia, 'Liberation Serif', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage {
+    position:relative; width:1080px; height:1350px; overflow:hidden;
+    padding:96px 96px 96px 96px;
+    display:flex; flex-direction:column;
+  }
+  /* foxing + sun-bleached corners, straight from globals.css .weathered */
+  .stage::before {
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 0% 0%, rgba(183,139,66,0.06), transparent 70%),
+      radial-gradient(ellipse 50% 45% at 100% 10%, rgba(96,125,153,0.05), transparent 70%),
+      radial-gradient(ellipse 55% 40% at 90% 100%, rgba(183,139,66,0.04), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  }
+  .chart { position:absolute; inset:0; opacity:0.05; z-index:0; }
+  /* Lift in-flow content above the ::before foxing layer. The exclusions
+     matter: a bare ".stage > *" outranks ".chart"/".stamp" (same specificity,
+     declared later), which would drop both back into normal flow — the chart
+     as a full-height flex item shoving every layout down the page, and the
+     stamp as a block landing on top of the footer. */
+  .stage > *:not(.chart):not(.stamp) { position:relative; z-index:1; }
+
+  .kicker {
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.25em;
+    text-transform:uppercase; color:#b78b42; font-weight:600;
+  }
+  .rule { width:78px; height:2px; background:#b78b42; opacity:0.55; }
+  .rule-wide { width:100%; height:1px; background:#607d99; opacity:0.3; }
+
+  h1 { font-size:104px; line-height:1.04; letter-spacing:-0.015em; font-weight:400; }
+  h2 { font-size:76px; line-height:1.1; letter-spacing:-0.01em; font-weight:400; }
+  .lede { font-size:40px; line-height:1.42; color:#223e67; }
+  .body { font-size:34px; line-height:1.5; color:#223e67; }
+  .muted { color:#607d99; }
+  em { font-style:italic; }
+  strong { font-weight:600; color:#1b3154; }
+
+  .spacer { flex:1; }
+  .foot {
+    display:flex; align-items:baseline; justify-content:space-between;
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:21px; letter-spacing:0.18em;
+    text-transform:uppercase; color:#607d99;
+  }
+  .index { font-variant-numeric:tabular-nums; }
+
+  /* Passport stamp — rotated double rule, gold at 75%/45% like PassportStamp.tsx.
+     Sits top-right: bottom-right collided with the subtitle and the footer. */
+  .stamp {
+    position:absolute; right:96px; top:96px;
+    transform:rotate(-5deg); border:3px solid rgba(183,139,66,0.75); padding:7px; z-index:1;
+  }
+  .stamp-in { border:1.5px solid rgba(183,139,66,0.45); padding:14px 20px; text-align:center; }
+  .stamp-a { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:17px; letter-spacing:0.3em; text-transform:uppercase; color:#b78b42; white-space:nowrap; }
+  .stamp-b { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.2em; text-transform:uppercase; color:#a97f39; white-space:nowrap; margin-top:3px; }
+  
+</style></head><body><div class="stage"><svg class="chart" width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg"><line x1="-240" y1="0" x2="570" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-240" y1="1350" x2="570" y2="0" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="0" x2="690" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="1350" x2="690" y2="0" stroke="#607d99" stroke-width="1"/><line x1="0" y1="0" x2="810" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="0" y1="1350" x2="810" y2="0" stroke="#607d99" stroke-width="1"/><line x1="120" y1="0" x2="930" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="120" y1="1350" x2="930" y2="0" stroke="#607d99" stroke-width="1"/><line x1="240" y1="0" x2="1050" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="240" y1="1350" x2="1050" y2="0" stroke="#607d99" stroke-width="1"/><line x1="360" y1="0" x2="1170" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="360" y1="1350" x2="1170" y2="0" stroke="#607d99" stroke-width="1"/><line x1="480" y1="0" x2="1290" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="480" y1="1350" x2="1290" y2="0" stroke="#607d99" stroke-width="1"/><line x1="600" y1="0" x2="1410" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="600" y1="1350" x2="1410" y2="0" stroke="#607d99" stroke-width="1"/><line x1="720" y1="0" x2="1530" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="720" y1="1350" x2="1530" y2="0" stroke="#607d99" stroke-width="1"/><line x1="840" y1="0" x2="1650" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="840" y1="1350" x2="1650" y2="0" stroke="#607d99" stroke-width="1"/><line x1="960" y1="0" x2="1770" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="960" y1="1350" x2="1770" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="0" x2="1890" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="1350" x2="1890" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="0" x2="2010" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="1350" x2="2010" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="0" x2="2130" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="1350" x2="2130" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="0" x2="2250" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="1350" x2="2250" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="0" x2="2370" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="1350" x2="2370" y2="0" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="194.4" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="324" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="453.59999999999997" fill="none" stroke="#607d99" stroke-width="1"/></svg>
+      <div class="kicker">Screening</div>
+      <div class="spacer"></div>
+      <h2>Power strips, irons and travel kettles are commonly confiscated.</h2>
+      <p class="body muted" style="margin-top:36px;max-width:86%">Prohibited-item lists vary by line and by ship. Surge-protected strips and anything with a heating element are the usual seizures — read your own line’s list before packing.</p>
+      <div class="spacer"></div>
+      <div class="foot"><span>BON V · A Travel Company</span><span class="index">2 / 7</span></div></div></body></html>
+<hr>
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1350px; }
+  body {
+    background-color:#f6f1e8;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
+    color:#1b3154;
+    font-family:'Bitstream Charter', 'Charter', Georgia, 'Liberation Serif', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage {
+    position:relative; width:1080px; height:1350px; overflow:hidden;
+    padding:96px 96px 96px 96px;
+    display:flex; flex-direction:column;
+  }
+  /* foxing + sun-bleached corners, straight from globals.css .weathered */
+  .stage::before {
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 0% 0%, rgba(183,139,66,0.06), transparent 70%),
+      radial-gradient(ellipse 50% 45% at 100% 10%, rgba(96,125,153,0.05), transparent 70%),
+      radial-gradient(ellipse 55% 40% at 90% 100%, rgba(183,139,66,0.04), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  }
+  .chart { position:absolute; inset:0; opacity:0.05; z-index:0; }
+  /* Lift in-flow content above the ::before foxing layer. The exclusions
+     matter: a bare ".stage > *" outranks ".chart"/".stamp" (same specificity,
+     declared later), which would drop both back into normal flow — the chart
+     as a full-height flex item shoving every layout down the page, and the
+     stamp as a block landing on top of the footer. */
+  .stage > *:not(.chart):not(.stamp) { position:relative; z-index:1; }
+
+  .kicker {
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.25em;
+    text-transform:uppercase; color:#b78b42; font-weight:600;
+  }
+  .rule { width:78px; height:2px; background:#b78b42; opacity:0.55; }
+  .rule-wide { width:100%; height:1px; background:#607d99; opacity:0.3; }
+
+  h1 { font-size:104px; line-height:1.04; letter-spacing:-0.015em; font-weight:400; }
+  h2 { font-size:76px; line-height:1.1; letter-spacing:-0.01em; font-weight:400; }
+  .lede { font-size:40px; line-height:1.42; color:#223e67; }
+  .body { font-size:34px; line-height:1.5; color:#223e67; }
+  .muted { color:#607d99; }
+  em { font-style:italic; }
+  strong { font-weight:600; color:#1b3154; }
+
+  .spacer { flex:1; }
+  .foot {
+    display:flex; align-items:baseline; justify-content:space-between;
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:21px; letter-spacing:0.18em;
+    text-transform:uppercase; color:#607d99;
+  }
+  .index { font-variant-numeric:tabular-nums; }
+
+  /* Passport stamp — rotated double rule, gold at 75%/45% like PassportStamp.tsx.
+     Sits top-right: bottom-right collided with the subtitle and the footer. */
+  .stamp {
+    position:absolute; right:96px; top:96px;
+    transform:rotate(-5deg); border:3px solid rgba(183,139,66,0.75); padding:7px; z-index:1;
+  }
+  .stamp-in { border:1.5px solid rgba(183,139,66,0.45); padding:14px 20px; text-align:center; }
+  .stamp-a { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:17px; letter-spacing:0.3em; text-transform:uppercase; color:#b78b42; white-space:nowrap; }
+  .stamp-b { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.2em; text-transform:uppercase; color:#a97f39; white-space:nowrap; margin-top:3px; }
+  
+      .item { display:flex; gap:30px; margin-bottom:46px; }
+      .num { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:23px; letter-spacing:0.14em; color:#b78b42;
+             padding-top:12px; min-width:52px; font-variant-numeric:tabular-nums; }
+      .head { font-size:46px; line-height:1.24; }
+      .sub { font-size:31px; line-height:1.45; color:#607d99; margin-top:10px; }
+</style></head><body><div class="stage"><svg class="chart" width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg"><line x1="-240" y1="0" x2="570" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-240" y1="1350" x2="570" y2="0" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="0" x2="690" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="1350" x2="690" y2="0" stroke="#607d99" stroke-width="1"/><line x1="0" y1="0" x2="810" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="0" y1="1350" x2="810" y2="0" stroke="#607d99" stroke-width="1"/><line x1="120" y1="0" x2="930" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="120" y1="1350" x2="930" y2="0" stroke="#607d99" stroke-width="1"/><line x1="240" y1="0" x2="1050" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="240" y1="1350" x2="1050" y2="0" stroke="#607d99" stroke-width="1"/><line x1="360" y1="0" x2="1170" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="360" y1="1350" x2="1170" y2="0" stroke="#607d99" stroke-width="1"/><line x1="480" y1="0" x2="1290" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="480" y1="1350" x2="1290" y2="0" stroke="#607d99" stroke-width="1"/><line x1="600" y1="0" x2="1410" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="600" y1="1350" x2="1410" y2="0" stroke="#607d99" stroke-width="1"/><line x1="720" y1="0" x2="1530" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="720" y1="1350" x2="1530" y2="0" stroke="#607d99" stroke-width="1"/><line x1="840" y1="0" x2="1650" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="840" y1="1350" x2="1650" y2="0" stroke="#607d99" stroke-width="1"/><line x1="960" y1="0" x2="1770" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="960" y1="1350" x2="1770" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="0" x2="1890" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="1350" x2="1890" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="0" x2="2010" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="1350" x2="2010" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="0" x2="2130" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="1350" x2="2130" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="0" x2="2250" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="1350" x2="2250" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="0" x2="2370" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="1350" x2="2370" y2="0" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="194.4" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="324" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="453.59999999999997" fill="none" stroke="#607d99" stroke-width="1"/></svg>
+      <div class="kicker">Self-inflicted delays</div>
+      <h2 style="font-size:60px;margin-top:24px">Four things that slow embarkation</h2>
+      <div class="rule" style="margin:36px 0 52px"></div>
+      <div>
+        <div class="item">
+            <div class="num">01</div>
+            <div><div class="head">Arriving before your window</div><div class="sub">The terminal fills with people whose time has not come yet, and everybody waits longer for it.</div></div>
+          </div><div class="item">
+            <div class="num">02</div>
+            <div><div class="head">Items that must be searched</div><div class="sub">A power strip in a carry-on means your bag is opened and gone through by hand.</div></div>
+          </div><div class="item">
+            <div class="num">03</div>
+            <div><div class="head">Documents in the hold bag</div><div class="sub">The one case you cannot reach is the one the desk asks you to open.</div></div>
+          </div><div class="item">
+            <div class="num">04</div>
+            <div><div class="head">Boarding at the popular hour</div><div class="sub">The middle of the window is the crowd. The edges of it are quiet.</div></div>
+          </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="foot"><span>BON V · A Travel Company</span><span class="index">3 / 7</span></div></div></body></html>
+<hr>
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1350px; }
+  body {
+    background-color:#f6f1e8;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
+    color:#1b3154;
+    font-family:'Bitstream Charter', 'Charter', Georgia, 'Liberation Serif', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage {
+    position:relative; width:1080px; height:1350px; overflow:hidden;
+    padding:96px 96px 96px 96px;
+    display:flex; flex-direction:column;
+  }
+  /* foxing + sun-bleached corners, straight from globals.css .weathered */
+  .stage::before {
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 0% 0%, rgba(183,139,66,0.06), transparent 70%),
+      radial-gradient(ellipse 50% 45% at 100% 10%, rgba(96,125,153,0.05), transparent 70%),
+      radial-gradient(ellipse 55% 40% at 90% 100%, rgba(183,139,66,0.04), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  }
+  .chart { position:absolute; inset:0; opacity:0.05; z-index:0; }
+  /* Lift in-flow content above the ::before foxing layer. The exclusions
+     matter: a bare ".stage > *" outranks ".chart"/".stamp" (same specificity,
+     declared later), which would drop both back into normal flow — the chart
+     as a full-height flex item shoving every layout down the page, and the
+     stamp as a block landing on top of the footer. */
+  .stage > *:not(.chart):not(.stamp) { position:relative; z-index:1; }
+
+  .kicker {
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.25em;
+    text-transform:uppercase; color:#b78b42; font-weight:600;
+  }
+  .rule { width:78px; height:2px; background:#b78b42; opacity:0.55; }
+  .rule-wide { width:100%; height:1px; background:#607d99; opacity:0.3; }
+
+  h1 { font-size:104px; line-height:1.04; letter-spacing:-0.015em; font-weight:400; }
+  h2 { font-size:76px; line-height:1.1; letter-spacing:-0.01em; font-weight:400; }
+  .lede { font-size:40px; line-height:1.42; color:#223e67; }
+  .body { font-size:34px; line-height:1.5; color:#223e67; }
+  .muted { color:#607d99; }
+  em { font-style:italic; }
+  strong { font-weight:600; color:#1b3154; }
+
+  .spacer { flex:1; }
+  .foot {
+    display:flex; align-items:baseline; justify-content:space-between;
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:21px; letter-spacing:0.18em;
+    text-transform:uppercase; color:#607d99;
+  }
+  .index { font-variant-numeric:tabular-nums; }
+
+  /* Passport stamp — rotated double rule, gold at 75%/45% like PassportStamp.tsx.
+     Sits top-right: bottom-right collided with the subtitle and the footer. */
+  .stamp {
+    position:absolute; right:96px; top:96px;
+    transform:rotate(-5deg); border:3px solid rgba(183,139,66,0.75); padding:7px; z-index:1;
+  }
+  .stamp-in { border:1.5px solid rgba(183,139,66,0.45); padding:14px 20px; text-align:center; }
+  .stamp-a { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:17px; letter-spacing:0.3em; text-transform:uppercase; color:#b78b42; white-space:nowrap; }
+  .stamp-b { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.2em; text-transform:uppercase; color:#a97f39; white-space:nowrap; margin-top:3px; }
+  
+      .row { display:flex; align-items:baseline; gap:28px; padding:26px 0; border-bottom:1px solid rgba(96,125,153,0.22); }
+      .row:last-child { border-bottom:none; }
+      .coord { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:22px; letter-spacing:0.16em; text-transform:uppercase;
+               color:#b78b42; min-width:210px; }
+      .val { font-size:34px; line-height:1.34; }
+</style></head><body><div class="stage"><svg class="chart" width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg"><line x1="-240" y1="0" x2="570" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-240" y1="1350" x2="570" y2="0" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="0" x2="690" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="1350" x2="690" y2="0" stroke="#607d99" stroke-width="1"/><line x1="0" y1="0" x2="810" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="0" y1="1350" x2="810" y2="0" stroke="#607d99" stroke-width="1"/><line x1="120" y1="0" x2="930" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="120" y1="1350" x2="930" y2="0" stroke="#607d99" stroke-width="1"/><line x1="240" y1="0" x2="1050" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="240" y1="1350" x2="1050" y2="0" stroke="#607d99" stroke-width="1"/><line x1="360" y1="0" x2="1170" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="360" y1="1350" x2="1170" y2="0" stroke="#607d99" stroke-width="1"/><line x1="480" y1="0" x2="1290" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="480" y1="1350" x2="1290" y2="0" stroke="#607d99" stroke-width="1"/><line x1="600" y1="0" x2="1410" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="600" y1="1350" x2="1410" y2="0" stroke="#607d99" stroke-width="1"/><line x1="720" y1="0" x2="1530" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="720" y1="1350" x2="1530" y2="0" stroke="#607d99" stroke-width="1"/><line x1="840" y1="0" x2="1650" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="840" y1="1350" x2="1650" y2="0" stroke="#607d99" stroke-width="1"/><line x1="960" y1="0" x2="1770" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="960" y1="1350" x2="1770" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="0" x2="1890" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="1350" x2="1890" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="0" x2="2010" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="1350" x2="2010" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="0" x2="2130" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="1350" x2="2130" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="0" x2="2250" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="1350" x2="2250" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="0" x2="2370" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="1350" x2="2370" y2="0" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="194.4" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="324" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="453.59999999999997" fill="none" stroke="#607d99" stroke-width="1"/></svg>
+      <div class="kicker">Not malice, arithmetic</div>
+      <h2 style="font-size:58px;margin-top:24px">What the terminal is actually doing</h2>
+      <div class="rule" style="margin:34px 0 40px"></div>
+      <div><div class="row"><div class="coord">Arrival windows</div><div class="val">Staggering guests is the only throughput mechanism a terminal really has.</div></div><div class="row"><div class="coord">Security screening</div><div class="val">Every flagged bag becomes a hand search, and hand searches are slow.</div></div><div class="row"><div class="coord">Terminal capacity</div><div class="val">Some ports are handling two or three ships across the same morning.</div></div><div class="row"><div class="coord">Manifest checks</div><div class="val">Names, documents and forms are reconciled one guest at a time.</div></div></div>
+      <div class="spacer"></div>
+      <div class="foot"><span>BON V · A Travel Company</span><span class="index">4 / 7</span></div></div></body></html>
+<hr>
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1350px; }
+  body {
+    background-color:#f6f1e8;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
+    color:#1b3154;
+    font-family:'Bitstream Charter', 'Charter', Georgia, 'Liberation Serif', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage {
+    position:relative; width:1080px; height:1350px; overflow:hidden;
+    padding:96px 96px 96px 96px;
+    display:flex; flex-direction:column;
+  }
+  /* foxing + sun-bleached corners, straight from globals.css .weathered */
+  .stage::before {
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 0% 0%, rgba(183,139,66,0.06), transparent 70%),
+      radial-gradient(ellipse 50% 45% at 100% 10%, rgba(96,125,153,0.05), transparent 70%),
+      radial-gradient(ellipse 55% 40% at 90% 100%, rgba(183,139,66,0.04), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  }
+  .chart { position:absolute; inset:0; opacity:0.05; z-index:0; }
+  /* Lift in-flow content above the ::before foxing layer. The exclusions
+     matter: a bare ".stage > *" outranks ".chart"/".stamp" (same specificity,
+     declared later), which would drop both back into normal flow — the chart
+     as a full-height flex item shoving every layout down the page, and the
+     stamp as a block landing on top of the footer. */
+  .stage > *:not(.chart):not(.stamp) { position:relative; z-index:1; }
+
+  .kicker {
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.25em;
+    text-transform:uppercase; color:#b78b42; font-weight:600;
+  }
+  .rule { width:78px; height:2px; background:#b78b42; opacity:0.55; }
+  .rule-wide { width:100%; height:1px; background:#607d99; opacity:0.3; }
+
+  h1 { font-size:104px; line-height:1.04; letter-spacing:-0.015em; font-weight:400; }
+  h2 { font-size:76px; line-height:1.1; letter-spacing:-0.01em; font-weight:400; }
+  .lede { font-size:40px; line-height:1.42; color:#223e67; }
+  .body { font-size:34px; line-height:1.5; color:#223e67; }
+  .muted { color:#607d99; }
+  em { font-style:italic; }
+  strong { font-weight:600; color:#1b3154; }
+
+  .spacer { flex:1; }
+  .foot {
+    display:flex; align-items:baseline; justify-content:space-between;
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:21px; letter-spacing:0.18em;
+    text-transform:uppercase; color:#607d99;
+  }
+  .index { font-variant-numeric:tabular-nums; }
+
+  /* Passport stamp — rotated double rule, gold at 75%/45% like PassportStamp.tsx.
+     Sits top-right: bottom-right collided with the subtitle and the footer. */
+  .stamp {
+    position:absolute; right:96px; top:96px;
+    transform:rotate(-5deg); border:3px solid rgba(183,139,66,0.75); padding:7px; z-index:1;
+  }
+  .stamp-in { border:1.5px solid rgba(183,139,66,0.45); padding:14px 20px; text-align:center; }
+  .stamp-a { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:17px; letter-spacing:0.3em; text-transform:uppercase; color:#b78b42; white-space:nowrap; }
+  .stamp-b { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.2em; text-transform:uppercase; color:#a97f39; white-space:nowrap; margin-top:3px; }
+  
+</style></head><body><div class="stage"><svg class="chart" width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg"><line x1="-240" y1="0" x2="570" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-240" y1="1350" x2="570" y2="0" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="0" x2="690" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="1350" x2="690" y2="0" stroke="#607d99" stroke-width="1"/><line x1="0" y1="0" x2="810" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="0" y1="1350" x2="810" y2="0" stroke="#607d99" stroke-width="1"/><line x1="120" y1="0" x2="930" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="120" y1="1350" x2="930" y2="0" stroke="#607d99" stroke-width="1"/><line x1="240" y1="0" x2="1050" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="240" y1="1350" x2="1050" y2="0" stroke="#607d99" stroke-width="1"/><line x1="360" y1="0" x2="1170" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="360" y1="1350" x2="1170" y2="0" stroke="#607d99" stroke-width="1"/><line x1="480" y1="0" x2="1290" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="480" y1="1350" x2="1290" y2="0" stroke="#607d99" stroke-width="1"/><line x1="600" y1="0" x2="1410" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="600" y1="1350" x2="1410" y2="0" stroke="#607d99" stroke-width="1"/><line x1="720" y1="0" x2="1530" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="720" y1="1350" x2="1530" y2="0" stroke="#607d99" stroke-width="1"/><line x1="840" y1="0" x2="1650" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="840" y1="1350" x2="1650" y2="0" stroke="#607d99" stroke-width="1"/><line x1="960" y1="0" x2="1770" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="960" y1="1350" x2="1770" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="0" x2="1890" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="1350" x2="1890" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="0" x2="2010" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="1350" x2="2010" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="0" x2="2130" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="1350" x2="2130" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="0" x2="2250" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="1350" x2="2250" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="0" x2="2370" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="1350" x2="2370" y2="0" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="194.4" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="324" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="453.59999999999997" fill="none" stroke="#607d99" stroke-width="1"/></svg>
+      <div class="kicker">Stricter than a port day</div>
+      <div class="spacer"></div>
+      <h2>Embarkation has a harder deadline than any port call.</h2>
+      <p class="body muted" style="margin-top:36px;max-width:86%">Royal Caribbean, for instance, asks guests to be onboard no less than one hour before scheduled departure. Confirm the rule your own line applies.</p>
+      <div class="spacer"></div>
+      <div class="foot"><span>BON V · A Travel Company</span><span class="index">5 / 7</span></div></div></body></html>
+<hr>
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1350px; }
+  body {
+    background-color:#f6f1e8;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
+    color:#1b3154;
+    font-family:'Bitstream Charter', 'Charter', Georgia, 'Liberation Serif', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage {
+    position:relative; width:1080px; height:1350px; overflow:hidden;
+    padding:96px 96px 96px 96px;
+    display:flex; flex-direction:column;
+  }
+  /* foxing + sun-bleached corners, straight from globals.css .weathered */
+  .stage::before {
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 0% 0%, rgba(183,139,66,0.06), transparent 70%),
+      radial-gradient(ellipse 50% 45% at 100% 10%, rgba(96,125,153,0.05), transparent 70%),
+      radial-gradient(ellipse 55% 40% at 90% 100%, rgba(183,139,66,0.04), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  }
+  .chart { position:absolute; inset:0; opacity:0.05; z-index:0; }
+  /* Lift in-flow content above the ::before foxing layer. The exclusions
+     matter: a bare ".stage > *" outranks ".chart"/".stamp" (same specificity,
+     declared later), which would drop both back into normal flow — the chart
+     as a full-height flex item shoving every layout down the page, and the
+     stamp as a block landing on top of the footer. */
+  .stage > *:not(.chart):not(.stamp) { position:relative; z-index:1; }
+
+  .kicker {
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.25em;
+    text-transform:uppercase; color:#b78b42; font-weight:600;
+  }
+  .rule { width:78px; height:2px; background:#b78b42; opacity:0.55; }
+  .rule-wide { width:100%; height:1px; background:#607d99; opacity:0.3; }
+
+  h1 { font-size:104px; line-height:1.04; letter-spacing:-0.015em; font-weight:400; }
+  h2 { font-size:76px; line-height:1.1; letter-spacing:-0.01em; font-weight:400; }
+  .lede { font-size:40px; line-height:1.42; color:#223e67; }
+  .body { font-size:34px; line-height:1.5; color:#223e67; }
+  .muted { color:#607d99; }
+  em { font-style:italic; }
+  strong { font-weight:600; color:#1b3154; }
+
+  .spacer { flex:1; }
+  .foot {
+    display:flex; align-items:baseline; justify-content:space-between;
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:21px; letter-spacing:0.18em;
+    text-transform:uppercase; color:#607d99;
+  }
+  .index { font-variant-numeric:tabular-nums; }
+
+  /* Passport stamp — rotated double rule, gold at 75%/45% like PassportStamp.tsx.
+     Sits top-right: bottom-right collided with the subtitle and the footer. */
+  .stamp {
+    position:absolute; right:96px; top:96px;
+    transform:rotate(-5deg); border:3px solid rgba(183,139,66,0.75); padding:7px; z-index:1;
+  }
+  .stamp-in { border:1.5px solid rgba(183,139,66,0.45); padding:14px 20px; text-align:center; }
+  .stamp-a { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:17px; letter-spacing:0.3em; text-transform:uppercase; color:#b78b42; white-space:nowrap; }
+  .stamp-b { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.2em; text-transform:uppercase; color:#a97f39; white-space:nowrap; margin-top:3px; }
+  
+</style></head><body><div class="stage"><svg class="chart" width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg"><line x1="-240" y1="0" x2="570" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-240" y1="1350" x2="570" y2="0" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="0" x2="690" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="1350" x2="690" y2="0" stroke="#607d99" stroke-width="1"/><line x1="0" y1="0" x2="810" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="0" y1="1350" x2="810" y2="0" stroke="#607d99" stroke-width="1"/><line x1="120" y1="0" x2="930" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="120" y1="1350" x2="930" y2="0" stroke="#607d99" stroke-width="1"/><line x1="240" y1="0" x2="1050" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="240" y1="1350" x2="1050" y2="0" stroke="#607d99" stroke-width="1"/><line x1="360" y1="0" x2="1170" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="360" y1="1350" x2="1170" y2="0" stroke="#607d99" stroke-width="1"/><line x1="480" y1="0" x2="1290" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="480" y1="1350" x2="1290" y2="0" stroke="#607d99" stroke-width="1"/><line x1="600" y1="0" x2="1410" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="600" y1="1350" x2="1410" y2="0" stroke="#607d99" stroke-width="1"/><line x1="720" y1="0" x2="1530" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="720" y1="1350" x2="1530" y2="0" stroke="#607d99" stroke-width="1"/><line x1="840" y1="0" x2="1650" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="840" y1="1350" x2="1650" y2="0" stroke="#607d99" stroke-width="1"/><line x1="960" y1="0" x2="1770" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="960" y1="1350" x2="1770" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="0" x2="1890" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="1350" x2="1890" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="0" x2="2010" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="1350" x2="2010" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="0" x2="2130" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="1350" x2="2130" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="0" x2="2250" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="1350" x2="2250" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="0" x2="2370" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="1350" x2="2370" y2="0" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="194.4" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="324" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="453.59999999999997" fill="none" stroke="#607d99" stroke-width="1"/></svg>
+      <div class="kicker">The payoff</div>
+      <div class="spacer"></div>
+      <h2>Take your window, carry your documents, leave the power strip at home.</h2>
+      <p class="body muted" style="margin-top:36px;max-width:86%">That is most of it. The rest is arriving in the quieter half of your window and going straight up to lunch.</p>
+      <div class="spacer"></div>
+      <div class="foot"><span>BON V · A Travel Company</span><span class="index">6 / 7</span></div></div></body></html>
+<hr>
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1350px; }
+  body {
+    background-color:#e6ddd0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.04'/%3E%3C/svg%3E");
+    color:#1b3154;
+    font-family:'Bitstream Charter', 'Charter', Georgia, 'Liberation Serif', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage {
+    position:relative; width:1080px; height:1350px; overflow:hidden;
+    padding:96px 96px 96px 96px;
+    display:flex; flex-direction:column;
+  }
+  /* foxing + sun-bleached corners, straight from globals.css .weathered */
+  .stage::before {
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 0% 0%, rgba(183,139,66,0.06), transparent 70%),
+      radial-gradient(ellipse 50% 45% at 100% 10%, rgba(96,125,153,0.05), transparent 70%),
+      radial-gradient(ellipse 55% 40% at 90% 100%, rgba(183,139,66,0.04), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  }
+  .chart { position:absolute; inset:0; opacity:0.05; z-index:0; }
+  /* Lift in-flow content above the ::before foxing layer. The exclusions
+     matter: a bare ".stage > *" outranks ".chart"/".stamp" (same specificity,
+     declared later), which would drop both back into normal flow — the chart
+     as a full-height flex item shoving every layout down the page, and the
+     stamp as a block landing on top of the footer. */
+  .stage > *:not(.chart):not(.stamp) { position:relative; z-index:1; }
+
+  .kicker {
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.25em;
+    text-transform:uppercase; color:#b78b42; font-weight:600;
+  }
+  .rule { width:78px; height:2px; background:#b78b42; opacity:0.55; }
+  .rule-wide { width:100%; height:1px; background:#607d99; opacity:0.3; }
+
+  h1 { font-size:104px; line-height:1.04; letter-spacing:-0.015em; font-weight:400; }
+  h2 { font-size:76px; line-height:1.1; letter-spacing:-0.01em; font-weight:400; }
+  .lede { font-size:40px; line-height:1.42; color:#223e67; }
+  .body { font-size:34px; line-height:1.5; color:#223e67; }
+  .muted { color:#607d99; }
+  em { font-style:italic; }
+  strong { font-weight:600; color:#1b3154; }
+
+  .spacer { flex:1; }
+  .foot {
+    display:flex; align-items:baseline; justify-content:space-between;
+    font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:21px; letter-spacing:0.18em;
+    text-transform:uppercase; color:#607d99;
+  }
+  .index { font-variant-numeric:tabular-nums; }
+
+  /* Passport stamp — rotated double rule, gold at 75%/45% like PassportStamp.tsx.
+     Sits top-right: bottom-right collided with the subtitle and the footer. */
+  .stamp {
+    position:absolute; right:96px; top:96px;
+    transform:rotate(-5deg); border:3px solid rgba(183,139,66,0.75); padding:7px; z-index:1;
+  }
+  .stamp-in { border:1.5px solid rgba(183,139,66,0.45); padding:14px 20px; text-align:center; }
+  .stamp-a { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:17px; letter-spacing:0.3em; text-transform:uppercase; color:#b78b42; white-space:nowrap; }
+  .stamp-b { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:24px; letter-spacing:0.2em; text-transform:uppercase; color:#a97f39; white-space:nowrap; margin-top:3px; }
+  
+      .handle { font-family:'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif; font-size:30px; letter-spacing:0.2em; text-transform:uppercase;
+                color:#b78b42; margin-top:52px; }
+</style></head><body><div class="stage"><svg class="chart" width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg"><line x1="-240" y1="0" x2="570" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-240" y1="1350" x2="570" y2="0" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="0" x2="690" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="-120" y1="1350" x2="690" y2="0" stroke="#607d99" stroke-width="1"/><line x1="0" y1="0" x2="810" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="0" y1="1350" x2="810" y2="0" stroke="#607d99" stroke-width="1"/><line x1="120" y1="0" x2="930" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="120" y1="1350" x2="930" y2="0" stroke="#607d99" stroke-width="1"/><line x1="240" y1="0" x2="1050" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="240" y1="1350" x2="1050" y2="0" stroke="#607d99" stroke-width="1"/><line x1="360" y1="0" x2="1170" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="360" y1="1350" x2="1170" y2="0" stroke="#607d99" stroke-width="1"/><line x1="480" y1="0" x2="1290" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="480" y1="1350" x2="1290" y2="0" stroke="#607d99" stroke-width="1"/><line x1="600" y1="0" x2="1410" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="600" y1="1350" x2="1410" y2="0" stroke="#607d99" stroke-width="1"/><line x1="720" y1="0" x2="1530" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="720" y1="1350" x2="1530" y2="0" stroke="#607d99" stroke-width="1"/><line x1="840" y1="0" x2="1650" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="840" y1="1350" x2="1650" y2="0" stroke="#607d99" stroke-width="1"/><line x1="960" y1="0" x2="1770" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="960" y1="1350" x2="1770" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="0" x2="1890" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1080" y1="1350" x2="1890" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="0" x2="2010" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1200" y1="1350" x2="2010" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="0" x2="2130" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1320" y1="1350" x2="2130" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="0" x2="2250" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1440" y1="1350" x2="2250" y2="0" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="0" x2="2370" y2="1350" stroke="#607d99" stroke-width="1"/><line x1="1560" y1="1350" x2="2370" y2="0" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="194.4" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="324" fill="none" stroke="#607d99" stroke-width="1"/><circle cx="540" cy="675" r="453.59999999999997" fill="none" stroke="#607d99" stroke-width="1"/></svg>
+      <div class="kicker">One ask</div>
+      <div class="spacer"></div>
+      <h2 style="font-size:66px">Send this to whoever packs the plugs</h2>
+      <p class="lede" style="margin-top:36px;max-width:90%">If it would help, I’ll send back your line’s prohibited-items page and your arrival window before you pack a single thing.</p>
+      <div class="handle">@bonv.travel</div>
+      <div class="spacer"></div>
+      <div class="rule-wide" style="margin-bottom:30px"></div>
+      <div class="foot"><span>BON V · A Travel Company</span><span class="index">7 / 7</span></div></div></body></html>
