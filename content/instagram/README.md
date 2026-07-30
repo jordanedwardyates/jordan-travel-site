@@ -1,7 +1,9 @@
 # Instagram — evergreen content bank
 
 70 carousels and 30 reels, written to be worked through rather than published at
-once. Start at [`CALENDAR.md`](./CALENDAR.md).
+once. Start at [`CALENDAR.md`](./CALENDAR.md) for the index, and
+[`STRATEGY.md`](./STRATEGY.md) for how the bank should actually be sequenced —
+there is an open decision there worth reading before you post anything.
 
 Nothing here touches the website. It's a content bank that happens to live in the
 repo so it's versioned and so the brand system stays a single source of truth —
