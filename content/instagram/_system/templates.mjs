@@ -55,7 +55,7 @@ function chartLines(w, h) {
         `<circle cx="${w * 0.5}" cy="${h * 0.5}" r="${w * r}" fill="none" stroke="${TOKENS.sunFaded}" stroke-width="1"/>`,
     )
     .join("");
-  return `<svg class="chart" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${lines.join("")}${rings}</svg>`;
+  return `<svg class="chart layer" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${lines.join("")}${rings}</svg>`;
 }
 
 /**
@@ -103,12 +103,15 @@ function shell({ kind, body, bg, extraCss = "" }) {
       ${FOXING};
   }
   .chart { position:absolute; inset:0; opacity:0.05; z-index:0; }
-  /* Lift in-flow content above the ::before foxing layer. The exclusions
-     matter: a bare ".stage > *" outranks ".chart"/".stamp" (same specificity,
-     declared later), which would drop both back into normal flow — the chart
-     as a full-height flex item shoving every layout down the page, and the
-     stamp as a block landing on top of the footer. */
-  .stage > *:not(.chart):not(.stamp) { position:relative; z-index:1; }
+  /* Lift in-flow content above the ::before foxing layer.
+     Anything absolutely positioned carries .layer and opts out: a bare
+     ".stage > *" outranks ".chart"/".photo"/".stamp" (same specificity,
+     declared later) and would drop them into normal flow — the chart as a
+     full-height flex item shoving the layout down the page, the stamp landing
+     on the footer, a photo backdrop collapsing to a strip. One shared class
+     beats an ever-growing :not() chain. */
+  .layer { position:absolute; }
+  .stage > *:not(.layer) { position:relative; z-index:1; }
 
   .kicker {
     font-family:${SANS}; font-size:24px; letter-spacing:0.25em;
@@ -189,7 +192,7 @@ const templates = {
       <h1>${rich(s.title)}</h1>
       ${s.subtitle ? `<p class="lede" style="margin-top:40px;max-width:88%">${rich(s.subtitle)}</p>` : ""}
       <div class="spacer"></div>
-      ${s.stamp ? `<div class="stamp"><div class="stamp-in"><div class="stamp-a">${esc(s.stamp.top ?? "Advisor's Note")}</div><div class="stamp-b">${esc(s.stamp.bottom ?? "Bon V")}</div></div></div>` : ""}
+      ${s.stamp ? `<div class="stamp layer"><div class="stamp-in"><div class="stamp-a">${esc(s.stamp.top ?? "Advisor's Note")}</div><div class="stamp-b">${esc(s.stamp.bottom ?? "Bon V")}</div></div></div>` : ""}
       ${foot(s)}`,
     }),
 
@@ -316,6 +319,77 @@ const templates = {
       <div class="rule-wide" style="margin-bottom:30px"></div>
       ${foot(s)}`,
     }),
+
+  /**
+   * A photograph, treated so it belongs to the brand rather than sitting in it.
+   *
+   * Stock and cruise-line photography arrives in every colour temperature
+   * going, which is what would make a carousel look assembled rather than
+   * published. `treatment: "duotone"` (the default) runs it as a two-colour
+   * press job: greyscale the image, multiply it onto cream stock, then tint the
+   * greys toward deep-harbor with a `color` blend. The result is ink-on-paper,
+   * so it sits on the same ground as every other slide — the Brand Bible is
+   * explicit that paper doesn't invert, so these stay light.
+   * `"warm"` keeps the original colour, knocked back under a paper wash;
+   * `"none"` leaves an already on-palette image alone.
+   *
+   * `src` is resolved and inlined by render.mjs. A missing file renders a
+   * placeholder carrying the shot brief, so a deck still previews with its
+   * photo slots visible and legible.
+   */
+  photo: (s, kind) => {
+    const treatment = s.treatment ?? "duotone";
+    const hasImage = Boolean(s.dataUri);
+    return shell({
+      kind,
+      extraCss: `
+      .ph { inset:0; z-index:0; }
+      .ph-img {
+        background-image:url('${s.dataUri ?? ""}');
+        background-size:cover; background-position:${s.focus ?? "center"};
+        ${treatment === "duotone" ? "filter:grayscale(1) contrast(1.06) brightness(1.04); mix-blend-mode:multiply;" : ""}
+        ${treatment === "warm" ? "filter:saturate(0.8) contrast(1.02);" : ""}
+      }
+      ${
+        treatment === "duotone"
+          ? `.ph-tint { background:${TOKENS.deepHarbor}; mix-blend-mode:color; opacity:0.5; }`
+          : ""
+      }
+      /* Cream floor so the type has something to sit on over a busy frame. */
+      .scrim { inset:auto 0 0 0; height:56%; z-index:0;
+        background:linear-gradient(180deg, rgba(246,241,232,0), rgba(246,241,232,0.94) 62%, rgba(246,241,232,0.99)); }
+      /* Hairline plate edge — the border of a printed illustration. */
+      .plate { inset:${kind === "reel" ? "170px 140px 370px 80px" : "56px"};
+        border:1px solid rgba(27,49,84,0.16); z-index:0; }
+      .ph-title { font-size:${s.size ?? (kind === "reel" ? 88 : 64)}px; line-height:1.14;
+        letter-spacing:-0.01em; margin-top:18px; }
+      .ph-caption { font-size:${kind === "reel" ? 34 : 30}px; line-height:1.42;
+        color:${TOKENS.aegeanInk}; margin-top:20px; max-width:88%; }
+      .missing { inset:0; z-index:0; display:flex; align-items:center; justify-content:center;
+        background:${TOKENS.linen}; padding:${kind === "reel" ? 140 : 90}px; }
+      .missing-in { text-align:center; }
+      .missing-a { font-family:${SANS}; font-size:22px; letter-spacing:0.24em;
+        text-transform:uppercase; color:${TOKENS.compassGold}; }
+      .missing-b { font-size:${kind === "reel" ? 46 : 40}px; line-height:1.3; margin-top:24px; }
+      .missing-c { font-family:${SANS}; font-size:21px; line-height:1.55; margin-top:26px;
+        color:${TOKENS.sunFaded}; }`,
+      body: `
+      ${
+        hasImage
+          ? `<div class="ph ph-img layer"></div>${treatment === "duotone" ? '<div class="ph ph-tint layer"></div>' : ""}${s.title || s.caption ? '<div class="scrim layer"></div>' : ""}<div class="plate layer"></div>`
+          : `<div class="missing layer"><div class="missing-in">
+               <div class="missing-a">Photograph wanted</div>
+               <div class="missing-b">${rich(s.brief ?? s.title ?? "Drop an image here")}</div>
+               <div class="missing-c">Save it as <strong>${esc(s.src ?? "photos/01.jpg")}</strong> in this folder and re-render.${s.source ? `<br>Where to look: ${esc(s.source)}` : ""}</div>
+             </div></div>`
+      }
+      <div class="spacer"></div>
+      ${hasImage && s.kicker ? `<div class="kicker">${esc(s.kicker)}</div>` : ""}
+      ${hasImage && s.title ? `<div class="ph-title">${rich(s.title)}</div>` : ""}
+      ${hasImage && s.caption ? `<div class="ph-caption">${rich(s.caption)}</div>` : ""}
+      ${hasImage ? foot({ ...s, left: typeof s.left === "string" ? s.left : undefined }) : ""}`,
+    });
+  },
 
   /**
    * Reel frame. Bigger type than a post — it has to read at arm's length in

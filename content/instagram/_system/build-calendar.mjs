@@ -21,6 +21,7 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
  */
 const LIMITS = {
   cover: { title: 58, subtitle: 105 },
+  photo: { title: 46, caption: 90 },
   statement: { text: 90, sub: 180 },
   quote: { quote: 130 },
   cta: { title: 60, body: 170 },
@@ -117,12 +118,20 @@ async function collect(kind) {
     if (kind === "posts") {
       try {
         const slides = JSON.parse(await readFile(path.join(dir, "slides.json"), "utf8"));
-        if (slides.length !== 7) warn.push(`${slides.length} slides, house rule is 7`);
+        // 7 is the house default; 8 is allowed because adding a photo slide to
+        // an existing deck is the documented upgrade path and 5-8 is the range
+        // the research supports.
+        if (slides.length < 7 || slides.length > 8) {
+          warn.push(`${slides.length} slides, want 7 (8 with a photo slide)`);
+        }
         if (rendered && rendered !== slides.length) {
           warn.push(`${rendered} images vs ${slides.length} specs — re-render`);
         }
         slides.forEach((s, i) => {
           for (const problem of checkFit(s, i + 1)) warn.push(problem);
+          if (s.template === "photo" && s.src && !existsSync(path.join(dir, s.src))) {
+            warn.push(`slide ${i + 1} awaits its photograph (${s.src})`);
+          }
         });
 
         // A list that promises a number must deliver it.

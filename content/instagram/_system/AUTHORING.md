@@ -101,6 +101,7 @@ fields (see `templates.mjs`):
 | `plot` | `kicker?`, `title?`, `points: [{label, value}]` |
 | `quote` | `quote`, `cite?` |
 | `cta` | `kicker?`, `title`, `body?`, `handle?` |
+| `photo` | `src`, `brief`, `source?`, `kicker?`, `title?`, `caption?`, `treatment?`, `focus?` |
 
 Inline markup in any text field: `*italic*`, `**bold**`. Straight quotes and
 lone hyphens are auto-promoted to curly quotes and em-dashes — just type normally.
@@ -114,6 +115,24 @@ lone hyphens are auto-promoted to curly quotes and em-dashes — just type norma
 - `plot`: 4–6 points. `label` ≤ 22 chars, `value` ≤ 90.
 - `quote.quote` ≤ 130 characters.
 - `cta.title` ≤ 60, `cta.body` ≤ 170.
+- `photo.title` ≤ 46, `photo.caption` ≤ 90.
+
+### Photographs
+
+A deck of seven typographic slides is complete and postable. A photograph is an
+*upgrade*, and `_system/PHOTO-BRIEF.md` says which shot suits each post.
+
+Drop the image in the post folder as `photos/02.jpg`, add a `photo` slide at
+that position (8 slides is allowed for exactly this reason), and re-render.
+`treatment: "duotone"` — the default — greyscales the image and multiplies it
+onto the cream stock, tinted toward deep-harbor, so a photograph from any source
+lands on the same paper as every other slide. `"warm"` keeps its colour under a
+paper wash; `"none"` leaves an on-palette image alone. `focus` takes any
+`background-position` value when the crop needs steering.
+
+Until the file exists the slide renders a legible "Photograph wanted" card
+carrying its own brief, and `build-calendar.mjs` flags it — so a placeholder
+can't be published by accident.
 
 ### `caption.md`
 

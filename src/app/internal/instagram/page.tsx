@@ -89,7 +89,8 @@ function Row({ piece, keyParam }: { piece: Piece; keyParam: string }) {
         <h2 className="mt-1.5 text-lg leading-snug text-deep-harbor group-hover:text-aegean-ink">
           {meta.title}
         </h2>
-        {meta.hook ? (
+        {/* Several pieces use the hook as the title; don't print it twice. */}
+        {meta.hook && meta.hook.trim() !== meta.title.trim() ? (
           <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-deep-harbor/60">
             {meta.hook}
           </p>

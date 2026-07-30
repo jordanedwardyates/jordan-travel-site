@@ -15,6 +15,7 @@ posts/<date>-<slug>/
   meta.json                   date, pillar, format, CTA, hashtags, status
   caption.md                  paste-ready caption, hook first, 4 tags last
   slides.json                 the 7 slide specs
+  photos/                     drop photographs here as 02.jpg to match a photo slide
   slides/01.jpg … 07.jpg      1080×1350, ready to upload
   slides/_preview.html        all seven in one scrollable page
 reels/<date>-<slug>/
@@ -28,6 +29,19 @@ reels/<date>-<slug>/
   footage/                    drop b-roll here as 01.mp4, 02.mp4 …
 _system/                      templates, renderer, research
 ```
+
+## Adding photographs
+
+The carousels are typographic and complete as they stand — you can post any of
+them tonight. If you want a photograph in one, `_system/PHOTO-BRIEF.md` names
+the single shot that would strengthen each deck, where to source it, and the
+JSON snippet to paste. Drop the image in as `photos/02.jpg`, add the snippet to
+`slides.json`, re-render. The `photo` template duotones it onto the cream stock
+so it reads as part of the set rather than a stock photo dropped in.
+
+Nothing here ships with borrowed photography: I couldn't reach any image host
+from the build environment, and more to the point, the rights position matters —
+see the footage note below, which applies equally to stills.
 
 ## Publishing a carousel
 

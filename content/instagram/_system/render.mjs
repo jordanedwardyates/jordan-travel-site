@@ -44,6 +44,30 @@ async function readJson(p) {
 }
 
 /**
+ * Inline a `photo` slide's image as a data URI.
+ *
+ * The page is set via setContent with no base URL, so a relative src would not
+ * resolve — and pointing Chromium at file:// paths per slide is more moving
+ * parts than reading the bytes. `src` is relative to the piece folder and must
+ * stay inside it. A missing file is not an error: the template renders a
+ * placeholder carrying the shot brief, so an unshot deck still previews.
+ */
+const MIME = { ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".webp": "image/webp" };
+
+async function withPhoto(slide, pieceDir) {
+  if (slide.template !== "photo" || !slide.src) return slide;
+  const abs = path.resolve(pieceDir, slide.src);
+  if (!abs.startsWith(path.resolve(pieceDir) + path.sep)) {
+    console.log(`  ! ${slide.src} escapes the piece folder — ignored`);
+    return slide;
+  }
+  const mime = MIME[path.extname(abs).toLowerCase()];
+  if (!mime || !existsSync(abs)) return slide;
+  const bytes = await readFile(abs);
+  return { ...slide, dataUri: `data:${mime};base64,${bytes.toString("base64")}` };
+}
+
+/**
  * Screenshot one slide spec.
  *
  * Output is JPEG, not PNG. Every slide carries the turbulence-based paper
@@ -52,10 +76,11 @@ async function readJson(p) {
  * re-encodes to JPEG on upload regardless, so the quality ceiling is JPEG
  * either way; q92 is visually indistinguishable here at about a tenth the size.
  */
-async function shoot(page, slide, kind, outBase) {
+async function shoot(page, slide, kind, outBase, pieceDir) {
   const { w, h } = SIZES[kind];
+  const prepared = await withPhoto(slide, pieceDir);
   await page.setViewportSize({ width: w, height: h });
-  await page.setContent(renderSlide(slide, kind), { waitUntil: "load" });
+  await page.setContent(renderSlide(prepared, kind), { waitUntil: "load" });
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: `${outBase}.jpg`, type: "jpeg", quality: 92 });
 }
@@ -197,7 +222,7 @@ async function main() {
       await mkdir(out, { recursive: true });
       for (let i = 0; i < slides.length; i++) {
         const s = { index: `${i + 1} / ${slides.length}`, ...slides[i] };
-        await shoot(page, s, "post", path.join(out, String(i + 1).padStart(2, "0")));
+        await shoot(page, s, "post", path.join(out, String(i + 1).padStart(2, "0")), dir);
         postSlides++;
       }
       // Keep the generated HTML alongside for hand-tweaking a slide later.
@@ -229,7 +254,7 @@ async function main() {
       const jpegs = [];
       for (let i = 0; i < frames.length; i++) {
         const base = path.join(out, String(i + 1).padStart(2, "0"));
-        await shoot(page, frames[i], "reel", base);
+        await shoot(page, frames[i], "reel", base, dir);
         jpegs.push(`${base}.jpg`);
         reelFrames++;
       }
