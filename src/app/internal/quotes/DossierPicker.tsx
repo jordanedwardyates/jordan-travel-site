@@ -145,13 +145,16 @@ export default function DossierPicker({ voyages }: { voyages: CuratedVoyage[] })
       <ul className="mt-4 max-h-80 overflow-y-auto border border-salt-air bg-vintage-passport">
         {shown.length === 0 ? (
           <li className="px-4 py-6 text-center text-[0.8rem] italic text-aegean-ink/60">
-            Nothing matches “{query}”.
+            {query.trim()
+              ? `Nothing matches “${query}”.`
+              : "Every sailing on file has departed — tick the box below to see them."}
           </li>
         ) : (
           shown.map((v) => {
             const isOn = selected.includes(v.id);
             const fares = v.offers.length;
-            const window = sailingWindow(v.embarkationDate, now);
+            // Not named `window` — that shadows the global inside this callback.
+            const sailWindow = sailingWindow(v.embarkationDate, now);
             return (
               <li key={v.id} className="border-b border-salt-air/50 last:border-b-0">
                 <label
@@ -177,9 +180,9 @@ export default function DossierPicker({ voyages }: { voyages: CuratedVoyage[] })
                       {fares === 0 ? "no fares" : `${fares} fare${fares === 1 ? "" : "s"}`}
                     </span>
                   </span>
-                  {window !== "open" && window !== "undated" && (
+                  {(sailWindow === "sailed" || sailWindow === "closing") && (
                     <span className="mt-0.5 shrink-0 border border-compass-gold bg-compass-gold/10 px-1.5 py-0.5 text-[0.55rem] uppercase tracking-[0.15em] text-deep-harbor">
-                      {window === "sailed" ? "departed" : "too late"}
+                      {sailWindow === "sailed" ? "departed" : "too late"}
                     </span>
                   )}
                   {v.sourceStatus !== "trusted" && (
