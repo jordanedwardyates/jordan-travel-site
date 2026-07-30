@@ -61,6 +61,62 @@ export function derivePortCount(summary: string | null): number | null {
 export const cleanTitle = (t: string) =>
   t.replace(/\s*\([^)]*\bto\b[^)]*\)\s*$/i, "").trim();
 
+/**
+ * How close to departure a sailing stops being worth quoting. Inventory and
+ * final payment have closed by then, so a quote against it is dead paper.
+ */
+export const SAILING_CUTOFF_DAYS = 12;
+
+export type SailingWindow =
+  /** Already departed. */
+  | "sailed"
+  /** Departs inside the cutoff — too late to sell. */
+  | "closing"
+  /** Still sellable. */
+  | "open"
+  /** No embarkation date recorded. Unknown is NOT past: a sailing whose date
+   *  was given as a range must stay visible rather than be quietly retired. */
+  | "undated";
+
+/**
+ * Which side of the cutoff a sailing sits on, derived from its date every
+ * time it is asked. Deliberately not stored: a column would need a cron to
+ * stay true and could drift out of sync with the calendar, whereas this
+ * cannot be wrong and needs no job.
+ */
+export function sailingWindow(
+  embarkationDate: string | null,
+  now: Date = new Date(),
+  cutoffDays: number = SAILING_CUTOFF_DAYS
+): SailingWindow {
+  const days = daysUntilDeparture(embarkationDate, now);
+  if (days === null) return "undated";
+  if (days < 0) return "sailed";
+  return days < cutoffDays ? "closing" : "open";
+}
+
+/** Whole days from today to departure. Negative once it has sailed. */
+export function daysUntilDeparture(
+  embarkationDate: string | null,
+  now: Date = new Date()
+): number | null {
+  if (!embarkationDate) return null;
+  const dep = new Date(`${embarkationDate}T00:00:00`);
+  if (Number.isNaN(dep.getTime())) return null;
+  // Both ends at local midnight, so the difference is clean whole days.
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  return Math.round((dep.getTime() - today.getTime()) / 86_400_000);
+}
+
+/** True for sailings past the point of being quotable. Undated never is. */
+export const isPastCutoff = (
+  embarkationDate: string | null,
+  now: Date = new Date()
+): boolean => {
+  const w = sailingWindow(embarkationDate, now);
+  return w === "sailed" || w === "closing";
+};
+
 /** "2026-07-13T18:22:00Z" → "13 Jul 2026". Date-only strings pass through. */
 export function formatDay(iso: string | null): string {
   if (!iso) return "";

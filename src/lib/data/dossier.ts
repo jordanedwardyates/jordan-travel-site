@@ -1,5 +1,10 @@
 import type { CuratedOffer, CuratedVoyage } from "@/lib/data/curation";
-import { formatDateRange, formatDay } from "@/lib/data/voyage-format";
+import {
+  daysUntilDeparture,
+  formatDateRange,
+  formatDay,
+  sailingWindow,
+} from "@/lib/data/voyage-format";
 
 /**
  * Voyage dossier — everything already known about a sailing, as markdown,
@@ -126,6 +131,21 @@ export function dossierFor(
   facts.push(
     `- **Sails:** ${dates || "dates not recorded"}${v.nights ? ` · ${v.nights} nights` : ""}`
   );
+
+  // A retired sailing can still be exported on purpose (for pricing history,
+  // or to pitch the same itinerary next season) so it is labelled rather than
+  // refused — but it must never be mistaken for something bookable.
+  const window = sailingWindow(v.embarkationDate, now);
+  const days = daysUntilDeparture(v.embarkationDate, now);
+  if (window === "sailed") {
+    facts.push(
+      `- **⚠️ THIS SAILING HAS DEPARTED** (${Math.abs(days!)} days ago) — not bookable; use for reference only`
+    );
+  } else if (window === "closing") {
+    facts.push(
+      `- **⚠️ DEPARTS IN ${days} DAYS** — inside the booking window, almost certainly not sellable`
+    );
+  }
   if (v.embarkPort || v.disembarkPort) {
     facts.push(`- **Route:** ${v.embarkPort ?? "?"} → ${v.disembarkPort ?? "?"}`);
   }

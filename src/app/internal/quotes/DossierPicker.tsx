@@ -4,7 +4,12 @@ import { useMemo, useState } from "react";
 
 import type { CuratedVoyage } from "@/lib/data/curation";
 import { buildDossier } from "@/lib/data/dossier";
-import { formatDateRange } from "@/lib/data/voyage-format";
+import {
+  SAILING_CUTOFF_DAYS,
+  formatDateRange,
+  isPastCutoff,
+  sailingWindow,
+} from "@/lib/data/voyage-format";
 
 /**
  * Pick sailings → get a markdown dossier to paste into a drafting session.
@@ -20,7 +25,12 @@ export default function DossierPicker({ voyages }: { voyages: CuratedVoyage[] })
   const [selected, setSelected] = useState<string[]>([]);
   const [query, setQuery] = useState("");
   const [includeInternalNotes, setIncludeInternalNotes] = useState(true);
+  const [showPast, setShowPast] = useState(false);
   const [copied, setCopied] = useState<"idle" | "ok" | "fail">("idle");
+
+  // Computed once per render rather than per row, so every sailing is judged
+  // against the same moment.
+  const now = useMemo(() => new Date(), []);
 
   const byDate = useMemo(
     () =>
@@ -30,10 +40,26 @@ export default function DossierPicker({ voyages }: { voyages: CuratedVoyage[] })
     [voyages]
   );
 
+  // Departed sailings and ones inside the booking window are dropped from the
+  // list AND from what the filter searches — an unsellable sailing surfacing
+  // on a port match is just noise. Kept behind a toggle, never deleted.
+  const pastCount = useMemo(
+    () => byDate.filter((v) => isPastCutoff(v.embarkationDate, now)).length,
+    [byDate, now]
+  );
+
+  const inWindow = useMemo(
+    () =>
+      showPast
+        ? byDate
+        : byDate.filter((v) => !isPastCutoff(v.embarkationDate, now)),
+    [byDate, showPast, now]
+  );
+
   const shown = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return byDate;
-    return byDate.filter((v) =>
+    if (!q) return inWindow;
+    return inWindow.filter((v) =>
       [
         v.cruiseLine,
         v.ship,
@@ -49,7 +75,7 @@ export default function DossierPicker({ voyages }: { voyages: CuratedVoyage[] })
         .toLowerCase()
         .includes(q)
     );
-  }, [byDate, query]);
+  }, [inWindow, query]);
 
   const chosen = useMemo(
     () =>
@@ -125,6 +151,7 @@ export default function DossierPicker({ voyages }: { voyages: CuratedVoyage[] })
           shown.map((v) => {
             const isOn = selected.includes(v.id);
             const fares = v.offers.length;
+            const window = sailingWindow(v.embarkationDate, now);
             return (
               <li key={v.id} className="border-b border-salt-air/50 last:border-b-0">
                 <label
@@ -150,6 +177,11 @@ export default function DossierPicker({ voyages }: { voyages: CuratedVoyage[] })
                       {fares === 0 ? "no fares" : `${fares} fare${fares === 1 ? "" : "s"}`}
                     </span>
                   </span>
+                  {window !== "open" && window !== "undated" && (
+                    <span className="mt-0.5 shrink-0 border border-compass-gold bg-compass-gold/10 px-1.5 py-0.5 text-[0.55rem] uppercase tracking-[0.15em] text-deep-harbor">
+                      {window === "sailed" ? "departed" : "too late"}
+                    </span>
+                  )}
                   {v.sourceStatus !== "trusted" && (
                     <span className="mt-0.5 shrink-0 border border-salt-air px-1.5 py-0.5 text-[0.55rem] uppercase tracking-[0.15em] text-sun-faded">
                       unverified
@@ -162,18 +194,32 @@ export default function DossierPicker({ voyages }: { voyages: CuratedVoyage[] })
         )}
       </ul>
 
-      <label className="mt-3 flex items-center gap-2 text-[0.7rem] text-aegean-ink/80">
-        <input
-          type="checkbox"
-          checked={includeInternalNotes}
-          onChange={(e) => {
-            setIncludeInternalNotes(e.target.checked);
-            setCopied("idle");
-          }}
-          className="accent-compass-gold"
-        />
-        Include my internal notes (marked in the text as never-quote context)
-      </label>
+      <div className="mt-3 flex flex-col gap-1.5">
+        <label className="flex items-center gap-2 text-[0.7rem] text-aegean-ink/80">
+          <input
+            type="checkbox"
+            checked={includeInternalNotes}
+            onChange={(e) => {
+              setIncludeInternalNotes(e.target.checked);
+              setCopied("idle");
+            }}
+            className="accent-compass-gold"
+          />
+          Include my internal notes (marked in the text as never-quote context)
+        </label>
+        {pastCount > 0 && (
+          <label className="flex items-center gap-2 text-[0.7rem] text-aegean-ink/80">
+            <input
+              type="checkbox"
+              checked={showPast}
+              onChange={(e) => setShowPast(e.target.checked)}
+              className="accent-compass-gold"
+            />
+            Show {pastCount} sailing{pastCount === 1 ? "" : "s"} already gone —
+            departed, or leaving within {SAILING_CUTOFF_DAYS} days
+          </label>
+        )}
+      </div>
 
       {chosen.length === 0 ? (
         <p className="mt-5 border-t border-salt-air pt-4 text-[0.75rem] italic text-aegean-ink/60">
