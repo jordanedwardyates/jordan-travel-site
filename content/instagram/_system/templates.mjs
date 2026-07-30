@@ -248,7 +248,9 @@ const templates = {
                    padding-bottom:20px; margin-bottom:28px; border-bottom:2px solid; }
       .col-a .col-label { color:${TOKENS.sunFaded}; border-color:${TOKENS.saltAir}; }
       .col-b .col-label { color:${TOKENS.compassGold}; border-color:rgba(183,139,66,0.5); }
-      .col li { list-style:none; font-size:31px; line-height:1.4; margin-bottom:26px; padding-left:26px; position:relative; }
+      .col li { list-style:none; font-size:31px; line-height:1.4; margin-bottom:26px; padding-left:46px; position:relative; }
+      /* The indent has to clear the em dash itself (~31px at this size) or the
+         glyph runs straight into the first word. */
       .col li::before { content:"—"; position:absolute; left:0; color:${TOKENS.seaGlass}; }
       .col-a li { color:${TOKENS.sunFaded}; }`,
       body: `
