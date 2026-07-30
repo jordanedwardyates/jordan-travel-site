@@ -8,6 +8,7 @@ import {
   type CuratedVoyage,
   type CuratedOffer,
 } from "@/lib/data/curation";
+import DossierPicker from "./DossierPicker";
 import {
   setVoyageWebsiteStatus,
   setVoyageTrusted,
@@ -436,6 +437,8 @@ export default async function QuoteCurationPage({
         </div>
 
         <ReviewQueue items={dueForReview} tokenField={tokenField} />
+
+        {voyages.length > 0 && <DossierPicker voyages={voyages} />}
 
         {voyages.length === 0 ? (
           <p className="mt-10 border border-salt-air bg-linen/50 px-6 py-8 text-center font-serif text-aegean-ink">
