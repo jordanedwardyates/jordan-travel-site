@@ -1,0 +1,84 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Quiet luxury",
+    "title": "The best part is what never happens",
+    "subtitle": "No announcements, no gangway queue, no photographer at dinner. Absence, as a specification.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 27"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Why nobody advertises it",
+    "text": "Absence photographs badly and costs the line real money.",
+    "sub": "You cannot put silence in a brochure. You can only build a ship that doesn't need a microphone, and then charge for the restraint that decision requires."
+  },
+  {
+    "template": "list",
+    "kicker": "The good list",
+    "title": "Four things that never happen",
+    "items": [
+      {
+        "head": "The morning announcement",
+        "body": "No voice in your cabin at eight. The daily programme is printed and slipped under the door the night before."
+      },
+      {
+        "head": "The queue at the gangway",
+        "body": "Small numbers, alongside berths rather than tenders, and no one shouting deck numbers into a handset."
+      },
+      {
+        "head": "The photographer at dinner",
+        "body": "Nobody arranges you against a backdrop between courses, and nobody prints it to sell back to you at eleven."
+      },
+      {
+        "head": "The art auction",
+        "body": "Or the watch seminar, or the port shopping talk. All of it is revenue dressed as programming."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Two mornings at sea",
+    "title": "Programmed against left alone",
+    "left": {
+      "label": "Programmed",
+      "items": [
+        "Announcement at eight",
+        "Art auction at eleven",
+        "Port shopping talk",
+        "Photographer at dinner",
+        "Microphone on deck"
+      ]
+    },
+    "right": {
+      "label": "Left alone",
+      "items": [
+        "Programme under the door",
+        "A book and a deck chair",
+        "Charts and a chartroom",
+        "Nobody arranges you",
+        "A bell, and nothing else"
+      ]
+    }
+  },
+  {
+    "template": "quote",
+    "quote": "Nobody comes home and describes the marble. They describe that nothing was ever being sold to them, and that they slept.",
+    "cite": "Jordan Yates \u00b7 Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Judge a ship by what it declines to do to you.",
+    "sub": "Read the daily programme of a sailing before you book it. Count the revenue events. That single page tells you more about the week ahead than the whole of the rest of the brochure."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this for your next comparison",
+    "body": "Two ships, one page each. Whichever programme has fewer things being sold is usually the better week at sea.",
+    "handle": "@bonvtravel \u00b7 link in bio"
+  }
+]

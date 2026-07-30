@@ -7,12 +7,79 @@
 // hashtag counts that drift from the house rule of 4, and reels whose frame
 // durations don't add up to their stated runtime.
 
-import { readdir, readFile, writeFile, stat } from "node:fs/promises";
+import { readdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+/**
+ * Copy is not auto-shrunk by the templates, so anything over these lengths
+ * silently overflows the slide. The limits mirror AUTHORING.md — keep the two
+ * in step. Checked here rather than trusted to whoever wrote the copy.
+ */
+const LIMITS = {
+  cover: { title: 58, subtitle: 105 },
+  statement: { text: 90, sub: 180 },
+  quote: { quote: 130 },
+  cta: { title: 60, body: 170 },
+  frame: { text: 60, sub: 90 },
+};
+
+function checkFit(s, n) {
+  const out = [];
+  const at = `slide ${n} (${s.template})`;
+
+  for (const [field, max] of Object.entries(LIMITS[s.template] ?? {})) {
+    const v = s[field];
+    if (typeof v !== "string") continue;
+    // A frame that drops its type size can carry proportionally more text.
+    const allowed =
+      s.template === "frame" && field === "text" && s.size
+        ? Math.round(max * (108 / s.size))
+        : max;
+    if (v.length > allowed) {
+      out.push(`${at} ${field} ${v.length} chars, limit ${allowed}`);
+    }
+  }
+
+  if (s.template === "list") {
+    if (s.items.length < 3 || s.items.length > 5) {
+      out.push(`${at} has ${s.items.length} items, want 3-5`);
+    }
+    s.items.forEach((it, i) => {
+      if (it.head?.length > 42) out.push(`${at} item ${i + 1} head ${it.head.length} chars, limit 42`);
+      if (it.body?.length > 120) out.push(`${at} item ${i + 1} body ${it.body.length} chars, limit 120`);
+    });
+  }
+
+  if (s.template === "compare") {
+    for (const side of ["left", "right"]) {
+      const col = s[side];
+      if (!col) continue;
+      if (col.label?.length > 14) out.push(`${at} ${side} label ${col.label.length} chars, limit 14`);
+      if (col.items.length < 4 || col.items.length > 5) {
+        out.push(`${at} ${side} has ${col.items.length} items, want 4-5`);
+      }
+      col.items.forEach((v, i) => {
+        if (v.length > 34) out.push(`${at} ${side} item ${i + 1} ${v.length} chars, limit 34`);
+      });
+    }
+  }
+
+  if (s.template === "plot") {
+    if (s.points.length < 4 || s.points.length > 6) {
+      out.push(`${at} has ${s.points.length} points, want 4-6`);
+    }
+    s.points.forEach((p, i) => {
+      if (p.label?.length > 22) out.push(`${at} point ${i + 1} label ${p.label.length} chars, limit 22`);
+      if (p.value?.length > 90) out.push(`${at} point ${i + 1} value ${p.value.length} chars, limit 90`);
+    });
+  }
+
+  return out;
+}
 
 async function collect(kind) {
   const parent = path.join(ROOT, kind);
@@ -44,7 +111,7 @@ async function collect(kind) {
     const outDir = path.join(dir, kind === "posts" ? "slides" : "frames");
     let rendered = 0;
     if (existsSync(outDir)) {
-      rendered = (await readdir(outDir)).filter((f) => f.endsWith(".png")).length;
+      rendered = (await readdir(outDir)).filter((f) => f.endsWith(".jpg")).length;
     }
 
     if (kind === "posts") {
@@ -52,8 +119,12 @@ async function collect(kind) {
         const slides = JSON.parse(await readFile(path.join(dir, "slides.json"), "utf8"));
         if (slides.length !== 7) warn.push(`${slides.length} slides, house rule is 7`);
         if (rendered && rendered !== slides.length) {
-          warn.push(`${rendered} PNGs vs ${slides.length} specs — re-render`);
+          warn.push(`${rendered} images vs ${slides.length} specs — re-render`);
         }
+        slides.forEach((s, i) => {
+          for (const problem of checkFit(s, i + 1)) warn.push(problem);
+        });
+
         // A list that promises a number must deliver it.
         for (const s of slides) {
           if (s.template !== "list" || !s.title) continue;
@@ -73,8 +144,11 @@ async function collect(kind) {
         if (meta.runtime_seconds && Math.abs(sum - meta.runtime_seconds) > 4) {
           warn.push(`frames sum to ${sum}s, meta says ${meta.runtime_seconds}s`);
         }
+        frames.forEach((f, i) => {
+          for (const problem of checkFit(f, i + 1)) warn.push(problem);
+        });
         if (rendered && rendered !== frames.length) {
-          warn.push(`${rendered} PNGs vs ${frames.length} specs — re-render`);
+          warn.push(`${rendered} images vs ${frames.length} specs — re-render`);
         }
         if (!existsSync(path.join(dir, "slate.webm"))) warn.push("no slate.webm");
         if (meta.words && meta.runtime_seconds) {

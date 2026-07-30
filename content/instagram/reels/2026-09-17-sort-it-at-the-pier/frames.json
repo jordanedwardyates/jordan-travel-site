@@ -1,0 +1,58 @@
+[
+  {
+    "template": "frame",
+    "kicker": "Something I hear weekly",
+    "text": "\"We'll sort it at the pier\"",
+    "seconds": 3,
+    "timecode": "0:00"
+  },
+  {
+    "template": "frame",
+    "text": "No, you won't",
+    "seconds": 4,
+    "timecode": "0:03",
+    "tone": "warn"
+  },
+  {
+    "template": "frame",
+    "text": "The manifest is already closed",
+    "seconds": 6,
+    "timecode": "0:07",
+    "tone": "warn"
+  },
+  {
+    "template": "frame",
+    "text": "Nobody at the desk can renew a passport",
+    "seconds": 7,
+    "timecode": "0:13",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "text": "The pier enforces decisions",
+    "sub": "it does not make them",
+    "seconds": 6,
+    "timecode": "0:20"
+  },
+  {
+    "template": "frame",
+    "kicker": "Six weeks earlier",
+    "text": "Four things, one hour",
+    "sub": "passport · insurance · packing list · flights",
+    "seconds": 7,
+    "timecode": "0:26"
+  },
+  {
+    "template": "frame",
+    "text": "Done at your kitchen table, with coffee",
+    "seconds": 7,
+    "timecode": "0:33",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "text": "Then the pier is eleven minutes",
+    "seconds": 6,
+    "timecode": "0:40"
+  }
+]

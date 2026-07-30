@@ -1,0 +1,73 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Ship selection",
+    "title": "New is not the same as *good*.",
+    "subtitle": "How to judge a ship's age, and when the refit matters more than the launch.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 07" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "A ship refitted well beats a new one designed badly.",
+    "sub": "Hull age tells you almost nothing on its own. What the last refit actually touched tells you a great deal."
+  },
+  {
+    "template": "list",
+    "kicker": "What to ask about",
+    "title": "Four things a refit either fixed or didn't",
+    "items": [
+      { "n": 1, "head": "Bathrooms and balconies", "body": "The two places you notice age first, and the two most often left alone to save money." },
+      { "n": 2, "head": "Soft goods and lighting", "body": "Cheap to replace, transformative when done. A dated ship is often only a dated palette." },
+      { "n": 3, "head": "Public rooms", "body": "A refit that added venues without adding seats has made the crowding worse, not better." },
+      { "n": 4, "head": "Engineering and stabilisers", "body": "Never in the press release, always in the ride. Ask before a winter crossing." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Two ways to be new",
+    "title": "New hull vs recent refit",
+    "left": {
+      "label": "New hull",
+      "items": [
+        "Latest cabin design",
+        "Service teams still settling",
+        "Premium launch-year fares",
+        "Teething faults, plural"
+      ]
+    },
+    "right": {
+      "label": "Recent refit",
+      "items": [
+        "Known ship, settled crew",
+        "A layout you can research",
+        "Fares that behave normally",
+        "Older bones, honestly"
+      ]
+    }
+  },
+  {
+    "template": "plot",
+    "kicker": "When newness wins",
+    "title": "Where a new ship genuinely pays",
+    "points": [
+      { "label": "Suite bathrooms", "value": "The biggest improvement in twenty years of ship design. Here, new is worth paying for." },
+      { "label": "Balcony proportions", "value": "Newer balconies are deeper and better shaded. Old ones are often a chair and a shin." },
+      { "label": "Quiet at speed", "value": "Newer propulsion is noticeably quieter aft, which is where the best suites tend to sit." },
+      { "label": "Expedition kit", "value": "Ice class and boat handling have moved on quickly. Older expedition ships show it." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Ask what the last refit changed. Not when it happened.",
+    "sub": "*Refurbished last year* can mean new carpet in the corridors. It can also mean every bathroom aboard. Nobody volunteers which, and both are technically true."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever books your holidays",
+    "body": "Then send me a ship you're considering and I'll tell you what its last refit actually touched.",
+    "handle": "@bonvtravel"
+  }
+]

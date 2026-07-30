@@ -1,0 +1,12 @@
+[
+  { "template": "frame", "kicker": "Post-mortem", "text": "It was never the ship", "sub": "The booking that goes wrong most often, and why", "seconds": 3, "timecode": "0:00", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "The pattern", "text": "Booked late. Cabin assigned.", "sub": "A little money saved on the fare", "seconds": 5, "timecode": "0:03", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "What they were given", "text": "High, and right forward", "sub": "On a fortnight with real open water in it", "seconds": 6, "timecode": "0:08", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Night three", "text": "Forward is the end of a lever", "seconds": 6, "timecode": "0:14", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Then, at dawn", "text": "The anchor, under the bedhead", "seconds": 7, "timecode": "0:20", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "By morning four", "text": "Sleeping in the library chairs", "seconds": 7, "timecode": "0:27", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "And the answer is always", "text": "There is nowhere to move you", "sub": "A full ship has no spare cabins. It never does.", "seconds": 7, "timecode": "0:34", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "The finding", "text": "The fare was fine. The position wasn't.", "seconds": 7, "timecode": "0:41", "size": 92, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "What would have fixed it", "text": "Midship, two decks down", "sub": "A little more money. An entirely different fortnight.", "seconds": 7, "timecode": "0:48", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "One ask", "text": "Book early for the cabin", "sub": "The fare I can still chase afterwards", "seconds": 5, "timecode": "0:55", "size": 108, "align": "left", "label": "BON V" }
+]

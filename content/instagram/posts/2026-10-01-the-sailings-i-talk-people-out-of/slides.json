@@ -1,0 +1,51 @@
+[
+  {
+    "template": "cover",
+    "kicker": "The Advisor's Edit",
+    "title": "The sailings I talk people out of",
+    "subtitle": "Saying no is the most useful thing an advisor does, and easily the least popular.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 31" }
+  },
+  {
+    "template": "statement",
+    "kicker": "My incentives, plainly",
+    "text": "A commission I don't earn costs less than a client I disappoint.",
+    "sub": "I'm paid after you sail. If the voyage is wrong, I've spent months on a booking that ends in a polite email and no second trip. That maths is not subtle."
+  },
+  {
+    "template": "list",
+    "kicker": "What I turn down",
+    "title": "Four bookings I argue against",
+    "items": [
+      { "head": "The famous ship in high August", "body": "Right ship, wrong fortnight. The same itinerary in late September is a different holiday entirely." },
+      { "head": "Seven ports in nine days", "body": "You will see harbours and coach parks. Sea days are not filler - they are why the rest works." },
+      { "head": "The tender-heavy itinerary", "body": "Moderate swell suspends tendering. Two of your best ports become a view from the rail." },
+      { "head": "The bargain suite, wrong deck", "body": "Under the pool deck, or forward on a small ship in winter. The price is telling you something." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Two postures",
+    "title": "Selling against editing",
+    "left": { "label": "Selling", "items": ["Says yes to the enquiry", "Quotes what was asked for", "Adds an upgrade", "Closes it this week", "Measures the booking"] },
+    "right": { "label": "Editing", "items": ["Asks why that sailing", "Quotes what fits the brief", "Removes what won't earn its keep", "Waits for the right date", "Measures the trip after"] }
+  },
+  {
+    "template": "quote",
+    "quote": "Honest counsel on ships, seasons and itineraries - including which celebrated ones to skip.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "No isn't a lost sale. It's what makes the next yes worth anything.",
+    "sub": "You cannot be candid about a ship on Monday and sell it on Friday to someone plainly unsuited to it. The whole practice rests on that one line holding."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Or send me the sailing you are half-decided on. If I'd talk you out of it, I'll tell you exactly why, and what I'd put in its place.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "template": "frame",
+    "kicker": "Mistakes to avoid",
+    "text": "Four ways to ruin embarkation day",
+    "seconds": 3,
+    "timecode": "0:00"
+  },
+  {
+    "template": "frame",
+    "text": "Medication in the checked bag",
+    "seconds": 2,
+    "timecode": "0:03",
+    "tone": "warn"
+  },
+  {
+    "template": "frame",
+    "text": "Keep it in the shoulder bag",
+    "sub": "with the pharmacy label still on it",
+    "seconds": 2,
+    "timecode": "0:05"
+  },
+  {
+    "template": "frame",
+    "text": "A power strip in the carry-on",
+    "seconds": 3,
+    "timecode": "0:07",
+    "tone": "warn"
+  },
+  {
+    "template": "frame",
+    "text": "Read your line's prohibited list",
+    "seconds": 2,
+    "timecode": "0:10"
+  },
+  {
+    "template": "frame",
+    "text": "Documents in the case you just handed over",
+    "seconds": 3,
+    "timecode": "0:12",
+    "tone": "warn",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "text": "Arrive inside your own window",
+    "sub": "the quieter half of it",
+    "seconds": 3,
+    "timecode": "0:15"
+  },
+  {
+    "template": "frame",
+    "kicker": "Mistakes to avoid",
+    "text": "Four ways to ruin embarkation day",
+    "seconds": 3,
+    "timecode": "0:18"
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Itinerary craft",
+    "title": "Your embarkation city is not an airport.",
+    "subtitle": "Two nights before the ship is the cheapest upgrade in cruising.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 11"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "Most people see Athens, Venice or Lisbon through a taxi window.",
+    "sub": "The itinerary calls it day one and a transfer. It is a city with a season, a table worth booking, and a morning you do not get back."
+  },
+  {
+    "template": "list",
+    "kicker": "The case for arriving early",
+    "title": "Four reasons to come in ahead",
+    "items": [
+      {
+        "head": "A flight delay stops being a crisis",
+        "body": "The missed-embarkation stories that end worst are flight stories, not late-tour stories. A spare night solves it."
+      },
+      {
+        "head": "You board rested",
+        "body": "Day one is the most wasted day of any voyage when it follows an overnight flight and a queue."
+      },
+      {
+        "head": "The city, properly",
+        "body": "Two nights ashore is a short holiday attached to a voyage, for the price of a hotel room."
+      },
+      {
+        "head": "Your luggage arrives with you",
+        "body": "A bag that misses a connection can still reach a hotel. It cannot reach a ship that has sailed."
+      }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "The first thirty-six hours",
+    "title": "Two versions of day one",
+    "points": [
+      {
+        "label": "Land 11:00, sail 17:00",
+        "value": "Terminal queue, muster, unpacking, sleep. The city never happened at all."
+      },
+      {
+        "label": "Arrive two days early",
+        "value": "An afternoon, a dinner, a full night's sleep and a morning market."
+      },
+      {
+        "label": "Boarding at 13:00",
+        "value": "Aboard ahead of the crowd, lunch at a quiet table on a half-empty ship."
+      },
+      {
+        "label": "Sail-away",
+        "value": "On deck watching a place you know, rather than one you flew over."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The payoff",
+    "title": "Transit, or a stay",
+    "left": {
+      "label": "Transit",
+      "items": [
+        "Airport to gangway",
+        "One night near the port",
+        "Nothing seen",
+        "A delay ruins the voyage",
+        "Day one lost to sleep"
+      ]
+    },
+    "right": {
+      "label": "A stay",
+      "items": [
+        "Two nights in the city",
+        "A hotel worth the stay",
+        "A dinner you'd recall",
+        "A delay costs a dinner",
+        "Day one spent awake"
+      ]
+    }
+  },
+  {
+    "template": "quote",
+    "quote": "The night before a voyage isn't travel time. It's the first night of the holiday, and it's the one people cut.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this before you book the flights.",
+    "body": "Air and hotel are part of the itinerary, not an afterthought to it. Tell me your embarkation city and I'll tell you how many nights it deserves.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

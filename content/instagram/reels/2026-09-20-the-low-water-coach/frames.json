@@ -1,0 +1,10 @@
+[
+  { "template": "frame", "kicker": "River cruising", "text": "Low water can rewrite your week.", "sub": "And it's in the contract, not the brochure.", "seconds": 3, "timecode": "0:00", "tone": "warn", "size": 108 },
+  { "template": "frame", "text": "Water level is weather. Nobody's fault.", "seconds": 5, "timecode": "0:03" },
+  { "template": "frame", "kicker": "My objection", "text": "It's where they disclose it.", "seconds": 4, "timecode": "0:08", "tone": "warn" },
+  { "template": "frame", "text": "Page 14 of the contract. Not page 1 of the brochure.", "seconds": 5, "timecode": "0:12", "size": 92 },
+  { "template": "frame", "kicker": "The contingency", "text": "A coach to the next town — or a ship swap.", "sub": "Two vessels trade guests mid-river.", "seconds": 8, "timecode": "0:17", "size": 92 },
+  { "template": "frame", "text": "Handled well, it's still a good week.", "seconds": 5, "timecode": "0:25" },
+  { "template": "frame", "kicker": "Ask at booking", "text": "If levels drop, who funds the hotel night?", "sub": "Ask it now, not at the pier.", "seconds": 8, "timecode": "0:30", "tone": "warn", "size": 100 },
+  { "template": "frame", "text": "Every line words that clause differently.", "sub": "@bonvtravel", "seconds": 10, "timecode": "0:38" }
+]

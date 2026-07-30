@@ -1,0 +1,55 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Sailing alone",
+    "title": "The single supplement, explained honestly",
+    "subtitle": "You are not being penalised for travelling alone. You are being charged for the cabin.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 07" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Why it exists",
+    "text": "A cruise fare is quoted per person but sold per cabin.",
+    "sub": "The ship has a fixed number of cabins and no more. One occupant instead of two halves the revenue from a room the line cannot re-cut."
+  },
+  {
+    "template": "list",
+    "kicker": "Where it softens",
+    "title": "Four places the supplement falls",
+    "items": [
+      { "head": "Dedicated solo cabins", "body": "Small ships increasingly build a handful. Very few per sailing, and they go first - book them a season out." },
+      { "head": "Reduced-supplement promotions", "body": "Lines run them on sailings that need help. River cruises in shoulder months are the reliable hunting ground." },
+      { "head": "River rather than ocean", "body": "Solo terms on European river itineraries are generally kinder than on comparable ocean sailings." },
+      { "head": "The quiet season", "body": "Late autumn on the Danube, the Aegean before the crowds. Fewer couples competing for the same cabin." }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "How to read a solo quote",
+    "title": "Four things to check",
+    "points": [
+      { "label": "The multiplier", "value": "Quoted as a percentage of the double fare. It varies widely by line and sailing." },
+      { "label": "What it covers", "value": "Some supplements exclude port fees and taxes, some include them." },
+      { "label": "Category limits", "value": "The kind terms often apply only to the lower cabin grades." },
+      { "label": "Included extras", "value": "Ask whether credit and inclusions are per cabin or per guest. It matters most solo." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "A solo traveller with flexible dates has more leverage than a couple with fixed ones. Use it.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Bring the sailing to the fare, not the fare to the sailing.",
+    "sub": "Choose the region and the season you want, then let me find the weeks where solo terms are kindest. The itinerary rarely suffers for moving a fortnight."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Tell me the region and I'll find the weeks",
+    "body": "Send me where you'd like to sail alone and roughly when. I'll come back with the sailings where the solo terms are worth having.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

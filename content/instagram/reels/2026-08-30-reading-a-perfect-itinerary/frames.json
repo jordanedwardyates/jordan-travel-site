@@ -1,0 +1,75 @@
+[
+  {
+    "template": "frame",
+    "kicker": "Itinerary critique",
+    "text": "Seven ports. Two real days.",
+    "seconds": 5,
+    "timecode": "0:00",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "07:00 in. 13:00 out.",
+    "sub": "That is not a day ashore.",
+    "seconds": 5,
+    "timecode": "0:05",
+    "tone": "warn",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "All-aboard is not departure",
+    "sub": "30-60 minutes earlier, in ship's time",
+    "seconds": 6,
+    "timecode": "0:10",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Two of them are tender ports",
+    "seconds": 7,
+    "timecode": "0:16",
+    "tone": "warn",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "The port is not the town",
+    "sub": "Two hours in, two hours back",
+    "seconds": 7,
+    "timecode": "0:23",
+    "tone": "warn",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Seven calls. Two visits.",
+    "seconds": 6,
+    "timecode": "0:30",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "The version I'd book",
+    "sub": "Four ports · one overnight · a sea day mid-week",
+    "seconds": 6,
+    "timecode": "0:36",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Send me an itinerary",
+    "sub": "I'll read the clock, not the map",
+    "seconds": 6,
+    "timecode": "0:42",
+    "align": "left",
+    "label": "BON V"
+  }
+]

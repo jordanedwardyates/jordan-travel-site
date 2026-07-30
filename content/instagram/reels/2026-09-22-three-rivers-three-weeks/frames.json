@@ -1,0 +1,8 @@
+[
+  { "template": "frame", "kicker": "River cruising", "text": "Three rivers. Three different weeks.", "sub": "Same word. Not the same holiday.", "seconds": 3, "timecode": "0:00", "size": 108 },
+  { "template": "frame", "kicker": "One", "text": "Rhine — castles and locks.", "sub": "The gorge, and the shortest walk ashore.", "seconds": 7, "timecode": "0:03" },
+  { "template": "frame", "kicker": "Two", "text": "Danube — three capitals on foot.", "sub": "Vienna, Bratislava, Budapest.", "seconds": 6, "timecode": "0:10" },
+  { "template": "frame", "kicker": "Three", "text": "Douro — vineyards, few locks, quiet.", "sub": "Small quays a large ship can't use.", "seconds": 7, "timecode": "0:16" },
+  { "template": "frame", "text": "Booking the river before the week is the mistake.", "seconds": 4, "timecode": "0:23", "tone": "warn", "size": 92 },
+  { "template": "frame", "text": "Tell me the week. I'll name the river.", "sub": "@bonvtravel", "seconds": 6, "timecode": "0:27" }
+]

@@ -1,0 +1,9 @@
+[
+  { "template": "frame", "kicker": "Pricing, plainly", "text": "\"Free\" drinks at sea", "sub": "The arithmetic the brochure leaves out", "seconds": 4, "timecode": "0:00", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "text": "Nothing there is free", "sub": "It is a fare with the discount aimed at the bar", "seconds": 6, "timecode": "0:04", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Tell no. 1", "text": "A service charge on the free thing", "sub": "Charged on the package's stated daily value", "seconds": 10, "timecode": "0:10", "tone": "warn", "size": 92, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Tell no. 2", "text": "The exclusion list", "sub": "Premium pours, cabin water, the good coffee", "seconds": 7, "timecode": "0:20", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Tell no. 3", "text": "Priced per adult in the cabin", "sub": "Whether the second one drinks or not", "seconds": 6, "timecode": "0:27", "size": 100, "align": "left", "label": "BON V" },
+  { "template": "frame", "text": "Not a bad deal - a conditional one", "sub": "The condition is your own drinking pattern", "seconds": 8, "timecode": "0:33", "size": 100, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "The verdict", "text": "An inclusive fare deletes the question", "sub": "Save this before you're asked at embarkation", "seconds": 9, "timecode": "0:41", "size": 100, "align": "left", "label": "BON V" }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Cabin truths",
+    "title": "Some ocean views are a lifeboat, in daylight.",
+    "subtitle": "The word *obstructed* is doing a great deal of quiet work on that booking page.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 03" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The trick, plainly",
+    "text": "An ocean view is a promise about a window, not about a view.",
+    "sub": "The category means glass in the hull. It does not mean the sea is on the other side of it. What is on the other side may be davits, a steel rail, or a tender in its cradle."
+  },
+  {
+    "template": "list",
+    "kicker": "The vocabulary",
+    "title": "Three words worth translating",
+    "items": [
+      { "head": "Obstructed", "body": "Something structural sits between you and the water. The line has told you, in one word, and hoped you'd skim." },
+      { "head": "Partially obstructed", "body": "Usually the corner of the same object. Sometimes genuinely fine, and sometimes the whole frame." },
+      { "head": "Fully obstructed, reduced fare", "body": "Honest, and occasionally the smartest cabin on the ship — if you were never going to look out." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Same deck, same price band",
+    "title": "What the window holds",
+    "left": { "label": "Sold as view", "items": ["Glass, and a lifeboat", "Daylight, no horizon", "Curtains drawn by day two", "Photographs facing inward"] },
+    "right": { "label": "Actual view", "items": ["Unbroken sea line", "Sunrise into the room", "Curtains open all week", "The reason you paid"] }
+  },
+  {
+    "template": "quote",
+    "quote": "A window you keep covered is an interior cabin you overpaid for.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Buy the obstruction on purpose, or don't buy the window.",
+    "sub": "If you only sleep in the cabin, take the obstructed fare and put the difference into the itinerary. If the view is the point, insist on a category with no qualifier attached to it."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever books the cabins.",
+    "body": "Or send me the category code you've been quoted. I'll tell you what is actually outside that glass before your deposit becomes non-refundable.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

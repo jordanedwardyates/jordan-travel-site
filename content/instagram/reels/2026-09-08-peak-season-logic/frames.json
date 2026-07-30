@@ -1,0 +1,10 @@
+[
+  { "template": "frame", "kicker": "A critique", "text": "Peak-season logic runs backwards", "sub": "And it costs you twice.", "seconds": 4, "timecode": "0:00", "size": 116 },
+  { "template": "frame", "text": "July is not the best month.", "sub": "It is the month the schools are shut.", "seconds": 9, "timecode": "0:04" },
+  { "template": "frame", "text": "You pay a premium for someone else's timetable.", "sub": "And receive the crowd that premium created.", "seconds": 7, "timecode": "0:13", "tone": "warn", "size": 92 },
+  { "template": "frame", "text": "Peak week, so book early, so lock the fare.", "sub": "So there is no flexibility left to use.", "seconds": 7, "timecode": "0:20", "tone": "warn", "size": 92 },
+  { "template": "frame", "kicker": "Meanwhile", "text": "September: warmest sea, easing wind", "sub": "And the European holidays already over.", "seconds": 7, "timecode": "0:27" },
+  { "template": "frame", "text": "The critique isn't of summer.", "sub": "It is of the reasoning.", "seconds": 4, "timecode": "0:34" },
+  { "template": "frame", "text": "Say what you want from the voyage first.", "sub": "The month falls out of the answer.", "seconds": 5, "timecode": "0:38" },
+  { "template": "frame", "text": "And if it must be July, we build for July.", "sub": "Mornings ashore, berths rather than anchorages. @bonvtravel", "seconds": 5, "timecode": "0:43", "size": 92 }
+]

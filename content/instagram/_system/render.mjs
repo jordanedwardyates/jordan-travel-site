@@ -16,7 +16,7 @@
 
 import { chromium } from "playwright";
 import { spawn } from "node:child_process";
-import { readdir, readFile, writeFile, mkdir, rm, chmod } from "node:fs/promises";
+import { readdir, readFile, writeFile, mkdir, chmod } from "node:fs/promises";
 import { existsSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -43,16 +43,21 @@ async function readJson(p) {
   return JSON.parse(await readFile(p, "utf8"));
 }
 
-/** Screenshot one slide spec to PNG (and optionally JPEG for the slate). */
-async function shoot(page, slide, kind, outBase, wantJpeg) {
+/**
+ * Screenshot one slide spec.
+ *
+ * Output is JPEG, not PNG. Every slide carries the turbulence-based paper
+ * grain and foxing, which is noise — PNG cannot compress it, so slides landed
+ * at ~1.25 MB each and the full bank came to roughly a gigabyte. Instagram
+ * re-encodes to JPEG on upload regardless, so the quality ceiling is JPEG
+ * either way; q92 is visually indistinguishable here at about a tenth the size.
+ */
+async function shoot(page, slide, kind, outBase) {
   const { w, h } = SIZES[kind];
   await page.setViewportSize({ width: w, height: h });
   await page.setContent(renderSlide(slide, kind), { waitUntil: "load" });
   await page.evaluate(() => document.fonts.ready);
-  await page.screenshot({ path: `${outBase}.png` });
-  if (wantJpeg) {
-    await page.screenshot({ path: `${outBase}.jpg`, type: "jpeg", quality: 92 });
-  }
+  await page.screenshot({ path: `${outBase}.jpg`, type: "jpeg", quality: 92 });
 }
 
 /**
@@ -141,7 +146,7 @@ for entry in "\${FRAMES[@]}"; do
       -an -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p "$clip"
   else
     # No footage yet: hold the storyboard frame as a still.
-    ffmpeg -y -loglevel error -loop 1 -t "$secs" -i "frames/$n.png" \\
+    ffmpeg -y -loglevel error -loop 1 -t "$secs" -i "frames/$n.jpg" \\
       -vf "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=0xf6f1e8,fps=30,setsar=1" \\
       -an -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p "$clip"
   fi
@@ -192,7 +197,7 @@ async function main() {
       await mkdir(out, { recursive: true });
       for (let i = 0; i < slides.length; i++) {
         const s = { index: `${i + 1} / ${slides.length}`, ...slides[i] };
-        await shoot(page, s, "post", path.join(out, String(i + 1).padStart(2, "0")), false);
+        await shoot(page, s, "post", path.join(out, String(i + 1).padStart(2, "0")));
         postSlides++;
       }
       // Keep the generated HTML alongside for hand-tweaking a slide later.
@@ -224,17 +229,17 @@ async function main() {
       const jpegs = [];
       for (let i = 0; i < frames.length; i++) {
         const base = path.join(out, String(i + 1).padStart(2, "0"));
-        await shoot(page, frames[i], "reel", base, true);
+        await shoot(page, frames[i], "reel", base);
         jpegs.push(`${base}.jpg`);
         reelFrames++;
       }
+      // The frames double as the slate's source: mjpeg is the only decoder
+      // this ffmpeg has, and JPEG is already the delivered format.
       await buildSlate(
         jpegs,
         frames.map((f) => f.seconds ?? 3),
         path.join(dir, "slate.webm"),
       );
-      // The JPEGs were only fuel for the slate encoder.
-      for (const j of jpegs) await rm(j, { force: true });
 
       const sh = path.join(dir, "assemble.sh");
       await writeFile(sh, assembleScript(slug, frames));

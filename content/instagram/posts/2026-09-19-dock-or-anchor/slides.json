@@ -1,0 +1,66 @@
+[
+  {
+    "template": "cover",
+    "kicker": "River or ocean",
+    "title": "Docked in the centre, or anchored offshore",
+    "subtitle": "The single difference that changes every morning of the week.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 19" }
+  },
+  {
+    "template": "statement",
+    "kicker": "What docking buys",
+    "text": "A river ship ties up where the town actually is.",
+    "sub": "Step off after breakfast, come back for an hour, go out again after dinner. No tender ticket, no coach from an industrial berth."
+  },
+  {
+    "template": "compare",
+    "kicker": "The morning, compared",
+    "title": "Alongside versus offshore",
+    "left": {
+      "label": "River",
+      "items": [
+        "Alongside in the centre most days",
+        "Step off, no tender ticket",
+        "Ashore again after dinner",
+        "A short walk to the cathedral"
+      ]
+    },
+    "right": {
+      "label": "Ocean",
+      "items": [
+        "Sometimes a berth miles out",
+        "Sometimes anchored, by tender",
+        "The last tender is earlier",
+        "A coach ride to the old town"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "Where it shows",
+    "title": "Three mornings this actually changes",
+    "items": [
+      { "head": "Vienna and Budapest", "body": "You are walking, not transferring. The evening ashore is yours as well as the day." },
+      { "head": "The Douro's terraced villages", "body": "Small quays a large ship cannot use at all. The vessel is the only sensible way in." },
+      { "head": "A wet, grey day", "body": "On a river you go back aboard for an hour and out again. Offshore, that costs you the port." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "A river ship doesn't take you near the place. It ties up in it.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Ask where the ship berths, not only which ports it lists.",
+    "sub": "Same town on two itineraries can mean a five-minute walk or a forty-minute coach. The docking plan is the itinerary."
+  },
+  {
+    "template": "cta",
+    "kicker": "Pass it on",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Or tell me the week you have in mind and I'll send back a two-line verdict: river or ocean, and why.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

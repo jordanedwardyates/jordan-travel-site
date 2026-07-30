@@ -1,0 +1,72 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Ship selection",
+    "title": "Expedition, classic, or *yacht-style*.",
+    "subtitle": "Three different holidays that all get called a luxury cruise.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 05" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Why it matters",
+    "text": "Style is the one mistake a good itinerary cannot rescue.",
+    "sub": "You can change a suite, a date, even a route. You cannot change what a ship was designed to do with your evenings."
+  },
+  {
+    "template": "list",
+    "kicker": "The three",
+    "title": "Three styles, three buyers",
+    "items": [
+      { "n": 1, "head": "Expedition", "body": "Built around getting ashore in the boats: ice class, a lecture programme, naturalists. Dinner is early and unfussy." },
+      { "n": 2, "head": "Classic ocean", "body": "Larger, more venues, more structure. Strong for sea days, formal evenings and a proper library." },
+      { "n": 3, "head": "Yacht-style", "body": "Small, marina at the stern, dinner whenever. It reaches short quays, and the nights are the point." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Two of the three",
+    "title": "Expedition vs yacht-style",
+    "left": {
+      "label": "Expedition",
+      "items": [
+        "Landings, not port days",
+        "Naturalists aboard",
+        "Early nights, early boats",
+        "Weather writes the plan"
+      ]
+    },
+    "right": {
+      "label": "Yacht-style",
+      "items": [
+        "Harbours and long lunches",
+        "Watersports off the stern",
+        "Late dinner, later ashore",
+        "Berths big ships can't use"
+      ]
+    }
+  },
+  {
+    "template": "plot",
+    "kicker": "Match ship to person",
+    "title": "Which style suits whom",
+    "points": [
+      { "label": "First-timer", "value": "Yacht-style. Familiar rhythm, no fixed dining, and small enough to learn in a day." },
+      { "label": "Restless cruiser", "value": "Expedition. The novelty is the landings, and the ship stops being the entertainment." },
+      { "label": "Two weeks, one ocean", "value": "Classic. Sea days are designed for rather than endured, and the public rooms hold up." },
+      { "label": "Anyone for evenings", "value": "Yacht-style or classic. Expedition ships turn in early because the boats leave early." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Pick the style first. The itinerary is the easy part.",
+    "sub": "Almost every disappointed traveller I have inherited did it the other way round — chose a route, then accepted whichever ship happened to be sailing it."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Then tell me which of the three you think you are, and I'll tell you honestly whether I agree.",
+    "handle": "@bonvtravel"
+  }
+]

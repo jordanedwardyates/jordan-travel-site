@@ -1,0 +1,80 @@
+[
+  {
+    "template": "frame",
+    "kicker": "A reaction",
+    "text": "Seven countries. Ten days.",
+    "seconds": 6,
+    "timecode": "0:00",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "They remembered two",
+    "sub": "The rest was harbours and coach windows",
+    "seconds": 6,
+    "timecode": "0:06",
+    "tone": "warn",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Not their fault",
+    "seconds": 5,
+    "timecode": "0:12",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Six early starts. Six clocks.",
+    "seconds": 6,
+    "timecode": "0:17",
+    "tone": "warn",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "By port five you go anyway",
+    "sub": "Because it's paid for, not because you want to",
+    "seconds": 5,
+    "timecode": "0:23",
+    "tone": "warn",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "The ship went unused",
+    "seconds": 6,
+    "timecode": "0:28",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Four countries. Two overnights.",
+    "seconds": 5,
+    "timecode": "0:34",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Fewer ports isn't less holiday",
+    "seconds": 4,
+    "timecode": "0:39",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Send this to your travelling companion",
+    "seconds": 5,
+    "timecode": "0:43",
+    "align": "left",
+    "label": "BON V"
+  }
+]

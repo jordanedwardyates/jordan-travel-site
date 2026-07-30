@@ -1,0 +1,67 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Tender ports",
+    "title": "The last tender is not the all-aboard time.",
+    "subtitle": "It is earlier, it is a separate number, and it is where port days quietly go wrong.",
+    "stamp": { "top": "Port Day Rules", "bottom": "No. 02" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The mechanics",
+    "text": "A tender port has two deadlines and you only read one.",
+    "sub": "All-aboard is the moment the gangway closes. The last tender is the moment the last boat leaves the shore — and a full boat takes twenty minutes to load and cross."
+  },
+  {
+    "template": "list",
+    "kicker": "What goes wrong",
+    "title": "Four ways a tender day turns",
+    "items": [
+      { "head": "Moderate swell suspends the service", "body": "Wind, swell or poor visibility is enough. The ship sits in plain sight of a port you cannot reach." },
+      { "head": "The queue is the excursion", "body": "Ship's tours board first. Independents wait, and on a full ship that wait can run past an hour." },
+      { "head": "One boat, not four", "body": "Late in the day the service thins out. The last tender is genuinely the last one." },
+      { "head": "The swell builds while you're ashore", "body": "Tendering can be cut short. Being back early is not caution here, it is the plan." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The structural difference",
+    "title": "Anchored offshore vs alongside",
+    "left": {
+      "label": "Tendered",
+      "items": [
+        "Weather can cancel the port",
+        "Two deadlines to track",
+        "Queues at both ends",
+        "An hour lost to logistics"
+      ]
+    },
+    "right": {
+      "label": "Alongside",
+      "items": [
+        "You walk off when you like",
+        "One deadline, at the gangway",
+        "Return in stages, freely",
+        "The whole call is yours"
+      ]
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The small-ship point, made plainly",
+    "text": "Smaller ships berth where large ones must anchor.",
+    "sub": "That is not a marketing line — it is why the same itinerary on a smaller vessel loses fewer ports. When I compare two sailings, I count how many calls are tendered."
+  },
+  {
+    "template": "quote",
+    "quote": "Ask which calls are tendered before you ask about the suite. One of those answers changes your week.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this before your next port-heavy itinerary",
+    "body": "Or send me the sailing and I'll mark which calls are tendered, which dock, and which two days have no margin worth spending.",
+    "handle": "@bonvtravel"
+  }
+]

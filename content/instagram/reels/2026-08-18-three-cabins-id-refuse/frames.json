@@ -1,0 +1,9 @@
+[
+  { "template": "frame", "kicker": "Cabin truths", "text": "Three cabins I'd refuse", "sub": "Even at a discount. Especially at a discount.", "seconds": 3, "timecode": "0:00", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "One", "text": "Directly under the pool deck", "sub": "Loungers on steel at six, every sea day", "seconds": 4, "timecode": "0:03", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Two", "text": "Anything with a connecting door", "sub": "You do not get to choose who is behind it", "seconds": 5, "timecode": "0:07", "tone": "warn", "size": 92, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Three", "text": "A view the line calls obstructed", "sub": "When the view is the reason you are paying", "seconds": 5, "timecode": "0:12", "tone": "warn", "size": 92, "align": "left", "label": "BON V" },
+  { "template": "frame", "text": "None of it is on the brochure page", "sub": "All three of them are on the deck plan", "seconds": 5, "timecode": "0:17", "size": 92, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Ask three things", "text": "Above. Below. Outside.", "seconds": 5, "timecode": "0:22", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "One ask", "text": "Send the plan to whoever sails with you", "seconds": 5, "timecode": "0:27", "size": 92, "align": "left", "label": "BON V" }
+]

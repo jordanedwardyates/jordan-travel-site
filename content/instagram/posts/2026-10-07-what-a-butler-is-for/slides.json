@@ -1,0 +1,84 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Quiet luxury",
+    "title": "What a butler is actually for",
+    "subtitle": "Not pouring. Fixing \u2014 with the standing to move a dinner without you queueing for it.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 25"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The common mistake",
+    "text": "He is not a waiter with a better title. He is a fixer with standing.",
+    "sub": "The value is not service delivered to you in the suite. It is friction removed elsewhere on the ship, before you ever knew it existed."
+  },
+  {
+    "template": "list",
+    "kicker": "Use him for this",
+    "title": "Four things worth asking for",
+    "items": [
+      {
+        "head": "Moving a booking",
+        "body": "A table changed, a treatment shifted, a tour swapped \u2014 without you standing at a desk at four o'clock."
+      },
+      {
+        "head": "Timing around the port",
+        "body": "Breakfast on the terrace at half six because the tender at Katakolon goes early. Ask the night before."
+      },
+      {
+        "head": "Pressing and packing",
+        "body": "Everything ready before the captain's evening, and again on the last night when nobody wants to fold anything."
+      },
+      {
+        "head": "Knowing who to ring",
+        "body": "Which shore agent, which restaurant ashore, which member of crew can actually solve your problem."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Two ways to use one",
+    "title": "Wasted against well used",
+    "left": {
+      "label": "Wasted",
+      "items": [
+        "Champagne carried thirty feet",
+        "A canap\u00e9 you didn't want",
+        "Asked nothing all week",
+        "Felt vaguely observed",
+        "Tipped out of guilt"
+      ]
+    },
+    "right": {
+      "label": "Well used",
+      "items": [
+        "Briefed on day one",
+        "Coffee right by day two",
+        "Bookings quietly rearranged",
+        "Early tender days handled",
+        "Thanked for something real"
+      ]
+    }
+  },
+  {
+    "template": "quote",
+    "quote": "Tell him how you take your coffee, when you like to eat, and what you never want offered. The week arranges itself after that.",
+    "cite": "Jordan Yates \u00b7 Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Brief him on the first afternoon. Ten minutes, once.",
+    "sub": "Preferences, timings, and what you'd rather never be offered. Done properly it's the only such conversation you need \u2014 everything after that happens without discussion."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "What would you actually ask a butler for?",
+    "body": "Tell me in the comments. The good answers are always duller and more useful than the brochure ones.",
+    "handle": "@bonvtravel \u00b7 link in bio"
+  }
+]

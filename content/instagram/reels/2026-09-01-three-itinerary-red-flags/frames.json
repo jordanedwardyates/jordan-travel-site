@@ -1,0 +1,73 @@
+[
+  {
+    "template": "frame",
+    "kicker": "Before you book",
+    "text": "Three itinerary red flags",
+    "seconds": 5,
+    "timecode": "0:00",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "1 · Arrivals before 08:00",
+    "seconds": 5,
+    "timecode": "0:05",
+    "tone": "warn",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "A 7am-1pm call is half a day",
+    "sub": "And the queue takes the rest",
+    "seconds": 5,
+    "timecode": "0:10",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "2 · More than two tender ports",
+    "seconds": 5,
+    "timecode": "0:15",
+    "tone": "warn",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Swell cancels the port",
+    "sub": "It does not cancel the fare",
+    "seconds": 5,
+    "timecode": "0:20",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "3 · No sea day, or one on day two",
+    "seconds": 5,
+    "timecode": "0:25",
+    "tone": "warn",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Placed before anyone needs it",
+    "seconds": 4,
+    "timecode": "0:30",
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Hold your itinerary against this",
+    "sub": "Save it for the next one you're sent",
+    "seconds": 4,
+    "timecode": "0:34",
+    "align": "left",
+    "label": "BON V"
+  }
+]

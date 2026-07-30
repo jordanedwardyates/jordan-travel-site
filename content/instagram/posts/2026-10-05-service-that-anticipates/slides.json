@@ -1,0 +1,80 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Quiet luxury",
+    "title": "If you can see the service, it's theatre",
+    "subtitle": "The good version is nearly invisible. You just stop having to ask for things.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 23"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The distinction",
+    "text": "Anticipation costs crew. Performance only costs choreography.",
+    "sub": "A line-up of staff applauding you up the gangway is free. A barman who has your coffee right on the second morning is a staffing model, and it shows up in the fare."
+  },
+  {
+    "template": "compare",
+    "kicker": "Same intention",
+    "title": "Performed against anticipated",
+    "left": {
+      "label": "Performed",
+      "items": [
+        "Applause at the gangway",
+        "Towel folded into a swan",
+        "The dish explained at length",
+        "Your name said three times",
+        "A photographer at dinner"
+      ]
+    },
+    "right": {
+      "label": "Anticipated",
+      "items": [
+        "Your coffee, day two, right",
+        "Reading lamp already moved",
+        "The wine simply poured",
+        "Your name used once",
+        "Nobody photographs you"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "What makes memory possible",
+    "title": "Three conditions for real service",
+    "items": [
+      {
+        "head": "Enough crew per guest",
+        "body": "Nobody notices where you like to sit while covering forty other cabins. Attention is arithmetic before it is attitude."
+      },
+      {
+        "head": "Crew who come back",
+        "body": "Long contracts and low turnover mean the person who learned you in April is still aboard in October. Ask about tenure."
+      },
+      {
+        "head": "Permission to decide",
+        "body": "The best crew fix things without asking a supervisor. Where every kindness needs approval, you get apology, not remedy."
+      }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "The finest service I've had at sea I only noticed later \u2014 going back over the week and finding nothing I'd asked for twice.",
+    "cite": "Jordan Yates \u00b7 Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Weigh crew ratio and crew tenure. Ignore the choreography.",
+    "sub": "Two numbers and one question \u2014 how many crew, how long do they stay, and are they trusted to act. They predict a week at sea better than any photograph of a suite ever has."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "And if you want the unglamorous version, DM me the word CREW and I'll send the questions I actually put to a line before I recommend it.",
+    "handle": "@bonvtravel \u00b7 link in bio"
+  }
+]

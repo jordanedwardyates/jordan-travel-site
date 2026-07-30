@@ -1,0 +1,12 @@
+[
+  { "template": "frame", "kicker": "Post-mortem", "text": "The right ship. The wrong person.", "sub": "Nothing on board failed.", "seconds": 5, "timecode": "0:00", "tone": "warn", "size": 108, "label": "BON V" },
+  { "template": "frame", "text": "Expedition ship. Magnificent coastline.", "seconds": 7, "timecode": "0:05", "size": 100 },
+  { "template": "frame", "text": "Chosen off the route, not the ship.", "seconds": 7, "timecode": "0:12" },
+  { "template": "frame", "kicker": "The design", "text": "The boats leave early, so dinner is early.", "seconds": 8, "timecode": "0:19", "tone": "warn", "size": 92 },
+  { "template": "frame", "text": "They travel for the evenings.", "sub": "Long dinners. A second bottle.", "seconds": 8, "timecode": "0:27" },
+  { "template": "frame", "text": "Over by nine. Every night.", "seconds": 8, "timecode": "0:35", "tone": "warn" },
+  { "template": "frame", "kicker": "The fix", "text": "Same coast. Yacht-style ship.", "seconds": 9, "timecode": "0:43" },
+  { "template": "frame", "text": "Late dinner. Alongside in small harbours.", "seconds": 5, "timecode": "0:52", "size": 92 },
+  { "template": "frame", "text": "Style first. Route second.", "seconds": 6, "timecode": "0:57" },
+  { "template": "frame", "kicker": "So", "text": "Which of the two are you?", "sub": "@bonvtravel", "seconds": 6, "timecode": "1:03" }
+]

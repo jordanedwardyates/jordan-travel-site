@@ -1,0 +1,50 @@
+[
+  {
+    "template": "cover",
+    "kicker": "The Advisor's Edit",
+    "title": "\"I found it cheaper online\"",
+    "subtitle": "Nine times in ten that is a different fare code, not a better price.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 27" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The short answer",
+    "text": "A cheaper number is usually a smaller booking.",
+    "sub": "Same ship, same week, same cabin letter - and a different fare code underneath it, with different inclusions and different terms."
+  },
+  {
+    "template": "list",
+    "kicker": "Read the fare code",
+    "title": "Three things the cheaper number quietly dropped",
+    "items": [
+      { "head": "The bundled inclusions", "body": "Bundled fares and stripped fares look identical on a results page. They are not the same product." },
+      { "head": "Refundability", "body": "Non-refundable deposits price lower for a reason. You are being paid a small amount to accept a real risk." },
+      { "head": "The cabin you assumed", "body": "Guarantee bookings, obstructed views and connecting doors all sit inside the same category letter." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Side by side",
+    "title": "The same cabin, two fares",
+    "left": { "label": "The cheap one", "items": ["Non-refundable deposit", "No onboard credit", "Cabin assigned later", "Every excursion extra", "No air, no transfers"] },
+    "right": { "label": "The real one", "items": ["A deposit you can move", "Credit applied at booking", "Chosen on the deck plan", "Some excursions included", "Air and transfers priced in"] }
+  },
+  {
+    "template": "statement",
+    "kicker": "In practice",
+    "text": "Send me the cheaper one. I'll tell you what it left out.",
+    "sub": "Occasionally it is genuinely the better buy and I'll say so. More often the two fares are not comparable, and that is the whole finding."
+  },
+  {
+    "template": "quote",
+    "quote": "Any search engine can surface a hundred sailings; the work is knowing which three deserve your attention, and why.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Screenshot it and send it over",
+    "body": "I'll read the fare code and the inclusions against it, then come back with a two-line verdict on whether it is actually cheaper.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

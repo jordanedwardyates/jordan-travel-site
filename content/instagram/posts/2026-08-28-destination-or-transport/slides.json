@@ -1,0 +1,72 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Ship selection",
+    "title": "Is the ship the destination, or the *transport*?",
+    "subtitle": "Answer that honestly and half your shortlist disappears.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 08" }
+  },
+  {
+    "template": "statement",
+    "kicker": "No neutral answer",
+    "text": "Sea days are either the point or the penalty.",
+    "sub": "There is no middle position. Every ship is designed for one answer, and the itinerary quietly tells you which one it chose."
+  },
+  {
+    "template": "compare",
+    "kicker": "Two purchases",
+    "title": "Ship as destination vs transport",
+    "left": {
+      "label": "Destination",
+      "items": [
+        "Sea days you look forward to",
+        "Library, lounges, long lunches",
+        "Crossings and repositionings",
+        "Fewer ports, deeper ones"
+      ]
+    },
+    "right": {
+      "label": "Transport",
+      "items": [
+        "Ashore every single morning",
+        "Cabin as a place to sleep",
+        "Port-dense island routes",
+        "Evenings that end early"
+      ]
+    }
+  },
+  {
+    "template": "plot",
+    "kicker": "Read the port list",
+    "title": "What an itinerary confesses",
+    "points": [
+      { "label": "Sea days, counted", "value": "Two or more in a week means the ship is expected to hold you. It had better be able to." },
+      { "label": "An overnight in port", "value": "A rare and telling inclusion. It says the town matters more than the dining rooms." },
+      { "label": "Late departures", "value": "Anything after six turns dinner ashore from an argument into an actual evening." },
+      { "label": "Tender calls in July", "value": "The most fragile day on any summer itinerary, and the least often flagged to you." }
+    ]
+  },
+  {
+    "template": "list",
+    "kicker": "Mismatches I see",
+    "title": "Three ways this goes wrong",
+    "items": [
+      { "n": 1, "head": "A grand ship, a port sprint", "body": "You paid for the public rooms and then spent every day ashore. The ship was wasted on you." },
+      { "n": 2, "head": "A spartan ship, a crossing", "body": "Six sea days with nowhere good to sit is a long time in which to regret a fare." },
+      { "n": 3, "head": "Eight calls in ten nights", "body": "It reads beautifully on the page and it is quietly exhausting by the fourth morning." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "I'd rather sell you fewer ports on the right ship.",
+    "sub": "The route is what people book. The ship is what they remember. When those two disagree, the ship wins — every single time."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to the person you'd sail with",
+    "body": "Ask them the question on the first slide. If your answers differ, send me both and I'll find the compromise.",
+    "handle": "@bonvtravel"
+  }
+]

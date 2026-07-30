@@ -1,0 +1,97 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Itinerary craft",
+    "title": "A port call and a visit are different things.",
+    "subtitle": "One puts you in the harbour. The other puts you in the place.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 08"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "You can call at eleven ports and visit none of them.",
+    "sub": "A call is a berth and a window of hours. A visit is time enough for the town to stop performing for the ship and go back to its own afternoon."
+  },
+  {
+    "template": "list",
+    "kicker": "How a call fails",
+    "title": "Three ways a call is not a visit",
+    "items": [
+      {
+        "head": "The two-hour transfer",
+        "body": "The port is a working dock and the city is inland. You see the motorway twice and the place once, briefly."
+      },
+      {
+        "head": "The tender-dependent anchorage",
+        "body": "Nothing is promised. Moderate swell, wind or poor visibility suspends the boats and the day quietly evaporates."
+      },
+      {
+        "head": "The 07:00 arrival",
+        "body": "You walk a town that hasn't woken, then leave before it has had lunch. Photographs, not a visit."
+      }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "A six-hour call, honestly spent",
+    "title": "Where the hours actually go",
+    "points": [
+      {
+        "label": "First 45 minutes",
+        "value": "Berthing, the gangway, and the walk out through the terminal gate."
+      },
+      {
+        "label": "Next two hours",
+        "value": "The transfer in, if the port is not the place you came to see."
+      },
+      {
+        "label": "Middle two hours",
+        "value": "The visit itself. One site, one lunch, and no second thing."
+      },
+      {
+        "label": "Last 75 minutes",
+        "value": "The transfer back, plus the margin all-aboard quietly demands."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The distinction",
+    "title": "A call, and a visit",
+    "left": {
+      "label": "A call",
+      "items": [
+        "Hours, minus the transfers",
+        "A queue for a boat",
+        "The harbour cafe",
+        "Lunch back on the ship",
+        "A photograph"
+      ]
+    },
+    "right": {
+      "label": "A visit",
+      "items": [
+        "A whole day, alongside",
+        "Off the gangway on foot",
+        "A table you booked",
+        "Dinner ashore, unhurried",
+        "A street you'd recognise"
+      ]
+    }
+  },
+  {
+    "template": "quote",
+    "quote": "Count visits, not calls. The number is always smaller, and it's the only one that describes the holiday.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with.",
+    "body": "Then send me the itinerary you're weighing up. I'll mark which calls are genuine visits and which are simply berths with a name attached.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

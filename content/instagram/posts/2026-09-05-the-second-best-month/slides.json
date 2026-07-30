@@ -1,0 +1,57 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Seasonality",
+    "title": "The best month is usually the second-best month",
+    "subtitle": "Why I steer toward the week either side of perfect, and what it buys you.",
+    "stamp": { "top": "Advisor's Note", "bottom": "The Aegean" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "Peak season is peak because of the school calendar.",
+    "sub": "Not because of the weather. Once you separate those two things, the whole year reads differently — and most of it reads better."
+  },
+  {
+    "template": "plot",
+    "kicker": "The Aegean year",
+    "title": "How the calendar actually behaves",
+    "points": [
+      { "label": "May", "value": "Green hillsides, cool shade, a sea just warm enough to swim without bravado." },
+      { "label": "June", "value": "Long, clear light. The old towns are filling but not yet brimming." },
+      { "label": "July - August", "value": "Peak heat, peak crowds, and the meltemi at its strongest in the afternoons." },
+      { "label": "September", "value": "Warmest sea of the year, the wind easing, the European holidays over." },
+      { "label": "October", "value": "Lower golden light, tavernas beginning to close, first weather systems in." }
+    ]
+  },
+  {
+    "template": "list",
+    "kicker": "Before you pick",
+    "title": "Three questions that choose the week for you",
+    "items": [
+      { "head": "Swimming, or walking?", "body": "The warmest water is September. The kindest walking weather is May. Those are not the same voyage." },
+      { "head": "Can you travel outside term time?", "body": "If you can, the last week of May and the first two of October are the weeks I watch on your behalf." },
+      { "head": "How much flexibility do you hold?", "body": "Late October asks for some. A shifted tender port or a shuttered taverna is part of that bargain." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The same islands",
+    "title": "One week apart, two different voyages",
+    "left": { "label": "Peak week", "items": ["Santorini at midday", "A caldera sunset by queue", "Meltemi afternoons", "Term-time fares", "Four ships alongside"] },
+    "right": { "label": "Shoulder", "items": ["The old town to yourself", "A table without booking", "Calmer tender days", "Softer fares", "One ship in port"] }
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "The second-best month still belongs to the islanders.",
+    "sub": "All the warmth of summer, little of its congestion, at a lower fare. That is not a compromise — it is the better trip, and it is usually available."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Then tell me which weeks you can actually travel, and I'll tell you what the Aegean is doing in them.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

@@ -1,0 +1,83 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Quiet luxury",
+    "title": "Gold leaf is cheap. Space is not.",
+    "subtitle": "The most expensive thing on a good ship is the part of it nobody is standing in.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 21"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The arithmetic",
+    "text": "Decoration is a one-off cost. Space is a cost every sailing.",
+    "sub": "A marble atrium is paid for once, at the shipyard. Selling four hundred berths where you could have sold nine hundred is paid for on every voyage the ship ever makes."
+  },
+  {
+    "template": "list",
+    "kicker": "What I read first",
+    "title": "Three numbers before any photograph",
+    "items": [
+      {
+        "n": "1",
+        "head": "Guests against tonnage",
+        "body": "The space ratio. It tells you whether the public rooms are generous or only photographed from a flattering corner."
+      },
+      {
+        "n": "2",
+        "head": "Guests against crew",
+        "body": "Close to one to one and service can anticipate. Stretch it and service becomes queueing, however warm the crew are."
+      },
+      {
+        "n": "3",
+        "head": "Dining seats against beds",
+        "body": "If the room cannot seat the ship, the reservation system is doing the rationing \u2014 and you will feel it by Wednesday."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Two kinds of grand",
+    "title": "Announced against implied",
+    "left": {
+      "label": "Announced",
+      "items": [
+        "Atrium three decks high",
+        "Gilding and glass sculpture",
+        "A photograph of a staircase",
+        "Crowded at eight o'clock",
+        "Signage everywhere"
+      ]
+    },
+    "right": {
+      "label": "Implied",
+      "items": [
+        "A room with empty chairs",
+        "Linen, oak, worn leather",
+        "A window seat still free",
+        "Walk in, sit down",
+        "Nobody has to direct you"
+      ]
+    }
+  },
+  {
+    "template": "quote",
+    "quote": "You do not notice space. You notice its absence \u2014 and then you spend the week noticing nothing else.",
+    "cite": "Jordan Yates \u00b7 Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Buy the emptier ship, not the shinier one.",
+    "sub": "The Cyclades in October is the same sea from either deck. The difference is whether the deck has forty people on it or four hundred, and that difference is the entire holiday."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "If you send me two sailings you're weighing, I'll send back a two-line verdict on which one actually has room in it.",
+    "handle": "@bonvtravel \u00b7 link in bio"
+  }
+]

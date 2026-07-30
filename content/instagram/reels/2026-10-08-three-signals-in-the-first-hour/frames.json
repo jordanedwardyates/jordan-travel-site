@@ -1,0 +1,56 @@
+[
+  {
+    "template": "frame",
+    "kicker": "Quiet luxury",
+    "text": "You'll know within an hour",
+    "sub": "Three signals a ship is well run.",
+    "seconds": 3,
+    "timecode": "0:00"
+  },
+  {
+    "template": "frame",
+    "kicker": "One",
+    "text": "Your cabin is ready.",
+    "sub": "And nobody announces that it is.",
+    "seconds": 6,
+    "timecode": "0:03"
+  },
+  {
+    "template": "frame",
+    "kicker": "Two",
+    "text": "Your bag is carried, unasked.",
+    "sub": "And nobody waits beside you afterwards.",
+    "seconds": 6,
+    "timecode": "0:09"
+  },
+  {
+    "template": "frame",
+    "kicker": "Three",
+    "text": "The address system stays silent.",
+    "sub": "No spa pitch before you've unpacked.",
+    "seconds": 7,
+    "timecode": "0:15"
+  },
+  {
+    "template": "frame",
+    "text": "If it's selling on hour one, it sells all week.",
+    "seconds": 6,
+    "timecode": "0:22",
+    "tone": "warn",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "text": "Everything else on hour one is decor.",
+    "seconds": 5,
+    "timecode": "0:28",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "text": "Those three tell you the week.",
+    "sub": "@bonvtravel",
+    "seconds": 5,
+    "timecode": "0:33"
+  }
+]

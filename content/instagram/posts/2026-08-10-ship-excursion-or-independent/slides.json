@@ -1,0 +1,68 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Excursion strategy",
+    "title": "There is one real reason to book the ship's tour.",
+    "subtitle": "It is not the guiding, the coach or the commentary. It is who pays when the traffic doesn't move.",
+    "stamp": { "top": "Port Day Rules", "bottom": "No. 03" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The rule, in one line",
+    "text": "A late ship's excursion is the line's problem. A late private tour is yours.",
+    "sub": "On the cruise line's own excursion, the ship waits — or the line is responsible for getting you to the next port at its cost. Independently, it is not required to wait at all."
+  },
+  {
+    "template": "compare",
+    "kicker": "Same lateness, opposite outcome",
+    "title": "Who funds the recovery",
+    "left": {
+      "label": "Independent",
+      "items": [
+        "Ship need not wait",
+        "You fund the hotels",
+        "You fund the onward flights",
+        "You chase your own visas",
+        "Belongings sail without you"
+      ]
+    },
+    "right": {
+      "label": "Ship's tour",
+      "items": [
+        "Ship holds, or the line arranges",
+        "Line funds the transfer",
+        "Line funds the onward travel",
+        "Line handles the paperwork",
+        "You rejoin at the next port"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "So the question is margin",
+    "title": "Three port days where I book through the ship",
+    "items": [
+      { "head": "The site is over an hour inland", "body": "Ephesus, Pompeii, the Douro terraces. Distance is what removes your ability to recover a delay." },
+      { "head": "It is a tendered call", "body": "Add the tender queue at both ends and a comfortable margin becomes no margin at all." },
+      { "head": "A short call, or a border crossing", "body": "Under seven hours alongside, or any day that ends with a passport check, and I stop being clever about it." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "And the rest of the week",
+    "text": "On a long call in a walkable port, hire your own guide.",
+    "sub": "Ten hours in Dubrovnik or Bordeaux is not a day that needs institutional protection. That is where a private guide earns every pound of the difference."
+  },
+  {
+    "template": "quote",
+    "quote": "Knowing which days have no margin is the job. The excursion choice follows from that, not the other way round.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever books your shore days",
+    "body": "Send me your itinerary and I'll mark the two or three days where the ship's tour is the correct answer — and the rest, where it plainly isn't.",
+    "handle": "@bonvtravel"
+  }
+]

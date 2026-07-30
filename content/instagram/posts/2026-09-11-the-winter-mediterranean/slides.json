@@ -1,0 +1,51 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Seasonality",
+    "title": "The winter Mediterranean",
+    "subtitle": "Not a worse voyage — a different one, and almost nobody is offered it properly.",
+    "stamp": { "top": "Off Season", "bottom": "Advisor's Note" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Read this alone",
+    "text": "In winter the Mediterranean stops being a beach and becomes a library.",
+    "sub": "The sea is not the point any more. The shore is — and the shore in January has its own inhabitants back."
+  },
+  {
+    "template": "list",
+    "kicker": "What actually changes",
+    "title": "Four honest differences",
+    "items": [
+      { "head": "The fleet has largely gone", "body": "Most ships redeploy to warmer water. What remains is a shorter, more deliberate list of sailings." },
+      { "head": "Cities replace islands", "body": "Rome, Barcelona, Valletta, Cadiz. Great ports rather than swimming stops, and they hold up in the rain." },
+      { "head": "The days are short", "body": "Less usable daylight ashore. An eight-hour call in December is not the eight hours of a June call." },
+      { "head": "Weather is a real variable", "body": "Rain and swell are genuine possibilities. Alongside berths matter more here than at any other time." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The trade",
+    "title": "Winter call vs summer call",
+    "left": { "label": "Winter", "items": ["Museums without queues", "Locals back in the restaurants", "Softer fares", "Short daylight", "Rain is plausible"] },
+    "right": { "label": "Summer", "items": ["Timed-entry tickets", "Menus written for visitors", "Peak fares", "Long evenings ashore", "Heat to plan around"] }
+  },
+  {
+    "template": "quote",
+    "quote": "Winter is the wrong answer if you came for the sea. It is the right one if you came for the shore.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Choose the season that matches what you came to do.",
+    "sub": "Swimming and walking are different holidays wearing the same brochure. Winter simply removes the pretence that a voyage must be about the water."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "DM me the word WINTER",
+    "body": "I'll tell you what is genuinely still sailing the Mediterranean in January, and which of it is worth your fortnight.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

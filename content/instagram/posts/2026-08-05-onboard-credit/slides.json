@@ -1,0 +1,54 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Onboard credit",
+    "title": "Onboard credit is not the same as money",
+    "subtitle": "It is a voucher for the line's own shop, and some of it expires while you sleep.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 05" }
+  },
+  {
+    "template": "statement",
+    "kicker": "What it really is",
+    "text": "Credit keeps your money on the ship. That is the point of it.",
+    "sub": "A line would rather hand you spend than cut the fare, because credit comes back to it at retail. Useful, but not equivalent to a lower price."
+  },
+  {
+    "template": "list",
+    "kicker": "Three pots",
+    "title": "Three sources, three sets of rules",
+    "items": [
+      { "head": "Line promotional credit", "body": "Attached to a campaign, and often tied to a cabin category or a booking window. Read what it excludes." },
+      { "head": "Agency credit", "body": "Comes from the advisor's own arrangement, and stacks on top of the line's rather than replacing it." },
+      { "head": "Loyalty or shareholder credit", "body": "Small, reliable, and routinely forgotten. It has to be claimed before sailing, not aboard." }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "Read the terms",
+    "title": "The four questions to ask",
+    "points": [
+      { "label": "Refundable?", "value": "Unspent credit either returns to you at the end or simply evaporates." },
+      { "label": "Per cabin or person?", "value": "The same figure means two different things depending on this line alone." },
+      { "label": "What can it buy?", "value": "Some credit excludes the spa, the casino, or pre-booked excursions." },
+      { "label": "When does it land?", "value": "Some is spendable before you sail. Some appears only on day one." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "I would take a lower fare over credit almost every time. Credit is only a saving if you were going to spend it anyway.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Ask for it stacked, then ask whether it is refundable.",
+    "sub": "Stacked credit from separate pots is real value. A single large figure with restrictions attached is a marketing number. Two questions tell them apart."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to the person who handles the booking",
+    "body": "Usually one of you reads the terms and one of you reads the brochure. This is for the first one.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

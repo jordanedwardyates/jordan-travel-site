@@ -1,0 +1,10 @@
+[
+  { "template": "frame", "kicker": "The assumption", "text": "*Bigger ship, better holiday.*", "sub": "It isn't a rule.", "seconds": 4, "timecode": "0:00", "tone": "warn", "size": 116, "label": "BON V" },
+  { "template": "frame", "text": "Size buys venues — and people to share them.", "seconds": 6, "timecode": "0:04", "size": 92 },
+  { "template": "frame", "text": "The people arrive faster than the venues.", "seconds": 4, "timecode": "0:10", "tone": "warn" },
+  { "template": "frame", "text": "Seats don't scale with cabins.", "sub": "Neither do tender boats.", "seconds": 4, "timecode": "0:14" },
+  { "template": "frame", "kicker": "Same port, same morning", "text": "One anchors. One ties up alongside.", "sub": "Berth length and water depth — not marketing.", "seconds": 8, "timecode": "0:18", "size": 100 },
+  { "template": "frame", "text": "Ashore before breakfast is cleared.", "seconds": 5, "timecode": "0:26" },
+  { "template": "frame", "text": "Bigger isn't worse. It's a different holiday.", "seconds": 6, "timecode": "0:31", "size": 92 },
+  { "template": "frame", "kicker": "So I ask", "text": "How many people at breakfast?", "sub": "@bonvtravel", "seconds": 6, "timecode": "0:37" }
+]

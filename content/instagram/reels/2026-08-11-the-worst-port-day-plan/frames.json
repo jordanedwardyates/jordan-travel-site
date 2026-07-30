@@ -1,0 +1,10 @@
+[
+  { "template": "frame", "kicker": "A plan I was sent", "text": "Two hours inland. On a tender day.", "sub": "In a private car, to save money.", "seconds": 3, "timecode": "0:00", "tone": "warn", "size": 108, "label": "BON V" },
+  { "template": "frame", "text": "The call was eight hours. On paper.", "sub": "Anchored offshore, not alongside.", "seconds": 6, "timecode": "0:03" },
+  { "template": "frame", "text": "Four of those eight hours were road.", "seconds": 7, "timecode": "0:09", "tone": "warn" },
+  { "template": "frame", "kicker": "Then the real number", "text": "Last tender 4:30. All-aboard 5:30.", "sub": "Two deadlines. Only one was in the plan.", "seconds": 7, "timecode": "0:16", "size": 100 },
+  { "template": "frame", "text": "So the true margin was fifteen minutes.", "sub": "Before the tender queue is counted.", "seconds": 7, "timecode": "0:23", "tone": "warn" },
+  { "template": "frame", "kicker": "The critique", "text": "It isn't the guide. It's the arithmetic.", "seconds": 7, "timecode": "0:30", "size": 100 },
+  { "template": "frame", "text": "Same site, ship's tour — the line owns the delay.", "sub": "It waits, or it moves you to the next port.", "seconds": 7, "timecode": "0:37", "size": 92 },
+  { "template": "frame", "text": "Keep the private guide for the long, walkable call.", "sub": "@bonvtravel", "seconds": 6, "timecode": "0:44", "size": 92 }
+]

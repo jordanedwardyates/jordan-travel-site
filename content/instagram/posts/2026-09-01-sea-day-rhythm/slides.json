@@ -1,0 +1,101 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Itinerary craft",
+    "title": "Sea days are not filler. They are the design.",
+    "subtitle": "Where a sea day sits in the week decides whether you come home rested.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 10"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "Four port days in a row isn't an itinerary. It's a commute.",
+    "sub": "Consecutive port days each begin at the gangway and end against a clock. By the third, most travellers go ashore out of obligation rather than appetite."
+  },
+  {
+    "template": "plot",
+    "kicker": "A generic seven-night loop",
+    "title": "The order I'd argue for",
+    "points": [
+      {
+        "label": "Days 1 - 2",
+        "value": "Embarkation, then a sea day. You arrive on the ship before you arrive anywhere."
+      },
+      {
+        "label": "Day 3",
+        "value": "First port, alongside at 08:00. Rested enough to actually want it."
+      },
+      {
+        "label": "Day 4",
+        "value": "Second port, overnight. The evening the voyage gets remembered for."
+      },
+      {
+        "label": "Day 5",
+        "value": "Sea day, mid-week. The one that makes days six and seven possible."
+      },
+      {
+        "label": "Days 6 - 7",
+        "value": "Final port, then a slow morning into the disembarkation city."
+      }
+    ]
+  },
+  {
+    "template": "list",
+    "kicker": "What goes wrong",
+    "title": "Three rhythm faults",
+    "items": [
+      {
+        "head": "The sea day parked on day two",
+        "body": "Placed where it reads well in a brochure, before anyone needs it. A waste of the best day of the week."
+      },
+      {
+        "head": "Four consecutive port calls",
+        "body": "Each one costs an early start. Enjoyment falls off after the second; attendance, unfortunately, does not."
+      },
+      {
+        "head": "A dawn arrival after a late sailing",
+        "body": "Away at eight in the evening, anchored at seven the next morning. Nobody sleeps and the day pays for it."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Same ports",
+    "title": "Two versions of one week",
+    "left": {
+      "label": "Stacked",
+      "items": [
+        "Six port days of seven",
+        "Sea day on day two",
+        "Two dawn arrivals",
+        "Dinner ashore: never",
+        "Home needing a holiday"
+      ]
+    },
+    "right": {
+      "label": "Paced",
+      "items": [
+        "Four port days of seven",
+        "Sea day mid-week",
+        "Arrivals at eight",
+        "One dinner ashore",
+        "Home actually rested"
+      ]
+    }
+  },
+  {
+    "template": "quote",
+    "quote": "A sea day placed properly is the most valuable day on the ship. Placed badly, it's the one people apologise for.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send me the week and I'll re-order it.",
+    "body": "Same ports, better sequence, and often the same fare. Tell me which sailing you're looking at and I'll show you the version that reads calmer.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

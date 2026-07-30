@@ -1,0 +1,13 @@
+[
+  { "template": "frame", "kicker": "Post-mortem", "text": "The flight cancels. Not the cruise.", "sub": "This happens every season.", "seconds": 3, "timecode": "0:00", "tone": "warn" },
+  { "template": "frame", "text": "The most common way people miss a ship.", "seconds": 4, "timecode": "0:03", "tone": "warn" },
+  { "template": "frame", "text": "Late evening. An airline app. A sailing at dawn.", "seconds": 7, "timecode": "0:07", "size": 92 },
+  { "template": "frame", "text": "Booked direct, that is your midnight to solve.", "seconds": 6, "timecode": "0:14", "tone": "warn", "size": 92 },
+  { "template": "frame", "kicker": "The turn", "text": "One call before the terminal opened.", "sub": "The cabin was flagged, not released.", "seconds": 8, "timecode": "0:20" },
+  { "template": "frame", "text": "New routing. Transfer moved. A hotel found.", "seconds": 6, "timecode": "0:28" },
+  { "template": "frame", "text": "Sometimes you join at the second port.", "sub": "Arranged, because someone asked properly.", "seconds": 7, "timecode": "0:34" },
+  { "template": "frame", "text": "That is not a discount. It is a phone call.", "seconds": 6, "timecode": "0:41" },
+  { "template": "frame", "kicker": "The rule", "text": "Fly in a day early. Every time.", "seconds": 7, "timecode": "0:47" },
+  { "template": "frame", "text": "The bad endings are flight delays.", "sub": "Not late tours.", "seconds": 7, "timecode": "0:54" },
+  { "template": "frame", "text": "Keep one number that answers at midnight.", "sub": "@bonvtravel", "seconds": 5, "timecode": "1:01" }
+]

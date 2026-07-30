@@ -1,0 +1,80 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Quiet luxury",
+    "title": "Aged well, or simply new once",
+    "subtitle": "After eight years at sea, a ship's design has told you which of the two it is.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 26"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The difference",
+    "text": "Good materials record use. Fashionable ones only deteriorate.",
+    "sub": "Oak darkens, brass dulls, leather softens, wool wears in. Lacquer chips, chrome pits, backlit acrylic yellows, and the feature wall becomes a date stamp."
+  },
+  {
+    "template": "compare",
+    "kicker": "Read the surfaces",
+    "title": "Ages against dates",
+    "left": {
+      "label": "Dates",
+      "items": [
+        "High-gloss lacquer",
+        "Chrome and mirrored glass",
+        "Backlit acrylic panels",
+        "This year's accent colour",
+        "A mosaic feature wall"
+      ]
+    },
+    "right": {
+      "label": "Ages",
+      "items": [
+        "Oak, walnut, worn brass",
+        "Leather that has softened",
+        "Wool, linen, painted steel",
+        "Charts, prints, bound books",
+        "Lamps you can reach"
+      ]
+    }
+  },
+  {
+    "template": "quote",
+    "quote": "A well-made room gets refreshed. A fashionable one has to be replaced \u2014 usually by whoever chose it wrongly the first time.",
+    "cite": "Jordan Yates \u00b7 Luxury Voyage Advisor"
+  },
+  {
+    "template": "list",
+    "kicker": "What I look at",
+    "title": "Three tells on any deck plan",
+    "items": [
+      {
+        "head": "The library, if there is one",
+        "body": "A real library means the line believes in sea days. A shelf of decorative spines means it believes in photographs."
+      },
+      {
+        "head": "The number of screens",
+        "body": "Digital signage on every landing dates faster than anything afloat, and makes a public room feel like an airport."
+      },
+      {
+        "head": "Whether you can move a chair",
+        "body": "Fixed, bolted, arranged-for-the-camera seating tells you the room was designed to be looked at, not sat in."
+      }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Good bones beat a recent refit almost every time.",
+    "sub": "A twenty-year-old ship built in oak and brass will be pleasant for another twenty. The sea is the view; the room only has to be quiet, well made, and not shouting its year."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Then send me a ship you're considering and I'll give you two honest lines on whether it has aged or merely been refitted.",
+    "handle": "@bonvtravel \u00b7 link in bio"
+  }
+]

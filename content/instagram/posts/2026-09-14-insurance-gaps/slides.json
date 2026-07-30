@@ -1,0 +1,87 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Mistakes to avoid",
+    "title": "Your policy may not cover the thing you fear.",
+    "subtitle": "Most policies have windows and exclusions. Both are readable, and almost nobody reads them.",
+    "stamp": {
+      "top": "Errors of Judgement",
+      "bottom": "No. 03"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The window",
+    "text": "Cover for a pre-existing condition often depends on when you bought.",
+    "sub": "Many insurers tie it to a period after your deposit date, and the length varies by insurer and by country. Read the certificate, and ask before you buy rather than after."
+  },
+  {
+    "template": "list",
+    "kicker": "Read these four",
+    "title": "Four clauses worth reading",
+    "items": [
+      {
+        "n": "1",
+        "head": "Medical evacuation at sea",
+        "body": "Removing someone from a ship mid-ocean is the most expensive thing that can happen to a voyage."
+      },
+      {
+        "n": "2",
+        "head": "Pre-existing conditions",
+        "body": "Cover often hinges on a purchase window after deposit. Confirm the exact terms with the insurer in writing."
+      },
+      {
+        "n": "3",
+        "head": "Cancel for any reason",
+        "body": "Where it exists it is usually an add-on with its own deadline and a partial payout."
+      },
+      {
+        "n": "4",
+        "head": "Missed departure",
+        "body": "Check whether a delayed flight to embarkation is covered, and under what conditions."
+      }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "Not what people expect",
+    "title": "Where claims actually come from",
+    "points": [
+      {
+        "label": "Medical",
+        "value": "Illness ashore or onboard, and the cost of the care that follows you home."
+      },
+      {
+        "label": "Evacuation",
+        "value": "Distance from a hospital, rather than severity, is what drives the bill."
+      },
+      {
+        "label": "Cancellation",
+        "value": "A parent's illness at home ends more voyages than anything at sea."
+      },
+      {
+        "label": "Delay",
+        "value": "Flights, not ships, cause most of the disruption people claim for."
+      }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The timing that matters",
+    "text": "Buy the policy when you pay the deposit, not when you pack.",
+    "sub": "The clauses that matter most are usually tied to a date you have already passed by the time you start reading them."
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Read three things: the medical limit, the evacuation limit, the exclusions.",
+    "sub": "If the evacuation figure looks generous, check whether it is combined with the medical limit or genuinely separate from it."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to the person you'd travel with",
+    "body": "I don't sell the policy, so the questions are the whole of my interest — ask, and I'll tell you what I'd put to an insurer before signing.",
+    "handle": "@bonv.travel"
+  }
+]

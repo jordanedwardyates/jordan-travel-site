@@ -1,0 +1,56 @@
+[
+  {
+    "template": "cover",
+    "kicker": "The Advisor's Edit",
+    "title": "Five questions before I name a ship",
+    "subtitle": "The brief matters more than the brochure. Most of a good voyage is decided before a ship is chosen.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 30" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Where I start",
+    "text": "The first thing I need isn't a destination. It's a temperament.",
+    "sub": "Two travellers can want the same coastline and need entirely different ships. Naming the ship first is how people end up on the wrong one."
+  },
+  {
+    "template": "list",
+    "kicker": "The brief",
+    "title": "Five questions before I name a ship",
+    "items": [
+      { "head": "What did you last regret?", "body": "The clearest signal in the whole conversation. Regret is far more specific than preference." },
+      { "head": "How many ports is too many?", "body": "Some want seven. Some want three and a long lunch. No correct answer, only yours." },
+      { "head": "Dinner at eight, or whenever?", "body": "Fixed seating, open dining and a small ship's single restaurant are three different holidays." },
+      { "head": "Who else is coming?", "body": "A cabin for two is a different problem to a family across three cabins on separate decks." },
+      { "head": "What would feel oversold?", "body": "Everyone has a line. Yours tells me which ships to leave off the list entirely." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The unglamorous half",
+    "text": "Half of any recommendation is removal.",
+    "sub": "The short list is short because things were taken out of it. What you never see is most of the work, and most of the reason it is worth having."
+  },
+  {
+    "template": "quote",
+    "quote": "Most of what I do isn't booking travel - it's editing it.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "plot",
+    "kicker": "The payoff",
+    "title": "What the five answers decide",
+    "points": [
+      { "label": "The line", "value": "Service style, temperament, and how much ceremony you can comfortably stand." },
+      { "label": "The ship", "value": "Size, motion, and whether it can berth where the large ships must anchor." },
+      { "label": "The season", "value": "Shoulder dates buy quieter ports more reliably than any upgrade ever will." },
+      { "label": "The cabin", "value": "Chosen last, on the deck plan, once the first three are properly settled." }
+    ]
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Answer the first one in the comments",
+    "body": "What did you last regret on a voyage - the ship, the season, the itinerary, or the cabin? I read every reply and I'll tell you what I'd change.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

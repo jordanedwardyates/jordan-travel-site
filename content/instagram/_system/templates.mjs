@@ -169,8 +169,12 @@ const rich = (s = "") =>
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.+?)\*/g, "<em>$1</em>");
 
+// `left` doubles as a footer override, but on `compare` slides it is the
+// left-hand column object — so only honour it when it is actually a string.
 const foot = (s) =>
-  `<div class="foot"><span>${esc(s.left ?? "BON V · A Travel Company")}</span><span class="index">${esc(s.index ?? "")}</span></div>`;
+  `<div class="foot"><span>${esc(
+    typeof s.left === "string" ? s.left : "BON V · A Travel Company",
+  )}</span><span class="index">${esc(s.index ?? "")}</span></div>`;
 
 // ---------------------------------------------------------------- templates
 

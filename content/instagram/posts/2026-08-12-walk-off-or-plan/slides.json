@@ -1,0 +1,67 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Port days",
+    "title": "Some ports you walk off into. Most you don't.",
+    "subtitle": "The itinerary prints a city's name. What it books is a berth, and the two are often an hour apart.",
+    "stamp": { "top": "Port Day Rules", "bottom": "No. 05" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Read the berth, not the name",
+    "text": "The port on your itinerary is not always the place on your itinerary.",
+    "sub": "Civitavecchia is not Rome. Livorno is not Florence. Kuşadası is not Ephesus. Each of those is a scheduled coach ride before the day begins."
+  },
+  {
+    "template": "compare",
+    "kicker": "Two kinds of call",
+    "title": "Walk off vs plan ahead",
+    "left": {
+      "label": "Walk off",
+      "items": [
+        "Kotor — alongside the walls",
+        "Bordeaux — in the city itself",
+        "Valletta — a lift and you're up",
+        "Chania — the harbour is the point"
+      ]
+    },
+    "right": {
+      "label": "Plan ahead",
+      "items": [
+        "Civitavecchia — Rome is inland",
+        "Livorno — Florence is further",
+        "Kuşadası — Ephesus by road",
+        "Le Havre — Paris is a day trip"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "How I decide, in order",
+    "title": "Four questions before any port day",
+    "items": [
+      { "head": "How far is the thing from the berth?", "body": "Under twenty minutes on foot and you need no plan at all. Over an hour by road and you need a good one." },
+      { "head": "Alongside, or tendered?", "body": "Tendering adds a queue at each end and a weather clause you cannot argue with." },
+      { "head": "How long is the call, in ship's time?", "body": "Under seven hours alongside, the inland option stops being a choice and becomes a gamble." },
+      { "head": "How many ships share the day?", "body": "Two large ships alongside changes the town completely between nine and noon." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The unfashionable conclusion",
+    "text": "Sometimes the right plan is to skip the famous inland thing.",
+    "sub": "Rome does not fit inside a port call, and pretending otherwise buys you four hours on a coach and ninety minutes of queue. Do Rome properly, before or after the ship."
+  },
+  {
+    "template": "quote",
+    "quote": "An itinerary is a list of berths. My job is telling you which of them are actually the places you meant to visit.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to the person planning your shore days",
+    "body": "Or send me a sailing you're weighing. I'll come back with which calls you can walk off into and which two need a plan made in advance.",
+    "handle": "@bonvtravel"
+  }
+]

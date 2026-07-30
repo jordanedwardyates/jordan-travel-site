@@ -1,0 +1,12 @@
+[
+  { "template": "frame", "kicker": "Post-mortem", "text": "It is almost never the wrong ship.", "sub": "It is the wrong week.", "seconds": 5, "timecode": "0:00", "tone": "warn", "size": 116 },
+  { "template": "frame", "text": "I see this same post-mortem every season.", "sub": "Two or three times, and it reads identically.", "seconds": 7, "timecode": "0:05" },
+  { "template": "frame", "text": "The Aegean, second half of August", "sub": "Because that was the fortnight they were free.", "seconds": 7, "timecode": "0:12" },
+  { "template": "frame", "text": "Three of the seven calls are tender ports.", "sub": "Nobody mentioned it. Nobody asked.", "seconds": 6, "timecode": "0:19" },
+  { "template": "frame", "text": "The meltemi does what it does each afternoon.", "sub": "Tendering is suspended. That port is gone.", "seconds": 10, "timecode": "0:25", "tone": "warn", "size": 92 },
+  { "template": "frame", "text": "Anchored in sight of the island, all day.", "sub": "And at the marquee calls, several ships alongside.", "seconds": 8, "timecode": "0:35", "tone": "warn", "size": 92 },
+  { "template": "frame", "text": "Nothing failed. No one was at fault.", "sub": "An August itinerary performed exactly as August performs.", "seconds": 7, "timecode": "0:43", "size": 92 },
+  { "template": "frame", "kicker": "The part that stings", "text": "Same route, a fortnight later.", "sub": "A different holiday entirely.", "seconds": 7, "timecode": "0:50" },
+  { "template": "frame", "text": "Warmest sea of the year. Wind easing.", "sub": "And the crowd gone home.", "seconds": 6, "timecode": "0:57" },
+  { "template": "frame", "text": "So I ask two questions before anything else.", "sub": "Which weeks are you free — and which calls need a calm afternoon?", "seconds": 9, "timecode": "1:03", "size": 92 }
+]

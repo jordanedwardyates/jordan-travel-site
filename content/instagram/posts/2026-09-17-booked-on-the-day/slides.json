@@ -1,0 +1,81 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Mistakes to avoid",
+    "title": "Some things cannot be booked once you're aboard.",
+    "subtitle": "Specialty dining and the good excursions close before you've unpacked — often before you sail.",
+    "stamp": {
+      "top": "Errors of Judgement",
+      "bottom": "No. 06"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The timing",
+    "text": "The best port day of your voyage is usually reserved weeks earlier.",
+    "sub": "Booking windows open by fare, suite category or loyalty tier, and they differ by line. Ask when yours opens rather than finding out when it closes."
+  },
+  {
+    "template": "list",
+    "kicker": "Worth the calendar note",
+    "title": "Three reservations to make early",
+    "items": [
+      {
+        "n": "1",
+        "head": "The one restaurant worth it",
+        "body": "There is usually one, and it fills first. The rest can wait until you are onboard."
+      },
+      {
+        "n": "2",
+        "head": "The tour with a hard capacity",
+        "body": "Small-group tours, private guides and anything on the water sell out long before the day."
+      },
+      {
+        "n": "3",
+        "head": "The tight-turnaround port",
+        "body": "On a short call, the ship's own excursion is the version that guarantees the ship waits."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Same sailing, two port days",
+    "title": "The cost of leaving it late",
+    "left": {
+      "label": "Left late",
+      "items": [
+        "The last table at nine",
+        "A coach tour by default",
+        "Queueing at the desk",
+        "The port day you settle for"
+      ]
+    },
+    "right": {
+      "label": "Booked early",
+      "items": [
+        "A table at eight-thirty",
+        "The small-group guide",
+        "Ten minutes before deposit",
+        "The port day you came for"
+      ]
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The rule that decides it",
+    "text": "On the ship's own excursion, a late return is the line's problem.",
+    "sub": "It waits, or it gets you to the next port at its own cost. On an independent tour it is not required to wait, and the recovery is yours to fund."
+  },
+  {
+    "template": "quote",
+    "quote": "Book the reservations you would regret losing. Leave the rest loose — that is what sea days are for.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this before your booking window opens",
+    "body": "Send me your sailing and I'll mark the two port days with no margin in them, and the one restaurant worth a note in the diary.",
+    "handle": "@bonv.travel"
+  }
+]

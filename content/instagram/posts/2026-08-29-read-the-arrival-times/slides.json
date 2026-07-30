@@ -1,0 +1,102 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Itinerary craft",
+    "title": "A 7am-1pm port call is not a day ashore.",
+    "subtitle": "The two columns of times decide your holiday. The port names barely matter.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 07"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "Nobody reads the two columns that matter.",
+    "sub": "Every itinerary prints an arrival and a departure beside each port. Those numbers are the whole design of the week, and they are set in ship's time."
+  },
+  {
+    "template": "plot",
+    "kicker": "A generic seven-night Aegean loop",
+    "title": "What each shape of day actually gives you",
+    "points": [
+      {
+        "label": "08:00 - 18:00",
+        "value": "A real day. Breakfast ashore, lunch inland, back aboard without hurrying."
+      },
+      {
+        "label": "07:00 - 13:00",
+        "value": "Half a day, and an hour of it is the queue for a boat."
+      },
+      {
+        "label": "13:00 - 20:00",
+        "value": "You arrive as the town shuts for the afternoon and leave before it reopens."
+      },
+      {
+        "label": "10:00 - 16:00",
+        "value": "Six hours, minus all-aboard at 15:30. Call it four and a half."
+      },
+      {
+        "label": "Overnight in port",
+        "value": "Dinner ashore and an empty morning street. The best line in any itinerary."
+      }
+    ]
+  },
+  {
+    "template": "list",
+    "kicker": "The arithmetic",
+    "title": "Three subtractions nobody makes",
+    "items": [
+      {
+        "head": "All-aboard, not departure",
+        "body": "Published 30 to 60 minutes before the ship sails, and stated in ship's time - which need not match your phone."
+      },
+      {
+        "head": "The tender queue, both ways",
+        "body": "At an anchorage the last tender back is a separate, earlier time. Budget an hour of the day to boats."
+      },
+      {
+        "head": "The coach to the actual place",
+        "body": "Some ports sit two hours from the thing you came for. That is four of your six hours, on a motorway."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Same port names",
+    "title": "Two itineraries, one worth taking",
+    "left": {
+      "label": "Glossy",
+      "items": [
+        "Seven ports in seven days",
+        "Arrivals from 07:00",
+        "Three tender calls",
+        "All-aboard before dinner",
+        "Ports chosen for the map"
+      ]
+    },
+    "right": {
+      "label": "Edited",
+      "items": [
+        "Four ports, two sea days",
+        "Arrivals at 08:00, alongside",
+        "Berthed, no tenders",
+        "One overnight in port",
+        "Ports chosen for the town"
+      ]
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Judge a sailing by its clock, not its map.",
+    "sub": "Add up the hours genuinely ashore once all-aboard and the tenders are deducted. On most glossy itineraries the honest total is half of what the brochure implies."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send me an itinerary and I'll read the clock.",
+    "body": "Two lines back: what those arrival times really give you, and which day is the one you'd have regretted. No charge and no pitch.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Mistakes to avoid",
+    "title": "The last morning ruins more trips than the first.",
+    "subtitle": "An early flight home, a visa nobody checked, and a queue you cannot argue your way out of.",
+    "stamp": {
+      "top": "Errors of Judgement",
+      "bottom": "No. 07"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Disembarkation",
+    "text": "The last morning is slower than the schedule suggests.",
+    "sub": "Clearance, the luggage hall and customs all sit between the gangway and the kerb. A late-morning flight turns a scramble into a slow coffee."
+  },
+  {
+    "template": "list",
+    "kicker": "Settle these first",
+    "title": "Four things to arrange before you sail",
+    "items": [
+      {
+        "n": "1",
+        "head": "The flight time, honestly",
+        "body": "Ask your line what it advises for your port, then add margin for the customs hall on top."
+      },
+      {
+        "n": "2",
+        "head": "The visa for a port you skip",
+        "body": "Requirements can apply on arrival by sea even if you never intend to go ashore. Check each country."
+      },
+      {
+        "n": "3",
+        "head": "The onboard account",
+        "body": "Look at it two days out, not in the queue at guest services on the final morning."
+      },
+      {
+        "n": "4",
+        "head": "A pre-arranged transfer",
+        "body": "The taxi rank at a cruise terminal on a Saturday is a lottery you do not need."
+      }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "Where the time goes",
+    "title": "The morning, hour by hour",
+    "points": [
+      {
+        "label": "Clearance",
+        "value": "The ship cannot release guests until local authorities clear the vessel."
+      },
+      {
+        "label": "Luggage hall",
+        "value": "Bags are grouped by tag colour, and yours arrives when it arrives."
+      },
+      {
+        "label": "Customs",
+        "value": "One busy queue between you and the taxi rank outside."
+      },
+      {
+        "label": "Traffic",
+        "value": "A cruise terminal empties two thousand people into a city at once."
+      }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The one people forget",
+    "text": "Visas are itinerary-wide, not port by port.",
+    "sub": "Some countries require documentation from cruise passengers whether or not they disembark, and the rules depend on your nationality. Confirm each one individually."
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Fly home late, or stay a night. The city is worth the extra morning.",
+    "sub": "The logic that makes you fly in a day early makes you fly out a day late. Both ends of a voyage deserve a buffer."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever books the flights",
+    "body": "Tell me your ports and your passports and I'll tell you which documents to confirm early, and how late the flight home ought to be.",
+    "handle": "@bonv.travel"
+  }
+]

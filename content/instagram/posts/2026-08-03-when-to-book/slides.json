@@ -1,0 +1,55 @@
+[
+  {
+    "template": "cover",
+    "kicker": "When to book",
+    "title": "The last-minute luxury bargain mostly isn't",
+    "subtitle": "Waiting works on a 4,000-berth ship. It rarely works on a 300-guest one.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 03" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Why waiting fails here",
+    "text": "Small ships run out of cabins before they run out of price.",
+    "sub": "A line with a few hundred suites has no distressed inventory to dump. It has a waitlist. Scarcity is the pricing strategy."
+  },
+  {
+    "template": "plot",
+    "kicker": "The shape of a year",
+    "title": "How the window behaves",
+    "points": [
+      { "label": "Season opens", "value": "Full choice of suite category, deck and dining. Fares calm and stable." },
+      { "label": "Wave months", "value": "The heaviest promotion calendar of the year. Credit and perks are richest." },
+      { "label": "Mid-cycle", "value": "Best cabins thinning. Fares firm as the sailing fills out." },
+      { "label": "Final payment", "value": "The real cliff edge. After it, changes cost money and choice narrows." },
+      { "label": "Last weeks", "value": "What's left is what nobody chose. Occasionally a gift, usually a compromise." }
+    ]
+  },
+  {
+    "template": "list",
+    "kicker": "Book early when",
+    "title": "Three cases where waiting costs you",
+    "items": [
+      { "head": "You want a specific suite", "body": "Aft, midship, or a particular category on a small ship. There are only ever a handful, and they go first." },
+      { "head": "The dates are fixed", "body": "School terms, an anniversary, a Greek islands sailing in shoulder season. No flexibility means no leverage." },
+      { "head": "Air is part of the plan", "body": "The cruise may soften. The flights almost never do, and they are the half nobody watches." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "Booking early buys you choice. Booking late buys you what's left. Only one of those is a saving.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Book early, then keep the booking under review.",
+    "sub": "Early gets you the cabin. A watched booking gets you the fare - if it drops before final payment it can often be rebooked. That only works if someone is looking."
+  },
+  {
+    "template": "cta",
+    "kicker": "Keep this",
+    "title": "Save this before your next booking",
+    "body": "Or tell me the season you have in mind and I'll send back the shoulder-season calendar for it.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

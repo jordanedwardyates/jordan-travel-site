@@ -1,0 +1,82 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Quiet luxury",
+    "title": "The fare isn't the point. The silence is.",
+    "subtitle": "An inclusive fare doesn't mainly save money. It removes a week of small transactions.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 24"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The real cost",
+    "text": "No single upsell is expensive. Thirty of them are exhausting.",
+    "sub": "The drinks package, the cover charge, the spa tier, the internet plan. Each one reasonable on its own, and collectively a running negotiation with your own holiday."
+  },
+  {
+    "template": "plot",
+    "kicker": "A week of small decisions",
+    "title": "Where the asking happens",
+    "points": [
+      {
+        "label": "Embarkation day",
+        "value": "The drinks package, decided in a queue, before you have seen the bar."
+      },
+      {
+        "label": "Dinner, most nights",
+        "value": "Which rooms carry a cover charge, and whether tonight is worth one."
+      },
+      {
+        "label": "Sea day, morning",
+        "value": "The thermal suite tier. Day pass, three days, or the whole voyage."
+      },
+      {
+        "label": "Port day, four o'clock",
+        "value": "The tour desk, and a queue of people making the same late decision."
+      },
+      {
+        "label": "Disembarkation eve",
+        "value": "The folded statement, and the small shock of the total."
+      }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "An inclusive fare is a line deciding not to sell you anything else once you're aboard. Restraint is the product.",
+    "cite": "Jordan Yates \u00b7 Luxury Voyage Advisor"
+  },
+  {
+    "template": "list",
+    "kicker": "What changes",
+    "title": "Three things that shift when nothing is sold",
+    "items": [
+      {
+        "head": "You order the second coffee",
+        "body": "Small permissions compound. A week where nothing is metered is a week you actually use."
+      },
+      {
+        "head": "You try the room you'd have skipped",
+        "body": "Cover charges quietly ration curiosity. Remove them and people wander, which is the point of a ship."
+      },
+      {
+        "head": "The crew stop selling",
+        "body": "Where nobody carries an upsell target, the conversation at the bar becomes a conversation. That is the real change."
+      }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Cost both sailings to the same finish line, then read the friction.",
+    "sub": "Sometimes the inclusive fare costs more and is still the better week. What you are buying is the absence of asking, and no brochure has ever managed to photograph that."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Or send me the two fares you're comparing and I'll cost them both to disembarkation morning \u2014 the number that actually decides it.",
+    "handle": "@bonvtravel \u00b7 link in bio"
+  }
+]

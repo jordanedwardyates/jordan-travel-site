@@ -1,0 +1,51 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Deposits",
+    "title": "The deposit is a price, not a formality",
+    "subtitle": "The cheaper of two identical fares is usually the one you cannot walk away from.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 04" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The trade",
+    "text": "A non-refundable deposit is a discount you pay for in advance.",
+    "sub": "You are selling the line certainty about your cabin. That is worth something, and they price it. The question is whether you had certainty to sell."
+  },
+  {
+    "template": "compare",
+    "kicker": "Same cabin, two terms",
+    "title": "What you are actually buying",
+    "left": { "label": "Refundable", "items": ["Higher fare", "Deposit returns", "Dates can move", "Cancel and reconsider", "Costs you money"] },
+    "right": { "label": "Non-refundable", "items": ["Lower fare", "Deposit is spent", "Change fees apply", "Committed on day one", "Costs you options"] }
+  },
+  {
+    "template": "list",
+    "kicker": "The dates that matter",
+    "title": "Four dates to write down at booking",
+    "items": [
+      { "head": "Deposit due", "body": "Usually days after booking, not weeks. Miss it and the cabin releases without ceremony." },
+      { "head": "Last day to reprice", "body": "In practice, before final payment. This is the window in which a fare drop is still useful to you." },
+      { "head": "Final payment", "body": "The cliff edge. After it the money is committed and cancellation penalties begin climbing." },
+      { "head": "Insurance cut-off", "body": "Some cover, particularly pre-existing conditions, must be bought within days of the deposit." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "Take the non-refundable deposit when the dates are certain. Not when the fare is tempting.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Choose the deposit that matches your life, not the headline.",
+    "sub": "Fixed dates and settled health: take the lower fare. A parent unwell, a business mid-sale, a passport near expiry: pay for the exit and sleep."
+  },
+  {
+    "template": "cta",
+    "kicker": "Keep this",
+    "title": "Save this for the day you put a deposit down",
+    "body": "Or send me the sailing and I'll tell you which deposit structure I'd take on it, and why.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

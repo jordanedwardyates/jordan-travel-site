@@ -1,0 +1,66 @@
+[
+  {
+    "template": "cover",
+    "kicker": "River cruising",
+    "title": "The locks decide your cabin size",
+    "subtitle": "A river vessel is built to fit the smallest lock on its route. Everything follows.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 21" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The constraint",
+    "text": "Nothing on a river ship is wider than the lock it must pass.",
+    "sub": "Length, width and height are set by the infrastructure — locks and low bridges — not by the naval architect. The long, low silhouette is engineering, not styling."
+  },
+  {
+    "template": "compare",
+    "kicker": "What the limit does",
+    "title": "Two very different hulls",
+    "left": {
+      "label": "River",
+      "items": [
+        "Dimension-limited by locks",
+        "One dining room, one lounge",
+        "Modest cabins, long decks",
+        "A sundeck, not a pool deck"
+      ]
+    },
+    "right": {
+      "label": "Ocean",
+      "items": [
+        "Limited by depth, not locks",
+        "Several restaurants and bars",
+        "Larger suites, more grades",
+        "Spa, theatre, promenade"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "The trade",
+    "title": "What the space is spent on",
+    "items": [
+      { "head": "The view, not the floor plan", "body": "French balconies and full-height glass take priority. You are meant to be looking out, constantly." },
+      { "head": "The sundeck", "body": "The best room on a river ship has no ceiling. It is where the week happens between locks." },
+      { "head": "One good dining room", "body": "No specialty booking game. One kitchen, cooking for a hundred-odd people who eat together." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "You are not buying square footage on a river. You are buying the window.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Compare the cabin to a hotel room and it loses. Compare the week.",
+    "sub": "You will be ashore or on the sundeck for most of the daylight. The cabin is where you sleep and where you watch the bank go past at breakfast."
+  },
+  {
+    "template": "cta",
+    "kicker": "Pass it on",
+    "title": "Send this to the person who'd be sharing it",
+    "body": "Or tell me the river and the month, and I'll come back with the two cabin grades actually worth the difference.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

@@ -1,0 +1,9 @@
+[
+  { "template": "frame", "kicker": "Seasonality", "text": "Three months I'd talk you out of", "sub": "Same sea. Wrong week.", "seconds": 3, "timecode": "0:00", "tone": "warn", "size": 116 },
+  { "template": "frame", "kicker": "One", "text": "Late August in the Aegean", "sub": "Meltemi afternoons, and every ship still deployed.", "seconds": 6, "timecode": "0:03" },
+  { "template": "frame", "kicker": "Two", "text": "Mid-October, if you came to swim", "sub": "The light turns lovely. The tavernas begin closing.", "seconds": 6, "timecode": "0:09" },
+  { "template": "frame", "kicker": "Three", "text": "Any month with a named weather season", "sub": "Monsoon and hurricane windows are published, not surprises.", "seconds": 7, "timecode": "0:15", "tone": "warn", "size": 92 },
+  { "template": "frame", "text": "The fix is almost never a different ship.", "seconds": 4, "timecode": "0:22" },
+  { "template": "frame", "text": "It is one week.", "sub": "September holds the warmest sea of the year, and the wind has eased.", "seconds": 8, "timecode": "0:26" },
+  { "template": "frame", "text": "Sail with someone who reads the calendar.", "sub": "@bonvtravel", "seconds": 4, "timecode": "0:34" }
+]

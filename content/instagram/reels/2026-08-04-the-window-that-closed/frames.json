@@ -1,0 +1,11 @@
+[
+  { "template": "frame", "kicker": "Post-mortem", "text": "Book it, then stop looking", "sub": "The most expensive thing you can do with a fare", "seconds": 7, "timecode": "0:00", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "text": "Not a person. A pattern.", "sub": "One I see every wave season", "seconds": 5, "timecode": "0:07", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "The decisions", "text": "Direct. Cheaper deposit. Paid in full.", "sub": "Every one of them defensible on its own", "seconds": 11, "timecode": "0:12", "size": 92, "align": "left", "label": "BON V" },
+  { "template": "frame", "text": "Here's where it turns", "seconds": 3, "timecode": "0:23", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "What happens next", "text": "Fares move. Credit gets added.", "sub": "Before final payment, a booking can often be moved", "seconds": 11, "timecode": "0:26", "tone": "warn", "size": 100, "align": "left", "label": "BON V" },
+  { "template": "frame", "text": "Nobody rings to tell you", "sub": "There is no department that notices for you", "seconds": 6, "timecode": "0:37", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "The actual cost", "text": "Paying early closes the window", "sub": "Tidiness has a price, and this is it", "seconds": 8, "timecode": "0:43", "size": 100, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "The fix", "text": "Deposit. Diarise. Then glance.", "sub": "A fortnightly look at the fare, not a second job", "seconds": 9, "timecode": "0:51", "size": 100, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "The verdict", "text": "That glance is my job", "sub": "It costs you nothing - the line pays either way", "seconds": 7, "timecode": "1:00", "size": 108, "align": "left", "label": "BON V" }
+]

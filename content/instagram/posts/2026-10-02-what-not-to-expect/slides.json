@@ -1,0 +1,51 @@
+[
+  {
+    "template": "cover",
+    "kicker": "The Advisor's Edit",
+    "title": "What not to expect from an advisor",
+    "subtitle": "Being confident about what this is worth means being straight about what it isn't.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 32" }
+  },
+  {
+    "template": "statement",
+    "kicker": "First, the obvious one",
+    "text": "I am not a discount. I'm an edit.",
+    "sub": "The fare is the fare - the same or better than direct, never marked up. If the whole question is the lowest possible number on a screen, you don't need me."
+  },
+  {
+    "template": "list",
+    "kicker": "The limits",
+    "title": "Four things I cannot do",
+    "items": [
+      { "head": "Overrule the weather", "body": "Ports are dropped for swell and wind. I can plan around exposure; I can't promise a tender runs." },
+      { "head": "Beat a price that is real", "body": "If a number is genuinely lower for the same fare code and inclusions, I'll tell you to take it." },
+      { "head": "Make a large ship feel small", "body": "Some things are structural. The answer is a different ship, not a better cabin on this one." },
+      { "head": "Read your mind", "body": "The brief you give me is the ceiling on what I can do. Vague in, generic out - every time." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "What is on offer",
+    "text": "What to expect is a reply, and a reason attached to it.",
+    "sub": "A short list with the reasoning shown, a fare I have negotiated, and one name on the file from the first email until you are home again."
+  },
+  {
+    "template": "quote",
+    "quote": "Every recommendation is one I'd be glad to defend over dinner.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "compare",
+    "kicker": "The payoff",
+    "title": "What this is, and isn't",
+    "left": { "label": "Not this", "items": ["A booking engine with a face", "A discount code", "Yes to whatever you ask", "A call centre queue", "Pressure before a deadline"] },
+    "right": { "label": "This", "items": ["A short, argued list", "A negotiated fare", "No when no is right", "One name, one file", "Time to decide properly"] }
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this before your next enquiry",
+    "body": "To me or to anyone. Then write with where you are leaning and I'll come back with a short list worth your time, and the reasoning behind it.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

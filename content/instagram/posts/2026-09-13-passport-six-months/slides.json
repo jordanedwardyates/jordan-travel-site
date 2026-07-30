@@ -1,0 +1,81 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Mistakes to avoid",
+    "title": "Your passport may be valid and still refused.",
+    "subtitle": "\"Valid until\" is not the same as \"accepted at check-in\". The gap is where voyages end.",
+    "stamp": {
+      "top": "Errors of Judgement",
+      "bottom": "No. 02"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The rule people miss",
+    "text": "Many countries require six months' validity beyond your travel dates.",
+    "sub": "Requirements differ by country and by nationality, so check every country on the itinerary and confirm with the line or your advisor before you pack."
+  },
+  {
+    "template": "list",
+    "kicker": "Do this at the kitchen table",
+    "title": "Three documents worth checking today",
+    "items": [
+      {
+        "n": "1",
+        "head": "The expiry date, in months",
+        "body": "Count forward from your last day ashore, not from the sailing date."
+      },
+      {
+        "n": "2",
+        "head": "The name, letter for letter",
+        "body": "The booking must match the passport. A married name added later is the commonest mismatch."
+      },
+      {
+        "n": "3",
+        "head": "Blank pages and condition",
+        "body": "Some countries want blank pages, and a torn or water-damaged passport can be refused outright."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Where the assumption breaks",
+    "title": "What travellers assume, and what applies",
+    "left": {
+      "label": "Assumed",
+      "items": [
+        "Valid until 2027 is fine",
+        "The middle name is optional",
+        "One check covers the trip",
+        "Renewal takes two weeks"
+      ]
+    },
+    "right": {
+      "label": "Actual",
+      "items": [
+        "Six months may be required",
+        "It must match the passport",
+        "Each country has its rule",
+        "Renewal times move — check"
+      ]
+    }
+  },
+  {
+    "template": "quote",
+    "quote": "The document that cancels a trip is rarely the ticket. It is the passport nobody read twice.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "How I handle it",
+    "text": "Photograph every passport page and send them before you pay a deposit.",
+    "sub": "I check names against the booking, expiry against the final port of the itinerary, and flag anything that needs a renewal window."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this before your next deposit",
+    "body": "Send me your itinerary and I'll tell you which countries on it have documentation worth confirming early, and which passports I'd renew now.",
+    "handle": "@bonv.travel"
+  }
+]

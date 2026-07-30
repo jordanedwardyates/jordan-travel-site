@@ -1,0 +1,57 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Cabin truths",
+    "title": "The deck plan is the most honest document you get.",
+    "subtitle": "What sits above and below your bed decides the voyage.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 02" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "Nobody sells you the ceiling.",
+    "sub": "A cabin is not a room. It is a position inside a steel building, and noise in a steel building travels vertically. The brochure photograph shows none of that."
+  },
+  {
+    "template": "list",
+    "kicker": "Read upwards and downwards",
+    "title": "Four things to look up, not out",
+    "items": [
+      { "head": "The pool deck above you", "body": "Loungers dragged across steel at six in the morning. No carpet up there, and no mercy either." },
+      { "head": "The galley or crew stair below", "body": "Trolleys, hatches and a working corridor that runs quietly all night, but runs." },
+      { "head": "The show lounge one deck down", "body": "Bass carries through a floor plate long after the applause has finished." },
+      { "head": "The anchor, right forward", "body": "Weighing it at dawn in a tender port is not a sound anybody sleeps through." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The same cabin",
+    "title": "Two ways to read it",
+    "left": { "label": "Brochure", "items": ["Category letter and price", "Square footage", "A styled photograph", "Deck number only"] },
+    "right": { "label": "Deck plan", "items": ["What is directly above", "What is directly below", "Distance to the stair", "Which wall you share"] }
+  },
+  {
+    "template": "plot",
+    "kicker": "Position, in practice",
+    "title": "The same fare, four outcomes",
+    "points": [
+      { "label": "Under the pool deck", "value": "A wake-up call at six on every sea day. The cheapest quiet you will ever lose." },
+      { "label": "Above the show lounge", "value": "Serene by day, and a drum kit through the floor by half past nine." },
+      { "label": "Beside the lift lobby", "value": "Footfall and conversation in both directions, at every hour." },
+      { "label": "Two decks down, mid", "value": "The quiet buy almost nobody thinks to ask for." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Choose the position first. The category second.",
+    "sub": "Category is a price band. Position is the experience. I settle the position first, then take the cheapest category sitting inside it — rarely the cabin anyone was shown."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with.",
+    "body": "Or tell me the sailing you're holding and I'll read the deck plan properly: which cabins I'd take, which I'd refuse, and why. Complimentary.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

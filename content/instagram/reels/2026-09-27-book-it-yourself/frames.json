@@ -1,0 +1,11 @@
+[
+  { "template": "frame", "kicker": "Reaction", "text": "You can book it yourself.", "sub": "That was never the question.", "seconds": 3, "timecode": "0:00", "tone": "warn" },
+  { "template": "frame", "text": "Two fare codes can look identical.", "sub": "They are not the same booking.", "seconds": 4, "timecode": "0:03" },
+  { "template": "frame", "text": "The cheaper click is not a cheaper fare.", "seconds": 4, "timecode": "0:07", "tone": "warn" },
+  { "template": "frame", "kicker": "How it works", "text": "Distribution cost is already in the fare.", "sub": "Spent whether an advisor is involved or not.", "seconds": 6, "timecode": "0:11", "size": 92 },
+  { "template": "frame", "text": "Book direct and the line simply keeps it.", "seconds": 5, "timecode": "0:17", "tone": "warn" },
+  { "template": "frame", "text": "Advisor services are complimentary.", "sub": "The line pays me, after you sail.", "seconds": 5, "timecode": "0:22" },
+  { "template": "frame", "text": "Paid on the sailing, not the click.", "seconds": 5, "timecode": "0:27" },
+  { "template": "frame", "text": "Do the admin, or let me do the reading.", "seconds": 6, "timecode": "0:32", "size": 92 },
+  { "template": "frame", "text": "Send me the sailing you're weighing.", "sub": "@bonvtravel", "seconds": 4, "timecode": "0:38" }
+]

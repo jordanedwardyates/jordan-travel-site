@@ -1,0 +1,10 @@
+[
+  { "template": "frame", "kicker": "Ship selection", "text": "Three questions before the deposit.", "sub": "None of them about the pool.", "seconds": 4, "timecode": "0:00", "size": 108, "label": "BON V" },
+  { "template": "frame", "kicker": "One", "text": "Guests per crew member.", "seconds": 5, "timecode": "0:04" },
+  { "template": "frame", "text": "It shows up in week two, not week one.", "seconds": 5, "timecode": "0:09", "tone": "warn" },
+  { "template": "frame", "kicker": "Two", "text": "Restaurant seats — not restaurants.", "seconds": 5, "timecode": "0:14" },
+  { "template": "frame", "text": "Ten small rooms is a booking window.", "sub": "Not a choice.", "seconds": 4, "timecode": "0:19", "tone": "warn" },
+  { "template": "frame", "kicker": "Three", "text": "Alongside, or anchor and tender?", "seconds": 6, "timecode": "0:23" },
+  { "template": "frame", "text": "A port day, or two hours of queueing.", "seconds": 4, "timecode": "0:29" },
+  { "template": "frame", "text": "Answer three. The shortlist writes itself.", "sub": "@bonvtravel", "seconds": 3, "timecode": "0:33", "size": 92 }
+]

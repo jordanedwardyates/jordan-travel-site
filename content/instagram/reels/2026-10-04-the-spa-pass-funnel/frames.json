@@ -1,0 +1,68 @@
+[
+  {
+    "template": "frame",
+    "kicker": "Quiet luxury",
+    "text": "The spa pass is a funnel",
+    "sub": "Not an amenity. A funnel.",
+    "seconds": 3,
+    "timecode": "0:00",
+    "tone": "warn",
+    "size": 108,
+    "align": "left",
+    "label": "BON V"
+  },
+  {
+    "template": "frame",
+    "text": "Step one: wall off the good half of the spa.",
+    "sub": "A velvet rope inside a room you already paid for.",
+    "seconds": 7,
+    "timecode": "0:03",
+    "tone": "warn",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "kicker": "Step two",
+    "text": "Price it in three tiers.",
+    "sub": "Day pass, three-day, whole voyage.",
+    "seconds": 6,
+    "timecode": "0:10"
+  },
+  {
+    "template": "frame",
+    "text": "Tier two exists to make tier three look sensible.",
+    "seconds": 7,
+    "timecode": "0:16",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "text": "That isn't a price. It's decision architecture.",
+    "seconds": 6,
+    "timecode": "0:23",
+    "tone": "warn",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "kicker": "Step three",
+    "text": "Ask again on day two.",
+    "sub": "Because the upsell is somebody's target.",
+    "seconds": 6,
+    "timecode": "0:29"
+  },
+  {
+    "template": "frame",
+    "text": "The ships I rate don't do this.",
+    "sub": "The quiet room is just a room, and it's open.",
+    "seconds": 8,
+    "timecode": "0:35"
+  },
+  {
+    "template": "frame",
+    "text": "Restraint costs them revenue.",
+    "sub": "Which is exactly why it reads as luxury. @bonvtravel",
+    "seconds": 7,
+    "timecode": "0:43"
+  }
+]

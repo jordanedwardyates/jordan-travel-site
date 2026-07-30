@@ -1,0 +1,56 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Cabin truths",
+    "title": "A guarantee fare guarantees a category.",
+    "subtitle": "Not a cabin, not a deck, not a side, and certainly not the quiet one.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 06" }
+  },
+  {
+    "template": "statement",
+    "kicker": "What you agreed to",
+    "text": "You have bought a category and handed over the choice.",
+    "sub": "The line assigns you whatever is left when the people who chose have finished choosing. What is left is, by definition, what nobody wanted."
+  },
+  {
+    "template": "compare",
+    "kicker": "The same category",
+    "title": "Assigned or chosen",
+    "left": { "label": "Guarantee", "items": ["Whatever remains", "Under the pool deck", "Beside a service door", "Assigned at the pier, sometimes", "No say on connecting doors"] },
+    "right": { "label": "Chosen", "items": ["A cabin you approved", "Quiet neighbours above", "Away from the crew stair", "Known from the day you book", "No shared door at all"] }
+  },
+  {
+    "template": "list",
+    "kicker": "The perks version",
+    "title": "Three things to read twice",
+    "items": [
+      { "head": "Pick two of four", "body": "Credit, drinks, wifi, gratuities — bundled to make categories look interchangeable. They are not." },
+      { "head": "The upgrade that isn't", "body": "An offer to move you up a category can move you to a worse position on a higher deck." },
+      { "head": "The bid-to-upgrade email", "body": "A bid wins you a category and no control at all. Read what it does to your booked cabin first." }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "When it makes sense",
+    "title": "The honest exceptions",
+    "points": [
+      { "label": "A near-full ship", "value": "Little is left in any case. The saving is real and the risk is small." },
+      { "label": "Short, sheltered", "value": "Three nights in sheltered water forgives almost any position on the plan." },
+      { "label": "Deep off-season fares", "value": "When the gap is large enough, take the money and accept the lottery." },
+      { "label": "Longer than a week", "value": "Never. You will live with that position for too many nights." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Pay the assignment fee. It is the cheapest thing on the invoice.",
+    "sub": "Choosing rather than being assigned costs a modest amount per person, and it is the only line on a cruise invoice that protects every single night of the voyage."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to anyone holding a guarantee fare.",
+    "body": "Or tell me the category you've been offered and I'll tell you what the worst cabin in it looks like — because that is the one you may be given.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

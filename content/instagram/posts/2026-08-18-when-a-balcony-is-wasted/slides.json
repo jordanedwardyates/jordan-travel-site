@@ -1,0 +1,51 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Cabin truths",
+    "title": "Most balconies are bought and never sat on.",
+    "subtitle": "The question is not whether a veranda is nice. It is whether this itinerary lets you use one.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 05" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The real test",
+    "text": "A veranda is time, not square footage.",
+    "sub": "You are buying hours spent sitting outside your own cabin. On a port-intensive summer itinerary you are ashore for most of them, and asleep for the rest."
+  },
+  {
+    "template": "compare",
+    "kicker": "Where the money earns",
+    "title": "Worth it, and not",
+    "left": { "label": "Earns it", "items": ["Fjords and glacier mornings", "Scenic river cruising", "Ocean crossings, sea days", "Any long, slow coastline", "Warm nights at anchor"] },
+    "right": { "label": "Wasted", "items": ["A port every single day", "Winter northern Europe", "Seven-night, six-port weeks", "You are early to bed", "The obstructed lower decks"] }
+  },
+  {
+    "template": "list",
+    "kicker": "Before you pay the upgrade",
+    "title": "Four questions I ask first",
+    "items": [
+      { "head": "How many sea days are there?", "body": "Fewer than two on a week-long sailing and the veranda is decoration you paid a premium for." },
+      { "head": "What is the month?", "body": "A Baltic balcony in October is a cold shelf behind glass. In June it is the best room you have." },
+      { "head": "Which side, and which way?", "body": "Scenic passages happen on one side. Knowing which is half the value of the position." },
+      { "head": "Is it overhung or overlooked?", "body": "A deck cantilevered above you takes the sky, the light and most of the point." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "I have moved more clients out of balconies than into them, and none of them have missed it.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Count your sea days. Then decide about the door.",
+    "sub": "Two or more, in a warm month, and the veranda is the best value on the ship. Otherwise take a quiet midship ocean view and spend the difference on a guide who knows the town."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with.",
+    "body": "Or send me the itinerary you're weighing up. I'll tell you plainly whether the balcony is worth it on that route, or whether it isn't.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

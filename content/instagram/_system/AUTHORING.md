@@ -63,7 +63,7 @@ posts/<YYYY-MM-DD>-<slug>/   meta.json  caption.md  slides.json
 reels/<YYYY-MM-DD>-<slug>/   meta.json  transcript.md  frames.json  footage.md
 ```
 
-`render.mjs` generates `slides/*.png`, `frames/*.png`, `slate.webm`,
+`render.mjs` generates `slides/*.jpg`, `frames/*.jpg`, `slate.webm`,
 `assemble.sh` and `footage/`. Never hand-write those.
 
 ## Carousels
@@ -254,4 +254,4 @@ Where a caption points to the site, use
 — the quote form already reads `utm_campaign`/`utm_content` and resolves them to
 a source campaign, so this closes the attribution loop. Existing Logbook slugs
 worth linking: `when-to-sail-the-greek-islands`, `never-pay-retail`,
-`river-vs-ocean`. Don't invent other slugs; link the bio instead.
+`river-vs-ocean-how-to-choose`. Don't invent other slugs; link the bio instead.

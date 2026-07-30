@@ -1,0 +1,9 @@
+[
+  { "template": "frame", "kicker": "Port days", "text": "Four ways to miss your ship.", "sub": "Not one of them is luck.", "seconds": 3, "timecode": "0:00", "tone": "warn", "size": 116, "label": "BON V" },
+  { "template": "frame", "kicker": "One", "text": "Your phone's clock. Not ship's time.", "sub": "All-aboard is stated in ship's time.", "seconds": 4, "timecode": "0:03" },
+  { "template": "frame", "kicker": "Two", "text": "The last tender leaves before all-aboard.", "sub": "A separate, earlier number.", "seconds": 3, "timecode": "0:07", "size": 92 },
+  { "template": "frame", "kicker": "Three", "text": "A private tour, an hour inland.", "sub": "Nobody is required to wait for it.", "seconds": 3, "timecode": "0:10" },
+  { "template": "frame", "kicker": "Four", "text": "The tender queue nobody budgets for.", "sub": "Twenty minutes at each end, on a good day.", "seconds": 3, "timecode": "0:13" },
+  { "template": "frame", "text": "All four are fixable the night before.", "sub": "On paper, with the daily programme.", "seconds": 3, "timecode": "0:16" },
+  { "template": "frame", "kicker": "Port days", "text": "Four ways to miss your ship.", "sub": "Not one of them is luck.", "seconds": 3, "timecode": "0:19", "tone": "warn", "size": 116, "label": "BON V" }
+]

@@ -1,0 +1,69 @@
+[
+  {
+    "template": "frame",
+    "kicker": "Quiet luxury",
+    "text": "Twenty restaurants isn't luxury",
+    "sub": "Somebody told me it was.",
+    "seconds": 3,
+    "timecode": "0:00",
+    "tone": "warn"
+  },
+  {
+    "template": "frame",
+    "text": "I think it's exactly backwards.",
+    "seconds": 4,
+    "timecode": "0:03"
+  },
+  {
+    "template": "frame",
+    "text": "Twenty kitchens share one budget.",
+    "sub": "And one talent pool, and one provisioning run.",
+    "seconds": 7,
+    "timecode": "0:07"
+  },
+  {
+    "template": "frame",
+    "text": "Four kitchens means the fourth one is good.",
+    "seconds": 6,
+    "timecode": "0:14",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "text": "More decks means more guests.",
+    "sub": "More choice means a booking system.",
+    "seconds": 6,
+    "timecode": "0:20",
+    "tone": "warn"
+  },
+  {
+    "template": "frame",
+    "text": "A booking system means 9.45 or nothing.",
+    "seconds": 5,
+    "timecode": "0:26",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "kicker": "What it really is",
+    "text": "That isn't abundance. It's scale.",
+    "sub": "And scale is what you're paying to avoid.",
+    "seconds": 7,
+    "timecode": "0:31",
+    "tone": "warn"
+  },
+  {
+    "template": "frame",
+    "text": "Fewer rooms. More space in each.",
+    "sub": "A table at eight. A crew who has met you.",
+    "seconds": 6,
+    "timecode": "0:38"
+  },
+  {
+    "template": "frame",
+    "text": "Less, better, and no queue.",
+    "sub": "@bonvtravel",
+    "seconds": 6,
+    "timecode": "0:44"
+  }
+]

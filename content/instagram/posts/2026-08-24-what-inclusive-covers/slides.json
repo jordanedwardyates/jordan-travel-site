@@ -1,0 +1,73 @@
+[
+  {
+    "template": "cover",
+    "kicker": "All-inclusive, line by line",
+    "title": "*All-inclusive* is a word, not a contract.",
+    "subtitle": "What it usually covers, what it quietly doesn't, and how to check.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 04" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "The fare isn't the price until you've read the exclusions.",
+    "sub": "Two sailings at the same headline number can differ by a great deal once the extras land on your onboard account in week two."
+  },
+  {
+    "template": "list",
+    "kicker": "Usually inside",
+    "title": "Four things inclusive fares generally cover",
+    "items": [
+      { "n": 1, "head": "Dining, including specialty", "body": "On most luxury lines every restaurant is included; on some a reservation limit applies rather than a charge." },
+      { "n": 2, "head": "Wines and spirits aboard", "body": "Typically a house selection at lunch and dinner, with a reserve list priced separately." },
+      { "n": 3, "head": "Crew gratuities", "body": "Largely a solved problem on an inclusive fare. Worth asking whether it extends to spa and butler." },
+      { "n": 4, "head": "Wi-Fi and still water", "body": "Usually one device per suite. A second is often a charge, and speed varies with where you are." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Read for these",
+    "title": "Inside the fare vs on the bill",
+    "left": {
+      "label": "In the fare",
+      "items": [
+        "Meals in every restaurant",
+        "House wines, beers, spirits",
+        "Crew gratuities",
+        "Some shore excursions"
+      ]
+    },
+    "right": {
+      "label": "On the bill",
+      "items": [
+        "Flights, unless stated",
+        "Reserve and cellar wines",
+        "Spa, salon, laundry",
+        "Private cars and guides"
+      ]
+    }
+  },
+  {
+    "template": "plot",
+    "kicker": "Before you compare",
+    "title": "Ask these before you compare two fares",
+    "points": [
+      { "label": "Air, or no air", "value": "An included-air fare and a cruise-only fare are not comparable. Separate them first." },
+      { "label": "Excursions included", "value": "Some lines include one per port, some include none, some include a curated few." },
+      { "label": "Transfers and hotels", "value": "Pre-cruise nights and port transfers are the most common quiet omission of the lot." },
+      { "label": "What the deposit buys", "value": "Refundable or not. That difference is a real cost and it never appears in the headline." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Inclusive is a design decision, not a discount.",
+    "sub": "The lines that include most are not being generous — they are removing the onboard sell, so nobody spends the week auditing a bill. That is what you are buying."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this for your next fare comparison",
+    "body": "Or send me the two fares you're weighing up and I'll tell you, in two lines, which one is actually cheaper.",
+    "handle": "@bonvtravel"
+  }
+]

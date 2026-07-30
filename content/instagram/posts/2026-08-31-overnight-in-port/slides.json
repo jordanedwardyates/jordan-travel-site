@@ -1,0 +1,101 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Itinerary craft",
+    "title": "The most underrated line in any itinerary.",
+    "subtitle": "Overnight in port. Two words that change what the whole voyage feels like.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 09"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "A ship that stays the night gives you the town twice.",
+    "sub": "Once in the afternoon, when it belongs to the day-trippers and the fleet. And once at nine in the evening, when it belongs to the people who live there."
+  },
+  {
+    "template": "list",
+    "kicker": "What it buys",
+    "title": "Four things an overnight gives you",
+    "items": [
+      {
+        "head": "Dinner ashore, unhurried",
+        "body": "No all-aboard hanging over the second course. The best meal of most voyages happens exactly this way."
+      },
+      {
+        "head": "The town after the fleet leaves",
+        "body": "Harbour towns exhale around seven. The tavernas fill with locals and nothing at all is queued."
+      },
+      {
+        "head": "A morning with no gangway rush",
+        "body": "You wake already there. Coffee at eight in a square that is still being swept."
+      },
+      {
+        "head": "Weather margin",
+        "body": "Two windows instead of one. A tender port with an overnight is a far safer promise than one without."
+      }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "Same island, two designs",
+    "title": "Where the hours go",
+    "points": [
+      {
+        "label": "09:00 - 17:00",
+        "value": "One afternoon, shared with every other ship in the harbour."
+      },
+      {
+        "label": "Arrive 14:00",
+        "value": "Half the town shut for the afternoon; you queue for the other half."
+      },
+      {
+        "label": "Overnight, day one",
+        "value": "Afternoon, dinner ashore, and then the empty morning after it."
+      },
+      {
+        "label": "Depart 13:00, day two",
+        "value": "A late lunch on deck as the island goes back to being itself."
+      }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "The best evening I can put in an itinerary costs nothing extra. It is simply a ship that doesn't leave.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "compare",
+    "kicker": "The payoff",
+    "title": "One port, two voyages",
+    "left": {
+      "label": "Day call",
+      "items": [
+        "Six hours, shared",
+        "Lunch at the harbour",
+        "All-aboard at 16:30",
+        "One weather window",
+        "A photograph of a door"
+      ]
+    },
+    "right": {
+      "label": "Overnight",
+      "items": [
+        "Twenty hours, yours",
+        "Dinner in the old town",
+        "No clock after five",
+        "Two weather windows",
+        "A second morning"
+      ]
+    }
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this for the next itinerary you're sent.",
+    "body": "Then look for the word *overnight*. If it isn't there, ask me whether a sailing exists that has one - in most seasons and most regions, there is.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

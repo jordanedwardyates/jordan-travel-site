@@ -1,0 +1,56 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Seasonality",
+    "title": "Ask how many other ships are in port",
+    "subtitle": "Your day ashore is set by the total number of passengers landing, not by the ship you chose.",
+    "stamp": { "top": "Port Day", "bottom": "High Season" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Read this alone",
+    "text": "Santorini in August is not a place. It is a queue with a view.",
+    "sub": "Not because the island changed, but because four ships can land their guests into the same six hours and the same cable car."
+  },
+  {
+    "template": "plot",
+    "kicker": "What actually decides the day",
+    "title": "Four variables, all knowable in advance",
+    "points": [
+      { "label": "Ships in port", "value": "Published schedules, months ahead. Ask before you book, not after you sail." },
+      { "label": "Combined capacity", "value": "Three modest ships can land fewer guests than one very large one. Count berths, not hulls." },
+      { "label": "Your berth time", "value": "First alongside at dawn is a different island from third at eleven." },
+      { "label": "The week of the year", "value": "Deployment thins on the shoulders. Fewer ships are simply scheduled to be there." }
+    ]
+  },
+  {
+    "template": "list",
+    "kicker": "How I work around it",
+    "title": "Three moves that survive high season",
+    "items": [
+      { "head": "Trade the marquee call", "body": "A quieter island on a busy day is often the better day. The postcard port will keep." },
+      { "head": "Take the early hours", "body": "Ashore at seven, back aboard by noon, and let the afternoon crowd have the town." },
+      { "head": "Shift the week, not the ship", "body": "The same itinerary a fortnight later frequently has half the company in port." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The same call",
+    "title": "Peak Tuesday vs shoulder Tuesday",
+    "left": { "label": "Peak", "items": ["Several ships alongside", "Cable car queued both ways", "Coaches nose to tail", "Lunch is a negotiation", "Sunset by appointment"] },
+    "right": { "label": "Shoulder", "items": ["One or two ships", "Walk on, walk off", "Roads that move", "A table when you want it", "The view, uncontested"] }
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Crowding is a scheduling fact, not a season-long verdict.",
+    "sub": "Which means it can be planned around. The work is reading the port schedule and the deployment before the fare is paid."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "DM me the word CALENDAR",
+    "body": "I'll send the shoulder-season weeks I'm watching in the Aegean, and which calls I'd avoid in the height of summer.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

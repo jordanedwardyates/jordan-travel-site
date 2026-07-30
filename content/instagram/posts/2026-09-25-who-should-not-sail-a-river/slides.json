@@ -1,0 +1,72 @@
+[
+  {
+    "template": "cover",
+    "kicker": "River or ocean",
+    "title": "Who should not take a river cruise",
+    "subtitle": "And who, having done one properly, won't go back to an ocean ship.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 25" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "Both formats are right. Neither is right for everyone.",
+    "sub": "I have talked people out of a river week and out of an ocean week in the same afternoon. The mistake is assuming the word cruise describes one kind of holiday."
+  },
+  {
+    "template": "list",
+    "kicker": "Stay on the ocean",
+    "title": "Four travellers I steer away from a river",
+    "items": [
+      { "head": "The sea-day loyalist", "body": "No day off, no lounger afternoon, no long empty passage. The pace simply never lets up." },
+      { "head": "The family of six", "body": "One dining room and one lounge cannot serve six ages at once. An ocean ship can." },
+      { "head": "The space buyer", "body": "Locks cap the dimensions of the hull. If the room is the point, a river will disappoint." },
+      { "head": "The reluctant socialiser", "body": "The same hundred guests all week is either a feature or a trial. Be honest about which." }
+    ]
+  },
+  {
+    "template": "list",
+    "kicker": "Never going back",
+    "title": "Three who won't return to ocean",
+    "items": [
+      { "head": "The town-centre walker", "body": "Once you've walked off into Budapest after dinner, a berth two miles out feels like a tax." },
+      { "head": "The one-good-table diner", "body": "No booking game, no venue strategy. One kitchen, one room, every night of the week." },
+      { "head": "The unpackers", "body": "Vienna, Bratislava, Budapest, and the suitcase never moves. That is hard to give up." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The short version",
+    "title": "Which week are you buying",
+    "left": {
+      "label": "Choose river",
+      "items": [
+        "The destination is the point",
+        "You want mornings in towns",
+        "A small, quiet ship comforts",
+        "You like a planned day"
+      ]
+    },
+    "right": {
+      "label": "Choose ocean",
+      "items": [
+        "The ship is half the holiday",
+        "You want range in one week",
+        "Sea days are the reward",
+        "Mixed ages, mixed appetites"
+      ]
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "The format is the decision. The line and the ship come after it.",
+    "sub": "Get river-or-ocean right and almost any well-run vessel will do. Get it wrong and the best ship on the water is still the wrong week."
+  },
+  {
+    "template": "cta",
+    "kicker": "Keep this",
+    "title": "Save this before you choose a format",
+    "body": "Or tell me what the week is for — the destination or the ship — and I'll point you at one of the two.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Quiet luxury",
+    "title": "Can you get a table at eight?",
+    "subtitle": "One question tells you more about a ship's dining than any menu it prints.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 22"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The real test",
+    "text": "Scarcity onboard is designed. It is not a fact of the sea.",
+    "sub": "A booking window that opens at midnight ninety days out isn't hospitality under pressure. It is a room built too small for the ship on purpose, and then rationed."
+  },
+  {
+    "template": "quote",
+    "quote": "A reservation system is a ship telling you, politely, that it sold more beds than it built chairs.",
+    "cite": "Jordan Yates \u00b7 Luxury Voyage Advisor"
+  },
+  {
+    "template": "compare",
+    "kicker": "Two dining rooms",
+    "title": "Rationed against open",
+    "left": {
+      "label": "Rationed",
+      "items": [
+        "Book ninety days ahead",
+        "Covers priced in tiers",
+        "Second sitting at 9.45",
+        "Cabin number at the door",
+        "Upsell with the menu"
+      ]
+    },
+    "right": {
+      "label": "Open",
+      "items": [
+        "Come down when hungry",
+        "One fare, every room",
+        "A table at eight",
+        "Greeted by name",
+        "Wine list, no pitch"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "What to ask before you book",
+    "title": "Three questions about the tables",
+    "items": [
+      {
+        "head": "How many seats, how many beds?",
+        "body": "If the main room cannot seat everyone at a civil hour, someone is eating at half past nine. It may be you."
+      },
+      {
+        "head": "Is every restaurant in the fare?",
+        "body": "Where the good rooms carry a cover charge, dinner becomes a nightly purchase decision. That is not restful."
+      },
+      {
+        "head": "Open seating or assigned?",
+        "body": "Assigned tables suit some travellers. Being handed one you didn't choose, on a ship that sells freedom, does not."
+      }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Choose the ship where dinner is a decision at 7.45.",
+    "sub": "Fewer restaurants, enough seats, no cover charges, no midnight booking scramble. Everything else about the food follows from that, and none of it needs announcing."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Then tell me which sailing you're weighing and I'll tell you honestly whether its dining rooms are big enough for it.",
+    "handle": "@bonvtravel \u00b7 link in bio"
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Seasonality",
+    "title": "You aren't paying for summer",
+    "subtitle": "You're paying for the school term — and if you don't answer to one, that is money on the table.",
+    "stamp": { "top": "Advisor's Note", "bottom": "On Timing" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Read this alone",
+    "text": "Same ship. Same cabin. Same route. Two prices.",
+    "sub": "One week apart. Nothing about the Mediterranean changed between them — only who was free to travel that week."
+  },
+  {
+    "template": "list",
+    "kicker": "What sets the price",
+    "title": "Four dates that aren't weather",
+    "items": [
+      { "head": "European school holidays", "body": "The single largest shaper of high-summer Mediterranean demand, and it moves country by country." },
+      { "head": "North American summer break", "body": "Overlapping but not identical. Where the two overlap is the most expensive fortnight of the year." },
+      { "head": "Public holidays and half-terms", "body": "Short, sharp spikes that catch travellers who assumed only July and August were peak." },
+      { "head": "The season's own bookends", "body": "First and last sailings of a season price softly. They also carry the most weather risk." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The trade",
+    "title": "Term-time week vs free week",
+    "left": { "label": "Term time", "items": ["Peak fare, peak demand", "Marquee ports at capacity", "Restaurants booked out", "Excursions sold through", "Cabin choice already gone"] },
+    "right": { "label": "Free week", "items": ["Fare softens", "Ports breathe", "A table at short notice", "Small groups ashore", "Real cabin choice"] }
+  },
+  {
+    "template": "quote",
+    "quote": "If nobody in your household answers to a timetable, that is a structural advantage. Most travellers never spend it.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Move one week. Keep the ship, the suite and the route.",
+    "sub": "The cheapest meaningful change you can make to a voyage is almost never the cabin grade or the line. It is the date."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Then send me the weeks you are actually free, and I'll come back with what those weeks are worth.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

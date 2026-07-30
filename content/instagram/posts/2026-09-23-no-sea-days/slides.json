@@ -1,0 +1,72 @@
+[
+  {
+    "template": "cover",
+    "kicker": "River or ocean",
+    "title": "No sea days, and no day off",
+    "subtitle": "A river week gives you a new town most mornings. That is a pace, not a rest.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 23" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The thing nobody says",
+    "text": "A river cruise has no day where nothing is expected of you.",
+    "sub": "Ocean itineraries build in sea days on purpose — the spa, a long lunch, a book. On a river the ship arrives somewhere every morning and there is always something worth walking to."
+  },
+  {
+    "template": "plot",
+    "kicker": "Pacing",
+    "title": "How the two weeks feel",
+    "points": [
+      { "label": "Ocean, day three", "value": "A sea day. Nothing scheduled, and that emptiness is the entire point of it." },
+      { "label": "River, day three", "value": "A new town by breakfast, a guided morning, and the ship moves again before dinner." },
+      { "label": "By day six", "value": "Six towns behind you. Wonderful, and more tiring than the brochure suggests." },
+      { "label": "The fix", "value": "Skip one excursion on purpose. The sundeck between locks is the sea day you didn't get." }
+    ]
+  },
+  {
+    "template": "list",
+    "kicker": "Be realistic",
+    "title": "Who finds the pace hard",
+    "items": [
+      { "head": "Anyone recovering", "body": "A week with no built-in rest day is the wrong week after surgery, or after a hard year." },
+      { "head": "Slow risers", "body": "Guided mornings start early, because the ship has to sail again in the afternoon." },
+      { "head": "Sea-day loyalists", "body": "If your best cruise memory is a lounger and a novel, ocean is quietly the right answer." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Side by side",
+    "title": "Two shapes of week",
+    "left": {
+      "label": "River week",
+      "items": [
+        "A new town most mornings",
+        "Short sailings, often at night",
+        "Ashore is the default",
+        "No day with nothing in it"
+      ]
+    },
+    "right": {
+      "label": "Ocean week",
+      "items": [
+        "Sea days built into the route",
+        "Long passages between ports",
+        "Ashore is optional",
+        "The ship is a destination"
+      ]
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "No sea days is the best argument for a river, and against it.",
+    "sub": "It is why you see so much in seven nights. It is also why some travellers come home needing a holiday. Know which of those you are before you book."
+  },
+  {
+    "template": "cta",
+    "kicker": "Keep this",
+    "title": "Save this if you're choosing between the two",
+    "body": "Or send me the week you have in mind and I'll mark the day I'd protect as your own.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

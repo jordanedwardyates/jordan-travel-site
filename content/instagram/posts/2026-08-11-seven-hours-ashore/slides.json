@@ -1,0 +1,56 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Port days",
+    "title": "A seven-hour call is really four hours ashore.",
+    "subtitle": "Disembarkation, the coach queue, and an all-aboard set well before departure. Here is where it goes.",
+    "stamp": { "top": "Port Day Rules", "bottom": "No. 04" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Do the arithmetic first",
+    "text": "Take an hour off each end before you plan anything.",
+    "sub": "The first hour ashore is queue. The last hour is all-aboard, which sits thirty to sixty minutes before departure. What remains is the day you actually have."
+  },
+  {
+    "template": "plot",
+    "kicker": "One honest port day",
+    "title": "08:00 alongside, 17:00 away",
+    "points": [
+      { "label": "08:00 — alongside", "value": "Do not join the first crush. Coffee on deck, and walk off at nine into an emptier town." },
+      { "label": "09:00 — ashore", "value": "The two hours before the coach parties arrive are the only quiet ones you will get." },
+      { "label": "12:00 — the one thing", "value": "One site, properly. Two sites is a coach tour with your name on it, not a day." },
+      { "label": "13:30 — lunch inland", "value": "Ten minutes' walk from the waterfront halves the price and doubles the cooking." },
+      { "label": "15:00 — turn around", "value": "Start back whatever you are mid-way through. The margin is the point of the plan." },
+      { "label": "16:00 — all-aboard", "value": "Aboard with an hour spare, on deck, watching the lines come in. That is the reward." }
+    ]
+  },
+  {
+    "template": "list",
+    "kicker": "Where the hours vanish",
+    "title": "Three thefts of a port day",
+    "items": [
+      { "head": "Leaving with the first wave", "body": "Everyone tries to be first ashore, so nobody is. Twenty minutes' patience buys you a clear terminal." },
+      { "head": "Two sights in one call", "body": "The second one is always rushed, and the rushing is what you will remember of both." },
+      { "head": "Lunch on the harbour front", "body": "The most expensive and least interesting meal in any Mediterranean port is the one facing your ship." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The timing nobody mentions",
+    "text": "In July, arrive early or arrive in October.",
+    "sub": "Over-touristed calls are a scheduling problem before they are a crowd problem. Two ships alongside at ten means the old town belongs to you at nine, and to nobody at noon."
+  },
+  {
+    "template": "quote",
+    "quote": "A port day you remember has one thing in it and a long lunch. A port day you resent has four things and a coach.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this and use it on your next itinerary",
+    "body": "Or tell me the sailing and I'll draft one port day properly — hours, the single thing worth doing, and where to eat away from the water.",
+    "handle": "@bonvtravel"
+  }
+]

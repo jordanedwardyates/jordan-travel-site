@@ -1,0 +1,101 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Itinerary craft",
+    "title": "The two sailings nobody markets to you.",
+    "subtitle": "Repositioning voyages and back-to-backs - the quiet end of the brochure.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 13"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "The best weeks at sea are the ones with no marketing budget.",
+    "sub": "A ship has to move between seasons whether anyone books it or not. When it does, it sails long and slow, with a run of sea days no brochure knows how to sell."
+  },
+  {
+    "template": "compare",
+    "kicker": "Two overlooked shapes",
+    "title": "How each one differs",
+    "left": {
+      "label": "Repositioning",
+      "items": [
+        "A season change, one way",
+        "Long stretches of open sea",
+        "Clocks move nightly",
+        "Open-jaw flights needed",
+        "Fewer, deeper calls"
+      ]
+    },
+    "right": {
+      "label": "Back-to-back",
+      "items": [
+        "Two loops, one city",
+        "Unpack once, stay put",
+        "A turnaround day in port",
+        "The same cabin throughout",
+        "Ports you'd otherwise miss"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "Before you book one",
+    "title": "Four things to check",
+    "items": [
+      {
+        "head": "The flights, honestly",
+        "body": "A one-way voyage means an open-jaw air booking. Price that before you fall for the fare."
+      },
+      {
+        "head": "The turnaround day",
+        "body": "On a back-to-back you stay aboard whilst the ship empties. Ask what that day looks like - it can be the best one."
+      },
+      {
+        "head": "Whether the two loops overlap",
+        "body": "Consecutive weeks often repeat two ports. Sometimes welcome; check that you'd want them twice."
+      },
+      {
+        "head": "The clock",
+        "body": "Crossing eastbound, ship's time typically advances an hour a night. All-aboard is always ship's time."
+      }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "A crossing, in shape",
+    "title": "What the days look like",
+    "points": [
+      {
+        "label": "Days 1 - 3",
+        "value": "Coastal calls whilst the ship lets go of its summer season."
+      },
+      {
+        "label": "Days 4 - 9",
+        "value": "Open ocean. The reading, the long dinners, the actual reason to go."
+      },
+      {
+        "label": "The clocks",
+        "value": "Advanced about an hour a night eastbound. All-aboard is in ship's time."
+      },
+      {
+        "label": "Final days",
+        "value": "Landfall calls, then a slow arrival into the new season's home port."
+      }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "A repositioning voyage isn't a lesser sailing. It's the same ship, with the marketing turned off.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "DM me the word *crossing*.",
+    "body": "I'll send back the repositioning and shoulder-season sailings worth a look, with a two-line verdict on each. My services are complimentary.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

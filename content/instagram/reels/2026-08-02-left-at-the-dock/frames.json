@@ -1,0 +1,9 @@
+[
+  { "template": "frame", "kicker": "Crossings", "text": "The ship *will* leave without you.", "sub": "And it is allowed to.", "seconds": 3, "timecode": "0:00", "tone": "warn", "size": 116 },
+  { "template": "frame", "text": "All-aboard is 30–60 minutes before departure.", "sub": "Not at departure. Before it.", "seconds": 4, "timecode": "0:03" },
+  { "template": "frame", "text": "The gangway is pulled on the clock, not on the count.", "seconds": 4, "timecode": "0:07", "tone": "warn" },
+  { "template": "frame", "kicker": "The one exception", "text": "A ship's own excursion running late is the ship's problem.", "sub": "Anything you booked ashore is yours.", "seconds": 5, "timecode": "0:11" },
+  { "template": "frame", "text": "So on a tight port day, I book through the ship — even when it costs more.", "seconds": 5, "timecode": "0:16", "size": 92 },
+  { "template": "frame", "kicker": "If it happens", "text": "Port agent, passport, wallet.", "sub": "That is why those three never leave you.", "seconds": 4, "timecode": "0:21", "tone": "warn" },
+  { "template": "frame", "template_note": "cover-style close", "text": "Sail with someone who reads the fine print.", "sub": "@bonvtravel", "seconds": 3, "timecode": "0:25" }
+]

@@ -1,0 +1,91 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Mistakes to avoid",
+    "title": "Never put your medication in a checked bag.",
+    "subtitle": "Suitcases meet the ship — sometimes hours after you do, and occasionally a port later.",
+    "stamp": {
+      "top": "Errors of Judgement",
+      "bottom": "No. 04"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The embarkation-day rule",
+    "text": "Passport, wallet, phone and medication stay with you. Always.",
+    "sub": "Your suitcase is taken at the kerb and delivered to the cabin later in the day. Anything you need before dinner belongs in the bag on your shoulder."
+  },
+  {
+    "template": "list",
+    "kicker": "The shoulder bag",
+    "title": "Five things that travel with you",
+    "items": [
+      {
+        "n": "1",
+        "head": "Medication, in its packaging",
+        "body": "Carry the full course plus a few spare days, and keep the pharmacy label attached."
+      },
+      {
+        "n": "2",
+        "head": "Passport and documents",
+        "body": "The one bag that goes through the terminal with you is the one the desk will ask about."
+      },
+      {
+        "n": "3",
+        "head": "A little local cash",
+        "body": "Small ports, tenders and market stalls often take nothing else."
+      },
+      {
+        "n": "4",
+        "head": "One change of clothes",
+        "body": "The cabin bags may arrive after the first afternoon has already gone."
+      },
+      {
+        "n": "5",
+        "head": "Chargers and an adapter",
+        "body": "The first thing anyone hunts for at seven in the evening."
+      }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The other assumption",
+    "text": "A card reader ashore is an assumption, not a certainty.",
+    "sub": "Tender ports, island taxis and small harbour cafés frequently run on cash, and some ports expect small notes for the shuttle."
+  },
+  {
+    "template": "compare",
+    "kicker": "Sorting the two bags",
+    "title": "What waits, and what cannot",
+    "left": {
+      "label": "In the hold",
+      "items": [
+        "Formal wear for later nights",
+        "Books and shoes",
+        "The heavier packing",
+        "Anything you can wait for"
+      ]
+    },
+    "right": {
+      "label": "With you",
+      "items": [
+        "Medication and prescriptions",
+        "Passport and documents",
+        "Some local cash",
+        "One change of clothes"
+      ]
+    }
+  },
+  {
+    "template": "quote",
+    "quote": "Pack the bag you would need if the suitcase were a day behind. Once, it will be.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this for the night before you pack",
+    "body": "Talk to your doctor about the medication side of it. Tell me your ports and I'll say which ones still want cash in hand.",
+    "handle": "@bonv.travel"
+  }
+]

@@ -1,0 +1,10 @@
+[
+  { "template": "frame", "kicker": "Post-mortem", "text": "Two groups, late back. Opposite bills.", "sub": "One fact explains all of it.", "seconds": 4, "timecode": "0:00", "tone": "warn", "size": 108, "label": "BON V" },
+  { "template": "frame", "kicker": "Case one", "text": "São Tomé · 27 March 2024", "sub": "Norwegian Dawn, mid Cape Town–Barcelona voyage.", "seconds": 7, "timecode": "0:04", "size": 116 },
+  { "template": "frame", "text": "Eight guests. A private tour, not the ship's.", "sub": "Six Americans, two Australians.", "seconds": 10, "timecode": "0:11", "size": 100 },
+  { "template": "frame", "text": "Back after the 3pm all-aboard. Not allowed aboard.", "sub": "The local Coast Guard tried. The answer was no.", "seconds": 11, "timecode": "0:21", "tone": "warn", "size": 92 },
+  { "template": "frame", "text": "No belongings. No money. No medication.", "sub": "They self-funded their way back, days later.", "seconds": 8, "timecode": "0:32", "tone": "warn" },
+  { "template": "frame", "kicker": "Case two", "text": "Dublin · 33 guests, also late.", "sub": "But on Disney's own shore excursion.", "seconds": 11, "timecode": "0:40", "size": 108 },
+  { "template": "frame", "text": "Ship sailed on time. The line arranged their travel.", "sub": "Same mistake. The bill went the other way.", "seconds": 10, "timecode": "0:51", "size": 92 },
+  { "template": "frame", "text": "So I don't ask which guide is better.", "sub": "I ask whether the day has margin. @bonvtravel", "seconds": 9, "timecode": "1:01", "size": 100 }
+]

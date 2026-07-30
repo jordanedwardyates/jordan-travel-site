@@ -1,0 +1,56 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Seasonality",
+    "title": "The wind that cancels your port day",
+    "subtitle": "It has a name, a season and a time of day — and a good itinerary is built around all three.",
+    "stamp": { "top": "The Meltemi", "bottom": "July - August" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Read this alone",
+    "text": "A ship anchored in sight of an island is still a missed port.",
+    "sub": "If the tenders cannot run, the day is gone. Nobody sells you that risk when you book the sailing in August."
+  },
+  {
+    "template": "list",
+    "kicker": "What the meltemi does",
+    "title": "Three things it decides for you",
+    "items": [
+      { "head": "It peaks in July and August", "body": "A dry northerly funnelling down the Aegean, at its most insistent in the height of summer." },
+      { "head": "It builds through the afternoon", "body": "Mornings are usually the calm half of the day. This is why I want you ashore early, not after lunch." },
+      { "head": "It rewrites the itinerary", "body": "Wind or swell can suspend tendering outright, and an exposed anchorage gets swapped at short notice." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The structural difference",
+    "title": "Alongside berth vs open anchorage",
+    "left": { "label": "Alongside", "items": ["You walk off", "Weather rarely decides", "No last tender to catch", "Longer, calmer day", "Mobility is a non-issue"] },
+    "right": { "label": "At anchor", "items": ["Tenders, both directions", "Wind and swell decide", "Last tender is earlier", "Queues at both ends", "A hard day on stiff knees"] }
+  },
+  {
+    "template": "plot",
+    "kicker": "Exposure by month",
+    "title": "When tendering is most fragile",
+    "points": [
+      { "label": "May - June", "value": "Generally settled. The wind is present but not yet the organising fact of the day." },
+      { "label": "July - August", "value": "Meltemi season proper, strongest in the afternoons. Plan mornings ashore." },
+      { "label": "September", "value": "The wind eases and the sea is at its warmest. The month I argue for." },
+      { "label": "Mid-October on", "value": "First autumn systems arrive. Fewer crowds, more need for flexibility." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "You cannot book the weather. You can book the exposure.",
+    "sub": "Ask which calls are tender ports, which are alongside, and where the wind sits in that week. Then choose the itinerary that fails gracefully."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this before you book an August sailing",
+    "body": "Or send me the itinerary and I'll mark the calls that depend on a calm afternoon — and what I'd sail instead.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

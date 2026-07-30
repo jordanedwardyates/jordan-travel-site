@@ -1,0 +1,56 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Cabin truths",
+    "title": "Motion is not weather. It is geometry.",
+    "subtitle": "Where you sleep along the length of the ship decides how much of the sea you feel.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 04" }
+  },
+  {
+    "template": "plot",
+    "kicker": "Along the hull",
+    "title": "The same swell, three positions",
+    "points": [
+      { "label": "Forward", "value": "The end of the lever. Pitch is felt first here, and hardest, and at anchor too." },
+      { "label": "Midship, low", "value": "Nearest the pivot. The least movement on the ship, and the least glamorous address." },
+      { "label": "Aft", "value": "Calmer than forward, but you sit over the propellers and feel the vibration." },
+      { "label": "High and forward", "value": "The most dramatic view on the ship, and the most motion available for the money." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The honest trade",
+    "title": "What each end gives you",
+    "left": { "label": "Aft", "items": ["A wake that never repeats", "Wider terraces, often", "Quieter corridors", "Long walk to everything"] },
+    "right": { "label": "Midship", "items": ["Least motion, by physics", "Shortest walk anywhere", "Lift and stair noise nearby", "No signature view"] }
+  },
+  {
+    "template": "list",
+    "kicker": "Who should sit where",
+    "title": "Three cases, decided",
+    "items": [
+      { "head": "Anyone uncertain at sea", "body": "Midship, low, no argument. Stabilisers help underway and do far less at anchor." },
+      { "head": "Ocean crossings and shoulder season", "body": "Midship again. Open water in November is not the week to test your inner ear." },
+      { "head": "Calm-water itineraries", "body": "Take the aft terrace. Rivers, fjords and the summer Aegean forgive the position entirely." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The part nobody mentions",
+    "text": "Small ships move more. They also berth where large ones cannot.",
+    "sub": "That is a real trade, not marketing. You feel more of the sea on a 400-guest ship and you walk off into the town centre instead of queuing for a tender."
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Decide the itinerary first. Let the water choose the position.",
+    "sub": "Sheltered coastline and short hops, sit anywhere you like. Open ocean, repositioning legs, or any hesitation about motion — midship and low, and spend the saving on the shore days."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever gets queasy.",
+    "body": "Or tell me the sailing and the month, and I'll tell you whether the water on that route justifies paying for the aft terrace at all.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

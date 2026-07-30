@@ -1,0 +1,67 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Embarkation",
+    "title": "The queue you're standing in, you helped build.",
+    "subtitle": "Arrival windows, screening throughput, terminal capacity. None of it malice, all of it arithmetic.",
+    "stamp": { "top": "Port Day Rules", "bottom": "No. 07" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The unwelcome truth",
+    "text": "Your arrival window is not a suggestion, it is the schedule.",
+    "sub": "Terminals stagger arrivals because screening has a fixed throughput. Everyone turning up at eleven to be first aboard is precisely what produces the two-hour line at eleven."
+  },
+  {
+    "template": "list",
+    "kicker": "Embarkation, done well",
+    "title": "Four things that shorten your day",
+    "items": [
+      { "head": "Arrive inside your window, not before", "body": "The later half of your slot is usually the quietest part of the whole morning." },
+      { "head": "Fly in the day before. Always.", "body": "The missed-embarkation cases that end worst are flight-delay cases, not late-tour cases." },
+      { "head": "Know the initial-boarding rule", "body": "It is stricter than a port day. Royal Caribbean, for one, requires guests aboard no less than an hour before departure." },
+      { "head": "Read the first daily programme on deck", "body": "All-aboard times for day two, and the port agent's details. Read it with a drink, not in the cabin." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The last morning, too",
+    "title": "Disembarkation, two ways",
+    "left": {
+      "label": "Rushed",
+      "items": [
+        "Same-day flight, early",
+        "Luggage out the night before",
+        "Queue in a lounge from six",
+        "Breakfast standing up"
+      ]
+    },
+    "right": {
+      "label": "Unhurried",
+      "items": [
+        "A night ashore at the far end",
+        "Late walk-off with your bags",
+        "The last quiet breakfast",
+        "One extra city, properly seen"
+      ]
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Where the money goes",
+    "text": "The cheapest flight of the trip is what usually costs the most.",
+    "sub": "A same-day arrival saves a hotel night and risks the entire fare. I have never once regretted booking a client into the embarkation port the evening before."
+  },
+  {
+    "template": "quote",
+    "quote": "Two nights of hotel — one at each end — is the least glamorous money you will spend, and the best insured.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever books the flights",
+    "body": "That is where the risk lives. Tell me your embarkation port and sail date and I'll say plainly whether the flight you're holding is one I'd let a client fly.",
+    "handle": "@bonvtravel"
+  }
+]

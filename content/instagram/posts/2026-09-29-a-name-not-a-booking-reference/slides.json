@@ -1,0 +1,51 @@
+[
+  {
+    "template": "cover",
+    "kicker": "The Advisor's Edit",
+    "title": "A name, not a booking reference",
+    "subtitle": "What being known to a cruise line is worth on the day you actually need something.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 29" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Rarely said aloud",
+    "text": "Lines keep records on advisors, much as they do on ships.",
+    "sub": "How much we sell, how well we brief a client, how rarely we ring in a panic. That standing decides whether a request is looked at or merely logged."
+  },
+  {
+    "template": "list",
+    "kicker": "Where it shows",
+    "title": "Four things standing quietly buys",
+    "items": [
+      { "head": "The upgrade nobody advertises", "body": "Suites move quietly close to sailing. They move towards people the line can reach in an afternoon." },
+      { "head": "Position on the waitlist", "body": "Every full sailing has a queue. Where you sit in it is not always first come, first served." },
+      { "head": "The exception", "body": "Dining, connecting cabins, a deposit held a little longer. Discretionary - and discretion is a relationship." },
+      { "head": "The escalation", "body": "When a decision is needed above the call centre, somebody has to know exactly whom to ask." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "How a request lands",
+    "title": "A reference versus a name",
+    "left": { "label": "A reference", "items": ["First available agent", "Read from the script", "Logged as a request", "Waits its turn", "You chase the line"] },
+    "right": { "label": "A name", "items": ["A known desk, a direct line", "Read in context", "Looked at by a person", "Asked as a favour owed", "The line rings me back"] }
+  },
+  {
+    "template": "quote",
+    "quote": "Every fare I quote is one I've negotiated. My clients never pay retail.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Trade access is leverage you cannot buy at a checkout.",
+    "sub": "A Virtuoso practice brings contracted space, credits and access that exist only through the trade. None of it appears anywhere on a booking page."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this for the next \"the price is the price\"",
+    "body": "Or write to me with a sailing you are weighing up, and I'll tell you what is available on it that the booking page will not show you.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

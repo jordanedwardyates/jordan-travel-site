@@ -1,0 +1,51 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Seasonality",
+    "title": "Some regions are simply shut",
+    "subtitle": "And I would rather tell you that than sell you the week you asked for.",
+    "stamp": { "top": "Closed Season", "bottom": "Advisor's Note" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Read this alone",
+    "text": "A sailing being available is not evidence that it is a good idea.",
+    "sub": "Lines publish what they can operate. Whether a given week is the right week for you is a separate question, and it is mine to answer."
+  },
+  {
+    "template": "list",
+    "kicker": "Four kinds of closed",
+    "title": "Four ways a season shuts",
+    "items": [
+      { "head": "The ships leave", "body": "Redeployment. A region can be perfectly pleasant and simply have nothing worth sailing in it that month." },
+      { "head": "The ice decides", "body": "Polar seasons open and close on conditions. The shoulder weeks there are genuinely different voyages." },
+      { "head": "The weather season is named", "body": "Monsoon and Atlantic hurricane seasons are published windows. Lines plan around them; travellers often don't." },
+      { "head": "The shore stands down", "body": "Island tavernas close for winter and small ports thin out. The sailing runs; the destination is half-awake." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "The honest answer to \"can we go in that month?\" is sometimes yes, and sometimes not for the reasons you want to go.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "compare",
+    "kicker": "Reading a risky month",
+    "title": "What I check before saying yes",
+    "left": { "label": "The risk", "items": ["Named weather season", "Tender-dependent calls", "Single-port highlights", "Tight air connections", "One-off shoulder sailing"] },
+    "right": { "label": "The cover", "items": ["Alongside berths", "Sea days with substance", "Alternative calls nearby", "A night ashore first", "Insurance read properly"] }
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Weather-driven changes are the line's call, not yours.",
+    "sub": "Refunds for a missed port are usually limited to port fees and taxes. That is why the season you choose matters more than the compensation you might claim."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this before you fall for a date",
+    "body": "Or send me the month you have in mind and I'll tell you plainly what is open, what is thin, and what I'd move.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Ship selection",
+    "title": "Size is the wrong question. *Space* is the right one.",
+    "subtitle": "How to read a ship before you read its brochure.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 02" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "Two ships can measure the same and feel nothing alike.",
+    "sub": "One carries three times the guests. That single number decides your queues, your tenders, your dinner reservations and your quiet."
+  },
+  {
+    "template": "plot",
+    "kicker": "What guest count decides",
+    "title": "One number, four consequences",
+    "points": [
+      { "label": "Tender queues", "value": "More guests, more tender groups, and a longer wait for the same small boat." },
+      { "label": "Dinner at eight", "value": "Restaurant seats scale slower than cabins. Capacity is the constraint, not the menu." },
+      { "label": "Where you berth", "value": "Smaller ships fit alongside quays the largest ships must anchor off." },
+      { "label": "Crew attention", "value": "Fewer guests per crew member is the least glamorous luxury and the most reliable." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Same itinerary",
+    "title": "Two ships, two holidays",
+    "left": {
+      "label": "Large ship",
+      "items": [
+        "Anchored offshore, tendering in",
+        "Timed dinner reservations",
+        "Queues at the gangway",
+        "More venues, more people"
+      ]
+    },
+    "right": {
+      "label": "Small ship",
+      "items": [
+        "Alongside, walk off at will",
+        "Open dining, no scramble",
+        "No queue worth the name",
+        "Fewer venues, more room"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "Read the specs",
+    "title": "Three figures worth asking for",
+    "items": [
+      { "n": 1, "head": "Guests at double occupancy", "body": "Not maximum capacity. Ask for both, and note the gap — that gap is your school-holiday sailing." },
+      { "n": 2, "head": "Guests per crew member", "body": "Published by most luxury lines. Lower is better, and it shows in the second week, not the first." },
+      { "n": 3, "head": "Space ratio", "body": "Tonnage divided by guests. A rough index of elbow room per person; compare it within a class only." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Choose the ship for how many people you want at breakfast.",
+    "sub": "Everything else — the itinerary, the suite, the fare — is easier to fix than a ship that is simply too full for you."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Then tell me the two ships you're weighing up and I'll give you a two-line verdict on which suits you.",
+    "handle": "@bonvtravel"
+  }
+]

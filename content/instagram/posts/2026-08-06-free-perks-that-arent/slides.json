@@ -1,0 +1,50 @@
+[
+  {
+    "template": "cover",
+    "kicker": "The word free",
+    "title": "Nothing on a cruise brochure is free",
+    "subtitle": "Free airfare, free drinks, free second guest. Each of them is priced into the fare.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 06" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The mechanism",
+    "text": "A perk is not a gift. It is a fare with the discount pointed somewhere.",
+    "sub": "Lines would rather add than subtract, because a perk sounds generous and a lower fare sounds like weak demand. Both come out of the same margin."
+  },
+  {
+    "template": "list",
+    "kicker": "Read it this way",
+    "title": "Three perks worth translating",
+    "items": [
+      { "head": "Free airfare", "body": "The line's routing, its airline, its connections. Ask what a deviation costs before you value it at full price." },
+      { "head": "Second guest sails free", "body": "Look at the total for two, not the headline. The fare for guest one has often been rebuilt to carry both." },
+      { "head": "Free drinks package", "body": "Worth real money to some travellers and nothing to others. It is only a saving at your own drinking pattern." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Two ways to be sold to",
+    "title": "Perk or price",
+    "left": { "label": "Perk-led", "items": ["Long list of inclusions", "Headline fare stays high", "Value depends on you", "Restrictions in the terms", "Hard to compare lines"] },
+    "right": { "label": "Price-led", "items": ["Short list, plainly stated", "Fare does the work", "Value is the same for all", "Little to read", "Compares cleanly"] }
+  },
+  {
+    "template": "quote",
+    "quote": "The useful question is never what am I getting. It's what would I have paid for this if it had a price on it.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Price the perks at what they are worth to you, then compare.",
+    "sub": "Strike out every inclusion you wouldn't have bought. What remains is the real offer, and it is often a very different sailing that wins."
+  },
+  {
+    "template": "cta",
+    "kicker": "A question",
+    "title": "Which perk have you never once used",
+    "body": "Tell me in the comments. Mine is the speciality dining credit that arrives on the night everyone is already booked.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

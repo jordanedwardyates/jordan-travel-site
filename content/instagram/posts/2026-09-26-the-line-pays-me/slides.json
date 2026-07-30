@@ -1,0 +1,55 @@
+[
+  {
+    "template": "cover",
+    "kicker": "The Advisor's Edit",
+    "title": "The line pays me. You don't.",
+    "subtitle": "How advisor compensation actually works, and why your fare is not the thing that changes.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 26" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "Your fare is the same or better. My fee is not added to it.",
+    "sub": "Cruise lines build the cost of distribution into every fare they publish. It is spent whether an advisor is involved or not. If nobody is, the line simply keeps it."
+  },
+  {
+    "template": "list",
+    "kicker": "The arrangement",
+    "title": "What this actually is",
+    "items": [
+      { "head": "The line pays the advisor", "body": "Commission comes out of the fare the line already published. It is not a surcharge sitting on top of your booking." },
+      { "head": "Your fare is not marked up", "body": "I cannot inflate a cruise fare. I quote what the line and my consortium make available - often less than retail." },
+      { "head": "The services are complimentary", "body": "Planning, cabin selection, watching the fare after you book, answering the phone in a crisis. All of it included." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The same sailing",
+    "title": "Two ways to hold the booking",
+    "left": { "label": "Direct", "items": ["Same published fare", "A new agent each call", "One promotion applied", "Nobody watching the price", "You hold the file"] },
+    "right": { "label": "With me", "items": ["Same fare or better", "One name, one file", "Credits stacked where allowed", "Fare watched until sailing", "I hold the file"] }
+  },
+  {
+    "template": "plot",
+    "kicker": "Follow the money",
+    "title": "Where each part of it sits",
+    "points": [
+      { "label": "The published fare", "value": "Already contains the cost of distributing it. That cost is spent either way." },
+      { "label": "The line", "value": "Pays commission out of that, to whoever holds the booking - or to nobody." },
+      { "label": "The traveller", "value": "Pays the fare. Not a penny of my compensation is added on top of it." },
+      { "label": "The advisor", "value": "Is paid after you sail, which is a useful thing to know about my incentives." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "My advice is candid, my services are complimentary, and every recommendation is one I'd be glad to defend over dinner.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "If the fare is the same either way, the only question left is who you'd rather have holding the file when the plan comes apart.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

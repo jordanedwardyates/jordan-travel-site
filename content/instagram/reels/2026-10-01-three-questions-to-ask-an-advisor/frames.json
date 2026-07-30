@@ -1,0 +1,9 @@
+[
+  { "template": "frame", "kicker": "Three questions", "text": "Before you trust anyone with a voyage.", "seconds": 3, "timecode": "0:00" },
+  { "template": "frame", "kicker": "One", "text": "How are you paid, and by whom?", "sub": "The line pays. After you sail.", "seconds": 5, "timecode": "0:03" },
+  { "template": "frame", "text": "A fee on top of the fare is a choice.", "sub": "Not a rule. Ask what it buys.", "seconds": 6, "timecode": "0:08", "tone": "warn" },
+  { "template": "frame", "kicker": "Two", "text": "Which sailing would you talk me out of?", "seconds": 6, "timecode": "0:14", "size": 92 },
+  { "template": "frame", "text": "Can't name one? That is selling.", "seconds": 6, "timecode": "0:20", "tone": "warn" },
+  { "template": "frame", "kicker": "Three", "text": "Who answers at 2am in my time zone?", "sub": "A name, not a call centre.", "seconds": 5, "timecode": "0:26", "size": 92 },
+  { "template": "frame", "text": "Ask me all three.", "sub": "@bonvtravel", "seconds": 4, "timecode": "0:31" }
+]

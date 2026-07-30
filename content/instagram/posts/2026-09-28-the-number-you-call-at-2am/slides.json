@@ -1,0 +1,55 @@
+[
+  {
+    "template": "cover",
+    "kicker": "The Advisor's Edit",
+    "title": "The number you call at 2am",
+    "subtitle": "What an advisor is for is rarely visible until the day the plan comes apart.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 28" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The honest framing",
+    "text": "Nothing goes wrong on a good day. That is the whole difficulty.",
+    "sub": "Most of a booking is quiet admin. The value sits in the small share of trips that go sideways, and you cannot know in advance which one is yours."
+  },
+  {
+    "template": "list",
+    "kicker": "The five per cent",
+    "title": "What it looks like when it breaks",
+    "items": [
+      { "head": "A flight cancels the night before", "body": "Rebooking, and a call to the line to flag embarkation so your cabin is not quietly released." },
+      { "head": "A port is dropped at sea", "body": "Excursions cancelled, refunds chased, a new plan for the day before you have had breakfast." },
+      { "head": "Something medical ashore", "body": "The port agent's number, the insurer's claim line, and someone awake in your own time zone." },
+      { "head": "The cabin is wrong on arrival", "body": "Moved by someone who knows whom to ask on the ship, rather than by standing in a queue." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "The difference between a good trip and a memorable one usually comes down to time.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "plot",
+    "kicker": "A night, in order",
+    "title": "How the chain actually runs",
+    "points": [
+      { "label": "11pm", "value": "Your flight is cancelled. You text me before you have reached the airline desk." },
+      { "label": "11:20pm", "value": "The line is called, embarkation flagged, so the cabin is held rather than released." },
+      { "label": "Before dawn", "value": "New routing booked, transfer moved, a hotel found for the night nobody planned." },
+      { "label": "Morning", "value": "You board. Nobody at the terminal knows anything went wrong at all." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "You are not buying a booking. You are buying someone answering.",
+    "sub": "The fare is identical either way. What differs is whether there is a person with your file already open when the plan comes apart at an inconvenient hour."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to the person you'd travel with",
+    "body": "Then write to me with where you are leaning, and I'll come back with a short list worth your time - and one number that answers.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

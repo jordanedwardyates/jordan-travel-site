@@ -1,0 +1,50 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Cabin truths",
+    "title": "The best suites sell a door, not a room.",
+    "subtitle": "Square footage is the easiest thing to price and the least likely to change your week.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 07" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The distinction",
+    "text": "Some suite tiers add space. Some add standing.",
+    "sub": "One gives you a larger sitting room you will use twice. The other changes how the ship treats you from the moment you reach the terminal until the morning you leave it."
+  },
+  {
+    "template": "compare",
+    "kicker": "What the tier actually buys",
+    "title": "Space against access",
+    "left": { "label": "Space tiers", "items": ["More floor area", "A second bathroom", "A dining table indoors", "A longer terrace"] },
+    "right": { "label": "Access tiers", "items": ["Priority embarkation", "A restaurant kept for you", "A butler who books things", "Included excursions, sometimes", "First call on specialities"] }
+  },
+  {
+    "template": "list",
+    "kicker": "Where the value sits",
+    "title": "Three suite decisions worth making",
+    "items": [
+      { "head": "Buy the lowest access tier", "body": "The entry rung of the privileged block carries most of the privilege at the smallest premium." },
+      { "head": "Ignore the corner showpiece", "body": "The photographed suite is priced as a trophy. The one beside it is quieter and far less dear." },
+      { "head": "Check what the tier includes", "body": "On inclusive fares much of the suite benefit is already yours. Then you are only buying the room." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "On a good ship the butler is worth more than the extra forty feet, and costs less to obtain.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Ask what the tier gets you *off* the ship, not just inside it.",
+    "sub": "Priority tender, a reserved table on a full sea day, a name who fixes things in the moment. Those alter a voyage. A second wardrobe does not, at any price per night."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever is weighing up a suite.",
+    "body": "Or send me the two categories you're deciding between. I'll tell you which one buys something you'll notice, and which is charging you for floor area.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

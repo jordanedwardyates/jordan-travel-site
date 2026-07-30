@@ -1,0 +1,55 @@
+[
+  {
+    "template": "frame",
+    "kicker": "Mistakes to avoid",
+    "text": "Three fixes for a queasy sailing",
+    "seconds": 3,
+    "timecode": "0:00"
+  },
+  {
+    "template": "frame",
+    "text": "The cheapest cabin is the worst deck",
+    "seconds": 5,
+    "timecode": "0:03",
+    "tone": "warn",
+    "size": 92
+  },
+  {
+    "template": "frame",
+    "kicker": "One",
+    "text": "Low and midship",
+    "sub": "near the waterline, centre of the ship",
+    "seconds": 7,
+    "timecode": "0:08"
+  },
+  {
+    "template": "frame",
+    "kicker": "Two",
+    "text": "Look at the horizon",
+    "sub": "on deck, facing forward, not down at a phone",
+    "seconds": 7,
+    "timecode": "0:15"
+  },
+  {
+    "template": "frame",
+    "kicker": "Three",
+    "text": "Choose a ship that docks",
+    "sub": "fewer tenders means fewer small boats in swell",
+    "seconds": 7,
+    "timecode": "0:22"
+  },
+  {
+    "template": "frame",
+    "text": "Ask your doctor, not the internet",
+    "seconds": 6,
+    "timecode": "0:29",
+    "tone": "warn"
+  },
+  {
+    "template": "frame",
+    "text": "Which deck would I book on your ship",
+    "seconds": 5,
+    "timecode": "0:35",
+    "size": 92
+  }
+]

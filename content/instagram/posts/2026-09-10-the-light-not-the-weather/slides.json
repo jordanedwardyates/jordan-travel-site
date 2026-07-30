@@ -1,0 +1,57 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Seasonality",
+    "title": "In the north you're booking light",
+    "subtitle": "Not weather. The hours of usable daylight are the thing you are actually paying for.",
+    "stamp": { "top": "White Nights", "bottom": "Midsummer" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Read this alone",
+    "text": "Above the Arctic Circle at midsummer, the sun does not set.",
+    "sub": "Which changes the shape of the whole day. Dinner at nine still reads as afternoon, and the fjords hold a level glow for hours."
+  },
+  {
+    "template": "plot",
+    "kicker": "The northern year",
+    "title": "What each window actually gives you",
+    "points": [
+      { "label": "Late May", "value": "Meltwater in the falls, long days, and a season still finding its feet ashore." },
+      { "label": "June", "value": "The midnight-sun weeks. The most light you will ever be sold, and the reason to go." },
+      { "label": "July", "value": "Still bright, warmer ashore, and the busiest weeks of the northern deployment." },
+      { "label": "August", "value": "Darkness returning at the edges. Quieter towns, and the first aurora nights late on." },
+      { "label": "September", "value": "The season closing. Colour ashore, real night skies, and less margin in the weather." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Opposite problems",
+    "title": "Aegean summer vs northern summer",
+    "left": { "label": "The Aegean", "items": ["Heat to plan around", "Crowds at marquee ports", "Meltemi afternoons", "Warmest sea in September", "Shoulder weeks are quiet"] },
+    "right": { "label": "The north", "items": ["Light to plan around", "Crowds concentrated in July", "Weather, not wind", "Best light near midsummer", "Shoulder weeks are darker"] }
+  },
+  {
+    "template": "list",
+    "kicker": "Choosing between them",
+    "title": "Three honest trades in the north",
+    "items": [
+      { "head": "Midnight sun or night sky", "body": "You cannot have both on one voyage. Aurora needs darkness, and midsummer has none to offer." },
+      { "head": "Waterfalls or warmth ashore", "body": "Early season runs full and cold. High summer is kinder to sit outside in and quieter on the falls." },
+      { "head": "Long days or empty towns", "body": "The weeks with the most light are the weeks with the most company. Pick which one you came for." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Name the hours you want, and the month names itself.",
+    "sub": "This is the whole northern conversation. Not which ship, not which fjord — how much light you want to be awake in, and what you'll trade for it."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Then tell me whether you're chasing the midnight sun or the first dark nights, and I'll draft the fortnight around it.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

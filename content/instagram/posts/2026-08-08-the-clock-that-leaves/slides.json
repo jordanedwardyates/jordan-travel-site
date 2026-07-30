@@ -1,0 +1,66 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Port days",
+    "title": "The clock on your phone is not the clock that leaves.",
+    "subtitle": "Ship's time, all-aboard, and the last tender are three different numbers.",
+    "stamp": { "top": "Port Day Rules", "bottom": "No. 01" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The number people get wrong",
+    "text": "All-aboard is 30 to 60 minutes *before* departure.",
+    "sub": "It is printed in the daily programme and posted at the gangway, and it is stated in ship's time. Sailing time is not your deadline — all-aboard is."
+  },
+  {
+    "template": "list",
+    "kicker": "Keep these straight",
+    "title": "Three clocks on a port day",
+    "items": [
+      { "head": "Ship's time", "body": "The only one that matters. On a repositioning sailing it advances an hour a day and stops agreeing with shore." },
+      { "head": "Local time", "body": "Whatever your phone picks up from the nearest mast. Useful for a lunch reservation and nothing else." },
+      { "head": "The last tender", "body": "Where the ship anchors instead of docking, this is a separate and earlier time. Read both, every time." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Same ship, same 5pm departure",
+    "title": "Two travellers in the same taverna",
+    "left": {
+      "label": "On phone time",
+      "items": [
+        "At the pier at 4:40",
+        "Ship's clock reads 5:40",
+        "Gangway already stowed",
+        "Passport with the port agent"
+      ]
+    },
+    "right": {
+      "label": "On ship time",
+      "items": [
+        "Watch set at breakfast",
+        "Back aboard by 3:45",
+        "An hour spare in the old town",
+        "Watches the lines come in"
+      ]
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Why the captain cannot wait",
+    "text": "Departure slots belong to the port, not to the bridge.",
+    "sub": "Berth scheduling and maritime requirements set the hour. This was Disney's stated position after Dublin, and it is the honest one — holding the ship is often simply not available."
+  },
+  {
+    "template": "quote",
+    "quote": "Set your watch to ship's time at breakfast on day one, and then never look at your phone for a departure again.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "They are the one reading a phone clock at ten to five. Tell me the sailing you're weighing and I'll send back a two-line verdict on its port days.",
+    "handle": "@bonvtravel"
+  }
+]

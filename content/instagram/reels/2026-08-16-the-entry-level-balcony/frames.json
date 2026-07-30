@@ -1,0 +1,10 @@
+[
+  { "template": "frame", "kicker": "Cabin truths", "text": "The balcony I refuse most", "sub": "And it is always the cheapest one on the plan", "seconds": 3, "timecode": "0:00", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Sold as", "text": "A veranda", "sub": "Photographed at the one hour of day it works", "seconds": 4, "timecode": "0:03", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "text": "A shelf under another deck", "sub": "Cantilevered steel where the sky should be", "seconds": 5, "timecode": "0:07", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "text": "No sky. No sun. Garage light.", "seconds": 5, "timecode": "0:12", "tone": "warn", "size": 92, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "And below the promenade", "text": "Davits, and a crew at six", "seconds": 5, "timecode": "0:17", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Yet priced", "text": "Like a real veranda", "sub": "The premium over an ocean view is real money", "seconds": 6, "timecode": "0:22", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "The honest version", "text": "Buy one with sky above it", "seconds": 6, "timecode": "0:28", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Or", "text": "Take quiet midship instead", "sub": "Same fare, better sleep, difference spent ashore", "seconds": 6, "timecode": "0:34", "size": 108, "align": "left", "label": "BON V" }
+]

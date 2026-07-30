@@ -15,13 +15,13 @@ posts/<date>-<slug>/
   meta.json                   date, pillar, format, CTA, hashtags, status
   caption.md                  paste-ready caption, hook first, 4 tags last
   slides.json                 the 7 slide specs
-  slides/01.png … 07.png      1080×1350, ready to upload
+  slides/01.jpg … 07.jpg      1080×1350, ready to upload
   slides/_preview.html        all seven in one scrollable page
 reels/<date>-<slug>/
   meta.json
   transcript.md               your read-aloud script, timed
   frames.json                 the on-screen text beats
-  frames/01.png … NN.png      1080×1920 storyboard frames
+  frames/01.jpg … NN.jpg      1080×1920 storyboard frames
   footage.md                  what to shoot or pull, per frame, with rights basis
   slate.webm                  silent timing reference — talk over this
   assemble.sh                 builds the real mp4 mastercut
@@ -31,7 +31,7 @@ _system/                      templates, renderer, research
 
 ## Publishing a carousel
 
-Open the folder, upload `slides/01.png` … `07.png` in order, paste `caption.md`.
+Open the folder, upload `slides/01.jpg` … `07.jpg` in order, paste `caption.md`.
 That's it. The captions already carry the hashtags (four — see below) and any
 UTM-tagged link.
 

@@ -1,0 +1,10 @@
+[
+  { "template": "frame", "kicker": "Said to me last week", "text": "\"It's just a floating hotel.\"", "sub": "Half right.", "seconds": 3, "timecode": "0:00", "tone": "warn", "size": 108 },
+  { "template": "frame", "text": "The half meant as an insult is the good half.", "seconds": 5, "timecode": "0:03", "size": 92 },
+  { "template": "frame", "text": "A hundred-odd guests. One dining room.", "sub": "A crew who know your name by Tuesday.", "seconds": 7, "timecode": "0:08" },
+  { "template": "frame", "text": "Except the hotel moves overnight.", "sub": "And parks in the centre of the next town.", "seconds": 6, "timecode": "0:15" },
+  { "template": "frame", "kicker": "Unpack once", "text": "Vienna. Bratislava. Budapest.", "seconds": 5, "timecode": "0:21" },
+  { "template": "frame", "text": "No theatre. No second show at ten.", "seconds": 7, "timecode": "0:26", "tone": "warn" },
+  { "template": "frame", "text": "That absence is the product.", "seconds": 7, "timecode": "0:33" },
+  { "template": "frame", "text": "If it sounds like a relief, I know your river.", "sub": "@bonvtravel", "seconds": 9, "timecode": "0:40", "size": 92 }
+]

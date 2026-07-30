@@ -1,0 +1,97 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Itinerary craft",
+    "title": "Seven countries in ten days is not an itinerary.",
+    "subtitle": "It is a schedule. Here is what fewer ports actually buys you instead.",
+    "stamp": {
+      "top": "Advisor's Note",
+      "bottom": "No. 12"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "The urge to see everything is why most people see nothing.",
+    "sub": "Every additional port is another early start, another transfer and another all-aboard time. Add four of them to a fortnight and you have removed the holiday from it."
+  },
+  {
+    "template": "list",
+    "kicker": "What fewer ports buys",
+    "title": "Three things you get back",
+    "items": [
+      {
+        "head": "Time ashore that isn't rationed",
+        "body": "Two long days in one place beat four short ones. You get past the harbour and into the town behind it."
+      },
+      {
+        "head": "A ship you actually use",
+        "body": "The library, the deck at five, a dinner that runs long. None of it happens on a six-port week."
+      },
+      {
+        "head": "Weather margin",
+        "body": "Fewer, longer calls at alongside berths are much harder for a swell to take away from you."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The same ten days",
+    "title": "Two ways to spend a fortnight",
+    "left": {
+      "label": "Seven ports",
+      "items": [
+        "Six early starts",
+        "A coach most mornings",
+        "Lunch on the coach",
+        "Two tender calls",
+        "A blur of harbours"
+      ]
+    },
+    "right": {
+      "label": "Four ports",
+      "items": [
+        "Two early starts",
+        "Off the gangway on foot",
+        "Lunch in a town square",
+        "Berthed alongside",
+        "Four places you know"
+      ]
+    }
+  },
+  {
+    "template": "plot",
+    "kicker": "Diminishing returns",
+    "title": "What the seventh port is worth",
+    "points": [
+      {
+        "label": "Ports one to three",
+        "value": "Wanted, enjoyed, remembered. This is the thing you came for."
+      },
+      {
+        "label": "Port four",
+        "value": "Still enjoyed, though the early start is beginning to cost something."
+      },
+      {
+        "label": "Port five",
+        "value": "Attended. You go because it is on the list and already paid for."
+      },
+      {
+        "label": "Ports six and seven",
+        "value": "A harbour cafe, a postcard, and back aboard to sleep it off."
+      }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "Any search engine can surface a hundred sailings. The work is knowing which three deserve your attention.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to the person you'd travel with.",
+    "body": "Then tell me the region and the fortnight you have. I'll draft the version with fewer ports and rather more of the places actually in it.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

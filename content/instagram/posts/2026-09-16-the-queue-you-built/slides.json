@@ -1,0 +1,87 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Mistakes to avoid",
+    "title": "The queue you're standing in is usually self-made.",
+    "subtitle": "Arrival windows exist. Ignoring yours builds the line — and fills the confiscation bin.",
+    "stamp": {
+      "top": "Errors of Judgement",
+      "bottom": "No. 05"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Screening",
+    "text": "Power strips, irons and travel kettles are commonly confiscated.",
+    "sub": "Prohibited-item lists vary by line and by ship. Surge-protected strips and anything with a heating element are the usual seizures — read your own line's list before packing."
+  },
+  {
+    "template": "list",
+    "kicker": "Self-inflicted delays",
+    "title": "Four things that slow embarkation",
+    "items": [
+      {
+        "n": "1",
+        "head": "Arriving before your window",
+        "body": "The terminal fills with people whose time has not come yet, and everybody waits longer for it."
+      },
+      {
+        "n": "2",
+        "head": "Items that must be searched",
+        "body": "A power strip in a carry-on means your bag is opened and gone through by hand."
+      },
+      {
+        "n": "3",
+        "head": "Documents in the hold bag",
+        "body": "The one case you cannot reach is the one the desk asks you to open."
+      },
+      {
+        "n": "4",
+        "head": "Boarding at the popular hour",
+        "body": "The middle of the window is the crowd. The edges of it are quiet."
+      }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "Not malice, arithmetic",
+    "title": "What the terminal is actually doing",
+    "points": [
+      {
+        "label": "Arrival windows",
+        "value": "Staggering guests is the only throughput mechanism a terminal really has."
+      },
+      {
+        "label": "Security screening",
+        "value": "Every flagged bag becomes a hand search, and hand searches are slow."
+      },
+      {
+        "label": "Terminal capacity",
+        "value": "Some ports are handling two or three ships across the same morning."
+      },
+      {
+        "label": "Manifest checks",
+        "value": "Names, documents and forms are reconciled one guest at a time."
+      }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "Stricter than a port day",
+    "text": "Embarkation has a harder deadline than any port call.",
+    "sub": "Royal Caribbean, for instance, asks guests to be onboard no less than one hour before scheduled departure. Confirm the rule your own line applies."
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Take your window, carry your documents, leave the power strip at home.",
+    "sub": "That is most of it. The rest is arriving in the quieter half of your window and going straight up to lunch."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever packs the plugs",
+    "body": "If it would help, I'll send back your line's prohibited-items page and your arrival window before you pack a single thing.",
+    "handle": "@bonv.travel"
+  }
+]

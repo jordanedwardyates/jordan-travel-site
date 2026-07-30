@@ -1,0 +1,8 @@
+[
+  { "template": "frame", "kicker": "Pricing, plainly", "text": "Three lines on a quote", "seconds": 3, "timecode": "0:00", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "text": "In the order that matters", "seconds": 3, "timecode": "0:03", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "One", "text": "What the fare excludes", "sub": "Gratuities, drinks, transfers, the airport car", "seconds": 8, "timecode": "0:06", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Two", "text": "The deposit terms", "sub": "The cheaper fare is the one you can't leave", "seconds": 7, "timecode": "0:14", "tone": "warn", "size": 108, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "Three", "text": "The final payment date", "sub": "Your last chance to reprice, and it passes quietly", "seconds": 7, "timecode": "0:21", "size": 100, "align": "left", "label": "BON V" },
+  { "template": "frame", "kicker": "The verdict", "text": "The rest is decoration", "sub": "Save this before your next quote lands", "seconds": 5, "timecode": "0:28", "size": 108, "align": "left", "label": "BON V" }
+]

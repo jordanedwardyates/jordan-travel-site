@@ -1,0 +1,72 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Ship selection",
+    "title": "The berth *is* the itinerary.",
+    "subtitle": "Why a smaller ship reaches places a large one can only look at.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 03" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The exposure",
+    "text": "A port you tender into is a port you can lose to weather.",
+    "sub": "Moderate swell or wind is enough to suspend tender operations. The ship sits anchored in sight of the town and nobody goes ashore."
+  },
+  {
+    "template": "plot",
+    "kicker": "Draught, length, berth",
+    "title": "What decides whether you dock",
+    "points": [
+      { "label": "Quay length", "value": "A cruise berth is a finite piece of concrete. The longest ships get sent to anchor." },
+      { "label": "Water depth", "value": "Draught rules out some historic harbours entirely, regardless of how new the ship is." },
+      { "label": "Who booked first", "value": "Berths are allocated. Two large ships on the same day means one of them anchors." },
+      { "label": "Sea state", "value": "Tendering stops for swell and wind long before the sailing itself is at any risk." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The same Aegean call",
+    "title": "Alongside vs at anchor",
+    "left": {
+      "label": "Alongside",
+      "items": [
+        "Ashore by nine, easily",
+        "Back aboard for lunch",
+        "Weather rarely cancels it",
+        "No tender ticket, no group"
+      ]
+    },
+    "right": {
+      "label": "At anchor",
+      "items": [
+        "Tender groups and ticket times",
+        "Last tender: separate, earlier",
+        "Swell can cancel the day",
+        "Two hours lost to logistics"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "Where it bites",
+    "title": "Three coastlines where this decides the week",
+    "items": [
+      { "n": 1, "head": "Greek island calls", "body": "Several Cyclades harbours take small ships alongside and send larger ones to anchor offshore." },
+      { "n": 2, "head": "The Norwegian fjords", "body": "Small quays in genuinely small villages. Berth length, not ambition, decides who ties up." },
+      { "n": 3, "head": "Expedition coastlines", "body": "No quay at all. Here the question is the ship's boats and ice class, not its dining rooms." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "I read the port list before I read the deck plan.",
+    "sub": "A summer sailing with four tender calls is a different purchase from the same route docked alongside — and it is usually priced as though it isn't."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to your travelling companion",
+    "body": "Or send me the itinerary you're considering and I'll mark which calls dock and which tender.",
+    "handle": "@bonvtravel"
+  }
+]

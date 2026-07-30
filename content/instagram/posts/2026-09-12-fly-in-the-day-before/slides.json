@@ -1,0 +1,99 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Mistakes to avoid",
+    "title": "The most expensive mistake is a same-day flight.",
+    "subtitle": "Every missed-embarkation story I've handled started at an airport, not a gangway.",
+    "stamp": {
+      "top": "Errors of Judgement",
+      "bottom": "No. 01"
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "Why the ship cannot help you",
+    "text": "A ship will not wait for a delayed flight.",
+    "sub": "Departure slots are set by port authority scheduling and maritime requirements — the captain frequently cannot simply hold the ship. The airline's apology does not move it."
+  },
+  {
+    "template": "list",
+    "kicker": "What the hotel night buys",
+    "title": "Three things a day early buys you",
+    "items": [
+      {
+        "n": "1",
+        "head": "A margin measured in hours",
+        "body": "A cancelled evening flight becomes an inconvenience rather than a forfeited voyage."
+      },
+      {
+        "n": "2",
+        "head": "Luggage that catches up",
+        "body": "Delayed bags can be rerouted to a hotel overnight. They cannot chase a ship at sea."
+      },
+      {
+        "n": "3",
+        "head": "A rested first evening",
+        "body": "You board unhurried, unpack before dinner, and begin the sailing awake rather than recovering."
+      }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Same sailing, two decisions",
+    "title": "The flight you book decides the risk",
+    "left": {
+      "label": "Same day",
+      "items": [
+        "One delay ends the trip",
+        "No slack for weather",
+        "Bags arrive with you or not",
+        "Boarding in a hurry"
+      ]
+    },
+    "right": {
+      "label": "Day before",
+      "items": [
+        "A whole night of margin",
+        "Weather has time to clear",
+        "Bags can be rerouted",
+        "Boarding rested"
+      ]
+    }
+  },
+  {
+    "template": "plot",
+    "kicker": "The failure modes",
+    "title": "What actually goes wrong",
+    "points": [
+      {
+        "label": "Weather",
+        "value": "One storm at a connecting hub, and every later flight that day is full."
+      },
+      {
+        "label": "Mechanical",
+        "value": "A swapped aircraft can cost you six hours you did not have."
+      },
+      {
+        "label": "Connections",
+        "value": "Two flights in one day double the number of things that must go right."
+      },
+      {
+        "label": "Cruise air",
+        "value": "Protection varies by line and fare — confirm what yours actually covers."
+      }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The whole of the advice",
+    "text": "Book the hotel night. It is the cheapest insurance in the itinerary.",
+    "sub": "And if you are crossing an ocean to meet a ship, treat two nights as the standard rather than the indulgence."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "I'll tell you plainly which of your flights has no margin in it, and what the day-before version of the trip looks like.",
+    "handle": "@bonv.travel"
+  }
+]

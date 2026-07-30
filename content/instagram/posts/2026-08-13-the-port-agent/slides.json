@@ -1,0 +1,69 @@
+[
+  {
+    "template": "cover",
+    "kicker": "If the worst happens",
+    "title": "One phone number holds the whole thread.",
+    "subtitle": "The local port agent. Printed in the daily programme every morning, and almost never read.",
+    "stamp": { "top": "Port Day Rules", "bottom": "No. 06" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Four seconds, every morning",
+    "text": "Photograph the port agent's details before you go ashore.",
+    "sub": "They are printed in the daily programme and posted at the gangway. It is the only number that matters if you are standing on a quay watching your ship make way."
+  },
+  {
+    "template": "list",
+    "kicker": "The recovery, in order",
+    "title": "What actually happens next",
+    "items": [
+      { "head": "Your passport goes to the agent", "body": "Standard protocol. The ship lands the documents of anyone missing with the local port agent before it sails." },
+      { "head": "The agent works with the line", "body": "They coordinate with the ship, the local authorities and the line's shore team to rejoin you at the next port." },
+      { "head": "Your belongings sail on", "body": "Cabin, luggage and medication continue with the ship. This is why the medication should never have been in the cabin." },
+      { "head": "Someone funds the gap", "body": "Who that is was decided the moment you chose between the ship's excursion and a private tour." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Two documented cases",
+    "title": "São Tomé, 2024 vs Dublin",
+    "left": {
+      "label": "Private tour",
+      "items": [
+        "Norwegian Dawn, 27 Mar 2024",
+        "Eight guests, private tour",
+        "Back after the 3pm all-aboard",
+        "Coast Guard could not board them",
+        "They funded their own recovery"
+      ]
+    },
+    "right": {
+      "label": "Ship's tour",
+      "items": [
+        "Disney, at Dublin",
+        "33 guests, ship's excursion",
+        "Also late, also left behind",
+        "Ship sailed on schedule",
+        "The line arranged onward travel"
+      ]
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "What never leaves you",
+    "text": "Passport, wallet, phone, medication. On your person, always.",
+    "sub": "Every account of being left behind turns on the same detail: not the lateness, but what the guest happened to be carrying when the gangway went up."
+  },
+  {
+    "template": "quote",
+    "quote": "The lateness is rarely the disaster. Being late with nothing in your pockets and no number to call — that is the disaster.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this. You will want it once.",
+    "body": "And if you'd like the short version I give clients before a port-heavy sailing, ask me for the port-day note and I'll send it across.",
+    "handle": "@bonvtravel"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "template": "cover",
+    "kicker": "The real constraint",
+    "title": "Dining capacity decides your week.",
+    "subtitle": "Not the number of restaurants — the number of seats behind the door.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 06" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The arithmetic",
+    "text": "Cabins are easy to add. Restaurant seats are not.",
+    "sub": "That gap is why a celebrated ship can feel crowded at eight in the evening and completely empty at three in the afternoon."
+  },
+  {
+    "template": "plot",
+    "kicker": "Do this arithmetic",
+    "title": "Seats, sittings and guests",
+    "points": [
+      { "label": "Venue count", "value": "Ten restaurants sounds generous until you notice how few seats most of them hold." },
+      { "label": "Reservation windows", "value": "The earlier the booking opens, the more it is rationing something scarce." },
+      { "label": "Open or fixed dining", "value": "Open seating is a promise about capacity. Fixed seating is an admission about it." },
+      { "label": "The surcharge", "value": "A cover charge is often crowd control wearing a wine list." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Two design choices",
+    "title": "Rationed vs genuinely open",
+    "left": {
+      "label": "Rationed",
+      "items": [
+        "Book on day one or not at all",
+        "One included room, always busy",
+        "Cover charges on the good ones",
+        "A queue at the door at eight"
+      ]
+    },
+    "right": {
+      "label": "Open",
+      "items": [
+        "Walk in most evenings",
+        "Every room inside the fare",
+        "A table for two, actually",
+        "Room service that is real food"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "Ask these",
+    "title": "Three questions for the dining room",
+    "items": [
+      { "n": 1, "head": "Seats, not venues", "body": "Ask for the seat count set against the guest count. Very few travellers ever do, and it is the number that matters." },
+      { "n": 2, "head": "When do bookings open", "body": "If specialty dining opens months out and vanishes in a morning, you have your answer already." },
+      { "n": 3, "head": "What room service is", "body": "On the best small ships it is the same kitchen and the same menu. Elsewhere it is sandwiches." }
+    ]
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "The best-designed ships remove the reservation entirely.",
+    "sub": "No booking window, no cover charge, no scramble on embarkation afternoon. You simply go to dinner. It sounds trivial until you have had the other version."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Save this before you book a celebrated ship",
+    "body": "Or send me the ship and I'll tell you whether dinner aboard is a pleasure or a project.",
+    "handle": "@bonvtravel"
+  }
+]

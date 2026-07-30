@@ -1,0 +1,55 @@
+[
+  {
+    "template": "cover",
+    "kicker": "Pricing, plainly",
+    "title": "The published fare is the last price to pay",
+    "subtitle": "Four things that move a cruise fare, none of them printed on the booking page.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 01" }
+  },
+  {
+    "template": "statement",
+    "kicker": "Start here",
+    "text": "Retail is an opening position, not a price.",
+    "sub": "The published fare exists so there is something to discount from. It is a starting number with a marketing calendar attached."
+  },
+  {
+    "template": "list",
+    "kicker": "What moves the number",
+    "title": "Four levers the website never shows",
+    "items": [
+      { "head": "Contracted space held early", "body": "Blocks of cabins held at earlier rates, released through advisors rather than through a search box." },
+      { "head": "Refundable vs non-refundable", "body": "The same cabin, two prices. One of them is flexibility you may not actually need." },
+      { "head": "Credit stacked at booking", "body": "Line credit, agency credit and promotional credit are separate pots. Most travellers claim one." },
+      { "head": "Repricing after you book", "body": "Fares move. Nobody rings to tell you. A watched booking gets rebooked when it drops." }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "Who decides",
+    "title": "Where a fare is actually set",
+    "points": [
+      { "label": "The line", "value": "Publishes a fare, then runs a promotion calendar quarter by quarter." },
+      { "label": "The agency", "value": "Holds contracted space and its own credit to apply against it." },
+      { "label": "The advisor", "value": "Decides which of those combine, on which sailing, and when." },
+      { "label": "The website", "value": "Shows you one of the three and calls it the price." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "The same sailing",
+    "title": "Booked directly vs booked well",
+    "left": { "label": "Retail", "items": ["Published fare", "One promotion applied", "Deposit terms as offered", "Fare drop unnoticed", "You chase the line"] },
+    "right": { "label": "Edited", "items": ["Contracted rate", "Credits stacked", "Deposit structured to suit", "Repriced when it falls", "The line answers to me"] }
+  },
+  {
+    "template": "quote",
+    "quote": "Most of what I do isn't booking travel - it's editing it. The fare is part of the edit.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "cta",
+    "title": "Send me a sailing you're weighing up",
+    "body": "You'll get a two-line verdict: what it should cost, and whether it's the right ship for what you actually want.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

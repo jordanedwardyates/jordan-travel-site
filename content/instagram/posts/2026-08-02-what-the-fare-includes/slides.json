@@ -1,0 +1,50 @@
+[
+  {
+    "template": "cover",
+    "kicker": "What the fare buys",
+    "title": "The cheap fare is rarely the cheap holiday",
+    "subtitle": "Two Aegean sailings can look a week apart in price and finish level. Here is where.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 02" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The real question",
+    "text": "Compare the disembarkation bill, not the brochure fare.",
+    "sub": "A fare is only the entry price. The number that matters is what you have paid by the morning you walk off in Piraeus."
+  },
+  {
+    "template": "list",
+    "kicker": "The usual gaps",
+    "title": "Three lines that sit outside a low fare",
+    "items": [
+      { "head": "Drinks, water and coffee", "body": "On mainstream lines this is a package decision made at embarkation. On inclusive fares the decision doesn't exist." },
+      { "head": "Gratuities", "body": "Either built into the fare, or added per person per day for the whole voyage. Only one of those is visible upfront." },
+      { "head": "Shore excursions and transfers", "body": "The line's own tours, the airport car, the pre-cruise night. Rarely quoted at the same moment as the cabin." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Same week, same sea",
+    "title": "Where the money goes",
+    "left": { "label": "Low fare", "items": ["Cabin only", "Drinks package added", "Gratuities per day", "Every tour extra", "Wi-Fi tiered"] },
+    "right": { "label": "Inclusive", "items": ["Cabin and dining", "Drinks in the fare", "Gratuities included", "Some tours included", "Wi-Fi included"] }
+  },
+  {
+    "template": "quote",
+    "quote": "An inclusive fare isn't generosity. It's a line deciding not to sell you anything else once you're aboard.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Price the whole week, then choose the ship.",
+    "sub": "Once both sailings are costed to the same finish line, the decision stops being about money and becomes what it should be - which ship you'd rather spend seven mornings on."
+  },
+  {
+    "template": "cta",
+    "kicker": "One ask",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "It's the conversation worth having before either of you falls for a headline fare.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

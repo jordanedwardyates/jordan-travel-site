@@ -1,0 +1,66 @@
+[
+  {
+    "template": "cover",
+    "kicker": "River or ocean",
+    "title": "The same faces for seven nights",
+    "subtitle": "A river ship's guest count is fixed. That is either the best part or the worst.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 22" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The social fact",
+    "text": "There is nowhere to be anonymous on a river ship.",
+    "sub": "One lounge, one dining room, one sundeck. By the second evening the crew know your name, and so do the other guests. Some travellers love that. Some do not."
+  },
+  {
+    "template": "compare",
+    "kicker": "Be honest",
+    "title": "Who a fixed count suits",
+    "left": {
+      "label": "Suits you",
+      "items": [
+        "You enjoy a shared table",
+        "You'd rather talk than watch",
+        "You want the crew to know you",
+        "You travel as a sociable pair"
+      ]
+    },
+    "right": {
+      "label": "Doesn't",
+      "items": [
+        "You want a new room nightly",
+        "You dislike small talk at 8am",
+        "You need range for the family",
+        "You'd sooner dine alone, quietly"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "Where it lands",
+    "title": "Three things a fixed count changes",
+    "items": [
+      { "head": "The dining room", "body": "Open seating, one venue, familiar faces. Ask about tables for two if that matters to you." },
+      { "head": "The excursion group", "body": "You walk the towns with the same people all week, and the guides learn what the group wants." },
+      { "head": "The evenings", "body": "One lounge, conversation, a pianist. Not a theatre, and not a second show at ten." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "A hundred guests is a dinner party. Three thousand is a small town. Decide which week you want.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Ask the guest count before you ask for the deck plan.",
+    "sub": "It predicts the social temperature of the week better than any brochure photograph, and it is the one number every line will tell you straight away."
+  },
+  {
+    "template": "cta",
+    "kicker": "Tell me",
+    "title": "Dinner party, or small town?",
+    "body": "Answer in the comments and I'll say which format I'd put you on — and the two lines I'd start with.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

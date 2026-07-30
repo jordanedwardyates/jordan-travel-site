@@ -1,0 +1,66 @@
+[
+  {
+    "template": "cover",
+    "kicker": "River cruising",
+    "title": "Included excursions are not free excursions",
+    "subtitle": "They are in the fare. What matters is whether they're the ones you'd choose.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 24" }
+  },
+  {
+    "template": "statement",
+    "kicker": "The distinction",
+    "text": "A daily included tour is convenience, not curation.",
+    "sub": "River fares usually cover one guided excursion a day, a good local guide and the coach. Excellent value, genuinely — but built for a hundred people at once, not for you."
+  },
+  {
+    "template": "compare",
+    "kicker": "Two kinds of morning",
+    "title": "Included or chosen",
+    "left": {
+      "label": "Included",
+      "items": [
+        "One tour a day, in the fare",
+        "A coach and a group",
+        "The headline sights, done well",
+        "No planning required"
+      ]
+    },
+    "right": {
+      "label": "Curated",
+      "items": [
+        "Booked for your interests",
+        "A car and a private guide",
+        "The vineyard, not the square",
+        "Costs extra, saves the day"
+      ]
+    }
+  },
+  {
+    "template": "list",
+    "kicker": "Worth the money",
+    "title": "Three days I'd pay to upgrade",
+    "items": [
+      { "head": "A Douro wine morning", "body": "A private table at a quinta beats a group tasting on a timetable. The one I argue for most." },
+      { "head": "A town you already know", "body": "If you have walked Melk before, the included walk is a wasted morning. Go somewhere else." },
+      { "head": "Anything you actually love", "body": "Gardens, presses, cathedral organs. Specialist interest is what a group tour cannot serve." }
+    ]
+  },
+  {
+    "template": "quote",
+    "quote": "Included means someone chose for you. That's a service on five days and a waste on two.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Take the included tour on days you have no strong opinion.",
+    "sub": "Then spend on the two or three where you do. That mix costs far less than moving up a fare grade, and it gives you a better week than either extreme."
+  },
+  {
+    "template": "cta",
+    "kicker": "Pass it on",
+    "title": "Send this to whoever you'd share a cabin with",
+    "body": "Or send me the itinerary and I'll mark the days worth upgrading and the ones that are fine as sold.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]

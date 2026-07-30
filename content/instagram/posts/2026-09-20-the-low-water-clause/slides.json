@@ -1,0 +1,73 @@
+[
+  {
+    "template": "cover",
+    "kicker": "River cruising",
+    "title": "The low-water clause nobody reads",
+    "subtitle": "Rhine and Danube levels can rewrite an itinerary mid-week. It is in the contract.",
+    "stamp": { "top": "Advisor's Note", "bottom": "No. 20" }
+  },
+  {
+    "template": "statement",
+    "kicker": "What it means in practice",
+    "text": "Low water can mean coaches, or swapping to a sister ship.",
+    "sub": "When a stretch becomes too shallow to transit, lines reroute: guests move by road to the next town, or two vessels trade guests so each keeps its own reach of river."
+  },
+  {
+    "template": "list",
+    "kicker": "The contingencies",
+    "title": "What a rerouted week looks like",
+    "items": [
+      { "head": "A day by coach", "body": "You still see the town. You see it after a road transfer rather than from your own deck." },
+      { "head": "A ship swap", "body": "Two vessels trade guests mid-river so neither crosses the shallow stretch. Luggage moves with you." },
+      { "head": "A reordered itinerary", "body": "The same towns in a different order, sometimes a substitution. The captain's call, not the brochure's." },
+      { "head": "A night in a hotel ashore", "body": "Uncommon, but it happens. Ask who funds it before you book, not while you are packing." }
+    ]
+  },
+  {
+    "template": "plot",
+    "kicker": "Where the risk sits",
+    "title": "Reading the river year",
+    "points": [
+      { "label": "A long dry spell", "value": "The classic low-water risk on the Rhine and Danube, and it can arrive in any month." },
+      { "label": "Snowmelt and storms", "value": "Levels can also run too high. Bridges and locks set a ceiling as well as a floor." },
+      { "label": "Shoulder weeks", "value": "Often the calmer water and the quieter towns at once. Usually where I point people." },
+      { "label": "The clause itself", "value": "Read it once. It tells you whether a rerouted week is compensated or simply absorbed." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "When you ask matters",
+    "title": "The same question, two moments",
+    "left": {
+      "label": "At booking",
+      "items": [
+        "What if the levels drop?",
+        "Who funds a hotel night?",
+        "Is a sister ship in reach?",
+        "Refund, credit, or neither?"
+      ]
+    },
+    "right": {
+      "label": "At the pier",
+      "items": [
+        "You learn it from a notice",
+        "The coach is already waiting",
+        "The desk quotes the contract",
+        "Your plans move, not theirs"
+      ]
+    }
+  },
+  {
+    "template": "statement",
+    "kicker": "The payoff",
+    "text": "Water level is weather. The clause is a choice.",
+    "sub": "No line controls the river, and I hold none of them to that. But how a rerouted week is handled and funded is written down before you sail. Read it, or have someone read it."
+  },
+  {
+    "template": "cta",
+    "kicker": "Keep this",
+    "title": "Save this before you pay a river deposit",
+    "body": "Or send me the sailing you're considering and I'll tell you how that line handles low water.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]
