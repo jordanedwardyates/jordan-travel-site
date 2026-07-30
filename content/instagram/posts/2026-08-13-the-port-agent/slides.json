@@ -4,23 +4,43 @@
     "kicker": "If the worst happens",
     "title": "One phone number holds the whole thread.",
     "subtitle": "The local port agent. Printed in the daily programme every morning, and almost never read.",
-    "stamp": { "top": "Port Day Rules", "bottom": "No. 06" }
+    "stamp": {
+      "top": "Port Day Rules",
+      "bottom": "No. 06"
+    }
   },
   {
-    "template": "statement",
+    "template": "photo",
+    "src": "photos/02.jpg",
     "kicker": "Four seconds, every morning",
-    "text": "Photograph the port agent's details before you go ashore.",
-    "sub": "They are printed in the daily programme and posted at the gangway. It is the only number that matters if you are standing on a quay watching your ship make way."
+    "title": "Photograph the port agent's details before you go ashore.",
+    "caption": "Printed in the daily programme and posted at the gangway. It is the only number that matters if you are watching your ship make way.",
+    "treatment": "duotone",
+    "focus": "center",
+    "brief": "Rubber date stamp on its pad beside a folded printed sheet, harsh window light, damp-curled edges. Nothing legible.",
+    "source": "Jordan's own stamp and paper; else Unsplash 'rubber stamp ink pad old paper desk'"
   },
   {
     "template": "list",
     "kicker": "The recovery, in order",
     "title": "What actually happens next",
     "items": [
-      { "head": "Your passport goes to the agent", "body": "Standard protocol. The ship lands the documents of anyone missing with the local port agent before it sails." },
-      { "head": "The agent works with the line", "body": "They coordinate with the ship, the local authorities and the line's shore team to rejoin you at the next port." },
-      { "head": "Your belongings sail on", "body": "Cabin, luggage and medication continue with the ship. This is why the medication should never have been in the cabin." },
-      { "head": "Someone funds the gap", "body": "Who that is was decided the moment you chose between the ship's excursion and a private tour." }
+      {
+        "head": "Your passport goes to the agent",
+        "body": "Standard protocol. The ship lands the documents of anyone missing with the local port agent before it sails."
+      },
+      {
+        "head": "The agent works with the line",
+        "body": "They coordinate with the ship, the local authorities and the line's shore team to rejoin you at the next port."
+      },
+      {
+        "head": "Your belongings sail on",
+        "body": "Cabin, luggage and medication continue with the ship. This is why the medication should never have been in the cabin."
+      },
+      {
+        "head": "Someone funds the gap",
+        "body": "Who that is was decided the moment you chose between the ship's excursion and a private tour."
+      }
     ]
   },
   {

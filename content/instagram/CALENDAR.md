@@ -285,4 +285,8 @@ each reel's `transcript.md`.
 
 ## Checks
 
-No problems found across 100 pieces.
+3 piece(s) need attention:
+
+- `posts/2026-08-13-the-port-agent` — slide 2 awaits its photograph (photos/02.jpg)
+- `posts/2026-09-13-passport-six-months` — slide 2 awaits its photograph (photos/02.jpg)
+- `posts/2026-09-28-the-number-you-call-at-2am` — slide 6 awaits its photograph (photos/06.jpg)

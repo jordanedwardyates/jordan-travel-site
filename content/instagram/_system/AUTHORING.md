@@ -115,7 +115,9 @@ lone hyphens are auto-promoted to curly quotes and em-dashes — just type norma
 - `plot`: 4–6 points. `label` ≤ 22 chars, `value` ≤ 90.
 - `quote.quote` ≤ 130 characters.
 - `cta.title` ≤ 60, `cta.body` ≤ 170.
-- `photo.title` ≤ 46, `photo.caption` ≤ 90.
+- `photo.title` ≤ 78, `photo.caption` ≤ 155 (measured against a real render: a
+  69-char title sets on two lines, a 146-char caption on three, both clear of
+  the footer).
 
 ### Photographs
 

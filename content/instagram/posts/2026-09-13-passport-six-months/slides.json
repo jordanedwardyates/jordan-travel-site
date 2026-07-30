@@ -10,10 +10,15 @@
     }
   },
   {
-    "template": "statement",
+    "template": "photo",
+    "src": "photos/02.jpg",
     "kicker": "The rule people miss",
-    "text": "Many countries require six months' validity beyond your travel dates.",
-    "sub": "Requirements differ by country and by nationality, so check every country on the itinerary and confirm with the line or your advisor before you pack."
+    "title": "Many countries require six months' validity beyond your travel dates.",
+    "caption": "Requirements differ by country and by nationality. Check every country on the itinerary and confirm with the line or your advisor before you pack.",
+    "treatment": "duotone",
+    "focus": "center",
+    "brief": "Passport open flat under a desk lamp on a scrubbed table, stamped page catching the light, all personal data illegible.",
+    "source": "Jordan's own expired passports; else Unsplash 'open passport stamps desk lamp table' (verify no readable data)"
   },
   {
     "template": "list",

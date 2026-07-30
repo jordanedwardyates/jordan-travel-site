@@ -365,8 +365,13 @@ const templates = {
         border:1px solid rgba(27,49,84,0.16); z-index:0; }
       .ph-title { font-size:${s.size ?? (kind === "reel" ? 88 : 64)}px; line-height:1.14;
         letter-spacing:-0.01em; margin-top:18px; }
+      /* margin-bottom clears the footer — a three-line caption ran straight
+         into the masthead without it. */
       .ph-caption { font-size:${kind === "reel" ? 34 : 30}px; line-height:1.42;
-        color:${TOKENS.aegeanInk}; margin-top:20px; max-width:88%; }
+        color:${TOKENS.aegeanInk}; margin-top:20px; margin-bottom:30px; max-width:92%; }
+      .ph-title + .foot, .ph-caption + .foot { margin-top:0; }
+      .ph-title { margin-bottom:30px; }
+      .ph-title + .ph-caption { margin-top:-12px; margin-bottom:30px; }
       .missing { inset:0; z-index:0; display:flex; align-items:center; justify-content:center;
         background:${TOKENS.linen}; padding:${kind === "reel" ? 140 : 90}px; }
       .missing-in { text-align:center; }

@@ -21,7 +21,7 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
  */
 const LIMITS = {
   cover: { title: 58, subtitle: 105 },
-  photo: { title: 46, caption: 90 },
+  photo: { title: 78, caption: 155 },
   statement: { text: 90, sub: 180 },
   quote: { quote: 130 },
   cta: { title: 60, body: 170 },
