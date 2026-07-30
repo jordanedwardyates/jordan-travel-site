@@ -33,6 +33,33 @@ influencer aesthetics.
 - Default surface is cream paper (`--vintage-passport`) with ink text
   (`--deep-harbor`). There is deliberately no dark mode — paper doesn't invert.
 
+## Emails (Resend campaigns, `emails/*.html`)
+
+Built as standalone HTML tables, not React components — see `emails/README.md`
+for the campaign log and per-card rules.
+
+**Gmail dark-mode safety (required on every email template):** Gmail runs its
+own heuristic color-inversion pass and does **not** honor
+`<meta name="color-scheme">` or `supported-color-schemes` the way Apple Mail
+and Outlook do. Left undefended, our cream/ink "paper" palette gets flipped
+into a muddy dark inversion and the transparent-background signature PNG gets
+inverted into a washed negative image. Every template must:
+1. Set `bgcolor` HTML attributes on the outer `.paper`/`.weathered`
+   tables/cells to match their inline `background-color` — Gmail is less
+   likely to flip a background where the legacy attribute and CSS agree.
+2. Include a `@media (prefers-color-scheme: dark)` block in `<style>` that
+   re-asserts the same light palette with `!important` (catches Gmail's
+   iOS/Android apps, which do read the media query even though Gmail webmail
+   doesn't).
+3. Neutralize image filtering: `img { filter: none !important;
+   -webkit-filter: none !important; }`.
+4. Keep the signature/stamp image backed by an explicit opaque
+   `background-color:#f6f1e8` on its wrapping cell (don't rely on the PNG's
+   own transparency to read correctly against an inverted background).
+
+This is the same "paper doesn't invert" principle as the site itself — the
+goal is defeating Gmail's inversion, not designing a dark variant.
+
 ## Stack
 
 - Next.js 15 (App Router, `src/` dir), TypeScript, Tailwind CSS v4, npm

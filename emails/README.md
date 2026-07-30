@@ -7,6 +7,11 @@ exact HTML that went out, a rendered preview, and its results.
 1. Link to the official cruise-line voyage page.
 2. Always show the savings — struck retail + dollars saved, beside that room's
    price. If retail is missing, get it before sending.
+3. Defend against Gmail's dark-mode color inversion — see the "Emails"
+   section in `CLAUDE.md`/`AGENTS.md` for the required `bgcolor` attributes,
+   `@media (prefers-color-scheme: dark)` block, and image-filter reset.
+   Without these, the cream paper background and signature stamp invert into
+   a muddy, washed-out mess in Gmail.
 
 ## Where to read the results
 
