@@ -22,54 +22,18 @@ import { createPublicClient } from "@/lib/supabase/public";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const MONTH = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-];
+import {
+  cleanTitle,
+  derivePortCount,
+  formatDateRange,
+  money,
+  shortPort,
+} from "@/lib/data/voyage-format";
 
-/** "2026-10-03" + "2026-10-10" → "3–10 Oct 2026"; cross-month keeps both. */
-export function formatDateRange(
-  start: string | null,
-  end: string | null
-): string {
-  if (!start) return "";
-  const s = new Date(`${start}T00:00:00`);
-  if (!end) return `${s.getDate()} ${MONTH[s.getMonth()]} ${s.getFullYear()}`;
-  const e = new Date(`${end}T00:00:00`);
-  const sameMonth =
-    s.getMonth() === e.getMonth() && s.getFullYear() === e.getFullYear();
-  if (sameMonth) {
-    return `${s.getDate()}–${e.getDate()} ${MONTH[s.getMonth()]} ${s.getFullYear()}`;
-  }
-  const sameYear = s.getFullYear() === e.getFullYear();
-  const left = `${s.getDate()} ${MONTH[s.getMonth()]}${sameYear ? "" : ` ${s.getFullYear()}`}`;
-  return `${left}–${e.getDate()} ${MONTH[e.getMonth()]} ${e.getFullYear()}`;
-}
-
-/** 2749 → "$2,749". Nulls render as an em dash upstream, never "$0". */
-const money = (n: number | null) =>
-  n === null || n === undefined ? null : `$${Number(n).toLocaleString("en-US")}`;
-
-/** "Trieste, Italy" → "Trieste" — route titles read better without the country. */
-const shortPort = (p: string | null) => (p ?? "").split(",")[0].trim();
-
-/**
- * "Rome (Civitavecchia), Naples, Messina." → 10. Best-effort only: the
- * summary is free text, so an unparseable one yields null and the card
- * simply omits its route strip rather than inventing a number.
- */
-export function derivePortCount(summary: string | null): number | null {
-  if (!summary) return null;
-  const stops = summary
-    .replace(/\.\s*$/, "")
-    .split(",")
-    .map((s) => s.trim())
-    .filter(Boolean);
-  return stops.length >= 2 && stops.length <= 60 ? stops.length : null;
-}
-
-/** Strip the trailing "(Rome to Barcelona)" — routeTitle already says it. */
-const cleanTitle = (t: string) => t.replace(/\s*\([^)]*\bto\b[^)]*\)\s*$/i, "").trim();
+// Re-exported so server callers can keep importing them from here. The
+// implementations live in voyage-format.ts because the dossier builder needs
+// them in the browser, and this module pulls in the service-role client.
+export { formatDateRange, derivePortCount };
 
 export type CuratedOffer = {
   id: string;
@@ -86,6 +50,19 @@ export type CuratedOffer = {
   websiteApproved: boolean;
   sourceStatus: string;
   offerExpiresAt: string | null;
+  /* Below here: detail the curation UI doesn't show, but a dossier needs. */
+  currency: string;
+  /** per_person | total_accommodation | unknown — an unknown basis makes the
+   * number unquotable, so the dossier flags it rather than hiding it. */
+  priceBasis: string;
+  occupancyBasis: string;
+  quotedAt: string | null;
+  publicNotes: string | null;
+  internalNotes: string | null;
+  sleeps: number | null;
+  deckLocation: string | null;
+  roomNumber: string | null;
+  accommodationNotes: string | null;
 };
 
 export type CuratedVoyage = {
@@ -105,6 +82,13 @@ export type CuratedVoyage = {
   sourceStatus: string;
   websiteStatus: string;
   quotedAt: string | null;
+  /* Reference material worth carrying into a draft — the routing/map page,
+   * the deck plan, and any saved imagery. */
+  officialUrl: string | null;
+  deckPlanUrl: string | null;
+  heroImageUrl: string | null;
+  heroImageAlt: string | null;
+  internalNotes: string | null;
   offers: CuratedOffer[];
   /** Set when this voyage currently holds a homepage slot. */
   feature: {
@@ -148,14 +132,16 @@ const VOYAGE_SELECT = `
   id, cruise_line, ship, voyage_code, official_voyage_title,
   embarkation_date, disembarkation_date, nights, embark_port, disembark_port,
   itinerary_summary, jordans_take, source_status, website_status, quoted_at,
+  official_url, deck_plan_url, hero_image_url, hero_image_alt, internal_notes,
   travel_tags:primary_tag_id ( name ),
   accommodations (
     id, category_name, category_code, size_display, accommodation_type,
-    source_status,
+    source_status, sleeps, deck_location, room_number, notes,
     price_offers (
       id, their_price, my_price, availability_status, comparison_status,
       agency_bonus, promotion_name, website_approved, source_status,
-      offer_expires_at
+      offer_expires_at, currency, price_basis, occupancy_basis, quoted_at,
+      public_notes, internal_notes
     )
   ),
   homepage_features (
@@ -181,6 +167,16 @@ function mapVoyage(r: any): CuratedVoyage {
       websiteApproved: p.website_approved,
       sourceStatus: p.source_status ?? a.source_status,
       offerExpiresAt: p.offer_expires_at,
+      currency: p.currency ?? "USD",
+      priceBasis: p.price_basis ?? "unknown",
+      occupancyBasis: p.occupancy_basis ?? "double",
+      quotedAt: p.quoted_at ?? null,
+      publicNotes: p.public_notes ?? null,
+      internalNotes: p.internal_notes ?? null,
+      sleeps: a.sleeps ?? null,
+      deckLocation: a.deck_location ?? null,
+      roomNumber: a.room_number ?? null,
+      accommodationNotes: a.notes ?? null,
     }))
   );
   // Cheapest real fare first — that is the one worth featuring.
@@ -205,6 +201,11 @@ function mapVoyage(r: any): CuratedVoyage {
     sourceStatus: r.source_status,
     websiteStatus: r.website_status,
     quotedAt: r.quoted_at,
+    officialUrl: r.official_url ?? null,
+    deckPlanUrl: r.deck_plan_url ?? null,
+    heroImageUrl: r.hero_image_url ?? null,
+    heroImageAlt: r.hero_image_alt ?? null,
+    internalNotes: r.internal_notes ?? null,
     offers,
     feature: f
       ? {

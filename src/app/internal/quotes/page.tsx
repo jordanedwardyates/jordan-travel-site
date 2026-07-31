@@ -8,6 +8,8 @@ import {
   type CuratedVoyage,
   type CuratedOffer,
 } from "@/lib/data/curation";
+import { SAILING_CUTOFF_DAYS, isPastCutoff } from "@/lib/data/voyage-format";
+import DossierPicker from "./DossierPicker";
 import {
   setVoyageWebsiteStatus,
   setVoyageTrusted,
@@ -388,9 +390,9 @@ function ReviewQueue({
 export default async function QuoteCurationPage({
   searchParams,
 }: {
-  searchParams: Promise<{ key?: string }>;
+  searchParams: Promise<{ key?: string; past?: string }>;
 }) {
-  const { key } = await searchParams;
+  const { key, past } = await searchParams;
   const token = process.env.INTERNAL_PREVIEW_TOKEN;
   const authorized =
     process.env.NODE_ENV === "development" || (!!token && key === token);
@@ -404,6 +406,23 @@ export default async function QuoteCurationPage({
   const dueForReview = featured.filter(
     (v) => v.feature?.reviewOn !== null && v.feature!.reviewOn! <= todayISO()
   );
+
+  // Departed sailings, and ones leaving too soon to sell, drop out of the list
+  // by default. Nothing is deleted — the rows stay, and ?past=1 shows them —
+  // because a past fare is still the pricing history for next season's quote.
+  const showPast = past === "1";
+  const pastVoyages = voyages.filter((v) => isPastCutoff(v.embarkationDate));
+  const liveVoyages = voyages.filter((v) => !isPastCutoff(v.embarkationDate));
+  const listed = showPast ? voyages : liveVoyages;
+
+  // Every link here has to carry the gate token through, or it 404s.
+  const hrefWith = (extra?: Record<string, string>) => {
+    const p = new URLSearchParams();
+    if (key) p.set("key", key);
+    for (const [k, val] of Object.entries(extra ?? {})) p.set(k, val);
+    const qs = p.toString();
+    return qs ? `?${qs}` : "?";
+  };
 
   // Every form on this page needs the gate token re-submitted, since the
   // page's own auth check only covers this GET request, not the actions.
@@ -425,7 +444,15 @@ export default async function QuoteCurationPage({
         </p>
 
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <StatTile label="Quoted sailings" value={String(voyages.length)} hint="captured" />
+          <StatTile
+            label="Quoted sailings"
+            value={String(liveVoyages.length)}
+            hint={
+              pastVoyages.length > 0
+                ? `${pastVoyages.length} more already gone`
+                : "captured"
+            }
+          />
           <StatTile label="Ready to feature" value={String(readyNotFeatured.length)} hint="not yet public" />
           <StatTile label="Live on homepage" value={String(featured.length)} />
           <StatTile
@@ -437,6 +464,8 @@ export default async function QuoteCurationPage({
 
         <ReviewQueue items={dueForReview} tokenField={tokenField} />
 
+        {voyages.length > 0 && <DossierPicker voyages={voyages} />}
+
         {voyages.length === 0 ? (
           <p className="mt-10 border border-salt-air bg-linen/50 px-6 py-8 text-center font-serif text-aegean-ink">
             No quoted sailings yet.
@@ -444,12 +473,24 @@ export default async function QuoteCurationPage({
         ) : (
           <section className="mt-10">
             <p className="text-[0.6rem] uppercase tracking-[0.25em] text-compass-gold">
-              Every quoted sailing
+              {showPast ? "Every quoted sailing" : "Still sellable"}
             </p>
-            <h2 className="mt-1 font-serif text-2xl tracking-tight text-deep-harbor">
-              Newest first
-            </h2>
-            {voyages.map((v) => (
+            <div className="mt-1 flex flex-wrap items-baseline justify-between gap-3">
+              <h2 className="font-serif text-2xl tracking-tight text-deep-harbor">
+                Newest first
+              </h2>
+              {pastVoyages.length > 0 && (
+                <a
+                  href={showPast ? hrefWith() : hrefWith({ past: "1" })}
+                  className="text-[0.7rem] text-aegean-ink/70 underline decoration-salt-air underline-offset-4 hover:text-deep-harbor"
+                >
+                  {showPast
+                    ? `Hide the ${pastVoyages.length} already gone`
+                    : `Show ${pastVoyages.length} already gone — departed, or leaving within ${SAILING_CUTOFF_DAYS} days`}
+                </a>
+              )}
+            </div>
+            {listed.map((v) => (
               <VoyageCard key={v.id} v={v} tokenField={tokenField} />
             ))}
           </section>
