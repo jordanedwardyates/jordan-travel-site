@@ -44,6 +44,9 @@ influencer aesthetics.
   - `client.ts` (browser) / `server.ts` (RSC/actions) — cookie-based, legacy.
   - Env vars in `.env.local` (see `.env.local.example`).
 - Deploys to Vercel (production = `main`; pushing `main` deploys).
+- **Live domain: `www.bonvtravelcompany.com`** (verify against Vercel → Domains
+  before ever writing or guessing a URL — do not infer a domain from the brand
+  name "BON V"; it does not match).
 
 ## Quote capture → curate → publish
 
