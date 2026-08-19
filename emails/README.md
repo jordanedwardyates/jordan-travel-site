@@ -37,7 +37,7 @@ them. Clicks and quote requests are the honest signals.
 | # | Sent | Subject | Sailings | Audience | Opens | Clicks | Replies | Booked |
 |---|------|---------|----------|----------|-------|--------|---------|--------|
 | 001 | _not yet sent_ | The Crossings & the Mediterranean | 7 | — | — | — | — | — |
-| 002 | _not yet sent_ | Before the Quest Turns West | 3 | — | — | — | — | — |
+| 002 | _not yet sent_ | The Aegean & the Atlantic | 3 | — | — | — | — | — |
 
 ---
 
@@ -69,30 +69,84 @@ them. Clicks and quote requests are the honest signals.
 
 ---
 
-### 002 · Before the Quest Turns West
+### 002 · The Aegean & the Atlantic
 
-- **File:** [`dispatch-seabourn-before-she-turns-west.html`](dispatch-seabourn-before-she-turns-west.html)
+- **File:** [`dispatch-aegean-and-the-atlantic.html`](dispatch-aegean-and-the-atlantic.html)
 - **Preview:** _not yet rendered_
-- **Status:** draft — see open items below before send
+- **Status:** draft — several fares and facts still need Jordan's confirmation, see open items
 - **Segment:** proposed — the ~500 Sonata-invitation recipients first, as their own campaign row, then the full Dispatch list
-- **Source data:** `SBN_MI_USD_8.5.26.xlsx` (Seabourn weekly rate tracker, Aug 5 2026 snapshot). Net fare = "this week" cell; retail = net ÷ (1 − discount); savings = retail − net. All three sailings are Seabourn Quest, Adriatic/Aegean, October 2026 — chosen because they're the only Greek Isles/Adriatic/Turkey itineraries in the sheet still showing open inventory.
 
 **Sailings featured**
 
-| Ship | Voyage | Departs | Code | Lead fare (Veranda) | Savings shown |
+| Ship | Voyage | Departs | Code | Lead fare | Savings shown |
 |---|---|---|---|---|---|
-| Seabourn Quest | Istanbul → Athens ("My pick") | 2026-10-18 | 6673 | $4,874 | $2,624 (Veranda) / $4,899 (Penthouse) |
-| Seabourn Quest | Istanbul → Rome (14-night twin of 6673) | 2026-10-18 | 6673A | $8,189 | $4,409 (Veranda) / $8,399 (Penthouse) |
-| Seabourn Quest | Dubrovnik → Athens | 2026-10-04 | 6669 | $3,964 | $2,134 (Veranda) / $5,424 (Penthouse) |
+| Seabourn Quest | Istanbul → Athens, 7 nights ("My pick") | 2026-10-18 | 6673 | $4,874 Veranda | $2,624 / $4,899 |
+| Seven Seas Splendor | Montréal → Miami, 16 nights | 2026-10-30 | SPL261030 | $12,144 Deluxe Veranda | none shown — no retail |
+| Seven Seas Grandeur | Miami → Panama Canal → Miami, 10 nights | 2026-12-09 | GRA261209 | $7,856 Concierge (E) | $243 |
+
+The 14-night Istanbul → Rome (6673A) is no longer its own card — it's a note
+under 6673, since it's the same departure extended: **+$3,315 pp** in a
+Veranda. The Dubrovnik → Athens sailing (6669) was dropped; its port list
+couldn't be verified, and three cards is the right length.
+
+**Where the numbers come from**
+
+- **Seabourn:** `SBN_MI_USD_8.5.26.xlsx` (weekly rate tracker, Aug 5 2026).
+  Net = "this week" cell; retail = net ÷ (1 − discount); savings = the difference.
+- **Regent:** Jordan's quoted **totals**, converted per his formula —
+  `total ÷ 2 × 1.15` = the per-person price shown. Verified:
+
+  | Category | Quoted total | ÷2 | ×1.15 = shown | Retail given | Save |
+  |---|---|---|---|---|---|
+  | GRA F1 Serenity | $13,010 | $6,505 | $7,481 | $7,699 | $218 |
+  | GRA E Concierge | $13,662 | $6,831 | $7,856 | $8,099 | $243 |
+  | GRA D Concierge | $13,922 | $6,961 | $8,005 | $8,299 | $294 |
+  | SPL G1 Deluxe Veranda | $21,120 | $10,560 | $12,144 | — | — |
+  | SPL F2 Serenity | $21,320 | $10,660 | $12,259 | — | — |
+  | SPL F1 Serenity | $21,960 | $10,980 | $12,627 | — | — |
+  | SPL E Concierge | $24,748 | $12,374 | $14,230 | — | — |
+  | SPL D Concierge | $24,328 | $12,164 | $13,989 | — | — |
 
 **Open items before send**
-- **Confirm fares are per person, double occupancy.** The rate sheet doesn't label this explicitly; the copy assumes "pp" to match every other fare on the site, but it's an assumption, not a read fact — sanity-check against Seabourn's own booking tool before this goes out.
-- **No live `campaigns` row yet.** Per-card links are `mailto:` (voyage code in the subject line) rather than tracked UTM links, since there's no curated `voyages`/`price_offers` entry for these sailings to point a quote-page link at. If live click/quote attribution matters for this send, that needs a `campaigns` + `campaign_sailings` row (and, if these should ever live on the public site, the full curation pipeline) before send — ask and I'll wire it up.
-- **No port-by-port stop list.** The rate sheet only gives origin/destination, not intermediate calls, so cards say "full itinerary sent on request" rather than naming ports I can't verify. Fill in the real stop list per card if you want it in the email itself.
-- **Suite square footage omitted** for the same reason — not in the source data, didn't want to guess it.
-- Replace `{{unsubscribe_url}}` with the ESP merge tag (same open item as 001 — worth fixing once, for both).
-- **Regent Seven Seas candidates not included.** The linked "Focus 2026" promo sheet has voyage codes, nights, region, and approved discount %, but no dollar fares — nothing to compute a net/retail/savings row from. Best Med candidates if you want to price them out separately: `VOY261103` (Seven Seas Voyager, 7 nights, Nov 3 2026, 50% off — deepest discount in the sheet) and `NAV261002` (Seven Seas Navigator, 14 nights, Oct 2 2026, 35% off). One code, `PRT270705`/`PRT270821`, uses a ship prefix I don't recognize in Regent's fleet — didn't want to guess which ship that is.
+
+Blocking:
+- **`www.rssc.com` and every cruise mirror are blocked by this session's network
+  egress policy.** Nothing on rssc.com, seabourn.com, cruisemapper, regentcruises,
+  cruisekings or keeneluxurytravel could be fetched — direct `curl` and the fetch
+  tool both get a 403 at the proxy. Everything below that isn't from Jordan's own
+  files was assembled from web-search results instead, and needs his eyes.
+- **No retail fares for SPL261030**, so that card shows prices with no struck
+  savings — a straight violation of README rule 2. Jordan needs to read the
+  featured all-inclusive fare off the site (which this session cannot reach).
+- **No B Penthouse fare for GRA261209.** The card lists the category and its size
+  with "reply for the fare" instead of a number. Supply it or cut the row.
+
+Facts to confirm:
+- **SPL261030 D Concierge ($24,328) prices *below* E Concierge ($24,748)** —
+  inverted against GRA261209, where D is above E. The email quotes the cheaper D
+  figure as "Concierge Suite." Worth a look; it may be a typo in the quote.
+- **The map URL supplied is for the wrong voyage.** `cruise-map_gra261101` is the
+  Nov 1 *Mediterranean* sailing; GRA261209 is Miami → Miami Caribbean & Panama
+  Canal. Not used.
+- **Panama Canal wording.** A 10-night Miami round-trip almost certainly makes a
+  *partial* transit, not a full ocean-to-ocean crossing, so the copy says "into the
+  Canal" and never claims a full transit. Confirm and tighten if it is full.
+- **Departure date.** Jordan said the 7-day sails 10/19; the rate sheet and
+  Seabourn both say **18 October** (Çanakkale is the 19th). Email uses the 18th.
+- **6673 may be sold out.** One aggregator lists every category on this sailing as
+  sold out, against a rate sheet showing V1 and PH open. Third-party sold-out flags
+  are often stale, but this is the hero card — check before sending.
+- **"Serenity Suite" square footage** couldn't be verified as a public Regent
+  category, so no size is printed for it. Splendor's Concierge size likewise
+  unverified; that row shows the hotel inclusion instead of a number.
+- **Suite sizes used** (Grandeur, from Regent press/review coverage): Deluxe Veranda
+  361 sq ft incl. 108 balcony · Concierge up to 464 · Penthouse up to 644 · Regent
+  Suite 4,443. Splendor Deluxe Veranda up to 361.
+- **SPL261030 port list is search-assembled** and the card says "ports of call
+  include" rather than presenting it as complete. Some sources show an 18-night
+  Oct 29 variant; the code and Jordan's quote both say 16 nights from Oct 30.
+- Replace `{{unsubscribe_url}}` with the ESP merge tag (still open on 001 too).
+- Still no `campaigns` row, so per-card CTAs are `mailto:` with the voyage code in
+  the subject rather than tracked UTM links.
 
 **Results** — _pending send_
-
-**What we learned** — _pending_

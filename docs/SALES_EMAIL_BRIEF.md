@@ -122,8 +122,8 @@ The Oceania/Sonata plan above was written before any actual rate data was in
 hand. Jordan supplied two real sources same-day: a Seabourn weekly rate
 tracker (`SBN_MI_USD_8.5.26.xlsx`) and a Regent Seven Seas promo sheet
 (Google Sheet, "Focus 2026"). The line, region, and specific sailings below
-are what actually shipped as **No. 002 — "Before the Quest Turns West"**
-(`emails/dispatch-seabourn-before-she-turns-west.html`); see
+are what actually shipped as **No. 002 — "The Aegean & the Atlantic"**
+(`emails/dispatch-aegean-and-the-atlantic.html`); see
 `emails/README.md` for the full sailing table and open items.
 
 **What changed and why:**
@@ -148,3 +148,18 @@ are what actually shipped as **No. 002 — "Before the Quest Turns West"**
   scope for a 30-minute turnaround, so per-card CTAs are `mailto:` links
   with the voyage code in the subject line — crude, but real, and it ships
   today. Worth doing properly if this becomes a repeatable pattern.
+
+**Revised same day, after Jordan's review.** He cut the duplicate (6673 and
+6673A are the same departure — the 14-night is now a one-line upsell note
+under the 7-night, +$3,315 pp), added two Regent Caribbean sailings from his
+own quotes, and asked for itinerary stops and suite sizes throughout. Net
+effect: the letter is now two sections, Seabourn in the Aegean and Regent
+across the Atlantic, and it leads on Regent's all-inclusive arithmetic rather
+than on discount depth — a stronger luxury argument than either line's
+savings column on its own.
+
+**Worth recording for next time:** this session's network egress policy blocks
+`rssc.com`, `seabourn.com`, and every cruise aggregator, so voyage pages
+cannot be fetched here at all — only web search works. Any letter that needs
+verified ports, suite dimensions, or featured fares will need those pasted in,
+or built somewhere with open egress.

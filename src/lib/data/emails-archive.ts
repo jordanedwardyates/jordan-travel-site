@@ -30,15 +30,15 @@ export const ARCHIVED_EMAILS: ArchivedEmail[] = [
     notes: "Draft — see Dispatch performance above (No. 001)",
   },
   {
-    slug: "dispatch-seabourn-before-she-turns-west",
-    file: "emails/dispatch-seabourn-before-she-turns-west.html",
-    title: "Before the Quest Turns West",
+    slug: "dispatch-aegean-and-the-atlantic",
+    file: "emails/dispatch-aegean-and-the-atlantic.html",
+    title: "The Aegean & the Atlantic",
     kind: "campaign",
     recipient: null,
     sentAt: null,
     trackedInDb: false,
     notes:
-      "Draft — see emails/README.md (No. 002). Fares sourced from the SBN_MI_USD_8.5.26 rate sheet (Aug 5, 2026 snapshot); no campaigns row yet, so per-card links are mailto (voyage code in the subject) rather than tracked UTM links. Confirm fares are per-person before send.",
+      "Draft — see emails/README.md (No. 002) for the full open-items list. Three sailings: Seabourn Quest 6673 (Istanbul→Athens), Seven Seas Splendor SPL261030 (Montréal→Miami), Seven Seas Grandeur GRA261209 (Miami→Panama Canal). Seabourn fares from the SBN_MI_USD_8.5.26 rate sheet; Regent fares converted from Jordan's quoted totals (total ÷ 2 × 1.15). Blocking before send: no retail fares for SPL261030, no B Penthouse fare for GRA261209, and rssc.com/seabourn.com are unreachable from this session's network, so all itinerary and suite-size detail is search-assembled and needs Jordan's confirmation.",
   },
   {
     slug: "sonata-inaugural-invitation",
