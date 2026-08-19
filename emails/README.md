@@ -37,6 +37,7 @@ them. Clicks and quote requests are the honest signals.
 | # | Sent | Subject | Sailings | Audience | Opens | Clicks | Replies | Booked |
 |---|------|---------|----------|----------|-------|--------|---------|--------|
 | 001 | _not yet sent_ | The Crossings & the Mediterranean | 7 | — | — | — | — | — |
+| 002 | _not yet sent_ | Before the Quest Turns West | 3 | — | — | — | — | — |
 
 ---
 
@@ -63,6 +64,34 @@ them. Clicks and quote requests are the honest signals.
 - Retail fare for Allura ALU261003 B2 ($3,150)
 - Retail fare for Sirena SIR260910 Penthouse ($5,840)
 - Replace `{{unsubscribe_url}}` with the ESP merge tag
+
+**Results** — _pending send_
+
+---
+
+### 002 · Before the Quest Turns West
+
+- **File:** [`dispatch-seabourn-before-she-turns-west.html`](dispatch-seabourn-before-she-turns-west.html)
+- **Preview:** _not yet rendered_
+- **Status:** draft — see open items below before send
+- **Segment:** proposed — the ~500 Sonata-invitation recipients first, as their own campaign row, then the full Dispatch list
+- **Source data:** `SBN_MI_USD_8.5.26.xlsx` (Seabourn weekly rate tracker, Aug 5 2026 snapshot). Net fare = "this week" cell; retail = net ÷ (1 − discount); savings = retail − net. All three sailings are Seabourn Quest, Adriatic/Aegean, October 2026 — chosen because they're the only Greek Isles/Adriatic/Turkey itineraries in the sheet still showing open inventory.
+
+**Sailings featured**
+
+| Ship | Voyage | Departs | Code | Lead fare (Veranda) | Savings shown |
+|---|---|---|---|---|---|
+| Seabourn Quest | Istanbul → Athens ("My pick") | 2026-10-18 | 6673 | $4,874 | $2,624 (Veranda) / $4,899 (Penthouse) |
+| Seabourn Quest | Istanbul → Rome (14-night twin of 6673) | 2026-10-18 | 6673A | $8,189 | $4,409 (Veranda) / $8,399 (Penthouse) |
+| Seabourn Quest | Dubrovnik → Athens | 2026-10-04 | 6669 | $3,964 | $2,134 (Veranda) / $5,424 (Penthouse) |
+
+**Open items before send**
+- **Confirm fares are per person, double occupancy.** The rate sheet doesn't label this explicitly; the copy assumes "pp" to match every other fare on the site, but it's an assumption, not a read fact — sanity-check against Seabourn's own booking tool before this goes out.
+- **No live `campaigns` row yet.** Per-card links are `mailto:` (voyage code in the subject line) rather than tracked UTM links, since there's no curated `voyages`/`price_offers` entry for these sailings to point a quote-page link at. If live click/quote attribution matters for this send, that needs a `campaigns` + `campaign_sailings` row (and, if these should ever live on the public site, the full curation pipeline) before send — ask and I'll wire it up.
+- **No port-by-port stop list.** The rate sheet only gives origin/destination, not intermediate calls, so cards say "full itinerary sent on request" rather than naming ports I can't verify. Fill in the real stop list per card if you want it in the email itself.
+- **Suite square footage omitted** for the same reason — not in the source data, didn't want to guess it.
+- Replace `{{unsubscribe_url}}` with the ESP merge tag (same open item as 001 — worth fixing once, for both).
+- **Regent Seven Seas candidates not included.** The linked "Focus 2026" promo sheet has voyage codes, nights, region, and approved discount %, but no dollar fares — nothing to compute a net/retail/savings row from. Best Med candidates if you want to price them out separately: `VOY261103` (Seven Seas Voyager, 7 nights, Nov 3 2026, 50% off — deepest discount in the sheet) and `NAV261002` (Seven Seas Navigator, 14 nights, Oct 2 2026, 35% off). One code, `PRT270705`/`PRT270821`, uses a ship prefix I don't recognize in Regent's fleet — didn't want to guess which ship that is.
 
 **Results** — _pending send_
 

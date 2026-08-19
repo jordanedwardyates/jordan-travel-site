@@ -113,3 +113,38 @@ knowing which sailing sold and guessing.
 - [ ] Write copy and build HTML against the Dispatch shell
 - [ ] Add the campaign row + `campaign_sailings` before send so clicks resolve
 - [ ] Real unsubscribe merge tag
+
+---
+
+## Update — Aug 19, 2026: superseded by real inventory
+
+The Oceania/Sonata plan above was written before any actual rate data was in
+hand. Jordan supplied two real sources same-day: a Seabourn weekly rate
+tracker (`SBN_MI_USD_8.5.26.xlsx`) and a Regent Seven Seas promo sheet
+(Google Sheet, "Focus 2026"). The line, region, and specific sailings below
+are what actually shipped as **No. 002 — "Before the Quest Turns West"**
+(`emails/dispatch-seabourn-before-she-turns-west.html`); see
+`emails/README.md` for the full sailing table and open items.
+
+**What changed and why:**
+- **Line:** Seabourn, not Oceania — the only line with usable dollar figures
+  in either source. It also fits the brand brief at least as well: true
+  small-ship (≈450 guests), Adriatic/Aegean ports the large ships can't
+  enter, no "inaugural ship" story needed since the real scarcity signal
+  (entry suites closing, week-over-week price moves) was sitting in the data
+  already, true and checkable rather than manufactured.
+- **Structure held:** hero/entry/stretch survived, just re-cast as one hero
+  sailing (Istanbul → Athens), its 14-night twin as the stretch (same
+  departure, extended — a real product relationship, not a forced pairing),
+  and a cheaper, sooner sailing as the entry point.
+- **Regent dropped for this send:** the Focus 2026 sheet has voyage codes,
+  nights, region, and approved discount %, but no dollar fares — nothing to
+  build a compliant retail/savings row from. Flagged in the README with the
+  two strongest Med candidates by code, rather than guessed into the email.
+- **Attribution fix reverted to mailto, not UTM-tracked:** the attribution
+  fix proposed above (route the primary CTA through a tracked site quote
+  page) needs a curated `voyages` row and a `campaigns` DB row, neither of
+  which exists yet for these sailings. Building that pipeline wasn't in
+  scope for a 30-minute turnaround, so per-card CTAs are `mailto:` links
+  with the voyage code in the subject line — crude, but real, and it ships
+  today. Worth doing properly if this becomes a repeatable pattern.

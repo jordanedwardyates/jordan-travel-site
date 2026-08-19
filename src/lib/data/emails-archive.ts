@@ -30,6 +30,17 @@ export const ARCHIVED_EMAILS: ArchivedEmail[] = [
     notes: "Draft — see Dispatch performance above (No. 001)",
   },
   {
+    slug: "dispatch-seabourn-before-she-turns-west",
+    file: "emails/dispatch-seabourn-before-she-turns-west.html",
+    title: "Before the Quest Turns West",
+    kind: "campaign",
+    recipient: null,
+    sentAt: null,
+    trackedInDb: false,
+    notes:
+      "Draft — see emails/README.md (No. 002). Fares sourced from the SBN_MI_USD_8.5.26 rate sheet (Aug 5, 2026 snapshot); no campaigns row yet, so per-card links are mailto (voyage code in the subject) rather than tracked UTM links. Confirm fares are per-person before send.",
+  },
+  {
     slug: "sonata-inaugural-invitation",
     file: "emails/sonata-inaugural-invitation.html",
     title: "Oceania Sonata — inaugural invitation",
