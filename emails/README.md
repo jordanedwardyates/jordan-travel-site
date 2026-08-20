@@ -81,7 +81,7 @@ them. Clicks and quote requests are the honest signals.
 | Ship | Voyage | Departs | Code | Lead fare | Savings shown |
 |---|---|---|---|---|---|
 | Seabourn Quest | Istanbul → Athens, 7 nights ("My pick") | 2026-10-18 | 6673 | $4,874 Veranda | $2,624 / $4,899 |
-| Seven Seas Splendor | Montréal → Miami, 16 nights | 2026-10-30 | SPL261030 | $12,144 Deluxe Veranda | none shown — no retail |
+| Seven Seas Splendor | Montréal → Miami, 16 nights | 2026-10-30 | SPL261030 | $12,144 Deluxe Veranda | $2,955 / $3,840 / $3,810 |
 | Seven Seas Grandeur | Miami → Panama Canal → Miami, 10 nights | 2026-12-09 | GRA261209 | $7,856 Concierge (E) | $243 |
 
 The 14-night Istanbul → Rome (6673A) is no longer its own card — it's a note
@@ -101,11 +101,15 @@ couldn't be verified, and three cards is the right length.
   | GRA F1 Serenity | $13,010 | $6,505 | $7,481 | $7,699 | $218 |
   | GRA E Concierge | $13,662 | $6,831 | $7,856 | $8,099 | $243 |
   | GRA D Concierge | $13,922 | $6,961 | $8,005 | $8,299 | $294 |
-  | SPL G1 Deluxe Veranda | $21,120 | $10,560 | $12,144 | — | — |
-  | SPL F2 Serenity | $21,320 | $10,660 | $12,259 | — | — |
-  | SPL F1 Serenity | $21,960 | $10,980 | $12,627 | — | — |
-  | SPL E Concierge | $24,748 | $12,374 | $14,230 | — | — |
-  | SPL D Concierge | $24,328 | $12,164 | $13,989 | — | — |
+  | SPL G1 Deluxe Veranda | $21,120 | $10,560 | $12,144 | $15,099 | $2,955 |
+  | SPL F2 Serenity | $21,320 | $10,660 | $12,259 | $16,099 | $3,840 |
+  | SPL F1 Serenity | $21,960 | $10,980 | $12,627 | $16,299 | $3,672 |
+  | SPL E Concierge | $24,748 | $12,374 | $14,230 | $17,399 | $3,169 |
+  | SPL D Concierge | $24,328 | $12,164 | $13,989 | $17,799 | $3,810 |
+
+  The SPL retails confirm the basis: halved, they would sit *below* the selling
+  price, so both columns are per person. The card shows G1, F2 and D — the entry,
+  the deepest saving, and the hotel-inclusive one.
 
 **Open items before send**
 
@@ -115,11 +119,20 @@ Blocking:
   cruisekings or keeneluxurytravel could be fetched — direct `curl` and the fetch
   tool both get a 403 at the proxy. Everything below that isn't from Jordan's own
   files was assembled from web-search results instead, and needs his eyes.
-- **No retail fares for SPL261030**, so that card shows prices with no struck
-  savings — a straight violation of README rule 2. Jordan needs to read the
-  featured all-inclusive fare off the site (which this session cannot reach).
-- **No B Penthouse fare for GRA261209.** The card lists the category and its size
-  with "reply for the fare" instead of a number. Supply it or cut the row.
+- **~~No retail fares for SPL261030~~** — supplied Aug 20 and now in the card.
+- **GRA261209 B Penthouse: $8,849 pp supplied, basis unconfirmed.** Every one of
+  Jordan's own selling prices so far has arrived as a per-cabin total; every retail
+  has arrived labelled "pp" or "per person". By that convention $8,849 pp reads as
+  the *retail*, which would leave the selling price still missing. Card still says
+  "reply for the fare" until this is settled.
+- **Seabourn basis unconfirmed.** Jordan notes most of his prices are per cabin.
+  The Regent numbers were, and were halved. The `SBN_MI_USD_8.5.26` figures are
+  being shown as per person on the reasoning that $4,874 is a normal per-person
+  Veranda fare for a 7-night Seabourn and would be roughly half market as a cabin
+  rate — but that is inference, not confirmation, and it is the hero card.
+- **Whether the Seabourn rates need the 15% markup too.** Regent went net → +15%.
+  If the rate-sheet figures are Jordan's cost rather than the promo selling fare,
+  the Seabourn card is currently priced with no margin in it.
 
 Facts to confirm:
 - **SPL261030 D Concierge ($24,328) prices *below* E Concierge ($24,748)** —
@@ -133,9 +146,12 @@ Facts to confirm:
   Canal" and never claims a full transit. Confirm and tighten if it is full.
 - **Departure date.** Jordan said the 7-day sails 10/19; the rate sheet and
   Seabourn both say **18 October** (Çanakkale is the 19th). Email uses the 18th.
-- **6673 may be sold out.** One aggregator lists every category on this sailing as
-  sold out, against a rate sheet showing V1 and PH open. Third-party sold-out flags
-  are often stale, but this is the hero card — check before sending.
+- **6673 is not sold out** — Jordan confirmed; the aggregator flag was stale.
+  Live availability could not be pulled here: `www.seabourn.com` answers 403 at the
+  egress proxy for both the booking flow and the voyage page, so the Book Now path
+  is unreachable from this session (and would need his login regardless).
+- **Jordan's perks are not applied.** Nothing in the repo records what they are,
+  so no credit, upgrade or amenity is claimed anywhere in the letter.
 - **"Serenity Suite" square footage** couldn't be verified as a public Regent
   category, so no size is printed for it. Splendor's Concierge size likewise
   unverified; that row shows the hotel inclusion instead of a number.
