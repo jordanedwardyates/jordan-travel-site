@@ -80,7 +80,7 @@ them. Clicks and quote requests are the honest signals.
 
 | Ship | Voyage | Departs | Code | Lead fare | Savings shown |
 |---|---|---|---|---|---|
-| Seabourn Quest | Istanbul → Athens, 7 nights ("My pick") | 2026-10-18 | 6673 | $4,874 Veranda | $2,624 / $4,899 |
+| Seabourn Quest | Istanbul → Athens, 7 nights ("My pick") | 2026-10-18 | 6673 | $5,605 Veranda | $1,893 / $3,535 |
 | Seven Seas Splendor | Montréal → Miami, 16 nights | 2026-10-30 | SPL261030 | $12,144 Deluxe Veranda | $2,955 / $3,840 / $3,810 |
 | Seven Seas Grandeur | Miami → Panama Canal → Miami, 10 nights | 2026-12-09 | GRA261209 | $7,856 Concierge (E) | $243 |
 
@@ -92,7 +92,18 @@ couldn't be verified, and three cards is the right length.
 **Where the numbers come from**
 
 - **Seabourn:** `SBN_MI_USD_8.5.26.xlsx` (weekly rate tracker, Aug 5 2026).
-  Net = "this week" cell; retail = net ÷ (1 − discount); savings = the difference.
+  Confirmed Aug 20: the sheet's figures are **per person and are Jordan's cost**,
+  so the same 15% markup used on Regent applies here too. Retail is the line's
+  undiscounted rate, net ÷ (1 − discount), and is unaffected by the markup.
+
+  | Category | Sheet (cost) | ×1.15 = shown | Retail | Save |
+  |---|---|---|---|---|
+  | 6673 Veranda (V1) | $4,874 | $5,605 | $7,498 | $1,893 |
+  | 6673 Penthouse (PH) | $9,099 | $10,464 | $13,998 | $3,535 |
+  | 6673A Veranda (14-night) | $8,189 | $9,417 | — | — |
+
+  The 14-night upsell note therefore reads **+$3,812 pp**, not the +$3,315 that
+  the pre-markup figures gave.
 - **Regent:** Jordan's quoted **totals**, converted per his formula —
   `total ÷ 2 × 1.15` = the per-person price shown. Verified:
 
@@ -120,19 +131,13 @@ Blocking:
   tool both get a 403 at the proxy. Everything below that isn't from Jordan's own
   files was assembled from web-search results instead, and needs his eyes.
 - **~~No retail fares for SPL261030~~** — supplied Aug 20 and now in the card.
-- **GRA261209 B Penthouse: $8,849 pp supplied, basis unconfirmed.** Every one of
-  Jordan's own selling prices so far has arrived as a per-cabin total; every retail
-  has arrived labelled "pp" or "per person". By that convention $8,849 pp reads as
-  the *retail*, which would leave the selling price still missing. Card still says
-  "reply for the fare" until this is settled.
-- **Seabourn basis unconfirmed.** Jordan notes most of his prices are per cabin.
-  The Regent numbers were, and were halved. The `SBN_MI_USD_8.5.26` figures are
-  being shown as per person on the reasoning that $4,874 is a normal per-person
-  Veranda fare for a 7-night Seabourn and would be roughly half market as a cabin
-  rate — but that is inference, not confirmation, and it is the hero card.
-- **Whether the Seabourn rates need the 15% markup too.** Regent went net → +15%.
-  If the rate-sheet figures are Jordan's cost rather than the promo selling fare,
-  the Seabourn card is currently priced with no margin in it.
+- **GRA261209 B Penthouse selling price still needed.** Confirmed Aug 20 that the
+  $8,849 pp supplied is the *retail*. The row now strikes $8,849 and says "Ask me —
+  my fare on request", which is honest and gives the reader an anchor, but it is the
+  only row in the letter without a number. Send the per-cabin total (or the pp
+  figure) and it becomes a normal priced row.
+- **~~Seabourn basis unconfirmed~~** — confirmed Aug 20: per person, Jordan's cost,
+  markup applies. Card reworked accordingly.
 
 Facts to confirm:
 - **SPL261030 D Concierge ($24,328) prices *below* E Concierge ($24,748)** —
