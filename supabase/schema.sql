@@ -499,6 +499,33 @@ create unique index if not exists subscribers_email_unique_idx
   on public.subscribers (lower(email));
 
 -- ------------------------------------------------------------------
+-- email_suppressions — the do-not-email list
+--
+-- Deliberately NOT a flag on subscribers. Most of the Dispatch list came
+-- from imported contact sheets and was never a `subscribers` row, so an
+-- opt-out has to be recordable for any address at all, whether we have
+-- ever seen it before or not. This table is the single authority: if an
+-- address is here, nothing sends to it, ever.
+--
+-- Append-only in practice. A re-subscribe deletes the row rather than
+-- flipping a flag, so the table always reads as "currently suppressed".
+-- ------------------------------------------------------------------
+create table if not exists public.email_suppressions (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  email text not null
+    check (email ~* '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),
+  -- 'unsubscribe' (they asked), 'bounce' (hard bounce), 'complaint' (marked
+  -- it spam), 'manual' (Jordan added them).
+  reason text not null default 'unsubscribe' check (char_length(reason) <= 40),
+  -- Which letter they were reading when they opted out, if known.
+  campaign_slug text check (char_length(campaign_slug) <= 120)
+);
+
+create unique index if not exists email_suppressions_email_unique_idx
+  on public.email_suppressions (lower(email));
+
+-- ------------------------------------------------------------------
 -- inquiries — long-form "plan a voyage" enquiries
 -- No updated_at and no trigger: these are append-only correspondence.
 -- ------------------------------------------------------------------
@@ -870,6 +897,7 @@ alter table public.homepage_features enable row level security;
 alter table public.journeys enable row level security;
 alter table public.quote_requests enable row level security;
 alter table public.subscribers enable row level security;
+alter table public.email_suppressions enable row level security;
 alter table public.inquiries enable row level security;
 alter table public.cruises enable row level security;
 
@@ -973,5 +1001,15 @@ create policy "public insert quote requests"
 drop policy if exists "public insert subscribers" on public.subscribers;
 create policy "public insert subscribers"
   on public.subscribers for insert
+  to anon, authenticated
+  with check (true);
+
+-- Unsubscribing must work for someone who is not logged in and never will
+-- be, so anon may insert. It may NOT select: the table would otherwise be a
+-- readable list of everyone who has ever opted out. Reads are service-role
+-- only, which is how the sender checks the list before a send.
+drop policy if exists "public insert suppressions" on public.email_suppressions;
+create policy "public insert suppressions"
+  on public.email_suppressions for insert
   to anon, authenticated
   with check (true);

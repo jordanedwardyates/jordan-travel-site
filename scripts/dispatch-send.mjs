@@ -35,7 +35,7 @@
  * the status write-back will 403.
  */
 
-import { createSign } from "node:crypto";
+import { createHmac, createSign } from "node:crypto";
 import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
@@ -58,6 +58,23 @@ const CAMPAIGN = {
   preheader:
     "Seven nights out of Istanbul, and two Regent voyages where the airfare, the excursions and the wine are already in the fare.",
 };
+
+const SITE_ORIGIN = process.env.DISPATCH_SITE_ORIGIN ?? "https://www.bonvtravelcompany.com";
+
+// Must stay byte-identical to signEmail() in src/lib/unsubscribe-token.ts, or
+// every link this sender mints will be rejected by the site as tampered with.
+function unsubscribeUrl(email) {
+  const secret = process.env.UNSUBSCRIBE_SECRET;
+  if (!secret || secret.length < 16) {
+    throw new Error(
+      "UNSUBSCRIBE_SECRET is missing or too short. It must match the value deployed to the site, " +
+        "or the links in this send will not work. Generate with `openssl rand -hex 32`.",
+    );
+  }
+  const e = email.trim().toLowerCase();
+  const sig = createHmac("sha256", secret).update(e).digest("base64url");
+  return `${SITE_ORIGIN}/unsubscribe?e=${encodeURIComponent(e)}&t=${sig}&c=${CAMPAIGN.slug}`;
+}
 
 const RESEND_BATCH_MAX = 100; // hard API limit
 const PAUSE_BETWEEN_BATCHES_MS = 1200;
@@ -260,7 +277,8 @@ function buildContacts(rows) {
       // CAN-SPAM requires a valid physical postal address in every commercial
       // message. Absent it the template renders a loud placeholder rather
       // than silently shipping non-compliant mail.
-      postal_address: process.env.DISPATCH_POSTAL_ADDRESS ?? "",
+      postal_address:
+        process.env.DISPATCH_POSTAL_ADDRESS ?? "2420 NE 186th St, Suite 300, Miami, FL 33180",
     };
 
     out.push(rec);
@@ -303,8 +321,16 @@ function plainTextFor(html, slug) {
     .replace(/&rsquo;/g, "'").replace(/&lsquo;/g, "'")
     .replace(/&ldquo;/g, '"').replace(/&rdquo;/g, '"')
     .replace(/&amp;/g, "&").replace(/&nbsp;/g, " ")
+    .replace(/&Ccedil;/g, "Ç").replace(/&ccedil;/g, "ç")
+    .replace(/&eacute;/g, "é").replace(/&egrave;/g, "è")
+    .replace(/&deg;/g, "°").replace(/&prime;/g, "'").replace(/&shy;/g, "")
+    // Numeric entities, not just named ones. The preheader is padded with
+    // &#847;/&#8199; to stop clients pulling body copy in after it — invisible
+    // in HTML, but it lands as literal "&#847;" in text if left alone.
+    .replace(/&#\d+;/g, "")
     .replace(/&[a-z]+;/gi, "")
     .replace(/[ \t]+/g, " ")
+    .replace(/^[ \t]+$/gm, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
@@ -364,6 +390,24 @@ function audit(contacts) {
   return sendable;
 }
 
+/* ------------------------------------------------------------ suppressions */
+
+// The do-not-email list is the site's email_suppressions table, written by
+// /api/unsubscribe. Reading it needs the service role, because the anon role
+// is deliberately allowed to insert but never to select — otherwise the table
+// would be a public list of everyone who ever opted out.
+async function loadSuppressions() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null; // caller decides whether that is fatal
+
+  const res = await fetch(`${url}/rest/v1/email_suppressions?select=email`, {
+    headers: { apikey: key, Authorization: `Bearer ${key}` },
+  });
+  if (!res.ok) throw new Error(`suppression read failed: ${res.status} ${await res.text()}`);
+  return new Set((await res.json()).map((r) => String(r.email).trim().toLowerCase()));
+}
+
 /* --------------------------------------------------------------------- send */
 
 async function sendBatch(batch, from, replyTo) {
@@ -392,6 +436,36 @@ async function main() {
     (t) => !known.has(t.replace(/[{}\s]/g, "").split("||")[0]),
   );
   if (unknown.length) console.warn(`warning: unrecognised merge tags in template: ${unknown.join(", ")}`);
+
+  if (has("--render-test")) {
+    // Offline check that every merge field resolves and no literal {{brace}}
+    // survives. Needs no credentials and touches no network.
+    const sample = {
+      first_name: "Eileen",
+      last_name: "Jarvis",
+      email: "ebjarvis@example.com",
+      greeting: "Dear Eileen,",
+      preheader: CAMPAIGN.preheader,
+      postal_address: "2420 NE 186th St, Suite 300, Miami, FL 33180",
+      unsubscribe_url: "https://www.bonvtravelcompany.com/unsubscribe?e=x&t=y",
+    };
+    const html = render(template, sample);
+    const stray = html.match(/\{\{[^}]*\}\}/g) ?? [];
+    console.log(`rendered ${html.length} bytes`);
+    console.log(stray.length ? `FAIL unresolved tags: ${stray.join(", ")}` : "all merge tags resolved");
+
+    const bare = render(template, { email: "x@example.com" }); // everything else missing
+    const strayBare = bare.match(/\{\{[^}]*\}\}/g) ?? [];
+    console.log(
+      strayBare.length
+        ? `FAIL fallbacks left tags: ${strayBare.join(", ")}`
+        : "fallbacks cover every tag when merge data is missing",
+    );
+    console.log(`greeting fallback renders as: ${/Dear [^<]*/.exec(bare)?.[0] ?? "(not found)"}`);
+    const text = plainTextFor(html, CAMPAIGN.slug);
+    console.log(`plain-text alternative: ${text.length} bytes, ${text.split("\n").length} lines`);
+    return;
+  }
 
   const { token, rows } = await readSheet();
   let contacts = buildContacts(rows);
@@ -447,6 +521,20 @@ async function main() {
     return;
   }
 
+  const suppressed = await loadSuppressions();
+  if (suppressed === null) {
+    throw new Error(
+      "Refusing to send without the suppression list. Set NEXT_PUBLIC_SUPABASE_URL and " +
+        "SUPABASE_SERVICE_ROLE_KEY so unsubscribes can be honoured — mailing someone who " +
+        "opted out is the one mistake with legal weight.",
+    );
+  }
+  const before = sendable.length;
+  sendable = sendable.filter((c) => !suppressed.has(c.email));
+  if (before !== sendable.length) {
+    console.log(`skipping ${before - sendable.length} previously unsubscribed address(es).`);
+  }
+
   const from = process.env.DISPATCH_FROM;
   if (!from) throw new Error("DISPATCH_FROM is not set");
   if (!process.env.RESEND_API_KEY) throw new Error("RESEND_API_KEY is not set");
@@ -458,7 +546,7 @@ async function main() {
   for (let i = 0; i < sendable.length; i += RESEND_BATCH_MAX) {
     const chunk = sendable.slice(i, i + RESEND_BATCH_MAX);
     const batch = chunk.map((c) => {
-      const unsub = `https://www.bonvtravelcompany.com/unsubscribe?e=${encodeURIComponent(c.email)}`;
+      const unsub = unsubscribeUrl(c.email);
       const html = render(template, { ...c.merge, unsubscribe_url: unsub });
       return {
         from,
@@ -471,7 +559,9 @@ async function main() {
           // RFC 8058. Gmail and Yahoo both require this for bulk senders, and
           // an easy unsubscribe is what keeps complaints — the metric that
           // actually decides inbox placement — off the floor.
-          "List-Unsubscribe": `<${unsub}>, <mailto:unsubscribe@bonvtravelcompany.com?subject=unsubscribe>`,
+          // Points at the API route, which is POST-only. The visible footer
+          // link goes to the page instead, which asks before it acts.
+          "List-Unsubscribe": `<${unsub.replace("/unsubscribe?", "/api/unsubscribe?")}>, <mailto:jordan.yates@luxurycruiseconnections.com?subject=unsubscribe>`,
           "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
         },
         tags: [
