@@ -167,6 +167,13 @@ Facts to confirm:
   include" rather than presenting it as complete. Some sources show an 18-night
   Oct 29 variant; the code and Jordan's quote both say 16 nights from Oct 30.
 - Replace `{{unsubscribe_url}}` with the ESP merge tag (still open on 001 too).
+- **Sending is now scripted** — `scripts/dispatch-send.mjs` reads the contacts
+  sheet, cleans it, merges, and sends. `--audit` first, then `--fix-rows`,
+  `--dry-run`, `--only <address>` as a seed test, and finally `--send`.
+  Deliverability analysis and the pre-send checklist live in
+  `docs/EMAIL_DELIVERABILITY.md`. Two hard blockers noted there: the letter
+  needs a physical postal address (CAN-SPAM) and `/unsubscribe` does not exist
+  on the site yet.
 - Still no `campaigns` row, so per-card CTAs are `mailto:` with the voyage code in
   the subject rather than tracked UTM links.
 
