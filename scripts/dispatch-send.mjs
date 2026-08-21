@@ -36,7 +36,7 @@
  */
 
 import { createHmac } from "node:crypto";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import {
   googleAccessToken,
@@ -336,6 +336,24 @@ async function main() {
     console.log(`greeting fallback renders as: ${/Dear [^<]*/.exec(bare)?.[0] ?? "(not found)"}`);
     const text = plainTextFor(html, CAMPAIGN.slug);
     console.log(`plain-text alternative: ${text.length} bytes, ${text.split("\n").length} lines`);
+
+    // --render-out writes a paste-ready copy: every merge tag resolved to its
+    // fallback, so it can go straight into a mail client or an ESP editor.
+    // The unsubscribe URL stays a visible placeholder rather than a dead link.
+    const out = val("--render-out", null);
+    if (out) {
+      const ready = render(template, {
+        greeting: "Dear friend,",
+        preheader: CAMPAIGN.preheader,
+        email: "this address",
+        postal_address:
+          process.env.DISPATCH_POSTAL_ADDRESS ?? "2420 NE 186th St, Suite 300, Miami, FL 33180",
+        unsubscribe_url: "*|UNSUB|*",
+      });
+      writeFileSync(out, ready, "utf8");
+      writeFileSync(out.replace(/\.html?$/, "") + ".txt", plainTextFor(ready, CAMPAIGN.slug), "utf8");
+      console.log(`wrote ${out} and its .txt twin`);
+    }
     return;
   }
 
