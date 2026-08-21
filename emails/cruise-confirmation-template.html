@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  CRUISE CONFIRMATION TEMPLATE
+  Duplicate this file per booking (e.g. emails/confirmation-yates-marina-mar27.html),
+  fill every {{TOKEN}}, delete rows you don't need (extra itinerary days, the
+  visa line, etc.), then delete this comment before sending.
+
+  This is a transactional record, not a Dispatch send — no {{unsubscribe_url}}
+  merge tag, no campaign UTMs. Double-check "Confirmation, at a Glance" and
+  "The Fare" against the cruise line's own invoice; those two are what a guest
+  will actually check numbers against.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Your Voyage, Confirmed — {{SHIP}}</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap');
+  body { margin:0; padding:0; }
+  .serif { font-family:'EB Garamond', Georgia, 'Times New Roman', serif; }
+  a { color:inherit; }
+  .paper {
+    background-color:#f1ebdf;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  .weathered {
+    background-color:#f6f1e8;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 0% 0%, rgba(183,139,66,0.07), transparent 70%),
+      radial-gradient(ellipse 50% 45% at 100% 6%, rgba(96,125,153,0.06), transparent 70%),
+      radial-gradient(ellipse 55% 40% at 92% 100%, rgba(183,139,66,0.05), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='fox'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.68 0 0 0 0 0.52 0 0 0 0 0.28 0 0 0 0.5 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fox)'/%3E%3C/svg%3E");
+  }
+</style>
+</head>
+<body class="paper">
+<div style="display:none; max-height:0; overflow:hidden; opacity:0;">
+Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, and everything to have ready before you sail, below.
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="paper" style="background-color:#f1ebdf;">
+<tr>
+<td align="center" style="padding:36px 16px;">
+<table role="presentation" width="640" cellpadding="0" cellspacing="0" class="weathered" style="max-width:640px; width:100%; border:1px solid #d9cdb8; box-shadow:0 1px 0 #e9e2d3;">
+
+<!-- ============ MASTHEAD ============ -->
+<tr>
+<td style="padding:44px 52px 0 52px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="vertical-align:top;">
+      <p class="serif" style="margin:0; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#b78b42;">Stamped</p>
+      <p class="serif" style="margin:6px 0 0 0; font-size:29px; letter-spacing:0.5px; color:#1b3154;">BON V: <span style="font-style:italic; font-size:20px; color:#223e67;">A Travel Company</span></p>
+      <p class="serif" style="margin:6px 0 0 0; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#223e67;">Jordan Yates &middot; Luxury Voyage Advisor</p>
+    </td>
+    <td align="right" style="vertical-align:top; width:160px;">
+      <div style="display:inline-block; transform:rotate(-5deg); border:2px solid rgba(183,139,66,0.75); padding:5px;">
+        <div style="border:1px solid rgba(183,139,66,0.45); padding:8px 12px; text-align:center;">
+          <p class="serif" style="margin:0; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:#b78b42;">Booking</p>
+          <p class="serif" style="margin:1px 0 0 0; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#a97f39;">Confirmed</p>
+          <p class="serif" style="margin:4px 0 0 0; font-size:8px; letter-spacing:1.5px; color:rgba(169,127,57,0.85);">{{CONFIRMATION_NUMBER}}</p>
+        </div>
+      </div>
+    </td>
+  </tr>
+  </table>
+  <div style="height:5px; border-top:1px solid #c9d6dc; border-bottom:1px solid #c9d6dc; margin-top:22px;"></div>
+</td>
+</tr>
+
+<!-- ============ DATELINE ============ -->
+<tr>
+<td style="padding:30px 52px 0 52px;">
+  <p class="serif" style="margin:0; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:#b78b42;">Booking Confirmed &middot; No. {{CONFIRMATION_NUMBER}}</p>
+  <h1 class="serif" style="margin:8px 0 0 0; font-size:34px; line-height:1.1; letter-spacing:-0.01em; color:#1b3154; font-weight:normal;">{{EMBARK_PORT}} &rarr; {{DISEMBARK_PORT}}</h1>
+  <p class="serif" style="margin:6px 0 0 0; font-size:14px; font-style:italic; color:#607d99;">{{SHIP}} &middot; {{NIGHTS}} nights &middot; departs {{EMBARK_DATE}}</p>
+</td>
+</tr>
+
+<!-- ============ THE LETTER ============ -->
+<tr>
+<td class="serif" style="padding:24px 52px 0 52px;">
+  <p style="margin:0 0 18px 0; font-size:17px; line-height:1.75; color:#223e67; font-style:italic;">
+    {{GUEST_NAME}} &mdash; it&rsquo;s Jordan. {{SHIP}} is yours. The booking is confirmed, the cabin is held in your name, and everything that once lived in emails back and forth is now in one place, below &mdash; so you can find it again in a year without digging.
+  </p>
+  <p style="margin:0; font-size:16px; line-height:1.8; color:#223e67;">
+    Read it once now, then keep it. The dates that actually matter &mdash; final payment, and what to have ready before you sail &mdash; are under &ldquo;Before You Sail&rdquo; near the end. Everything above that is simply the record of what we booked.
+  </p>
+</td>
+</tr>
+
+<!-- ============ CONFIRMATION AT A GLANCE ============ -->
+<tr>
+<td style="padding:30px 52px 0 52px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #b78b42; background-color:rgba(183,139,66,0.06);">
+  <tr><td style="padding:24px 28px;">
+    <p class="serif" style="margin:0 0 6px 0; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#b78b42;">Confirmation, at a Glance</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="serif" style="font-size:14px;">
+      <tr>
+        <td style="width:180px; padding:9px 0; color:#607d99; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">Confirmation number</td>
+        <td style="padding:9px 0; color:#1b3154; font-weight:bold; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">{{CONFIRMATION_NUMBER}}</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 0; color:#607d99; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">{{CRUISE_LINE}} confirmation</td>
+        <td style="padding:9px 0; color:#1b3154; font-weight:bold; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">{{CRUISE_LINE_CONFIRMATION_NUMBER}}</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 0; color:#607d99; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">Guest(s)</td>
+        <td style="padding:9px 0; color:#1b3154; font-weight:bold; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">{{GUEST_FULL_NAMES}}</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 0; color:#607d99; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">Ship &amp; voyage</td>
+        <td style="padding:9px 0; color:#1b3154; font-weight:bold; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">{{CRUISE_LINE}} {{SHIP}} &middot; {{VOYAGE_TITLE}}</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 0; color:#607d99; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">Sailing dates</td>
+        <td style="padding:9px 0; color:#1b3154; font-weight:bold; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">{{EMBARK_DATE}} &rarr; {{DISEMBARK_DATE}} ({{NIGHTS}} nights)</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 0; color:#607d99; vertical-align:top;">Stateroom</td>
+        <td style="padding:9px 0; color:#1b3154; font-weight:bold; vertical-align:top;">{{STATEROOM_CATEGORY}} ({{STATEROOM_CODE}}) &middot; Room {{ROOM_NUMBER}}</td>
+      </tr>
+    </table>
+  </td></tr>
+  </table>
+</td>
+</tr>
+
+<!-- ============ SECTION I — THE VOYAGE ============ -->
+<tr>
+<td style="padding:40px 52px 0 52px;">
+  <div style="border-top:1px solid #b78b42; padding-top:12px;">
+    <p class="serif" style="margin:0; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#b78b42;">I &middot; The Voyage</p>
+    <p class="serif" style="margin:5px 0 0 0; font-size:13px; font-style:italic; color:#607d99;">{{VOYAGE_SUBTITLE}}</p>
+  </div>
+</td>
+</tr>
+
+<tr>
+<td style="padding:20px 52px 0 52px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1b3154; background-color:rgba(255,255,255,0.35);">
+  <tr><td style="padding:28px 30px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+      <td class="serif" style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#223e67;">{{CRUISE_LINE}} {{SHIP}} &middot; {{NIGHTS}} nights</td>
+      <td class="serif" align="right" style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#b78b42;">{{EMBARK_DATE}} &rarr; {{DISEMBARK_DATE}}</td>
+    </tr></table>
+    <h2 class="serif" style="margin:8px 0 0 0; font-size:25px; color:#1b3154; font-weight:normal;">{{EMBARK_PORT}} &rarr; {{DISEMBARK_PORT}}</h2>
+    <p class="serif" style="margin:2px 0 0 0; font-size:12px; font-style:italic; color:#607d99;">{{VOYAGE_SUBTITLE}}</p>
+
+    <!-- itinerary — duplicate the row below per day, delete these two examples -->
+    <p class="serif" style="margin:22px 0 0 0; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#b78b42;">The Itinerary</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="serif" style="margin-top:8px; font-size:13px; color:#223e67;">
+      <tr><td style="padding:5px 0; border-bottom:1px solid #e3dbc8; color:#607d99; width:120px;">{{DAY_1_DATE}}</td><td style="padding:5px 0; border-bottom:1px solid #e3dbc8;">Depart {{EMBARK_PORT}}, {{BOARDING_TIME}}</td></tr>
+      <tr><td style="padding:5px 0; color:#607d99;">{{DAY_N_DATE}}</td><td style="padding:5px 0;">Arrive {{DISEMBARK_PORT}}</td></tr>
+    </table>
+    <p class="serif" style="margin:16px 0 0 0; font-size:11px; letter-spacing:1.5px; text-transform:uppercase;"><a href="{{VOYAGE_URL}}" style="color:#b78b42; text-decoration:none; border-bottom:1px solid rgba(183,139,66,0.5); padding-bottom:2px;">View the voyage on {{CRUISE_LINE}} &rarr;</a></p>
+  </td></tr>
+  </table>
+</td>
+</tr>
+
+<!-- ============ SECTION II — YOUR STATEROOM ============ -->
+<tr>
+<td style="padding:40px 52px 0 52px;">
+  <div style="border-top:1px solid #b78b42; padding-top:12px;">
+    <p class="serif" style="margin:0; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#b78b42;">II &middot; Your Stateroom</p>
+  </div>
+</td>
+</tr>
+
+<tr>
+<td style="padding:20px 52px 0 52px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1b3154; background-color:rgba(255,255,255,0.35);">
+  <tr><td style="padding:28px 30px;">
+    <h2 class="serif" style="margin:0; font-size:22px; color:#1b3154; font-weight:normal;">{{STATEROOM_CATEGORY}}</h2>
+    <p class="serif" style="margin:2px 0 0 0; font-size:12px; font-style:italic; color:#607d99;">Category {{STATEROOM_CODE}} &middot; {{STATEROOM_SIZE}}</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="serif" style="margin-top:18px; border-top:1px solid #c9d6dc;">
+      <tr>
+        <td style="padding:12px 0; font-size:13px; color:#607d99; vertical-align:top; width:180px; border-bottom:1px solid #c9d6dc;">Deck &amp; location</td>
+        <td style="padding:12px 0; font-size:13px; color:#1b3154; font-weight:bold; vertical-align:top; border-bottom:1px solid #c9d6dc;">{{DECK_LOCATION}}</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 0; font-size:13px; color:#607d99; vertical-align:top; border-bottom:1px solid #c9d6dc;">Room number</td>
+        <td style="padding:12px 0; font-size:13px; color:#1b3154; font-weight:bold; vertical-align:top; border-bottom:1px solid #c9d6dc;">{{ROOM_NUMBER}}</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 0; font-size:13px; color:#607d99; vertical-align:top;">Occupancy</td>
+        <td style="padding:12px 0; font-size:13px; color:#1b3154; font-weight:bold; vertical-align:top;">{{OCCUPANCY}}</td>
+      </tr>
+    </table>
+    <p class="serif" style="margin:16px 0 0 0; font-size:13px; line-height:1.7; color:#223e67;">{{STATEROOM_NOTES}}</p>
+  </td></tr>
+  </table>
+</td>
+</tr>
+
+<!-- ============ SECTION III — THE FARE ============ -->
+<tr>
+<td style="padding:40px 52px 0 52px;">
+  <div style="border-top:1px solid #b78b42; padding-top:12px;">
+    <p class="serif" style="margin:0; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#b78b42;">III &middot; The Fare</p>
+  </div>
+</td>
+</tr>
+
+<tr>
+<td style="padding:20px 52px 0 52px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1b3154; background-color:rgba(255,255,255,0.35);">
+  <tr><td style="padding:28px 30px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="serif">
+      <tr>
+        <td style="padding:10px 0; font-size:14px; color:#223e67; border-bottom:1px solid #c9d6dc;">Cruise fare</td>
+        <td align="right" style="padding:10px 0; font-size:14px; color:#1b3154; border-bottom:1px solid #c9d6dc;">${{CRUISE_FARE}}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 0; font-size:14px; color:#223e67; border-bottom:1px solid #c9d6dc;">Taxes &amp; port fees</td>
+        <td align="right" style="padding:10px 0; font-size:14px; color:#1b3154; border-bottom:1px solid #c9d6dc;">${{TAXES_FEES}}</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 0; font-size:14px; color:#223e67; border-bottom:1px solid #c9d6dc;">Gratuities</td>
+        <td align="right" style="padding:10px 0; font-size:14px; color:#1b3154; border-bottom:1px solid #c9d6dc;">{{GRATUITIES}}</td>
+      </tr>
+      <tr>
+        <td style="padding:14px 0 0 0; font-size:16px; color:#1b3154; font-weight:bold;">Total fare</td>
+        <td align="right" style="padding:14px 0 0 0; font-size:16px; color:#1b3154; font-weight:bold;">${{TOTAL_FARE}}</td>
+      </tr>
+    </table>
+    <p class="serif" style="margin:10px 0 0 0; font-size:12px; font-style:italic; color:#607d99;">Total fare is for {{OCCUPANCY}}, in USD, taxes &amp; port fees included.</p>
+  </td></tr>
+  </table>
+</td>
+</tr>
+
+<!-- ============ PAYMENT SCHEDULE ============ -->
+<tr>
+<td style="padding:22px 52px 0 52px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #b78b42; background-color:rgba(183,139,66,0.06);">
+  <tr><td style="padding:20px 26px;">
+    <p class="serif" style="margin:0; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#b78b42;">Payment Schedule</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="serif" style="margin-top:10px; font-size:14px;">
+      <tr>
+        <td style="padding:8px 0; color:#223e67;">Deposit paid, {{DEPOSIT_DATE}}</td>
+        <td align="right" style="padding:8px 0; color:#1b3154; font-weight:bold;">${{DEPOSIT_PAID}}</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 0; color:#223e67; border-top:1px solid rgba(183,139,66,0.25);"><strong style="color:#1b3154;">Balance due by {{FINAL_PAYMENT_DATE}}</strong></td>
+        <td align="right" style="padding:8px 0; color:#1b3154; font-weight:bold; border-top:1px solid rgba(183,139,66,0.25);">${{BALANCE_DUE}}</td>
+      </tr>
+    </table>
+    <p class="serif" style="margin:12px 0 0 0; font-size:13px; line-height:1.7; color:#223e67;">Charged to {{PAYMENT_METHOD}} on file. I&rsquo;ll write again ahead of the final payment date &mdash; no need to track it yourself.</p>
+  </td></tr>
+  </table>
+</td>
+</tr>
+
+<!-- ============ SECTION IV — BEFORE YOU SAIL ============ -->
+<tr>
+<td style="padding:40px 52px 0 52px;">
+  <div style="border-top:1px solid #b78b42; padding-top:12px;">
+    <p class="serif" style="margin:0; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#b78b42;">IV &middot; Before You Sail</p>
+  </div>
+</td>
+</tr>
+
+<tr>
+<td style="padding:20px 52px 0 52px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1b3154; background-color:rgba(255,255,255,0.35);">
+  <tr><td style="padding:28px 30px;">
+    <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Passport.</strong> Valid {{PASSPORT_REQUIREMENT}}. Check the expiration date now, not the week before you fly.</p>
+    <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Visa.</strong> {{VISA_NOTE}}</p>
+    <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Embarkation.</strong> {{EMBARKATION_TERMINAL_ADDRESS}}. Boarding begins {{BOARDING_TIME}}.</p>
+    <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Final payment.</strong> Due {{FINAL_PAYMENT_DATE}} &mdash; charged automatically to {{PAYMENT_METHOD}} unless you tell me otherwise.</p>
+    <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Cancellation.</strong> Full cancellation-penalty terms attach after {{CANCELLATION_DEADLINE}}. Ask if you&rsquo;d like the exact tier schedule.</p>
+    <p class="serif" style="margin:0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Travel insurance.</strong> {{TRAVEL_INSURANCE_STATUS}}</p>
+  </td></tr>
+  </table>
+</td>
+</tr>
+
+<!-- ============ A NOTE FROM JORDAN ============ -->
+<tr>
+<td style="padding:30px 52px 0 52px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="width:3px; background-color:#b78b42;"></td>
+    <td style="padding:2px 0 2px 20px;">
+      <p class="serif" style="margin:0; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#b78b42;">A Note From Jordan</p>
+      <p class="serif" style="margin:8px 0 0 0; font-size:16px; line-height:1.75; color:#223e67; font-style:italic;">{{JORDAN_NOTE}}</p>
+    </td>
+  </tr>
+  </table>
+</td>
+</tr>
+
+<!-- ============ CTA ============ -->
+<tr>
+<td style="padding:34px 52px 0 52px; text-align:center;">
+  <p class="serif" style="margin:0 0 22px 0; font-size:16px; line-height:1.7; color:#223e67;">Questions before you sail, a name to correct, a date that&rsquo;s shifted &mdash; just reply. I handle it directly, not a call center.</p>
+  <a href="mailto:jordan.yates@luxurycruiseconnections.com?subject=Booking%20{{CONFIRMATION_NUMBER}}%20%E2%80%94%20{{SHIP}}" class="serif" style="display:inline-block; background-color:#1b3154; color:#f6f1e8; text-decoration:none; padding:16px 44px; font-size:12px; letter-spacing:2.5px; text-transform:uppercase;">Reply With Any Questions</a>
+</td>
+</tr>
+
+<!-- ============ SIGN-OFF ============ -->
+<tr>
+<td style="padding:36px 52px 0 52px;">
+  <p class="serif" style="margin:0; font-size:15px; line-height:1.8; color:#223e67;">This confirmation, plus the cruise line&rsquo;s own documents once they arrive, are all you need to hold onto. Looking forward to hearing how it goes, {{GUEST_NAME}}.</p>
+  <img src="https://www.bonvtravelcompany.com/internal/jordan-signature.png" alt="Jordan" width="230" style="display:block; width:230px; height:auto; margin:18px 0 0 -8px;">
+  <p class="serif" style="margin:8px 0 0 0; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#223e67;">Jordan Yates &middot; Luxury Voyage Advisor</p>
+</td>
+</tr>
+
+<!-- ============ APPROVED SIGNATURE BLOCK ============ -->
+<tr>
+<td style="padding:26px 52px 8px 52px;">
+  <div style="border-top:1px solid #c9d6dc; padding-top:24px;">
+    <img src="https://images.squarespace-cdn.com/content/v1/5cfd848d3b35680001da3f7d/9c23922a-987b-4532-830c-6e5415363a97/Background+removed+Signature_Block_Photo_July_13_with_LCC_website-removebg.png?format=2500w"
+         alt="Jordan Yates &middot; Luxury Travel Advisor — contact information"
+         width="536" style="display:block; width:100%; max-width:536px; height:auto; margin:0 auto;">
+  </div>
+</td>
+</tr>
+
+<!-- ============ COLOPHON ============ -->
+<tr>
+<td style="padding:26px 52px 44px 52px; text-align:center;">
+  <div style="height:5px; border-top:1px solid #c9d6dc; border-bottom:1px solid #c9d6dc; margin-bottom:20px;"></div>
+  <p class="serif" style="margin:0; font-size:12px; letter-spacing:1px; color:#223e67;">BON V: <span style="font-style:italic;">A Travel Company</span></p>
+  <p class="serif" style="margin:6px 0 0 0; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#607d99;">In partnership with Luxury Cruise Connections</p>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
