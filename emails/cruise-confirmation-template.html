@@ -10,6 +10,13 @@
   merge tag, no campaign UTMs. Double-check "Confirmation, at a Glance" and
   "The Fare" against the cruise line's own invoice; those two are what a guest
   will actually check numbers against.
+
+  Fill rules:
+  - Use HTML entities in filled values (&mdash; &rsquo; &middot; &amp;), same
+    as all house email copy.
+  - The mailto subject in the CTA is a URL: percent-encode filled values there
+    (spaces become %20).
+  - {{GRATUITIES}} is free text — either "$430" (include the $) or "Included".
 -->
 <head>
 <meta charset="UTF-8">
@@ -99,7 +106,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
     <p class="serif" style="margin:0 0 6px 0; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#b78b42;">Confirmation, at a Glance</p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="serif" style="font-size:14px;">
       <tr>
-        <td style="width:180px; padding:9px 0; color:#607d99; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">Confirmation number</td>
+        <td style="width:150px; padding:9px 0; color:#607d99; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">Confirmation number</td>
         <td style="padding:9px 0; color:#1b3154; font-weight:bold; vertical-align:top; border-bottom:1px solid rgba(183,139,66,0.25);">{{CONFIRMATION_NUMBER}}</td>
       </tr>
       <tr>
@@ -178,7 +185,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
     <p class="serif" style="margin:2px 0 0 0; font-size:12px; font-style:italic; color:#607d99;">Category {{STATEROOM_CODE}} &middot; {{STATEROOM_SIZE}}</p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="serif" style="margin-top:18px; border-top:1px solid #c9d6dc;">
       <tr>
-        <td style="padding:12px 0; font-size:13px; color:#607d99; vertical-align:top; width:180px; border-bottom:1px solid #c9d6dc;">Deck &amp; location</td>
+        <td style="padding:12px 0; font-size:13px; color:#607d99; vertical-align:top; width:150px; border-bottom:1px solid #c9d6dc;">Deck &amp; location</td>
         <td style="padding:12px 0; font-size:13px; color:#1b3154; font-weight:bold; vertical-align:top; border-bottom:1px solid #c9d6dc;">{{DECK_LOCATION}}</td>
       </tr>
       <tr>
@@ -305,7 +312,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
 <!-- ============ SIGN-OFF ============ -->
 <tr>
 <td style="padding:36px 52px 0 52px;">
-  <p class="serif" style="margin:0; font-size:15px; line-height:1.8; color:#223e67;">This confirmation, plus the cruise line&rsquo;s own documents once they arrive, are all you need to hold onto. Looking forward to hearing how it goes, {{GUEST_NAME}}.</p>
+  <p class="serif" style="margin:0; font-size:15px; line-height:1.8; color:#223e67;">Keep this note &mdash; it and the cruise line&rsquo;s own documents, once they arrive, are everything you need to hold onto. Looking forward to hearing how it goes, {{GUEST_NAME}}.</p>
   <img src="https://www.bonvtravelcompany.com/internal/jordan-signature.png" alt="Jordan" width="230" style="display:block; width:230px; height:auto; margin:18px 0 0 -8px;">
   <p class="serif" style="margin:8px 0 0 0; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#223e67;">Jordan Yates &middot; Luxury Voyage Advisor</p>
 </td>

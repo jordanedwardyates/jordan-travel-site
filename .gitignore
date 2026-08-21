@@ -44,8 +44,10 @@ next-env.d.ts
 # Claude Code local (machine-specific) settings
 .claude/settings.local.json
 
-# Claude Code skill packs (local tooling, not site source)
-.claude/skills/
+# Claude Code skill packs (local tooling, not site source) — except skills
+# that encode house rules, which ship with the repo so every session gets them
+.claude/skills/*
+!.claude/skills/cruise-confirmation/
 
 # Agent tooling scaffolding (local, not site source)
 .agents/
