@@ -85,7 +85,7 @@ them. Clicks and quote requests are the honest signals.
 | Seven Seas Grandeur | Miami → Panama Canal → Miami, 10 nights | 2026-12-09 | GRA261209 | $7,856 Concierge (E) | $243 |
 
 The 14-night Istanbul → Rome (6673A) is no longer its own card — it's a note
-under 6673, since it's the same departure extended: **+$3,315 pp** in a
+under 6673, since it's the same departure extended: **+$3,812 pp** in a
 Veranda. The Dubrovnik → Athens sailing (6669) was dropped; its port list
 couldn't be verified, and three cards is the right length.
 
