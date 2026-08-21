@@ -7,7 +7,7 @@ description: Produce a client cruise booking confirmation email from the house t
 
 The house way to confirm a booking in writing. One template is the source of
 truth; every confirmation is a filled copy of it. Never draft a confirmation
-from scratch — a client's confirmation and their Dispatch letters must read as
+from scratch. A client's confirmation and their Dispatch letters must read as
 one publishing house, and the template already encodes the brand system.
 
 ## The one-page version
@@ -20,21 +20,55 @@ one publishing house, and the template already encodes the brand system.
 3. Run the checker:
    `bash .claude/skills/cruise-confirmation/scripts/check.sh emails/confirmation-<file>.html`
 4. Render it and look at it (see Verification below) before handing it over.
-5. Deliver the HTML file to Jordan. **Never send it to the client yourself** —
+5. Deliver the HTML file to Jordan. **Never send it to the client yourself**,
    even if email-sending tools are connected. A confirmation goes to a real
    client about real money; Jordan presses send.
 
 The target look is `emails/previews/cruise-confirmation-template-sample.png`.
 If your filled version doesn't resemble it, something went wrong.
 
+## Punctuation: no em dashes
+
+House voice does not use em dashes. Not in the template, not in filled values,
+not in the personal note. This is a firm preference, and it is the single
+easiest way for a draft to read as machine-written rather than as Jordan.
+
+Removing them well means recasting the sentence, not swapping the dash for a
+comma and moving on. A dash usually hides one of four things, and each has a
+better form:
+
+| The dash was doing | Use instead |
+|---|---|
+| Joining two complete thoughts | A period. Two sentences. |
+| Setting off a parenthetical | Commas, or lift it into its own sentence |
+| Introducing a list or explanation | A colon |
+| Separating short label phrases | The middot (`&middot;`), the house separator |
+
+Examples of the recast, all from this template's own history:
+
+- Before: `Nancy — it's Jordan.` After: `Nancy, it's Jordan.`
+- Before: `Keep this note — it and the cruise line's own documents are everything you need.`
+  After: `Keep this note. It and the cruise line's own documents are everything you need.`
+- Before: `Due 5 November — charged automatically to the Visa on file.`
+  After: `Due 5 November, charged automatically to the Visa on file.`
+- Before: `The dates that actually matter — final payment, and what to have ready — are near the end.`
+  After: `Two things will actually need your attention: the final payment date, and what to have ready before you sail.`
+
+Note the last one. The paired-dash parenthetical is the case where a mechanical
+swap fails worst, because the sentence was built around the interruption. Rebuild
+the sentence instead.
+
+Watch for both the HTML entity (`&mdash;`) and the literal character. `check.sh`
+fails on either, so a slip cannot reach a client.
+
 ## Where the numbers come from
 
-Every figure — fares, deposit, balance, dates, room number, confirmation
-numbers — comes from Jordan or from the internal quote log (the curation desk
-at `/internal/quotes`, or a voyage dossier export). **Never estimate, never
+Every figure (fares, deposit, balance, dates, room number, confirmation
+numbers) comes from Jordan or from the internal quote log: the curation desk
+at `/internal/quotes`, or a voyage dossier export. **Never estimate, never
 fill a gap with a plausible number.** A confirmation is the client's permanent
-record; a guessed fare becomes a dispute, and a guessed final-payment date
-becomes a missed one. If a number is missing, stop and ask for it — a stalled
+record. A guessed fare becomes a dispute, and a guessed final-payment date
+becomes a missed one. If a number is missing, stop and ask for it. A stalled
 draft is better than a wrong one.
 
 Arithmetic must close: cruise fare + taxes & fees (+ gratuities if a dollar
@@ -46,18 +80,18 @@ the checker script cannot, because gratuities may be "Included".
 The template's header comment carries the mechanical rules; they matter enough
 to repeat:
 
-- Use HTML entities in filled copy (`&mdash;` `&rsquo;` `&middot;` `&amp;`) —
-  every house email does, and mixed literal/entity text is how encoding bugs
-  slip into clients' inboxes.
-- The CTA `mailto:` subject is a URL — percent-encode filled values there
+- Use HTML entities in filled copy (`&rsquo;` `&middot;` `&amp;`). Every house
+  email does, and mixed literal/entity text is how encoding bugs slip into
+  clients' inboxes.
+- The CTA `mailto:` subject is a URL, so percent-encode filled values there
   (spaces become `%20`).
 - `{{GRATUITIES}}` is free text: either `$430` (include the `$`) or `Included`.
-- Itinerary: duplicate the day-row pattern once per day; sea days are
-  italicized "At sea"; include times where known (departure and arrival at
-  minimum).
-- Rows that don't apply get deleted, not filled with "N/A" — a printed letter
+- Itinerary: duplicate the day-row pattern once per day. Sea days are
+  italicized "At sea". Include times where known, departure and arrival at
+  minimum.
+- Rows that don't apply get deleted, not filled with "N/A". A printed letter
   has no empty fields. The visa line, for instance, stays only when there's
-  something to say (and "nothing to arrange" is something to say).
+  something to say, and "nothing to arrange" is something to say.
 - Optional extras (loyalty number, dining reservations, transfers, air) may be
   added as rows in "Confirmation, at a Glance" or bullets in "Before You
   Sail", following the existing row markup exactly.
@@ -67,26 +101,26 @@ to repeat:
 
 A confirmation is a receipt written by an advisor, not a pitch. Reassuring,
 calm, specific; zero selling. The "A Note From Jordan" block is the one
-personal moment — one or two sentences about *their* room, *their* route.
-Write it fresh for each client from what Jordan has said about the booking;
-never reuse another client's note.
+personal moment, one or two sentences about *their* room, *their* route. Write
+it fresh for each client from what Jordan has said about the booking. Never
+reuse another client's note.
 
 Transactional means:
 
 - **No unsubscribe merge tag.** Confirmations are transactional mail; only the
   Dispatch carries `{{unsubscribe_url}}`.
 - **No UTM parameters on any link.** Campaign attribution feeds the marketing
-  leaderboard; a confirmation click polluting that data is a bug. Links go
+  leaderboard, so a confirmation click polluting that data is a bug. Links go
   bare to the official cruise-line voyage page.
 - The stamp in the masthead stays **typographic** (the bordered, rotated text
-  block) — never an image of a ship, anchor, or palm tree.
+  block). Never an image of a ship, anchor, or palm tree.
 
 ## Brand guardrails
 
 These are publish gates, not preferences:
 
-- The phrase "The Aegean Passport" must never appear — it is the Brand
-  Bible's internal working name, not a brand. Public identity is
+- The phrase "The Aegean Passport" must never appear. It is the Brand Bible's
+  internal working name, not a brand. Public identity is
   **BON V: A Travel Company** / **Jordan Yates · Luxury Voyage Advisor**.
 - Email HTML can't read CSS variables from `globals.css`, so the site's tokens
   are baked in as hex. Use only these, and keep them in sync with
@@ -94,35 +128,36 @@ These are publish gates, not preferences:
   - `#1b3154` deep harbor (headings, strong figures, CTA button)
   - `#223e67` aegean ink (body text)
   - `#607d99` sun-faded (labels, muted notes)
-  - `#b78b42` compass gold (section labels, rules, stamp) — flat, never a
+  - `#b78b42` compass gold (section labels, rules, stamp), flat, never a
     gradient or metallic effect
   - `#a97f39` darker gold (fine gold text)
   - `#f6f1e8` / `#f1ebdf` paper surfaces, `#c9d6dc` hairlines, `#d9cdb8` frame
-- EB Garamond via the existing `@import`, with Georgia fallback — Gmail strips
+- EB Garamond via the existing `@import`, with Georgia fallback. Gmail strips
   the import and falls back; that's expected and fine.
-- 640px table layout, `role="presentation"`, inline styles — exactly as the
+- 640px table layout, `role="presentation"`, inline styles, exactly as the
   template has it. No dark-mode styles; paper doesn't invert.
 - The approved signature block image (Squarespace URL) and the script
-  signature (`/internal/jordan-signature.png`) stay as-is; both are live
+  signature (`/internal/jordan-signature.png`) stay as-is. Both are live
   production assets.
 
 ## Verification before handing over
 
-1. `bash .claude/skills/cruise-confirmation/scripts/check.sh <file>` — catches
-   leftover tokens, banned strings, unbalanced tags, UTM/unsubscribe leaks.
+1. `bash .claude/skills/cruise-confirmation/scripts/check.sh <file>` catches
+   leftover tokens, em dashes, banned strings, unbalanced tags, and
+   UTM/unsubscribe leaks.
 2. Verify the arithmetic (see above) and compare every figure against the
-   source Jordan gave — read them back in your summary so he can eyeball them.
-3. Render and look: fill-file → screenshot via Playwright
+   source Jordan gave. Read them back in your summary so he can eyeball them.
+3. Render and look: fill the file, then screenshot via Playwright
    (`executablePath: '/opt/pw-browsers/chromium'` in remote sessions) at
    ~720px wide, and compare against
    `emails/previews/cruise-confirmation-template-sample.png`. The two remote
-   signature images 404 offline — that's the sandbox, not a bug.
+   signature images 404 offline; that's the sandbox, not a bug.
 4. Confirm the header instructional comment is gone.
 
 ## Changing the template itself
 
 Improvements to structure, copy, or style go into
-`emails/cruise-confirmation-template.html` — never forked quietly inside one
+`emails/cruise-confirmation-template.html`, never forked quietly inside one
 client's confirmation, or the next confirmation regresses. After a template
 change, re-render `emails/previews/cruise-confirmation-template-sample.png`
 with sample data and update this skill if a rule changed.

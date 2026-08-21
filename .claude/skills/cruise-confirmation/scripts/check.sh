@@ -14,6 +14,14 @@ if grep -qE '\{\{[A-Za-z0-9_]+\}\}' "$f"; then
   err "unfilled {{tokens}} remain: $(grep -oE '\{\{[A-Za-z0-9_]+\}\}' "$f" | sort -u | tr '\n' ' ')"
 fi
 
+# House voice: no em dashes, as entity or literal character. Recast the
+# sentence (period / colon / commas / middot), don't just swap in a comma.
+if grep -qE '&mdash;|—' "$f"; then
+  n=$(grep -oE '&mdash;|—' "$f" | wc -l | tr -d ' ')
+  err "$n em dash(es) found. House voice uses a period, colon, commas, or &middot; instead"
+  grep -nE '&mdash;|—' "$f" | cut -c1-140 | sed 's/^/       line /'
+fi
+
 # Brand Bible naming rule: the internal working name never ships.
 if grep -qi 'aegean passport' "$f"; then
   err "'Aegean Passport' found — internal working name must never appear in output"

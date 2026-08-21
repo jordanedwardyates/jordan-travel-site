@@ -6,23 +6,26 @@
   fill every {{TOKEN}}, delete rows you don't need (extra itinerary days, the
   visa line, etc.), then delete this comment before sending.
 
-  This is a transactional record, not a Dispatch send — no {{unsubscribe_url}}
+  This is a transactional record, not a Dispatch send. No {{unsubscribe_url}}
   merge tag, no campaign UTMs. Double-check "Confirmation, at a Glance" and
   "The Fare" against the cruise line's own invoice; those two are what a guest
   will actually check numbers against.
 
   Fill rules:
-  - Use HTML entities in filled values (&mdash; &rsquo; &middot; &amp;), same
-    as all house email copy.
+  - No em dashes, anywhere. House voice uses a period, a semicolon, a colon,
+    or a recast sentence instead. The separator between short label phrases
+    is the middot (&middot;).
+  - Use HTML entities in filled values (&rsquo; &middot; &amp;), same as all
+    house email copy.
   - The mailto subject in the CTA is a URL: percent-encode filled values there
     (spaces become %20).
-  - {{GRATUITIES}} is free text — either "$430" (include the $) or "Included".
+  - {{GRATUITIES}} is free text, either "$430" (include the $) or "Included".
 -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<title>Your Voyage, Confirmed — {{SHIP}}</title>
+<title>Your Voyage, Confirmed &middot; {{SHIP}}</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap');
   body { margin:0; padding:0; }
@@ -44,7 +47,7 @@
 </head>
 <body class="paper">
 <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
-Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, and everything to have ready before you sail, below.
+Your booking is confirmed. {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, and everything to have ready before you sail, below.
 </div>
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="paper" style="background-color:#f1ebdf;">
@@ -90,10 +93,10 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
 <tr>
 <td class="serif" style="padding:24px 52px 0 52px;">
   <p style="margin:0 0 18px 0; font-size:17px; line-height:1.75; color:#223e67; font-style:italic;">
-    {{GUEST_NAME}} &mdash; it&rsquo;s Jordan. {{SHIP}} is yours. The booking is confirmed, the cabin is held in your name, and everything that once lived in emails back and forth is now in one place, below &mdash; so you can find it again in a year without digging.
+    {{GUEST_NAME}}, it&rsquo;s Jordan. {{SHIP}} is yours. The booking is confirmed, the cabin is held in your name, and everything that once lived in emails back and forth is now in one place below, so you can find it again in a year without digging.
   </p>
   <p style="margin:0; font-size:16px; line-height:1.8; color:#223e67;">
-    Read it once now, then keep it. The dates that actually matter &mdash; final payment, and what to have ready before you sail &mdash; are under &ldquo;Before You Sail&rdquo; near the end. Everything above that is simply the record of what we booked.
+    Read it once now, then keep it. Two things will actually need your attention: the final payment date, and what to have ready before you sail. Both sit under &ldquo;Before You Sail&rdquo; near the end. Everything above that is simply the record of what we booked.
   </p>
 </td>
 </tr>
@@ -135,7 +138,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
 </td>
 </tr>
 
-<!-- ============ SECTION I — THE VOYAGE ============ -->
+<!-- ============ SECTION I · THE VOYAGE ============ -->
 <tr>
 <td style="padding:40px 52px 0 52px;">
   <div style="border-top:1px solid #b78b42; padding-top:12px;">
@@ -156,7 +159,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
     <h2 class="serif" style="margin:8px 0 0 0; font-size:25px; color:#1b3154; font-weight:normal;">{{EMBARK_PORT}} &rarr; {{DISEMBARK_PORT}}</h2>
     <p class="serif" style="margin:2px 0 0 0; font-size:12px; font-style:italic; color:#607d99;">{{VOYAGE_SUBTITLE}}</p>
 
-    <!-- itinerary — duplicate the row below per day, delete these two examples -->
+    <!-- itinerary: duplicate the row below per day, delete these two examples -->
     <p class="serif" style="margin:22px 0 0 0; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#b78b42;">The Itinerary</p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="serif" style="margin-top:8px; font-size:13px; color:#223e67;">
       <tr><td style="padding:5px 0; border-bottom:1px solid #e3dbc8; color:#607d99; width:120px;">{{DAY_1_DATE}}</td><td style="padding:5px 0; border-bottom:1px solid #e3dbc8;">Depart {{EMBARK_PORT}}, {{BOARDING_TIME}}</td></tr>
@@ -168,7 +171,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
 </td>
 </tr>
 
-<!-- ============ SECTION II — YOUR STATEROOM ============ -->
+<!-- ============ SECTION II · YOUR STATEROOM ============ -->
 <tr>
 <td style="padding:40px 52px 0 52px;">
   <div style="border-top:1px solid #b78b42; padding-top:12px;">
@@ -203,7 +206,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
 </td>
 </tr>
 
-<!-- ============ SECTION III — THE FARE ============ -->
+<!-- ============ SECTION III · THE FARE ============ -->
 <tr>
 <td style="padding:40px 52px 0 52px;">
   <div style="border-top:1px solid #b78b42; padding-top:12px;">
@@ -256,13 +259,13 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
         <td align="right" style="padding:8px 0; color:#1b3154; font-weight:bold; border-top:1px solid rgba(183,139,66,0.25);">${{BALANCE_DUE}}</td>
       </tr>
     </table>
-    <p class="serif" style="margin:12px 0 0 0; font-size:13px; line-height:1.7; color:#223e67;">Charged to {{PAYMENT_METHOD}} on file. I&rsquo;ll write again ahead of the final payment date &mdash; no need to track it yourself.</p>
+    <p class="serif" style="margin:12px 0 0 0; font-size:13px; line-height:1.7; color:#223e67;">Charged to {{PAYMENT_METHOD}} on file. I&rsquo;ll write again ahead of the final payment date, so there&rsquo;s no need to track it yourself.</p>
   </td></tr>
   </table>
 </td>
 </tr>
 
-<!-- ============ SECTION IV — BEFORE YOU SAIL ============ -->
+<!-- ============ SECTION IV · BEFORE YOU SAIL ============ -->
 <tr>
 <td style="padding:40px 52px 0 52px;">
   <div style="border-top:1px solid #b78b42; padding-top:12px;">
@@ -278,7 +281,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
     <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Passport.</strong> Valid {{PASSPORT_REQUIREMENT}}. Check the expiration date now, not the week before you fly.</p>
     <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Visa.</strong> {{VISA_NOTE}}</p>
     <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Embarkation.</strong> {{EMBARKATION_TERMINAL_ADDRESS}}. Boarding begins {{BOARDING_TIME}}.</p>
-    <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Final payment.</strong> Due {{FINAL_PAYMENT_DATE}} &mdash; charged automatically to {{PAYMENT_METHOD}} unless you tell me otherwise.</p>
+    <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Final payment.</strong> Due {{FINAL_PAYMENT_DATE}}, charged automatically to {{PAYMENT_METHOD}} unless you tell me otherwise.</p>
     <p class="serif" style="margin:0 0 14px 0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Cancellation.</strong> Full cancellation-penalty terms attach after {{CANCELLATION_DEADLINE}}. Ask if you&rsquo;d like the exact tier schedule.</p>
     <p class="serif" style="margin:0; font-size:15px; line-height:1.75; color:#223e67;"><strong style="color:#1b3154;">Travel insurance.</strong> {{TRAVEL_INSURANCE_STATUS}}</p>
   </td></tr>
@@ -304,7 +307,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
 <!-- ============ CTA ============ -->
 <tr>
 <td style="padding:34px 52px 0 52px; text-align:center;">
-  <p class="serif" style="margin:0 0 22px 0; font-size:16px; line-height:1.7; color:#223e67;">Questions before you sail, a name to correct, a date that&rsquo;s shifted &mdash; just reply. I handle it directly, not a call center.</p>
+  <p class="serif" style="margin:0 0 22px 0; font-size:16px; line-height:1.7; color:#223e67;">If you have questions before you sail, a name to correct, or a date that&rsquo;s shifted, just reply. I handle it directly, not a call center.</p>
   <a href="mailto:jordan.yates@luxurycruiseconnections.com?subject=Booking%20{{CONFIRMATION_NUMBER}}%20%E2%80%94%20{{SHIP}}" class="serif" style="display:inline-block; background-color:#1b3154; color:#f6f1e8; text-decoration:none; padding:16px 44px; font-size:12px; letter-spacing:2.5px; text-transform:uppercase;">Reply With Any Questions</a>
 </td>
 </tr>
@@ -312,7 +315,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
 <!-- ============ SIGN-OFF ============ -->
 <tr>
 <td style="padding:36px 52px 0 52px;">
-  <p class="serif" style="margin:0; font-size:15px; line-height:1.8; color:#223e67;">Keep this note &mdash; it and the cruise line&rsquo;s own documents, once they arrive, are everything you need to hold onto. Looking forward to hearing how it goes, {{GUEST_NAME}}.</p>
+  <p class="serif" style="margin:0; font-size:15px; line-height:1.8; color:#223e67;">Keep this note. It and the cruise line&rsquo;s own documents, once they arrive, are everything you need to hold onto. Looking forward to hearing how it goes, {{GUEST_NAME}}.</p>
   <img src="https://www.bonvtravelcompany.com/internal/jordan-signature.png" alt="Jordan" width="230" style="display:block; width:230px; height:auto; margin:18px 0 0 -8px;">
   <p class="serif" style="margin:8px 0 0 0; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#223e67;">Jordan Yates &middot; Luxury Voyage Advisor</p>
 </td>
@@ -323,7 +326,7 @@ Your booking is confirmed — {{SHIP}}, departing {{EMBARK_DATE}}. Cabin, fare, 
 <td style="padding:26px 52px 8px 52px;">
   <div style="border-top:1px solid #c9d6dc; padding-top:24px;">
     <img src="https://images.squarespace-cdn.com/content/v1/5cfd848d3b35680001da3f7d/9c23922a-987b-4532-830c-6e5415363a97/Background+removed+Signature_Block_Photo_July_13_with_LCC_website-removebg.png?format=2500w"
-         alt="Jordan Yates &middot; Luxury Travel Advisor — contact information"
+         alt="Jordan Yates &middot; Luxury Travel Advisor &middot; contact information"
          width="536" style="display:block; width:100%; max-width:536px; height:auto; margin:0 auto;">
   </div>
 </td>
