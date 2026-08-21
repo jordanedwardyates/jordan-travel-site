@@ -6,27 +6,37 @@
  * SETUP
  * 1. Open the contacts spreadsheet -> Extensions -> Apps Script.
  * 2. Paste this file in as Code.gs (or a new file).
- * 3. Fill in CONFIG below: the tab name, the column letters, and DRAFT_SUBJECT_MATCH.
- * 4. Compose the letter as a Gmail draft in the SAME account this script will
- *    run as. Subject must contain DRAFT_SUBJECT_MATCH. Body can be the full
- *    HTML letter (Gmail preserves formatting from a draft). Put {{first_name}}
- *    wherever a name belongs — this script replaces it before sending, so
- *    whatever token you use here just needs to match what you typed in the
- *    draft. Nothing about Resend, HubSpot, or any other tool's merge syntax
- *    matters once the send happens this way.
- * 5. Run testSend() first, from the function dropdown. It sends ONE email —
+ * 3. Fill in CONFIG below: the tab name, the column letters, DRAFT_SUBJECT_MATCH,
+ *    and SITE_ORIGIN if it's not already the live domain.
+ * 4. Run setUnsubscribeSecret() ONCE, with the SAME value as the site's
+ *    UNSUBSCRIBE_SECRET env var on Vercel — not a new one you make up here.
+ *    A mismatch doesn't error; it just means every link this script sends
+ *    fails silently on the site with "This link has expired." Confirm the
+ *    Vercel env var is actually deployed before trusting any link works.
+ * 5. Compose the letter as a Gmail draft in the SAME account this script will
+ *    run as. Subject must contain DRAFT_SUBJECT_MATCH. Only three tokens are
+ *    recognized in the body: {{first_name}}, {{email}}, {{unsubscribe_url}}.
+ *    Anything else in braces — including a merge tag left over from another
+ *    tool — is NOT resolved by this script and will be caught by
+ *    validateTemplate_() before anything sends, rather than going out as
+ *    literal text the way {{preheader||...}} did.
+ * 6. Run testSend() first, from the function dropdown. It sends ONE email —
  *    to yourself — and touches nothing in the sheet. Check it in an actual
- *    inbox before anything else.
- * 6. Run installTrigger() once. It sets processBatch() to fire every 30
+ *    inbox: no stray braces anywhere, and the Unsubscribe link actually loads
+ *    the page rather than "This link has expired."
+ * 7. Run installTrigger() once. It sets processBatch() to fire every 30
  *    minutes; each firing sends as many as the remaining daily Gmail quota
  *    allows, then stops itself and waits for the next firing.
- * 7. To stop mid-send: run removeTriggers().
+ * 8. To stop mid-send: run removeTriggers().
  *
  * WHY A DRAFT AND NOT A TEMPLATE STRING IN THIS FILE
  * The letter is the version-controlled HTML in emails/dispatch-aegean-and-
  * the-atlantic.html. Keeping the *sent* copy as a live Gmail draft (built by
  * pasting that HTML in) means what you can see and proofread in Gmail is
  * exactly what goes out — no second copy of the letter to keep in sync here.
+ * That only holds if the draft is actually replaced wholesale on every
+ * content change, not hand-edited piecemeal — a hand edit is exactly how an
+ * unresolved {{preheader||...}} tag ends up live in front of real recipients.
  *
  * WHY THIS PROCESSES THE WHOLE SHEET BY STATUS, NOT A ROW RANGE
  * A row-range batch ("rows 1500-3000") stops lining up with the sheet the
@@ -53,6 +63,8 @@ const CONFIG = {
   },
   DRAFT_SUBJECT_MATCH: "The Aegean & the Atlantic", // must appear in the draft's subject line
   SUBJECT_TO_SEND: "The Aegean & the Atlantic",
+  SITE_ORIGIN: "https://www.bonvtravelcompany.com",
+  CAMPAIGN_SLUG: "aegean-and-the-atlantic",
   TEST_RECIPIENT: Session.getActiveUser().getEmail(),
   BATCH_MAX_PER_RUN: 80, // stay comfortably under a single Apps Script execution's time limit
   MAX_RUNTIME_MS: 4.5 * 60 * 1000, // bail out with room to spare before Apps Script kills the run
@@ -61,8 +73,39 @@ const CONFIG = {
 };
 
 const EMAIL_RE = /^[^\s@,;]+@[^\s@,;]+\.[a-z]{2,}$/i;
+const KNOWN_TOKENS = ["{{first_name}}", "{{email}}", "{{unsubscribe_url}}"];
 
 /* ------------------------------------------------------------------ setup */
+
+/** Run once, manually, from the function dropdown. Never hardcode the secret in this file. */
+function setUnsubscribeSecret() {
+  const ui = SpreadsheetApp.getUi();
+  const resp = ui.prompt(
+    "Unsubscribe secret",
+    "Paste the SAME value as UNSUBSCRIBE_SECRET on Vercel (not a new one):",
+    ui.ButtonSet.OK_CANCEL,
+  );
+  if (resp.getSelectedButton() !== ui.Button.OK) return;
+  const secret = resp.getResponseText().trim();
+  if (secret.length < 16) {
+    ui.alert("Too short — that doesn't look like the real secret. Nothing saved.");
+    return;
+  }
+  PropertiesService.getScriptProperties().setProperty("UNSUBSCRIBE_SECRET", secret);
+  ui.alert("Saved. Run testSend() next and confirm the Unsubscribe link actually loads on the site.");
+}
+
+function getUnsubscribeSecret_() {
+  const secret = PropertiesService.getScriptProperties().getProperty("UNSUBSCRIBE_SECRET");
+  if (!secret || secret.length < 16) {
+    throw new Error(
+      "UNSUBSCRIBE_SECRET is not set. Run setUnsubscribeSecret() once, with the same value " +
+        "deployed as the site's UNSUBSCRIBE_SECRET env var on Vercel. Refusing to send without " +
+        "it — a link that can't be verified is a link that can't be trusted to opt someone out.",
+    );
+  }
+  return secret;
+}
 
 function installTrigger() {
   removeTriggers();
@@ -100,9 +143,54 @@ function findDraftMessage_() {
   return match.getMessage();
 }
 
-function personalize_(text, firstName) {
+/**
+ * Refuses to send anything the moment the draft contains a brace-tag this
+ * script doesn't know how to resolve — this is the check that would have
+ * caught {{preheader||...}} before it reached anyone, instead of after.
+ */
+function validateTemplate_(rawHtml) {
+  const found = rawHtml.match(/\{\{[^}]*\}\}/g) || [];
+  const unknown = found.filter((tag) => KNOWN_TOKENS.indexOf(tag) === -1);
+  if (unknown.length) {
+    throw new Error(
+      `The draft contains ${unknown.length} tag(s) this script does not resolve: ` +
+        `${Array.from(new Set(unknown)).join(", ")}. Only ${KNOWN_TOKENS.join(", ")} ` +
+        `are substituted. Fix the draft (replace with plain text, or one of the known ` +
+        `tokens) before sending — otherwise this goes out exactly as typed, braces and all.`,
+    );
+  }
+}
+
+/* ----------------------------------------------------------- unsubscribe */
+
+// Must byte-for-byte match signEmail() in src/lib/unsubscribe-token.ts:
+// HMAC-SHA256 of the lowercased, trimmed email, base64url-encoded. Any
+// difference here — wrong secret, wrong casing, wrong encoding — produces a
+// link that looks fine and fails verification on the site every time.
+function signEmail_(email) {
+  const secret = getUnsubscribeSecret_();
+  const e = String(email).trim().toLowerCase();
+  const raw = Utilities.computeHmacSha256Signature(e, secret);
+  const b64 = Utilities.base64Encode(raw);
+  return b64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+
+function unsubscribeUrl_(email) {
+  const e = String(email).trim().toLowerCase();
+  return (
+    `${CONFIG.SITE_ORIGIN}/unsubscribe?e=${encodeURIComponent(e)}` +
+    `&t=${signEmail_(e)}&c=${encodeURIComponent(CONFIG.CAMPAIGN_SLUG)}`
+  );
+}
+
+/* ---------------------------------------------------------- personalize */
+
+function personalize_(rawHtml, email, firstName) {
   const name = firstName && firstName.trim() ? firstName.trim() : "friend";
-  return text.split("{{first_name}}").join(name);
+  return rawHtml
+    .split("{{first_name}}").join(name)
+    .split("{{email}}").join(email)
+    .split("{{unsubscribe_url}}").join(unsubscribeUrl_(email));
 }
 
 /* ----------------------------------------------------------------- sheet */
@@ -132,12 +220,17 @@ function writeStatus_(sheet, rowNumber, text) {
 /** Sends ONE email, to yourself, using the live draft. Touches no sheet row. */
 function testSend() {
   const draftMsg = findDraftMessage_();
-  const htmlBody = personalize_(draftMsg.getBody(), "Jordan");
+  const rawHtml = draftMsg.getBody();
+  validateTemplate_(rawHtml);
+  const htmlBody = personalize_(rawHtml, CONFIG.TEST_RECIPIENT, "Jordan");
   GmailApp.sendEmail(CONFIG.TEST_RECIPIENT, CONFIG.SUBJECT_TO_SEND, "", {
     htmlBody,
     name: "Jordan Yates",
   });
-  Logger.log(`Test sent to ${CONFIG.TEST_RECIPIENT}. Check that inbox before running anything else.`);
+  Logger.log(
+    `Test sent to ${CONFIG.TEST_RECIPIENT}. Check: no stray {{ }} anywhere, and the ` +
+      `Unsubscribe link actually opens the page (not "This link has expired").`,
+  );
 }
 
 /* ------------------------------------------------------------------- send */
@@ -152,12 +245,12 @@ function processBatch() {
   const start = Date.now();
   const draftMsg = findDraftMessage_();
   const rawHtml = draftMsg.getBody();
+  validateTemplate_(rawHtml); // whole run aborts here, before any send, if the draft is bad
 
   const { sheet, values } = readRows_();
   const iFirst = colIndex_(CONFIG.COL.firstName) - 1;
   const iEmail = colIndex_(CONFIG.COL.email) - 1;
   const iStatus = colIndex_(CONFIG.COL.status) - 1;
-  const iLast = colIndex_(CONFIG.COL.lastName) - 1;
 
   let quota = MailApp.getRemainingDailyQuota();
   let sent = 0,
@@ -201,7 +294,7 @@ function processBatch() {
     }
 
     try {
-      const html = personalize_(rawHtml, firstName);
+      const html = personalize_(rawHtml, email, firstName);
       GmailApp.sendEmail(email, CONFIG.SUBJECT_TO_SEND, "", {
         htmlBody: html,
         name: "Jordan Yates",
