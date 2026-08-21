@@ -35,9 +35,17 @@
  * the status write-back will 403.
  */
 
-import { createHmac, createSign } from "node:crypto";
+import { createHmac } from "node:crypto";
 import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
+import {
+  googleAccessToken,
+  readTab,
+  batchUpdate,
+  parseRows,
+  colIndex,
+  addressLooksPersonal,
+} from "./lib/dispatch-list.mjs";
 
 /* ------------------------------------------------------------------ config */
 
@@ -100,179 +108,49 @@ const MODE = has("--send")
 const LIMIT = Number(val("--limit", "0")) || 0;
 const ONLY = val("--only", null); // send to one address, for a seed test
 
-/* ------------------------------------------------------- google auth (JWT) */
-
-function serviceAccount() {
-  const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
-  if (!raw) throw new Error("GOOGLE_SERVICE_ACCOUNT_JSON is not set");
-  const text = existsSync(raw) ? readFileSync(raw, "utf8") : raw;
-  const key = JSON.parse(text);
-  if (!key.client_email || !key.private_key) {
-    throw new Error("service account JSON is missing client_email / private_key");
-  }
-  return key;
-}
-
-const b64url = (buf) =>
-  Buffer.from(buf).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-
-async function googleAccessToken(scope) {
-  const key = serviceAccount();
-  const now = Math.floor(Date.now() / 1000);
-  const header = b64url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
-  const claim = b64url(
-    JSON.stringify({
-      iss: key.client_email,
-      scope,
-      aud: "https://oauth2.googleapis.com/token",
-      iat: now,
-      exp: now + 3600,
-    }),
-  );
-  const signer = createSign("RSA-SHA256");
-  signer.update(`${header}.${claim}`);
-  const jwt = `${header}.${claim}.${b64url(signer.sign(key.private_key))}`;
-
-  const res = await fetch("https://oauth2.googleapis.com/token", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
-      assertion: jwt,
-    }),
-  });
-  if (!res.ok) throw new Error(`google token exchange failed: ${res.status} ${await res.text()}`);
-  return (await res.json()).access_token;
-}
-
 /* ------------------------------------------------------------ sheets reads */
 
 async function readSheet() {
-  const token = await googleAccessToken("https://www.googleapis.com/auth/spreadsheets");
-  const range = encodeURIComponent(`${TAB}!A1:Z10000`);
-  const res = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}`,
-    { headers: { Authorization: `Bearer ${token}` } },
-  );
-  if (!res.ok) throw new Error(`sheet read failed: ${res.status} ${await res.text()}`);
-  return { token, rows: (await res.json()).values ?? [] };
+  const token = await googleAccessToken();
+  return { token, rows: await readTab(SHEET_ID, TAB, token) };
 }
 
 async function writeStatuses(token, updates) {
-  if (!updates.length) return;
-  const res = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values:batchUpdate`,
-    {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        valueInputOption: "RAW",
-        data: updates.map((u) => ({
-          range: `${TAB}!${STATUS_COLUMN_LETTER}${u.rowNumber}`,
-          values: [[u.value]],
-        })),
-      }),
-    },
+  await batchUpdate(
+    SHEET_ID,
+    token,
+    updates.map((u) => ({
+      range: `${TAB}!${STATUS_COLUMN_LETTER}${u.rowNumber}`,
+      values: [[u.value]],
+    })),
   );
-  if (!res.ok) throw new Error(`status write-back failed: ${res.status} ${await res.text()}`);
 }
 
 /* ------------------------------------------------- cleaning + merge fields */
 
-const EMAIL_RE = /^[^\s@,;]+@[^\s@,;]+\.[a-z]{2,}$/i;
-
-// "mary" -> "Mary", "o'brien" -> "O'Brien", "MCKINLEY" -> "McKinley" is a
-// bridge too far, so leave any name that already has internal capitals alone.
-function titleCase(raw) {
-  const s = raw.trim();
-  if (!s) return "";
-  if (/[a-z][A-Z]/.test(s)) return s;
-  return s
-    .toLowerCase()
-    .replace(/(^|[\s\-'’])([a-z])/g, (_, sep, ch) => sep + ch.toUpperCase());
-}
-
-// A usable given name: letters, not an email, not an initial, not a slashed
-// pair like "Shelley/suzanne" where we cannot tell who is reading.
-function usableFirstName(raw) {
-  const s = titleCase(raw ?? "");
-  if (!s) return null;
-  if (s.includes("@")) return null;
-  if (s.includes("/")) return null;
-  if (s.replace(/[^A-Za-z]/g, "").length < 2) return null; // "J.", "T", "C"
-  return s;
-}
-
-// Does the address plausibly belong to this person? Shared and spousal
-// inboxes are common on a list like this (Robert Feld at jeffdashing@,
-// Judith Bennett at normanbennett@). Greeting those by the contact's first
-// name lands wrong with whoever actually opens it, so we fall back to a
-// neutral salutation rather than guessing.
-function addressLooksPersonal(email, first, last) {
-  const local = email.split("@")[0].toLowerCase().replace(/[^a-z]/g, "");
-  const f = (first ?? "").toLowerCase().replace(/[^a-z]/g, "");
-  const l = (last ?? "").toLowerCase().replace(/[^a-z]/g, "");
-  if (!local) return false;
-  if (f.length >= 3 && local.includes(f)) return true;
-  if (l.length >= 3 && local.includes(l)) return true;
-  if (f && local.includes(f.slice(0, 3)) && f.length >= 3) return true;
-  return false;
-}
-
 function buildContacts(rows) {
-  const out = [];
   const seen = new Set();
 
-  rows.slice(1).forEach((row, i) => {
-    const rowNumber = i + 2; // 1-indexed, past the header
-    let first = row[COL.firstName] ?? "";
-    const last = row[COL.lastName] ?? "";
-    let email = (row[COL.email] ?? "").trim().toLowerCase();
-    const already = (row[cellIndex(STATUS_COLUMN_LETTER)] ?? "").trim();
+  return parseRows(rows, { statusCol: STATUS_COLUMN_LETTER, cols: COL }).map((r) => {
+    const rec = { ...r, skip: null, warn: [] };
 
-    // Column-shift recovery. Three rows were typed with the address in the
-    // First Name cell and Email left blank, so the August send skipped them
-    // outright ("SKIPPED: no email"). Recover the address rather than lose
-    // the subscriber; --fix-rows writes the correction back to the sheet.
-    let recovered = false;
-    if (!email && String(first).trim().includes("@") && EMAIL_RE.test(String(first).trim())) {
-      email = String(first).trim().toLowerCase();
-      first = "";
-      recovered = true;
-    }
+    if (r.sendState === "sent") rec.skip = "already sent this campaign";
+    else if (r.mailable) rec.skip = r.mailable;
+    else if (seen.has(r.email)) rec.skip = "duplicate address";
+    if (!rec.skip) seen.add(r.email);
 
-    const rec = {
-      rowNumber,
-      rawFirst: row[COL.firstName] ?? "",
-      rawLast: last,
-      email,
-      recovered,
-      firstName: usableFirstName(first),
-      lastName: titleCase(last),
-      skip: null,
-      warn: [],
-    };
-
-    if (already.startsWith("SENT")) rec.skip = "already sent this campaign";
-    else if (!email) rec.skip = "no email";
-    else if (!EMAIL_RE.test(email)) rec.skip = "malformed email";
-    else if (seen.has(email)) rec.skip = "duplicate address";
-
-    if (!rec.skip) seen.add(email);
-
-    if (recovered) rec.warn.push("address recovered from the first-name column");
-    if (!rec.firstName) rec.warn.push("no usable first name — neutral salutation");
-    else if (email && !addressLooksPersonal(email, rec.firstName, rec.lastName)) {
+    if (r.recovered) rec.warn.push("address recovered from the first-name column");
+    if (!r.firstName) rec.warn.push("no usable first name — neutral salutation");
+    else if (r.email && !addressLooksPersonal(r.email, r.firstName, r.lastName)) {
       rec.warn.push("address may be shared/spousal — neutral salutation");
     }
 
-    // The merge values the template actually consumes.
-    const personal = rec.firstName && addressLooksPersonal(email, rec.firstName, rec.lastName);
+    const personal = r.firstName && addressLooksPersonal(r.email, r.firstName, r.lastName);
     rec.merge = {
-      first_name: rec.firstName ?? "",
-      last_name: rec.lastName ?? "",
-      email,
-      greeting: personal ? `Dear ${rec.firstName},` : "Dear friend,",
+      first_name: r.firstName ?? "",
+      last_name: r.lastName ?? "",
+      email: r.email,
+      greeting: personal ? `Dear ${r.firstName},` : "Dear friend,",
       preheader: CAMPAIGN.preheader,
       // CAN-SPAM requires a valid physical postal address in every commercial
       // message. Absent it the template renders a loud placeholder rather
@@ -280,15 +158,9 @@ function buildContacts(rows) {
       postal_address:
         process.env.DISPATCH_POSTAL_ADDRESS ?? "2420 NE 186th St, Suite 300, Miami, FL 33180",
     };
-
-    out.push(rec);
+    return rec;
   });
-
-  return out;
 }
-
-const cellIndex = (letter) =>
-  letter.toUpperCase().split("").reduce((n, c) => n * 26 + c.charCodeAt(0) - 64, 0) - 1;
 
 /* ----------------------------------------------------------- template render */
 

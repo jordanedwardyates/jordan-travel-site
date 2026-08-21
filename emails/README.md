@@ -167,6 +167,11 @@ Facts to confirm:
   include" rather than presenting it as complete. Some sources show an 18-night
   Oct 29 variant; the code and Jordan's quote both say 16 nights from Oct 30.
 - Replace `{{unsubscribe_url}}` with the ESP merge tag (still open on 001 too).
+- **Who missed the last letter** — `scripts/dispatch-unsent.mjs` splits the
+  sheet three ways on the status column: sent, failed (`SKIPPED: no email` and
+  friends), and never attempted at all. It walks every tab by default, so it
+  also answers whether the list is larger than one tab suggests. `--csv <path>`
+  exports the mailable ones, `--list` prints them, `--tab <name>` narrows it.
 - **Sending is now scripted** — `scripts/dispatch-send.mjs` reads the contacts
   sheet, cleans it, merges, and sends. `--audit` first, then `--fix-rows`,
   `--dry-run`, `--only <address>` as a seed test, and finally `--send`.
