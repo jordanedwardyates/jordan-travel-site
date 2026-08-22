@@ -33,6 +33,35 @@ influencer aesthetics.
 - Default surface is cream paper (`--vintage-passport`) with ink text
   (`--deep-harbor`). There is deliberately no dark mode — paper doesn't invert.
 
+## Punctuation in outgoing writing
+
+**No em dashes in anything a client or subscriber reads.** That covers email
+copy, site copy, captions, subject lines, preheaders and alt text, and it
+means neither the entity (`&mdash;`) nor the literal character. Dashes are the
+fastest way for a draft to stop sounding like Jordan.
+
+Removing one is a rewrite, not a find-and-replace. **Never drop information to
+lose a dash.** A correct recast keeps every fact and usually runs a word or two
+longer, so if a sentence got shorter, check what fell out. Match the mark to
+the job the dash was doing:
+
+| The dash was doing | Use instead |
+|---|---|
+| Joining two complete clauses | A semicolon, or a period and two sentences |
+| Introducing a list or explanation | A colon |
+| Setting off a parenthetical aside | Paired commas, parentheses, or lift it into its own sentence |
+| Separating short label phrases | The middot (`&middot;`), the house separator |
+
+Two cautions. A semicolon needs a **complete independent clause on both
+sides**; most dashed asides in this voice are appositive lists, where a
+semicolon is simply ungrammatical and commas or a colon are correct. And never
+substitute a plain hyphen for a sentence-level dash. A hyphen is a word-joiner
+(`well-read`, `small-ship`), so using it as punctuation reads as a typo, which
+is the one thing a letterpress-feel brand cannot afford.
+
+This governs new and unsent work. Already-sent letters in `emails/` are an
+archive of what actually went out and are left as they are.
+
 ## Stack
 
 - Next.js 15 (App Router, `src/` dir), TypeScript, Tailwind CSS v4, npm

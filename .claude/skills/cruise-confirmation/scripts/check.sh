@@ -15,10 +15,11 @@ if grep -qE '\{\{[A-Za-z0-9_]+\}\}' "$f"; then
 fi
 
 # House voice: no em dashes, as entity or literal character. Recast the
-# sentence (period / colon / commas / middot), don't just swap in a comma.
+# sentence rather than swapping in a comma, and never drop information to
+# lose a dash. See CLAUDE.md, "Punctuation in outgoing writing".
 if grep -qE '&mdash;|—' "$f"; then
   n=$(grep -oE '&mdash;|—' "$f" | wc -l | tr -d ' ')
-  err "$n em dash(es) found. House voice uses a period, colon, commas, or &middot; instead"
+  err "$n em dash(es) found. Use a semicolon, period, colon, commas, or &middot;"
   grep -nE '&mdash;|—' "$f" | cut -c1-140 | sed 's/^/       line /'
 fi
 

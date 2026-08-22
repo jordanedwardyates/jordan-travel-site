@@ -33,16 +33,28 @@ House voice does not use em dashes. Not in the template, not in filled values,
 not in the personal note. This is a firm preference, and it is the single
 easiest way for a draft to read as machine-written rather than as Jordan.
 
+The repo-wide statement of this rule lives in `CLAUDE.md` under "Punctuation in
+outgoing writing"; it governs all client-facing copy, not just confirmations.
+
 Removing them well means recasting the sentence, not swapping the dash for a
-comma and moving on. A dash usually hides one of four things, and each has a
-better form:
+comma and moving on. **Never lose information to lose a dash.** A correct
+recast keeps every fact and usually runs a word or two longer, so if a
+sentence got shorter, check what fell out. A dash usually hides one of four
+things, and each has a better form:
 
 | The dash was doing | Use instead |
 |---|---|
-| Joining two complete thoughts | A period. Two sentences. |
-| Setting off a parenthetical | Commas, or lift it into its own sentence |
+| Joining two complete clauses | A semicolon, or a period and two sentences |
 | Introducing a list or explanation | A colon |
+| Setting off a parenthetical | Paired commas, parentheses, or its own sentence |
 | Separating short label phrases | The middot (`&middot;`), the house separator |
+
+Two traps. A semicolon needs a **complete independent clause on both sides**,
+so it is wrong for the appositive lists this voice is full of ("the warm-water
+line, Bermuda and the Canaries and Madeira, so you trade..."); there, commas
+or a colon are correct. And never reach for a plain hyphen as a sentence-level
+dash: a hyphen joins words (`well-read`, `small-ship`), and using it as
+punctuation reads as a typo on a letterpress-feel page.
 
 Examples of the recast, all from this template's own history:
 
