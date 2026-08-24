@@ -1,0 +1,53 @@
+[
+  {
+    "template": "photo",
+    "src": "photos/01.jpg",
+    "kicker": "Introductions",
+    "title": "The name on every quote that leaves this desk",
+    "caption": "Jordan Yates - matching travellers with the right ships since 2011.",
+    "treatment": "duotone",
+    "focus": "center",
+    "brief": "Jordan's engraved portrait stamp, centred on white - composed 4:5 from public/portrait-engraved.png.",
+    "source": "public/portrait-engraved.png"
+  },
+  {
+    "template": "statement",
+    "kicker": "Who this is",
+    "text": "Behind BON V is one advisor, not an agency floor.",
+    "sub": "One person, one file, and a direct line that gets answered - from your first note to the flight home."
+  },
+  {
+    "template": "list",
+    "kicker": "The practice",
+    "title": "The desk in three lines",
+    "items": [
+      { "head": "Cruise, only", "body": "Ocean, river and expedition - ships are the whole trade here, not a sideline of general travel." },
+      { "head": "A Virtuoso practice", "body": "In partnership with Luxury Cruise Connections - consortium access and negotiated fares." },
+      { "head": "At this since 2011", "body": "Years of sailings, ship visits and kept notes, every one of them working on your shortlist." }
+    ]
+  },
+  {
+    "template": "compare",
+    "kicker": "Plainly",
+    "title": "The job, as I hold it",
+    "left": { "label": "Not", "items": ["A booking engine", "A discount code", "A brochure reader", "A queue of agents"] },
+    "right": { "label": "Instead", "items": ["An editor of sailings", "A negotiator of fares", "A keeper of notes", "The person who answers"] }
+  },
+  {
+    "template": "quote",
+    "quote": "Honest counsel on ships, seasons and itineraries - including which celebrated ones to skip.",
+    "cite": "Jordan Yates · Luxury Voyage Advisor"
+  },
+  {
+    "template": "statement",
+    "kicker": "The arrangement",
+    "text": "You bring the leaning. I come back with three worth your time.",
+    "sub": "With each, the why - the ship, the season, the cabin, and a fare negotiated so you never pay retail."
+  },
+  {
+    "template": "cta",
+    "title": "Tell me where you're leaning",
+    "body": "A region, a month, a ship you half remember - write or DM, and a shortlist follows. Candid, complimentary, signed with my name.",
+    "handle": "@bonvtravel · link in bio"
+  }
+]
