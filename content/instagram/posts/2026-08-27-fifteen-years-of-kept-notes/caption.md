@@ -1,9 +1,9 @@
-Memory flatters. The notebook doesn't — fifteen years of sailings, written down at the time.
+I've kept notes on every sailing since 2011. Memory flatters; the notebook doesn't.
 
-Every ship walked, every port timed, every fare tracked since 2011. Which cabins sit beneath the pool deck, when the Santorini tender queue actually thins, what a Mediterranean sailing was published at and what it quietly dropped to.
+Every ship walked, every port timed, every fare tracked. Where the noise travels on a given ship, what time the Santorini tender queue thins out, what a Mediterranean sailing listed at in spring and quietly sold for by autumn.
 
-You don't read the notebook — you get its verdict: a shortlist of three, with a reason attached to each, and a fare negotiated against what the sailing actually sells for.
+The notebook stays on my desk. What you get is its verdict: a shortlist of three, each with a reason, and a fare negotiated from what sailings like it actually sell for.
 
-Weighing one up? Name the ship and the month in a DM and I'll send back the notebook's two-line verdict.
+Weighing one up? Name the ship and the month in a DM and I'll send back the two-line verdict.
 
 #luxurycruising #cruisetravel #whentobook #bonvtravel

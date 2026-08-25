@@ -14,24 +14,24 @@
     "template": "statement",
     "kicker": "Who this is",
     "text": "Behind BON V is one advisor, not an agency floor.",
-    "sub": "One person, one file, and a direct line that gets answered - from your first note to the flight home."
+    "sub": "You write to me, you book with me, and when something needs fixing mid-trip it's still me. The number on the site rings at this desk."
   },
   {
     "template": "list",
     "kicker": "The practice",
     "title": "The desk in three lines",
     "items": [
-      { "head": "Cruise, only", "body": "Ocean, river and expedition - ships are the whole trade here, not a sideline of general travel." },
-      { "head": "A Virtuoso practice", "body": "In partnership with Luxury Cruise Connections - consortium access and negotiated fares." },
-      { "head": "At this since 2011", "body": "Years of sailings, ship visits and kept notes, every one of them working on your shortlist." }
+      { "head": "Cruise, only", "body": "Ocean, river and expedition. Ships are the whole business at this desk." },
+      { "head": "A Virtuoso practice", "body": "Run in partnership with Luxury Cruise Connections, which is where the negotiated fares come from." },
+      { "head": "At this since 2011", "body": "Fifteen years of sailings, ship visits and kept notes. The notes matter most." }
     ]
   },
   {
     "template": "compare",
     "kicker": "Plainly",
-    "title": "The job, as I hold it",
+    "title": "What the job actually is",
     "left": { "label": "Not", "items": ["A booking engine", "A discount code", "A brochure reader", "A queue of agents"] },
-    "right": { "label": "Instead", "items": ["An editor of sailings", "A negotiator of fares", "A keeper of notes", "The person who answers"] }
+    "right": { "label": "Instead", "items": ["I edit the options", "I negotiate the fare", "I keep the notes", "I answer the phone"] }
   },
   {
     "template": "quote",
@@ -42,12 +42,12 @@
     "template": "statement",
     "kicker": "The arrangement",
     "text": "You bring the leaning. I come back with three worth your time.",
-    "sub": "With each, the why - the ship, the season, the cabin, and a fare negotiated so you never pay retail."
+    "sub": "Each one comes with the reason it made the cut and a fare I've negotiated myself. My clients never pay retail."
   },
   {
     "template": "cta",
     "title": "Tell me where you're leaning",
-    "body": "A region, a month, a ship you half remember - write or DM, and a shortlist follows. Candid, complimentary, signed with my name.",
+    "body": "A region, a month, even just a ship somebody mentioned at dinner. Write or send a DM and I'll come back with a shortlist worth your time.",
     "handle": "@bonvtravel · link in bio"
   }
 ]

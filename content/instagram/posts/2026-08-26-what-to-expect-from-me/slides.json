@@ -3,24 +3,24 @@
     "template": "cover",
     "kicker": "The Advisor's Edit",
     "title": "What to expect when you write to me",
-    "subtitle": "The whole arrangement, from first note to flight home - and the parts people don't expect.",
+    "subtitle": "How the arrangement works, from your first note to the flight home.",
     "stamp": { "top": "Introductions", "bottom": "No. II" }
   },
   {
     "template": "statement",
     "kicker": "Start here",
-    "text": "No forms, no funnel, no sales script.",
-    "sub": "The first exchange is a conversation about where you're leaning. Vague is fine - vague is how the good trips start."
+    "text": "There's no form to fill in. You just write.",
+    "sub": "The first exchange is a conversation about where you're leaning, and vague is fine. Most good trips start that way."
   },
   {
     "template": "list",
     "kicker": "The arrangement",
     "title": "How it goes",
     "items": [
-      { "head": "You write", "body": "A region, a month, an occasion, a ship you half remember. That's plenty to start with." },
-      { "head": "I edit", "body": "A hundred possible sailings down to three worth your time, with a reason attached to each." },
-      { "head": "We settle it", "body": "Ship, cabin, deck, dining, the negotiated fare. You decide; I handle every booking detail." },
-      { "head": "I stay on it", "body": "The fare watched until you sail, the papers checked, and a person who answers if plans wobble." }
+      { "head": "You write", "body": "A region, a month, an anniversary you want to do properly. That's plenty." },
+      { "head": "I edit", "body": "Any search engine can find a hundred sailings. I'll send you the three I'd actually book, and why." },
+      { "head": "We settle it", "body": "Ship, cabin, dining time, the fare. You make the calls and I do the paperwork." },
+      { "head": "I stay on it", "body": "I keep watching the fare after you book, and if something goes sideways mid-trip you call me." }
     ]
   },
   {
@@ -28,24 +28,24 @@
     "kicker": "Expectations",
     "title": "Two kinds of service",
     "left": { "label": "Not this", "items": ["A questionnaire", "A hundred options", "A marked-up fare", "A rotating cast"] },
-    "right": { "label": "Expect this", "items": ["A conversation", "Three worth your time", "The fare, negotiated", "One name, start to home"] }
+    "right": { "label": "Expect this", "items": ["A conversation", "Three good options", "A fare I negotiated", "Me, the whole way"] }
   },
   {
     "template": "statement",
-    "kicker": "The habit",
-    "text": "Expect candour before commerce.",
-    "sub": "If a celebrated sailing is wrong for you, I'll say so before we ever speak about fares - that is most of the job."
+    "kicker": "Fair warning",
+    "text": "If a celebrated itinerary is wrong for you, I'll say so.",
+    "sub": "Talking someone out of the wrong ship is half the job. The fare conversation only starts once the ship is right."
   },
   {
     "template": "quote",
-    "quote": "The line pays me after you sail. Your fare is the same or better - and my services are complimentary.",
+    "quote": "The line pays me after you sail. Your fare is the same or better, and my services are complimentary.",
     "cite": "Jordan Yates · Luxury Voyage Advisor"
   },
   {
     "template": "cta",
     "kicker": "One ask",
     "title": "Send this to the person you'd sail with",
-    "body": "Most voyages begin as a conversation between two people. When yours does, this is what writing to me starts.",
+    "body": "Most trips start as a conversation between two people. When yours does, you know where I am.",
     "handle": "@bonvtravel · link in bio"
   }
 ]

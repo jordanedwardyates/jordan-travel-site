@@ -3,30 +3,30 @@
     "template": "cover",
     "kicker": "The Advisor's Edit",
     "title": "Fifteen years of kept notes",
-    "subtitle": "Why every sailing since 2011 is written down - and what the record does for yours.",
+    "subtitle": "I've written down every sailing since 2011. This is what the record does for yours.",
     "stamp": { "top": "Introductions", "bottom": "No. III" }
   },
   {
     "template": "statement",
     "kicker": "The method",
     "text": "Memory flatters. The notebook doesn't.",
-    "sub": "Sailings, ship visits and port days since 2011, written down at the time - not remembered fondly later."
+    "sub": "Every sailing and ship visit since 2011 went into the notes the same day, before hindsight could tidy it up."
   },
   {
     "template": "list",
     "kicker": "The record",
     "title": "What gets written down",
     "items": [
-      { "head": "Ships, walked", "body": "Which decks carry noise, which cabins sit beneath the pool deck, which suites earn their fare." },
-      { "head": "Ports, timed", "body": "How long the tender really takes, when the crowds land, when the light is worth the detour." },
-      { "head": "Fares, tracked", "body": "What a sailing was published at, what it quietly dropped to, and when in the year that happens." }
+      { "head": "The ships", "body": "Where the noise travels, which cabins sit under the pool deck, and which suites are worth it." },
+      { "head": "The ports", "body": "How long the tender actually takes, and what time the crowds turn up." },
+      { "head": "The fares", "body": "What a sailing listed at, what it later sold for, and roughly when in the year the drop comes." }
     ]
   },
   {
     "template": "photo",
     "src": "photos/04.jpg",
-    "title": "You don't read the notebook. You get its verdict.",
-    "caption": "Fifteen years condensed to a shortlist of three, with a reason attached to each.",
+    "title": "The notebook stays on my desk. You get its verdict.",
+    "caption": "Fifteen years of it goes into every shortlist I send.",
     "treatment": "duotone",
     "focus": "center",
     "brief": "Jordan's engraved portrait stamp, centred on white - composed 4:5 from public/portrait-engraved.png.",
@@ -37,23 +37,23 @@
     "kicker": "In practice",
     "title": "What the record decides",
     "points": [
-      { "label": "The ship", "value": "Chosen against its sisters and its refit date, not its brochure." },
-      { "label": "The cabin", "value": "Picked off the deck plan, not the category name." },
-      { "label": "The season", "value": "Booked for light and crowds, not the headline fare." },
-      { "label": "The fare", "value": "Negotiated against what it actually sells for, not what it lists at." }
+      { "label": "The ship", "value": "I compare it with its sister ships and check when it was last refitted." },
+      { "label": "The cabin", "value": "Picked off the deck plan, down to what's above and below it." },
+      { "label": "The season", "value": "Timed for the light and for how many other ships will be in port that day." },
+      { "label": "The fare", "value": "Negotiated from what sailings like it have actually sold for." }
     ]
   },
   {
     "template": "statement",
     "kicker": "The point",
-    "text": "Experience isn't the years. It's what you kept from them.",
-    "sub": "Plenty of people have sailed for fifteen years. The difference is a written record - and one person reading it on your behalf."
+    "text": "Plenty of people have sailed for fifteen years.",
+    "sub": "Very few wrote any of it down. The notebook is what you get when you write to me."
   },
   {
     "template": "cta",
     "kicker": "One ask",
     "title": "Name a sailing you're weighing up",
-    "body": "Send it in a DM - ship and month is enough. If the notebook has an opinion, you'll get its two-line verdict, candid and free of charge.",
+    "body": "Ship and month is enough. Send it in a DM, and if the notebook has an opinion I'll give you the two-line verdict at no charge.",
     "handle": "@bonvtravel · link in bio"
   }
 ]
