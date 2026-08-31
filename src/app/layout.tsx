@@ -112,6 +112,10 @@ const siteJsonLd = {
         "Negotiated cruise fares",
       ],
       memberOf: { "@type": "Organization", name: "Virtuoso" },
+      // Connects this site to the brand's other profiles in Google's entity
+      // graph. Handle taken from the Instagram content bank, where it is the
+      // recorded `handle` field on the CTA slides ("@bonvtravel · link in bio").
+      sameAs: ["https://www.instagram.com/bonvtravel/"],
       founder: {
         "@type": "Person",
         name: "Jordan Yates",
