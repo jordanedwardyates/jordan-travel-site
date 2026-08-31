@@ -22,10 +22,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const journey = await getJourneyBySlug(slug);
   if (!journey) return { title: "Journey not found" };
+  const description = `${journey.voyageTitle} · ${journey.ship}, ${journey.cruiseLine} · ${journey.nights} nights · ${journey.dates}. ${journey.jordansTake}`;
+  const canonical = `/journeys/${slug}`;
   return {
     title: journey.routeTitle,
-    description: `${journey.voyageTitle} · ${journey.ship}, ${journey.cruiseLine} · ${journey.nights} nights · ${journey.dates}. ${journey.jordansTake}`,
-    alternates: { canonical: `/journeys/${slug}` },
+    description,
+    alternates: { canonical },
+    // Route-level opengraph-image.tsx supplies the share art automatically.
+    openGraph: {
+      type: "website",
+      siteName: "BON V: A Travel Company",
+      locale: "en_US",
+      title: journey.routeTitle,
+      description,
+      url: canonical,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: journey.routeTitle,
+      description,
+    },
   };
 }
 
@@ -34,32 +50,55 @@ export default async function JourneyPage({ params }: Props) {
   const journey = await getJourneyBySlug(slug);
   if (!journey) notFound();
 
+  const BASE_URL = "https://www.bonvtravelcompany.com";
   const journeyJsonLd = {
     "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    name: journey.routeTitle,
-    description: journey.voyageTitle,
-    url: `https://www.bonvtravelcompany.com/journeys/${slug}`,
-    touristType: "Luxury cruise travellers",
-    itinerary: {
-      "@type": "ItemList",
-      numberOfItems: journey.portCount,
-    },
-    provider: {
-      "@type": "TravelAgency",
-      name: "BON V: A Travel Company",
-      url: "https://www.bonvtravelcompany.com",
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "USD",
-      price: String(journey.yourPrice).replace(/[^0-9.]/g, ""),
-      availability: "https://schema.org/InStock",
-      seller: {
-        "@type": "TravelAgency",
-        name: "BON V: A Travel Company",
+    "@graph": [
+      {
+        "@type": "TouristTrip",
+        name: journey.routeTitle,
+        description: journey.voyageTitle,
+        url: `${BASE_URL}/journeys/${slug}`,
+        touristType: "Luxury cruise travellers",
+        itinerary: {
+          "@type": "ItemList",
+          numberOfItems: journey.portCount,
+        },
+        provider: {
+          "@type": "TravelAgency",
+          name: "BON V: A Travel Company",
+          url: BASE_URL,
+        },
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          price: String(journey.yourPrice).replace(/[^0-9.]/g, ""),
+          availability: "https://schema.org/InStock",
+          seller: {
+            "@type": "TravelAgency",
+            name: "BON V: A Travel Company",
+          },
+        },
       },
-    },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Journeys",
+            item: `${BASE_URL}/journeys`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: journey.routeTitle,
+            item: `${BASE_URL}/journeys/${slug}`,
+          },
+        ],
+      },
+    ],
   };
 
   return (
