@@ -7,11 +7,26 @@ import { getPublishedJourneys } from "@/lib/journeys";
 
 export const revalidate = 300;
 
+const JOURNEYS_DESCRIPTION =
+  "Every sailing currently quoted — dates, negotiated fares, and Jordan's honest read on each.";
+
 export const metadata: Metadata = {
   title: "Journeys",
-  description:
-    "Every sailing currently quoted — dates, negotiated fares, and Jordan's honest read on each.",
+  description: JOURNEYS_DESCRIPTION,
   alternates: { canonical: "/journeys" },
+  openGraph: {
+    type: "website",
+    siteName: "BON V: A Travel Company",
+    locale: "en_US",
+    title: "Journeys — recently quoted sailings",
+    description: JOURNEYS_DESCRIPTION,
+    url: "/journeys",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Journeys — recently quoted sailings",
+    description: JOURNEYS_DESCRIPTION,
+  },
 };
 
 export default async function JourneysPage() {
