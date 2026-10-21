@@ -60,6 +60,7 @@ export const ARCHIVED_EMAILS: ArchivedEmail[] = [
     trackedInDb: false,
     notes:
       "Oceania Marina MNA270305 (Miami→Panama, Mar 5 2027) + optional return MNA270315 (Panama→Miami, Mar 15 2027). Confirms the Oct 2026 OceaniaNEXT refit she asked about. Draft — not yet sent.",
+  },
   {
     slug: "onder-elbe-2028-berlin-prague",
     file: "emails/onder-elbe-2028-berlin-prague.html",
