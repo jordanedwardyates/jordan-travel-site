@@ -227,7 +227,6 @@ Caveat carried in the letter's fine print: Celebrity's figures include taxes and
 - Confirm Explorer Society credit amount and that it stacks with the Fall Sale.
 - Confirm the Air Plus deviation fee (early Berlin arrival, home from Kraków/Warsaw).
 - Confirm whether Kraków & Warsaw can start from Viking's Prague hotel on day 10 (the letter now assumes it does).
-- Confirm how many Berlin hotel nights the cruise itself includes before boarding; the $799 Berlin pre-package sits on top of those.
-- Add the day-by-day itinerary and the Viking route map (assets.viking.com Elegant-Elbe-2025 2x1) once Jordan pastes Viking's day-by-day; this session's network policy blocks viking.com.
+- Day-by-day (from Viking's 2028 Berlin–Prague page): 2 hotel nights Berlin, board Wittenberg day 3, 5 nights aboard, leave Děčín day 8, 2 hotel nights Prague. The $799 Berlin pre-package therefore makes four Berlin nights; letter says so. Route map is hot-linked from assets.viking.com (Elegant-Elbe-2025 2x1), not hosted locally.
 
 **Results** — _pending send_
