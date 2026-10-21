@@ -226,6 +226,8 @@ Caveat carried in the letter's fine print: Celebrity's figures include taxes and
 - Struck retail fares ($7,299 / $14,999 / $6,499) are derived from the Fall Sale savings in the Oct 7 quote; verify against Viking's "was" prices.
 - Confirm Explorer Society credit amount and that it stacks with the Fall Sale.
 - Confirm the Air Plus deviation fee (early Berlin arrival, home from Kraków/Warsaw).
-- Confirm whether Kraków & Warsaw can start from the pier or needs the Prague post-stay first.
+- Confirm whether Kraków & Warsaw can start from Viking's Prague hotel on day 10 (the letter now assumes it does).
+- Confirm how many Berlin hotel nights the cruise itself includes before boarding; the $799 Berlin pre-package sits on top of those.
+- Add the day-by-day itinerary and the Viking route map (assets.viking.com Elegant-Elbe-2025 2x1) once Jordan pastes Viking's day-by-day; this session's network policy blocks viking.com.
 
 **Results** — _pending send_
