@@ -223,7 +223,6 @@ Caveat carried in the letter's fine print: Celebrity's figures include taxes and
 **Also priced:** Berlin pre $799 pp · Prague post $749 pp · Kraków & Warsaw post $1,699 pp · Viking Air IAD $999 / $2,598 / $5,498 pp.
 
 **Open items before send**
-- Struck retail fares ($7,299 / $14,999 / $6,499) are derived from the Fall Sale savings in the Oct 7 quote; verify against Viking's "was" prices.
 - Confirm Explorer Society credit amount and that it stacks with the Fall Sale.
 - Air: Viking Air Plus $150 pp (Viking site, per search) + deviation ~$100–150 pp (user reports), only on the custom-Kraków option; Viking package flies home from Warsaw with no deviation. Figures caveated in the letter; confirm exact on booking.
 - Kraków & Warsaw starts from Viking's Prague hotel on day 10 (confirmed by Jordan 2026-10-21).

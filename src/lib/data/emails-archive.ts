@@ -70,6 +70,6 @@ export const ARCHIVED_EMAILS: ArchivedEmail[] = [
     sentAt: null,
     trackedInDb: false,
     notes:
-      "Follow-up to the Oct 7 Elbe quote, built on that letter's HTML. Viking Beyla Jun 11–20 2028 Berlin→Prague (B $6,799 / AA $13,999 / D $5,999 pp), Sep 6 Prague→Berlin as the comparison, three Viking land packages, Prague→Kraków options, air tiers. Draft — struck retail fares are derived from the Fall Sale savings; verify before send.",
+      "Follow-up to the Oct 7 Elbe quote, built on that letter's HTML. Viking Beyla Jun 11–20 2028 Berlin→Prague (B $6,799 / AA $13,999 / D $5,999 pp), Sep 6 Prague→Berlin as the comparison, three Viking land packages, Prague→Kraków options, air tiers. Draft — awaiting Explorer Society confirmation, then send.",
   },
 ];
