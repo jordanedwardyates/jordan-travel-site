@@ -60,12 +60,18 @@ them. Clicks and quote requests are the honest signals.
 | Insignia | Venice → Barcelona | 2026-10-23 | INS261023 | $2,180 | $160–$205 + $200 OBC |
 | Allura | Rome → Barcelona | 2026-11-07 | ALU261107 | $3,947 | $245–$260 |
 
-**Open items before send**
-- Retail fare for Allura ALU261003 B2 ($3,150)
-- Retail fare for Sirena SIR260910 Penthouse ($5,840)
-- Replace `{{unsubscribe_url}}` with the ESP merge tag
+**Verified 2026-10-21 against Viking's live site** (in-app browser, `/2028-berlin-prague/pricing.html`)
+- June 2028 Berlin→Prague departures: Jun 1, 6, 11, 16, 21 all run Berlin→Prague (and Prague→Berlin). The letter's June 1 / June 6 remarks stand.
+- Jun 11 Viking Beyla fares matched exactly: AA $14,999→$13,999 (**1 left**), B $7,299→$6,799 (limited), D $6,499→$5,999 (limited); A $7,499→$6,999, C $6,699→$6,199, E $4,599. Air $999. "One left" added to the AA row.
+- **Fixed:** the Sep 6 comparison. Sep 6 runs both directions; the letter's $6,999 D / $8,299 B are the Berlin→Prague (Viking Beyla) fares, not Prague→Berlin (Astrild: D $6,799, B $7,999). Relabeled and dropped the "runs the opposite direction" line; delta now "$1,000 to $1,500 pp". August 2028: no departures listed.
+- Extensions on the itinerary page: Berlin pre $799 (Grand Hyatt Berlin), Prague post $749 (Hilton Prague), Kraków & Warsaw post $1,699 (Radisson Blu Kraków 3 nt, Sofitel Warsaw Victoria 2 nt; 5 breakfasts + 1 dinner; Viking's five tours = Kraków City Tour, Klezmer Folk Dinner, Auschwitz & Birkenau, Jasna Góra, Warsaw City Tour; day 1 starts from the Prague hotel, day 6 flies home from Warsaw). Seasonal pricing is a flat Mar–Nov figure; per-departure availability is not on the public site ("confirm availability & seasonal pricing when booking"), so the letter keeps its confirm-before-hold caveat. Tour list in the letter corrected to Viking's five; "hotels confirmed six months out" replaced with Viking's "as shown or similar".
+- Day-by-day still matches: 2 hotel nights Berlin, board Wittenberg day 3, Děčín→Prague day 8, 2 hotel nights Prague, depart day 10.
+- Air: Washington D.C. is a listed $999 gateway. **Premium Economy / Business figures removed** (not published; Viking says upgrades are "at special Viking rates" via My Viking Journey). Air Plus per Viking: non-refundable $150 pp service fee, by phone, 310 to 65 days before departure (Viking Air page: "as early as 310 days prior to your cruise end date"), not available on select air promotions; online customization in My Viking Journey has no service fee (fare increase may apply) once within three months of departure. **No separate deviation fee is published**, so the "$100–150 deviation fee / $250–300 total" wording was replaced with Viking's actual structure.
+- Explorer Society: Viking's US site does not publish the credit amount (secondary sources: $200 pp within one year, $100 within two). The Fall Sale T&C state fares "may not [be] combinable with other offers except Viking Explorer Society Travel Credits", so the letter now states the stacking as fact and still says the amount is being confirmed.
+- Final payment for 2028 sailings: June 10, 2027 (T&C). Fall Sale + $25 deposit expire Oct 31, 2026. Route map URL (assets.viking.com Elegant-Elbe-2025 2x1) returns 200.
+- Kraków & Warsaw starts from Viking's Prague hotel on day 10 (confirmed by Jordan 2026-10-21; matches Viking's day 1 text).
 
-**Results** — _pending send_
+**Results** — _Gmail draft created 2026-10-21; pending Jordan's send_
 
 **What we learned** — _pending_
 
@@ -209,7 +215,7 @@ Caveat carried in the letter's fine print: Celebrity's figures include taxes and
 
 - **File:** [`onder-elbe-2028-berlin-prague.html`](onder-elbe-2028-berlin-prague.html)
 - **Preview:** [`previews/onder-elbe-2028-berlin-prague.png`](previews/onder-elbe-2028-berlin-prague.png)
-- **Status:** draft — not yet sent. Built on the exact HTML of the Oct 7 "QUOTE: Elbe River" letter (pulled from Gmail), which is the current quote style.
+- **Status:** verified against Viking's site 2026-10-21; Gmail reply draft created on the thread, awaiting Jordan's send. Built on the exact HTML of the Oct 7 "QUOTE: Elbe River" letter (pulled from Gmail), which is the current quote style.
 - **Recipient:** Mike & Simone Onder, reply on the "QUOTE: Elbe River" thread
 - **Angle:** Mike's Oct 9 questions answered in order. His Berlin-first / Poland-after shape means the reverse direction (Berlin→Prague); the Viking Kraków & Warsaw package runs post-cruise in that direction and cannot be trimmed, so the letter offers it or a custom Kraków stay.
 
@@ -218,9 +224,9 @@ Caveat carried in the letter's fine print: Celebrity's figures include taxes and
 | Ship | Voyage | Departs | Rooms | Fall Sale fare pp |
 |---|---|---|---|---|
 | Viking Beyla | Elegant Elbe, Berlin → Prague | 2028-06-11 (9 nt) | B / AA / D | $6,799 / $13,999 / $5,999 |
-| (comparison) | Elegant Elbe, Prague → Berlin | 2028-09-06 | D / B | $6,999 / $8,299 |
+| (comparison) Viking Beyla | Elegant Elbe, Berlin → Prague | 2028-09-06 | D / B | $6,999 / $8,299 |
 
-**Also priced:** Berlin pre $799 pp · Prague post $749 pp · Kraków & Warsaw post $1,699 pp · Viking Air IAD $999 / $2,598 / $5,498 pp.
+**Also priced:** Berlin pre $799 pp · Prague post $749 pp · Kraków & Warsaw post $1,699 pp · Viking Air economy $999 pp (Washington is a listed gateway). Premium Economy / Business figures ($2,598 / $5,498) were removed 2026-10-21: not on Viking's public site, source unknown.
 
 **Open items before send**
 - Confirm Explorer Society credit amount and that it stacks with the Fall Sale.
