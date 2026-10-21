@@ -60,5 +60,15 @@ export const ARCHIVED_EMAILS: ArchivedEmail[] = [
     trackedInDb: false,
     notes:
       "Oceania Marina MNA270305 (Miami→Panama, Mar 5 2027) + optional return MNA270315 (Panama→Miami, Mar 15 2027). Confirms the Oct 2026 OceaniaNEXT refit she asked about. Draft — not yet sent.",
+  {
+    slug: "onder-elbe-2028-berlin-prague",
+    file: "emails/onder-elbe-2028-berlin-prague.html",
+    title: "Mike Onder — Elegant Elbe 2028, Berlin to Prague",
+    kind: "one-off-quote-options",
+    recipient: "Mike & Simone Onder",
+    sentAt: null,
+    trackedInDb: false,
+    notes:
+      "Follow-up to the Oct 7 Elbe quote, built on that letter's HTML. Viking Beyla Jun 11–20 2028 Berlin→Prague (B $6,799 / AA $13,999 / D $5,999 pp), Sep 6 Prague→Berlin as the comparison, three Viking land packages, Prague→Kraków options, air tiers. Draft — struck retail fares are derived from the Fall Sale savings; verify before send.",
   },
 ];

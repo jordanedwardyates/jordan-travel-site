@@ -202,3 +202,30 @@ Jordan's pasted link carried `sailDate=2027-06-04` (the search default); the 25 
 Caveat carried in the letter's fine print: Celebrity's figures include taxes and fees; Oceania's and Regent's are the lines' published fares. Re-pull both Celebrity fares on send day, they move weekly.
 
 **Results** — _pending send_
+
+---
+
+### Onder · Elegant Elbe 2028 · Berlin to Prague
+
+- **File:** [`onder-elbe-2028-berlin-prague.html`](onder-elbe-2028-berlin-prague.html)
+- **Preview:** [`previews/onder-elbe-2028-berlin-prague.png`](previews/onder-elbe-2028-berlin-prague.png)
+- **Status:** draft — not yet sent. Built on the exact HTML of the Oct 7 "QUOTE: Elbe River" letter (pulled from Gmail), which is the current quote style.
+- **Recipient:** Mike & Simone Onder, reply on the "QUOTE: Elbe River" thread
+- **Angle:** Mike's Oct 9 questions answered in order. His Berlin-first / Poland-after shape means the reverse direction (Berlin→Prague); the Viking Kraków & Warsaw package runs post-cruise in that direction and cannot be trimmed, so the letter offers it or a custom Kraków stay.
+
+**Sailing featured**
+
+| Ship | Voyage | Departs | Rooms | Fall Sale fare pp |
+|---|---|---|---|---|
+| Viking Beyla | Elegant Elbe, Berlin → Prague | 2028-06-11 (9 nt) | B / AA / D | $6,799 / $13,999 / $5,999 |
+| (comparison) | Elegant Elbe, Prague → Berlin | 2028-09-06 | D / B | $6,999 / $8,299 |
+
+**Also priced:** Berlin pre $799 pp · Prague post $749 pp · Kraków & Warsaw post $1,699 pp · Viking Air IAD $999 / $2,598 / $5,498 pp.
+
+**Open items before send**
+- Struck retail fares ($7,299 / $14,999 / $6,499) are derived from the Fall Sale savings in the Oct 7 quote; verify against Viking's "was" prices.
+- Confirm Explorer Society credit amount and that it stacks with the Fall Sale.
+- Confirm the Air Plus deviation fee (early Berlin arrival, home from Kraków/Warsaw).
+- Confirm whether Kraków & Warsaw can start from the pier or needs the Prague post-stay first.
+
+**Results** — _pending send_
