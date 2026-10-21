@@ -225,8 +225,8 @@ Caveat carried in the letter's fine print: Celebrity's figures include taxes and
 **Open items before send**
 - Struck retail fares ($7,299 / $14,999 / $6,499) are derived from the Fall Sale savings in the Oct 7 quote; verify against Viking's "was" prices.
 - Confirm Explorer Society credit amount and that it stacks with the Fall Sale.
-- Confirm the Air Plus deviation fee (early Berlin arrival, home from Kraków/Warsaw).
-- Confirm whether Kraków & Warsaw can start from Viking's Prague hotel on day 10 (the letter now assumes it does).
+- Air: Viking Air Plus $150 pp (Viking site, per search) + deviation ~$100–150 pp (user reports), only on the custom-Kraków option; Viking package flies home from Warsaw with no deviation. Figures caveated in the letter; confirm exact on booking.
+- Kraków & Warsaw starts from Viking's Prague hotel on day 10 (confirmed by Jordan 2026-10-21).
 - Day-by-day (from Viking's 2028 Berlin–Prague page): 2 hotel nights Berlin, board Wittenberg day 3, 5 nights aboard, leave Děčín day 8, 2 hotel nights Prague. The $799 Berlin pre-package therefore makes four Berlin nights; letter says so. Route map is hot-linked from assets.viking.com (Elegant-Elbe-2025 2x1), not hosted locally.
 
 **Results** — _pending send_
