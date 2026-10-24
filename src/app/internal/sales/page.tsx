@@ -1,0 +1,195 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import {
+  listAdvisorReviewItems,
+  type AdvisorReviewItem,
+} from "@/lib/data/advisor-queue";
+
+/**
+ * Read-only, advisor-only review desk.
+ * The gate is checked BEFORE the service-role database read.
+ * Never expose this route via the public navigation or client-side fetches.
+ */
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: "Internal — Sales Review Desk",
+  robots: { index: false, follow: false },
+};
+
+const LANES = [
+  {
+    id: "reservation_hold_verification",
+    title: "Reservation holds",
+    note: "Check whether the option still exists before quoting availability.",
+  },
+  {
+    id: "booking_service_verification",
+    title: "Booking service",
+    note: "Verify payment, documents and supplier arrangements before contacting clients.",
+  },
+  {
+    id: "sales_followup_verification",
+    title: "Sales follow-ups",
+    note: "Confirm the previous proposal and current interest before suggesting an offer.",
+  },
+  {
+    id: "quote_queue_review",
+    title: "Historical quote reviews",
+    note: "Reconcile the quote and booking status; recorded prices may be stale.",
+  },
+  {
+    id: "dormant_internal_review",
+    title: "Dormant clients",
+    note: "Internal reconciliation only. Do not automatically reactivate.",
+  },
+  {
+    id: "historical_trip_review",
+    title: "Past travel",
+    note: "Review the completed voyage; do not treat it as an upcoming departure.",
+  },
+] as const;
+
+function displayDate(date: string | null): string {
+  if (!date) return "Not recorded";
+  const parsed = new Date(`${date.slice(0, 10)}T12:00:00Z`);
+  return Number.isNaN(parsed.getTime())
+    ? "Not recorded"
+    : parsed.toLocaleDateString("en-US", {
+        timeZone: "UTC",
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+}
+
+function sortByRecordedDate(a: AdvisorReviewItem, b: AdvisorReviewItem) {
+  // Missing dates last. A past review date is NOT proof of an open task.
+  const aDate = a.source_review_date ?? "9999-12-31";
+  const bDate = b.source_review_date ?? "9999-12-31";
+  return aDate.localeCompare(bDate) || a.work_item_key.localeCompare(b.work_item_key);
+}
+
+function ReviewCard({ item }: { item: AdvisorReviewItem }) {
+  return (
+    <li className="border-t border-salt-air/60 py-4 first:border-t-0">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <h3 className="font-serif text-lg text-deep-harbor">
+            {item.client_name?.trim() || "Unresolved client"}
+          </h3>
+          <p className="mt-1 text-xs text-aegean-ink/70">
+            {item.source_system.replaceAll("_", " ")}
+            {item.source_stage ? ` · ${item.source_stage}` : ""}
+          </p>
+        </div>
+        <span className="border border-compass-gold/60 px-2 py-1 text-[0.6rem] uppercase tracking-[0.13em] text-deep-harbor">
+          Verify before action
+        </span>
+      </div>
+
+      <p className="mt-3 max-w-3xl whitespace-pre-wrap text-sm leading-relaxed text-aegean-ink">
+        {item.recommended_review?.trim() || "Review this record and confirm the appropriate next action."}
+      </p>
+
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-aegean-ink/70">
+        <span>Recorded review: {displayDate(item.source_review_date)}</span>
+        {item.sail_date && <span>Sailing: {displayDate(item.sail_date)}</span>}
+        {item.needs_quote_reconciliation && (
+          <span className="font-medium text-deep-harbor">Quote linkage needs review</span>
+        )}
+      </div>
+    </li>
+  );
+}
+
+export default async function AdvisorSalesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ key?: string }>;
+}) {
+  const { key } = await searchParams;
+  const expectedToken = process.env.INTERNAL_PREVIEW_TOKEN;
+
+  // Unlike older internal routes, this page also requires the token in dev.
+  // A missing token must never grant access to private client intelligence.
+  if (!expectedToken || !key || key !== expectedToken) notFound();
+
+  const items = await listAdvisorReviewItems();
+  const unknownLanes = items.filter(
+    (item) => !LANES.some((lane) => lane.id === item.review_lane)
+  );
+  const needsVerification = items.filter((item) => item.requires_human_verification).length;
+  const quoteLinks = items.filter((item) => item.needs_quote_reconciliation).length;
+  const autoOutreach = items.filter((item) => item.eligible_for_automated_outreach).length;
+
+  return (
+    <main className="px-6 py-14">
+      <div className="mx-auto max-w-5xl">
+        <p className="text-kicker uppercase text-compass-gold">Internal · Advisor review</p>
+        <h1 className="mt-2 font-serif text-4xl text-deep-harbor">Daily Sales Desk</h1>
+        <p className="mt-3 max-w-3xl font-serif text-base leading-relaxed text-aegean-ink">
+          A single review queue for client service, sales follow-ups and historical quotes.
+          Recorded follow-up dates are clues, not proof that a task remains unfinished.
+          This page never sends messages or changes client records.
+        </p>
+
+        <div className="mt-8 grid gap-3 sm:grid-cols-4">
+          {[
+            ["Work items", items.length],
+            ["Human verification", needsVerification],
+            ["Quote links to review", quoteLinks],
+            ["Outreach eligible", autoOutreach],
+          ].map(([label, count]) => (
+            <div key={label} className="border border-salt-air bg-linen/50 px-5 py-4">
+              <p className="text-[0.65rem] uppercase tracking-[0.15em] text-aegean-ink/70">{label}</p>
+              <p className="mt-2 font-serif text-3xl text-deep-harbor">{count}</p>
+            </div>
+          ))}
+        </div>
+
+        {autoOutreach > 0 && (
+          <p className="mt-4 border border-compass-gold px-4 py-3 text-sm text-deep-harbor">
+            Some records are marked outreach-eligible in the database. This desk is still
+            read-only; verify supplier pricing and client status before contacting anyone.
+          </p>
+        )}
+
+        {LANES.map((lane) => {
+          const laneItems = items.filter((item) => item.review_lane === lane.id).sort(sortByRecordedDate);
+          return (
+            <section key={lane.id} className="mt-10" aria-labelledby={lane.id}>
+              <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-salt-air pb-3">
+                <h2 id={lane.id} className="font-serif text-2xl text-deep-harbor">
+                  {lane.title} <span className="text-aegean-ink/50">({laneItems.length})</span>
+                </h2>
+              </div>
+              <p className="mt-2 text-sm text-aegean-ink/70">{lane.note}</p>
+              {laneItems.length ? (
+                <ul className="mt-4">{laneItems.map((item) => <ReviewCard key={item.work_item_key} item={item} />)}</ul>
+              ) : (
+                <p className="mt-4 text-sm italic text-aegean-ink/60">No records in this lane.</p>
+              )}
+            </section>
+          );
+        })}
+
+        {unknownLanes.length > 0 && (
+          <section className="mt-10 border border-compass-gold p-5">
+            <h2 className="font-serif text-2xl text-deep-harbor">
+              Unclassified reviews ({unknownLanes.length})
+            </h2>
+            <p className="mt-2 text-sm text-aegean-ink">
+              New workflow classifications must not silently disappear from the desk.
+            </p>
+            <ul className="mt-4">{unknownLanes.sort(sortByRecordedDate).map((item) => (
+              <ReviewCard key={item.work_item_key} item={item} />
+            ))}</ul>
+          </section>
+        )}
+      </div>
+    </main>
+  );
+}
