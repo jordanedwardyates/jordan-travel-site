@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
+import { isAuthorizedAdvisor } from "@/lib/auth/advisor";
 
 import {
   listAdvisorReviewItems,
@@ -105,17 +107,11 @@ function ReviewCard({ item }: { item: AdvisorReviewItem }) {
   );
 }
 
-export default async function AdvisorSalesPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ key?: string }>;
-}) {
-  const { key } = await searchParams;
-  const expectedToken = process.env.INTERNAL_PREVIEW_TOKEN;
-
-  // Unlike older internal routes, this page also requires the token in dev.
-  // A missing token must never grant access to private client intelligence.
-  if (!expectedToken || !key || key !== expectedToken) notFound();
+export default async function AdvisorSalesPage() {
+  // Defense in depth: the page verifies the Basic auth header again, before
+  // the service-role query. Query-string tokens are intentionally unsupported.
+  const authorization = (await headers()).get("authorization");
+  if (!(await isAuthorizedAdvisor(authorization))) notFound();
 
   const items = await listAdvisorReviewItems();
   const unknownLanes = items.filter(
