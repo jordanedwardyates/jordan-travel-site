@@ -29,13 +29,6 @@ export default function SiteFooter() {
             >
               jordan.yates@luxurycruiseconnections.com
             </a>
-            <span aria-hidden="true"> &middot; </span>
-            <a
-              href="tel:+19046141219"
-              className="underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold oldstyle-nums"
-            >
-              904-614-1219
-            </a>
           </p>
           <p className="mt-4 max-w-[60ch] font-serif text-sm italic leading-relaxed text-aegean-ink">
             In partnership with Luxury Cruise Connections &middot; Virtuoso

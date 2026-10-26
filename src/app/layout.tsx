@@ -98,7 +98,6 @@ const siteJsonLd = {
       slogan: "A more thoughtful way to travel",
       image: `${SITE_URL}/opengraph-image.png`,
       logo: `${SITE_URL}/icon.svg`,
-      telephone: "+1-904-614-1219",
       email: "jordan.yates@luxurycruiseconnections.com",
       priceRange: "$$$$",
       foundingDate: "2011",
@@ -124,7 +123,6 @@ const siteJsonLd = {
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "Customer Service",
-        telephone: "+1-904-614-1219",
         email: "jordan.yates@luxurycruiseconnections.com",
         areaServed: "Worldwide",
         availableLanguage: "English",

@@ -71,16 +71,6 @@ export default async function Home() {
                 See recently quoted journeys
               </TextLink>
             </div>
-            <p className="mt-5 font-serif text-base italic text-aegean-ink">
-              Prefer to talk? Call or text{" "}
-              <a
-                href="tel:+19046141219"
-                className="underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold oldstyle-nums"
-              >
-                904-614-1219
-              </a>
-              .
-            </p>
           </div>
 
           {/* A higher-res export can replace this file at the same path. */}
@@ -295,16 +285,6 @@ export default async function Home() {
           <QuoteRequestForm journeys={journeyOptions} />
           <p className="mt-4 font-serif text-base italic text-aegean-ink">
             Advisor services are complimentary.
-          </p>
-          <p className="mt-2 font-serif text-base italic text-aegean-ink">
-            Prefer to talk? Call or text{" "}
-            <a
-              href="tel:+19046141219"
-              className="underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold oldstyle-nums"
-            >
-              904-614-1219
-            </a>{" "}
-            &middot; at your service 11 am&ndash;8 pm ET.
           </p>
         </div>
       </section>

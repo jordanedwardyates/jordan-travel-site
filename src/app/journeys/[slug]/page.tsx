@@ -124,16 +124,6 @@ export default async function JourneyPage({ params }: Props) {
           <Button href={`/?journey=${journey.id}#request-a-quote`}>
             Request this itinerary
           </Button>
-          <p className="font-serif text-base italic text-aegean-ink">
-            Prefer to talk? Call or text{" "}
-            <a
-              href="tel:+19046141219"
-              className="underline decoration-compass-gold/70 underline-offset-4 hover:decoration-compass-gold oldstyle-nums"
-            >
-              904-614-1219
-            </a>
-            .
-          </p>
         </div>
       </div>
     </section>

@@ -14,7 +14,7 @@ const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 const GENERIC_ERROR =
-  "Something went wrong on my end. Please email jordan.yates@luxurycruiseconnections.com or call 904-614-1219 — I'll take care of it.";
+  "Something went wrong on my end. Please email jordan.yates@luxurycruiseconnections.com — I'll take care of it.";
 
 function field(formData: FormData, name: string): string {
   const value = formData.get(name);
