@@ -71,7 +71,7 @@ them. Clicks and quote requests are the honest signals.
 - Final payment for 2028 sailings: June 10, 2027 (T&C). Fall Sale + $25 deposit expire Oct 31, 2026. Route map URL (assets.viking.com Elegant-Elbe-2025 2x1) returns 200.
 - Kraków & Warsaw starts from Viking's Prague hotel on day 10 (confirmed by Jordan 2026-10-21; matches Viking's day 1 text).
 
-**Results** — _Gmail draft created 2026-10-21; pending Jordan's send_
+**Results** — BOOKED. Viking 10210180 (BEY280613T), Viking Beyla, Veranda Stateroom B, cabin 231, package Jun 11–20 2028 (ship Jun 13–18). Invoice 21-Oct-26: cruise $5,999 pp + $1,300 pp "additional items" (= the $7,299 B fare), less $500 pp booking discount; Michael also has the $200 Past Guest Level 1 discount, **Simone's is not on yet**. Viking Air IAD–BER / PRG–IAD economy $999 pp (was $1,799). Promo BVT26 (trade code for the "Your Choice Sale" Mike screenshotted, consumer code SBT26): comp prepaid gratuities + comp Silver Spirits. Deposit $50 paid, balance $15,346 (e-check $15,039.08), final payment 10-Jun-27. Travel protection declined. **Not yet on the booking:** Simone's $200 past-guest discount, the two $250 FCVs, the Kraków & Warsaw post package (Mike chose it 23 Oct; return air then moves to WAW Jun 25), Simone's GIF. Mike's own expense sheet (23 Oct) totals $25,700 but carries a $9,000 air line and counts air once ($999).
 
 **What we learned** — _pending_
 
@@ -215,7 +215,7 @@ Caveat carried in the letter's fine print: Celebrity's figures include taxes and
 
 - **File:** [`onder-elbe-2028-berlin-prague.html`](onder-elbe-2028-berlin-prague.html)
 - **Preview:** [`previews/onder-elbe-2028-berlin-prague.png`](previews/onder-elbe-2028-berlin-prague.png)
-- **Status:** verified against Viking's site 2026-10-21; Gmail reply draft created on the thread, awaiting Jordan's send. Built on the exact HTML of the Oct 7 "QUOTE: Elbe River" letter (pulled from Gmail), which is the current quote style.
+- **Status:** SENT 2026-10-21 by Jordan as a new thread ("QUOTE: Elbe River on Viking 2028"). Mike replied the same day: hold June 11, Veranda B. **Booked:** Viking 10210180, confirmed 21-Oct-26. Built on the exact HTML of the Oct 7 "QUOTE: Elbe River" letter (pulled from Gmail), which is the current quote style.
 - **Recipient:** Mike & Simone Onder, reply on the "QUOTE: Elbe River" thread
 - **Angle:** Mike's Oct 9 questions answered in order. His Berlin-first / Poland-after shape means the reverse direction (Berlin→Prague); the Viking Kraków & Warsaw package runs post-cruise in that direction and cannot be trimmed, so the letter offers it or a custom Kraków stay.
 

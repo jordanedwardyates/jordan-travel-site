@@ -67,9 +67,9 @@ export const ARCHIVED_EMAILS: ArchivedEmail[] = [
     title: "Mike Onder — Elegant Elbe 2028, Berlin to Prague",
     kind: "one-off-quote-options",
     recipient: "Mike & Simone Onder",
-    sentAt: null,
+    sentAt: "2026-10-21",
     trackedInDb: false,
     notes:
-      "Follow-up to the Oct 7 Elbe quote, built on that letter's HTML. Viking Beyla Jun 11–20 2028 Berlin→Prague (B $6,799 / AA $13,999 / D $5,999 pp), Sep 6 Prague→Berlin as the comparison, three Viking land packages, Prague→Kraków options, air tiers. Figures verified against Viking 2026-10-21. Draft created in Gmail 2026-10-21; awaiting Jordan's send.",
+      "Follow-up to the Oct 7 Elbe quote, built on that letter's HTML. Viking Beyla Jun 11–20 2028 Berlin→Prague (B $6,799 / AA $13,999 / D $5,999 pp), Sep 6 Prague→Berlin as the comparison, three Viking land packages, Prague→Kraków options, air tiers. Figures verified against Viking 2026-10-21. Sent by Jordan 2026-10-21 as a new thread, QUOTE: Elbe River on Viking 2028. Mike approved the same day; Viking booking 10210180 confirmed 21 Oct (Viking Beyla, Veranda B 231, Jun 11-20 2028). On 23 Oct Mike chose the full Kraków & Warsaw package and 2 Berlin nights.",
   },
 ];
