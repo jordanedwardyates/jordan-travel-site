@@ -124,6 +124,19 @@ export default async function AdvisorSalesPage() {
   const needsVerification = items.filter((item) => item.requires_human_verification).length;
   const quoteLinks = items.filter((item) => item.needs_quote_reconciliation).length;
   const autoOutreach = items.filter((item) => item.eligible_for_automated_outreach).length;
+  // Show only booked-service verification, not speculative sales follow-ups.
+  const today = new Date().toISOString().slice(0, 10);
+  const horizon = new Date(Date.now() + 45 * 24 * 60 * 60 * 1000)
+    .toISOString().slice(0, 10);
+  const upcomingService = items.filter((item) =>
+    item.review_lane === "booking_service_verification" &&
+    !!item.sail_date &&
+    item.sail_date >= today &&
+    item.sail_date <= horizon
+  ).sort((a, b) =>
+    (a.sail_date ?? "").localeCompare(b.sail_date ?? "") ||
+    a.work_item_key.localeCompare(b.work_item_key)
+  );
 
   return (
     <main className="px-6 py-14">
@@ -149,6 +162,25 @@ export default async function AdvisorSalesPage() {
             </div>
           ))}
         </div>
+
+        <section className="mt-8 border border-salt-air p-5" aria-labelledby="upcoming-service">
+          <h2 id="upcoming-service" className="font-serif text-2xl text-deep-harbor">
+            Upcoming booking-service reviews · next 45 days ({upcomingService.length})
+          </h2>
+          <p className="mt-2 text-sm text-aegean-ink/70">
+            Departure dates determine urgency, not whether a task is still outstanding.
+            Verify supplier and client records before following up.
+          </p>
+          {upcomingService.length ? (
+            <ul className="mt-4">{upcomingService.map((item) => (
+              <ReviewCard key={item.work_item_key} item={item} />
+            ))}</ul>
+          ) : (
+            <p className="mt-4 text-sm italic text-aegean-ink/60">
+              No upcoming booking-service departures recorded in this window.
+            </p>
+          )}
+        </section>
 
         <section className="mt-8 border border-salt-air bg-linen/40 p-5" aria-labelledby="promotion-health">
           <h2 id="promotion-health" className="font-serif text-2xl text-deep-harbor">
