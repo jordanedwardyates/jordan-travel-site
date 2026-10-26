@@ -33,6 +33,8 @@ export async function listAdvisorReviewItems(): Promise<AdvisorReviewItem[]> {
       .select(
         "work_item_key,source_system,client_name,review_lane,source_stage,source_review_date,sail_date,recommended_review,needs_quote_reconciliation,requires_human_verification,eligible_for_automated_outreach"
       )
+      // Stable ordering is required for correct offset pagination.
+      .order("work_item_key", { ascending: true })
       .range(offset, offset + PAGE_SIZE - 1);
 
     if (error) throw new Error(`Advisor queue unavailable: ${error.message}`);
