@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { isAuthorizedAdvisor } from "@/lib/auth/advisor";
+import { getPromotionFeedHealth } from "@/lib/data/promotion-feed";
 
 import {
   listAdvisorReviewItems,
@@ -113,7 +114,10 @@ export default async function AdvisorSalesPage() {
   const authorization = (await headers()).get("authorization");
   if (!(await isAuthorizedAdvisor(authorization))) notFound();
 
-  const items = await listAdvisorReviewItems();
+  const [items, promotionFeed] = await Promise.all([
+    listAdvisorReviewItems(),
+    getPromotionFeedHealth(),
+  ]);
   const unknownLanes = items.filter(
     (item) => !LANES.some((lane) => lane.id === item.review_lane)
   );
@@ -145,6 +149,26 @@ export default async function AdvisorSalesPage() {
             </div>
           ))}
         </div>
+
+        <section className="mt-8 border border-salt-air bg-linen/40 p-5" aria-labelledby="promotion-health">
+          <h2 id="promotion-health" className="font-serif text-2xl text-deep-harbor">
+            Promotion matching · feed health
+          </h2>
+          <div className="mt-4 grid gap-3 text-sm text-aegean-ink sm:grid-cols-3">
+            <p><strong>Archived offers:</strong> {promotionFeed.totalOffers}</p>
+            <p><strong>Recorded in 30 days:</strong> {promotionFeed.recordedLast30Days}</p>
+            <p><strong>Trusted records in 30 days:</strong> {promotionFeed.trustedRecordedLast30Days}</p>
+          </div>
+          <p className="mt-3 text-sm text-aegean-ink">
+            Latest recorded quote: {displayDate(promotionFeed.latestQuotedAt)}.
+          </p>
+          <p className="mt-3 border-l-4 border-compass-gold pl-3 text-sm font-medium text-deep-harbor">
+            {promotionFeed.trustedRecordedLast30Days === 0
+              ? "Promotion matching paused: no recently recorded trusted offers."
+              : "Manual supplier re-verification required: recently recorded offers are not live inventory."}
+            {" "}Never send an automated promotion from this archive.
+          </p>
+        </section>
 
         {autoOutreach > 0 && (
           <p className="mt-4 border border-compass-gold px-4 py-3 text-sm text-deep-harbor">
