@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { isAuthorizedAdvisor } from "@/lib/auth/advisor";
 import { getPromotionFeedHealth } from "@/lib/data/promotion-feed";
+import { listQuoteLinkCandidates } from "@/lib/data/quote-reconciliation";
 
 import {
   listAdvisorReviewItems,
@@ -114,9 +115,10 @@ export default async function AdvisorSalesPage() {
   const authorization = (await headers()).get("authorization");
   if (!(await isAuthorizedAdvisor(authorization))) notFound();
 
-  const [items, promotionFeed] = await Promise.all([
+  const [items, promotionFeed, quoteCandidates] = await Promise.all([
     listAdvisorReviewItems(),
     getPromotionFeedHealth(),
+    listQuoteLinkCandidates(),
   ]);
   const unknownLanes = items.filter(
     (item) => !LANES.some((lane) => lane.id === item.review_lane)
@@ -124,6 +126,8 @@ export default async function AdvisorSalesPage() {
   const needsVerification = items.filter((item) => item.requires_human_verification).length;
   const quoteLinks = items.filter((item) => item.needs_quote_reconciliation).length;
   const autoOutreach = items.filter((item) => item.eligible_for_automated_outreach).length;
+  const candidateClients = new Set(quoteCandidates.map((item) => item.pipelineId)).size;
+  const emailCandidates = quoteCandidates.filter((item) => item.matchMethod === "exact_email").length;
   // Show only booked-service verification, not speculative sales follow-ups.
   const today = new Date().toISOString().slice(0, 10);
   const horizon = new Date(Date.now() + 45 * 24 * 60 * 60 * 1000)
@@ -178,6 +182,50 @@ export default async function AdvisorSalesPage() {
           ) : (
             <p className="mt-4 text-sm italic text-aegean-ink/60">
               No upcoming booking-service departures recorded in this window.
+            </p>
+          )}
+        </section>
+
+        <section className="mt-8 border border-salt-air p-5" aria-labelledby="quote-reconciliation">
+          <h2 id="quote-reconciliation" className="font-serif text-2xl text-deep-harbor">
+            Quote reconciliation · suggested links ({quoteCandidates.length})
+          </h2>
+          <p className="mt-2 text-sm text-aegean-ink/70">
+            {candidateClients} pipeline records have possible historical quote connections.
+            {emailCandidates} exact-email candidate{emailCandidates === 1 ? "" : "s"};{" "}
+            {quoteCandidates.length - emailCandidates} name-only candidate{quoteCandidates.length - emailCandidates === 1 ? "" : "s"}.
+            These are possible connections, not confirmed client or voyage matches.
+            No records are linked or changed by this page.
+          </p>
+          {quoteCandidates.length ? (
+            <ul className="mt-4">
+              {quoteCandidates.map((candidate) => (
+                <li
+                  key={`${candidate.pipelineId}:${candidate.quotePackageId}`}
+                  className="border-t border-salt-air/60 py-3 first:border-t-0"
+                >
+                  <p className="font-medium text-deep-harbor">{candidate.clientName}</p>
+                  <p className="mt-1 text-sm text-aegean-ink">
+                    Possible quote: {candidate.quoteTitle}
+                  </p>
+                  <p className="mt-1 text-xs text-aegean-ink/70">
+                    {candidate.matchMethod === "exact_email"
+                      ? "Exact email match · verify person and voyage"
+                      : "Name-only match · verify identity before linking"}
+                    {" · "}Quoted: {displayDate(candidate.quotedAt)}
+                    {candidate.pipelineSailing
+                      ? ` · Pipeline sailing: ${candidate.pipelineSailing}`
+                      : ""}
+                    {candidate.pipelineSailDate
+                      ? ` · Pipeline departure: ${displayDate(candidate.pipelineSailDate)}`
+                      : ""}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-4 text-sm italic text-aegean-ink/60">
+              No exact-email or strict name-only candidates found. Other unlinked records still need review.
             </p>
           )}
         </section>
