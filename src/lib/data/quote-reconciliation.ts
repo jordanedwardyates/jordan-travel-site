@@ -1,5 +1,6 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { matchQuoteIdentity, type QuoteMatchMethod } from "@/lib/quote-match";
 
 /**
  * Suggested quote links, NOT confirmed client/voyage relationships.
@@ -20,7 +21,7 @@ export type QuoteLinkCandidate = {
   quotePackageId: string;
   quoteTitle: string;
   quotedAt: string | null;
-  matchMethod: "exact_email" | "name_only";
+  matchMethod: QuoteMatchMethod;
 };
 
 type PipelineRow = {
@@ -41,31 +42,6 @@ type PackageRow = {
 };
 
 const MAX_ROWS_PER_SOURCE = 1000;
-
-function normalizedEmail(value: string | null): string {
-  return (value ?? "").trim().toLowerCase();
-}
-
-function normalizedName(value: string | null): string {
-  return (value ?? "").trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-function matchMethod(
-  pipeline: PipelineRow,
-  quote: PackageRow
-): QuoteLinkCandidate["matchMethod"] | null {
-  const pipelineEmail = normalizedEmail(pipeline.client_email);
-  const quoteEmail = normalizedEmail(quote.client_email);
-
-  if (pipelineEmail && quoteEmail) {
-    // Conflicting known emails MUST NOT match on name.
-    return pipelineEmail === quoteEmail ? "exact_email" : null;
-  }
-
-  const pipelineName = normalizedName(pipeline.client_name);
-  const quoteName = normalizedName(quote.client_name);
-  return pipelineName && pipelineName === quoteName ? "name_only" : null;
-}
 
 export async function listQuoteLinkCandidates(): Promise<QuoteLinkCandidate[]> {
   const supabase = createAdminClient();
@@ -101,7 +77,7 @@ export async function listQuoteLinkCandidates(): Promise<QuoteLinkCandidate[]> {
     // Already linked records are excluded from the unresolved review queue.
     if (pipeline.quote_package_id) continue;
     for (const quote of quoteRows) {
-      const method = matchMethod(pipeline, quote);
+      const method = matchQuoteIdentity(pipeline, quote);
       if (!method) continue;
       candidates.push({
         pipelineId: pipeline.id,
