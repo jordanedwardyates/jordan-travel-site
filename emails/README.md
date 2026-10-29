@@ -211,6 +211,14 @@ Caveat carried in the letter's fine print: Celebrity's figures include taxes and
 
 ---
 
+### Onder · Elegant Elbe 2028 · Booking recap and Business Class
+
+- **File:** [`onder-elbe-2028-booking-recap.html`](onder-elbe-2028-booking-recap.html)
+- **Preview:** [`previews/onder-elbe-2028-booking-recap.png`](previews/onder-elbe-2028-booking-recap.png)
+- **Status:** built 2026-10-28, unsent. Reply to Mike's Oct 23 notes on "QUOTE: Elbe River on Viking 2028".
+- **Contents:** what is on booking 10210180; Kraków & Warsaw package being added ($1,699 pp, Tour Director from Prague, home from Warsaw Jun 25); Viking Business Class **$5,498 pp** (Viking, via Jordan 2026-10-28; read as the full fare replacing the $999 economy, so upgrade $4,499 pp / $8,998 for two, which matches Mike's $9,000 line); air deviation **$100 pp** (Viking, via Jordan), framed as the fee for flying into Berlin early; direct-booking comparison from Kayak 2026-10-27 for Jun 10–25 2027, IAD–BER / WAW–IAD Business (Lufthansa $5,382 Basic, Austrian $5,784, BA $5,788, Air France $6,473); Trip Mate plan $1,116 for two (Jordan's figure), pre-existing waiver deadline Nov 5 2026, CFAR pays a Viking credit valid 12 months; open items: Simone's $200 past-guest discount, two $250 FCVs, Simone's GIF.
+- **Confirm before send:** that $5,498 is the full Business fare (not an add-on) and for the Warsaw return; what the $100 deviation applies to; that $1,116 is the total for both.
+
 ### Onder · Elegant Elbe 2028 · Berlin to Prague
 
 - **File:** [`onder-elbe-2028-berlin-prague.html`](onder-elbe-2028-berlin-prague.html)
