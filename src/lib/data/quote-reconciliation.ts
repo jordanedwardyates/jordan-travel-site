@@ -1,6 +1,7 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { matchQuoteIdentity, type QuoteMatchMethod } from "@/lib/quote-match";
+import { assessQuoteReviewRisks, type QuoteReviewEvidence, type QuoteReviewFlags } from "@/lib/quote-review";
 
 /**
  * Suggested quote links, NOT confirmed client/voyage relationships.
@@ -22,7 +23,7 @@ export type QuoteLinkCandidate = {
   quoteTitle: string;
   quotedAt: string | null;
   matchMethod: QuoteMatchMethod;
-};
+} & QuoteReviewFlags;
 
 type PipelineRow = {
   id: string;
@@ -72,7 +73,8 @@ export async function listQuoteLinkCandidates(): Promise<QuoteLinkCandidate[]> {
     throw new Error("Quote reconciliation exceeded its review limit");
   }
 
-  const candidates: QuoteLinkCandidate[] = [];
+  const candidates: Omit<QuoteLinkCandidate, keyof QuoteReviewFlags>[] = [];
+  const evidence: QuoteReviewEvidence[] = [];
   for (const pipeline of pipelineRows) {
     // Already linked records are excluded from the unresolved review queue.
     if (pipeline.quote_package_id) continue;
@@ -89,10 +91,22 @@ export async function listQuoteLinkCandidates(): Promise<QuoteLinkCandidate[]> {
         quotedAt: quote.quoted_at,
         matchMethod: method,
       });
+      evidence.push({
+        pipelineId: pipeline.id,
+        quotePackageId: quote.id,
+        matchMethod: method,
+        pipelineName: pipeline.client_name,
+        quoteName: quote.client_name,
+      });
     }
   }
 
-  return candidates.sort(
+  // Compute warnings server-side; no identity evidence is returned to the page.
+  const risks = assessQuoteReviewRisks(evidence);
+  return candidates.map((candidate, index) => ({
+    ...candidate,
+    ...risks[index],
+  })).sort(
     (a, b) =>
       a.clientName.localeCompare(b.clientName) ||
       (a.matchMethod === b.matchMethod
