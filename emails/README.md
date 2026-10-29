@@ -211,13 +211,16 @@ Caveat carried in the letter's fine print: Celebrity's figures include taxes and
 
 ---
 
-### Onder · Elegant Elbe 2028 · Booking recap and Business Class
+### Onder · Viking Beyla · Booking confirmation (Elbe, June 2028)
 
-- **File:** [`onder-elbe-2028-booking-recap.html`](onder-elbe-2028-booking-recap.html)
-- **Preview:** [`previews/onder-elbe-2028-booking-recap.png`](previews/onder-elbe-2028-booking-recap.png)
-- **Status:** built 2026-10-28, unsent. Reply to Mike's Oct 23 notes on "QUOTE: Elbe River on Viking 2028".
-- **Contents:** what is on booking 10210180; Kraków & Warsaw package being added ($1,699 pp, Tour Director from Prague, home from Warsaw Jun 25); Viking Business Class **$5,498 pp** (Viking, via Jordan 2026-10-28; read as the full fare replacing the $999 economy, so upgrade $4,499 pp / $8,998 for two, which matches Mike's $9,000 line); air deviation **$100 pp** (Viking, via Jordan), framed as the fee for flying into Berlin early; direct-booking comparison from Kayak 2026-10-27 for Jun 10–25 2027, IAD–BER / WAW–IAD Business (Lufthansa $5,382 Basic, Austrian $5,784, BA $5,788, Air France $6,473); Trip Mate plan $1,116 for two (Jordan's figure), pre-existing waiver deadline Nov 5 2026, CFAR pays a Viking credit valid 12 months; open items: Simone's $200 past-guest discount, two $250 FCVs, Simone's GIF.
-- **Confirm before send:** that $5,498 is the full Business fare (not an add-on) and for the Warsaw return; what the $100 deviation applies to; that $1,116 is the total for both.
+- **File:** [`onder-viking-beyla-confirmation.html`](onder-viking-beyla-confirmation.html) (was `onder-elbe-2028-booking-recap.html`; no confirmation had been sent, so the recap became the confirmation)
+- **Preview:** [`previews/onder-viking-beyla-confirmation.png`](previews/onder-viking-beyla-confirmation.png)
+- **Status:** built 2026-10-28, unsent. Suggested subject: "Cruise Confirmation: Onder Viking Beyla June 2028". Attach Viking's Guest Statement (iCloud: "Viking Elbe River 2027 ONDER10210180.pdf").
+- **Verified against Viking Guest Statement 28-Oct-26:** $7,299 fare, less $500 booking discount, less $200 Past Guest Level 1 on BOTH guests, $6,599 cruise + $999 air ($1,799 less $800) = $7,598 pp, $15,196 total, $50 paid, balance $15,146, final payment 10-Jun-27. Both GIFs received. BVT26: comp prepaid gratuities + Silver Spirits. Embark Tue Jun 13 Wittenberg 4:30 pm, Torgau added Jun 14, disembark Děčín Jun 18. Air still IAD–BER Jun 10 / PRG–IAD Jun 20 economy (Kraków & Warsaw not yet added).
+- **Cancellation (from the statement):** $100 pp through 11-Feb-28; 20% 12-Feb–12-Mar-28; 35% to 1-Apr; 50% to 21-Apr; 75% to 11-May; 100% from 12-May-28. Date changes count as cancellation. The Oct 21 quote wrongly said the deposit was fully refundable until final payment; the confirmation corrects it in writing.
+- **FCVs (Viking emails 30-Sep-26):** FCV-2880577 (Michael) and FCV-2880578 (Simone), $250 each, issued 30-Sep-26, expire 30-Sep-27 (book-by date), must be redeemed BEFORE FINAL PAYMENT, cannot be reissued once redeemed, voided if a Viking TPP claim is filed. For this booking the real deadline is before 10-Jun-27, not 30-Sep-27. Held back on Jordan's call.
+- **Also carried:** Viking Business $5,498 pp (upgrade $4,499 pp = Mike's $9,000 line), deviation $100 pp framed as the early-Berlin fee, Kayak comparison 27-Oct-26, Trip Mate $1,116 for two with waiver deadline Thu 5-Nov-26, post-ticketing change fees ($150 Air Plus + $350 min pp, from the statement).
+- **Confirm before send:** $5,498 is the full Business fare and priced home from Warsaw; what the $100 deviation applies to; $1,116 is for both. Michael's final-documents address reads "APT T3", Simone's "APT T03".
 
 ### Onder · Elegant Elbe 2028 · Berlin to Prague
 
