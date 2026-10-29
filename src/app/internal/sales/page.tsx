@@ -128,6 +128,9 @@ export default async function AdvisorSalesPage() {
   const autoOutreach = items.filter((item) => item.eligible_for_automated_outreach).length;
   const candidateClients = new Set(quoteCandidates.map((item) => item.pipelineId)).size;
   const emailCandidates = quoteCandidates.filter((item) => item.matchMethod === "exact_email").length;
+  const flaggedCandidates = quoteCandidates.filter((item) =>
+    item.differentRecordedNames || item.quoteMatchesMultiplePipelineRecords
+  ).length;
   // Show only booked-service verification, not speculative sales follow-ups.
   const today = new Date().toISOString().slice(0, 10);
   const horizon = new Date(Date.now() + 45 * 24 * 60 * 60 * 1000)
@@ -195,6 +198,7 @@ export default async function AdvisorSalesPage() {
             {emailCandidates} exact-email candidate{emailCandidates === 1 ? "" : "s"};{" "}
             {quoteCandidates.length - emailCandidates} name-only candidate{quoteCandidates.length - emailCandidates === 1 ? "" : "s"}.
             These are possible connections, not confirmed client or voyage matches.
+            {flaggedCandidates > 0 && ` ${flaggedCandidates} candidate(s) need extra identity or duplicate-record review.`}
             No records are linked or changed by this page.
           </p>
           {quoteCandidates.length ? (
@@ -220,6 +224,12 @@ export default async function AdvisorSalesPage() {
                       ? ` · Pipeline departure: ${displayDate(candidate.pipelineSailDate)}`
                       : ""}
                   </p>
+                  {(candidate.differentRecordedNames || candidate.quoteMatchesMultiplePipelineRecords) && (
+                    <p className="mt-2 border-l-4 border-compass-gold pl-3 text-xs font-medium text-deep-harbor">
+                      {candidate.differentRecordedNames && "Recorded names differ despite an email match. Verify identity or a shared inbox. "}
+                      {candidate.quoteMatchesMultiplePipelineRecords && "This quote matches multiple pipeline records. Resolve possible duplicates before linking."}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>
