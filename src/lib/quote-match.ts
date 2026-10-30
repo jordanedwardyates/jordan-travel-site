@@ -32,5 +32,10 @@ export function matchQuoteIdentity(
   // With missing email, require full normalized name equality.
   const pipelineName = normalizeName(pipeline.client_name);
   const quoteName = normalizeName(quote.client_name);
-  return pipelineName && pipelineName === quoteName ? "name_only" : null;
+  // Single-word first names and placeholder labels are not reliable identities.
+  // These still need manual research, but must not appear as suggested links.
+  const isUsableFullName = (name: string) =>
+    name.split(" ").length >= 2 &&
+    !["unknown client", "unresolved client", "not recorded", "tbd client", "test client"].includes(name);
+  return pipelineName === quoteName && isUsableFullName(pipelineName) ? "name_only" : null;
 }
