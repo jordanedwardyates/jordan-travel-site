@@ -45,3 +45,24 @@ test("same full name with both emails absent is only name-only", () => {
     { client_name: "Alex Sample", client_email: null }
   )).toBe("name_only");
 });
+
+test("single first name cannot create a name-only quote suggestion", () => {
+  expect(matchQuoteIdentity(
+    { client_name: "Eddy", client_email: null },
+    { client_name: "Eddy", client_email: null }
+  )).toBeNull();
+});
+
+test("placeholder full names cannot create name-only suggestions", () => {
+  expect(matchQuoteIdentity(
+    { client_name: "Unknown Client", client_email: null },
+    { client_name: "unknown client", client_email: null }
+  )).toBeNull();
+});
+
+test("couple and full names remain review-only matches", () => {
+  expect(matchQuoteIdentity(
+    { client_name: "Linda & David Hayton", client_email: null },
+    { client_name: "linda & david hayton", client_email: null }
+  )).toBe("name_only");
+});
