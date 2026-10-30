@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { isAuthorizedAdvisor } from "@/lib/auth/advisor";
+import { buildDailyFocus, easternDateISO } from "@/lib/daily-focus";
 import { getPromotionFeedHealth } from "@/lib/data/promotion-feed";
 import { listQuoteLinkCandidates } from "@/lib/data/quote-reconciliation";
 
@@ -131,19 +132,15 @@ export default async function AdvisorSalesPage() {
   const flaggedCandidates = quoteCandidates.filter((item) =>
     item.differentRecordedNames || item.quoteMatchesMultiplePipelineRecords
   ).length;
-  // Show only booked-service verification, not speculative sales follow-ups.
-  const today = new Date().toISOString().slice(0, 10);
-  const horizon = new Date(Date.now() + 45 * 24 * 60 * 60 * 1000)
-    .toISOString().slice(0, 10);
-  const upcomingService = items.filter((item) =>
-    item.review_lane === "booking_service_verification" &&
-    !!item.sail_date &&
-    item.sail_date >= today &&
-    item.sail_date <= horizon
-  ).sort((a, b) =>
-    (a.sail_date ?? "").localeCompare(b.sail_date ?? "") ||
-    a.work_item_key.localeCompare(b.work_item_key)
-  );
+  // Advisor-local calendar date: UTC can already be tomorrow in the evening.
+  const dailyFocus = buildDailyFocus(items, easternDateISO(new Date()));
+  const focusGroups = [
+    { title: "Reservation holds · confirm status", items: dailyFocus.holdsToVerify },
+    { title: "Departures within 14 days", items: dailyFocus.departuresWithin14Days },
+    { title: "Departures in 15–45 days", items: dailyFocus.departures15To45Days },
+    { title: "Booking-service records missing departure dates", items: dailyFocus.serviceWithoutDepartureDate },
+  ];
+  const focusCount = focusGroups.reduce((total, group) => total + group.items.length, 0);
 
   return (
     <main className="px-6 py-14">
@@ -170,23 +167,34 @@ export default async function AdvisorSalesPage() {
           ))}
         </div>
 
-        <section className="mt-8 border border-salt-air p-5" aria-labelledby="upcoming-service">
-          <h2 id="upcoming-service" className="font-serif text-2xl text-deep-harbor">
-            Upcoming booking-service reviews · next 45 days ({upcomingService.length})
+        <section className="mt-8 border border-salt-air p-5" aria-labelledby="daily-focus">
+          <h2 id="daily-focus" className="font-serif text-2xl text-deep-harbor">
+            Today’s review priorities ({focusCount})
           </h2>
           <p className="mt-2 text-sm text-aegean-ink/70">
-            Departure dates determine urgency, not whether a task is still outstanding.
-            Verify supplier and client records before following up.
+            Holds require status checks, not assumptions of availability. Departure windows
+            identify booking-service reviews, not confirmed incomplete tasks. Missing dates
+            are shown explicitly so they cannot disappear from the workflow.
+            No sales follow-up is automatically promoted into this service list.
           </p>
-          {upcomingService.length ? (
-            <ul className="mt-4">{upcomingService.map((item) => (
-              <ReviewCard key={item.work_item_key} item={item} />
-            ))}</ul>
-          ) : (
-            <p className="mt-4 text-sm italic text-aegean-ink/60">
-              No upcoming booking-service departures recorded in this window.
-            </p>
-          )}
+          {focusGroups.map((group) => (
+            <div key={group.title} className="mt-5">
+              <h3 className="text-sm font-semibold text-deep-harbor">
+                {group.title} ({group.items.length})
+              </h3>
+              {group.items.length ? (
+                <ul className="mt-2">
+                  {group.items.map((item) => (
+                    <ReviewCard key={item.work_item_key} item={item} />
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 text-sm italic text-aegean-ink/60">
+                  No records in this priority group.
+                </p>
+              )}
+            </div>
+          ))}
         </section>
 
         <section className="mt-8 border border-salt-air p-5" aria-labelledby="quote-reconciliation">
