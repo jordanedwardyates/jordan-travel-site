@@ -43,3 +43,28 @@ test("missing and invalid service dates remain visible for data review", () => {
 test("invalid as-of date fails instead of producing misleading priorities", () => {
   expect(() => buildDailyFocus([], "2026-02-30")).toThrow();
 });
+
+test("recent intake reviews are visible but separate from booking-service priorities", () => {
+  const focus = buildDailyFocus([
+    { ...item("today", "quote_queue_review", null), source_stage: "review_intake", source_review_date: "2026-10-31" },
+    { ...item("week", "quote_queue_review", null), source_stage: "review_intake", source_review_date: "2026-10-24" },
+    { ...item("old", "quote_queue_review", null), source_stage: "review_intake", source_review_date: "2026-10-23" },
+    { ...item("reactivate", "quote_queue_review", null), source_stage: "reactivate_quote", source_review_date: "2026-10-31" },
+    { ...item("future", "quote_queue_review", null), source_stage: "review_intake", source_review_date: "2026-11-01" },
+    { ...item("invalid", "quote_queue_review", null), source_stage: "review_intake", source_review_date: "2026-02-30" },
+    { ...item("sales", "sales_followup_verification", "2026-11-01"), source_stage: "review_intake", source_review_date: "2026-10-31" },
+  ], "2026-10-31");
+  expect(focus.recentIntakeReviews.map(x => x.work_item_key)).toEqual(["today", "week"]);
+  expect(focus.departuresWithin14Days).toHaveLength(0);
+  expect(focus.serviceWithoutDepartureDate).toHaveLength(0);
+});
+
+test("intake review dates sort newest first and never authorize outreach", () => {
+  const focus = buildDailyFocus([
+    { ...item("b", "quote_queue_review", null), source_stage: "review_intake", source_review_date: "2026-10-30" },
+    { ...item("a", "quote_queue_review", null), source_stage: "review_intake", source_review_date: "2026-10-30" },
+    { ...item("c", "quote_queue_review", null), source_stage: "review_intake", source_review_date: "2026-10-31" },
+  ], "2026-10-31");
+  expect(focus.recentIntakeReviews.map(x => x.work_item_key)).toEqual(["c", "a", "b"]);
+  expect(focus.holdsToVerify).toHaveLength(0);
+});
