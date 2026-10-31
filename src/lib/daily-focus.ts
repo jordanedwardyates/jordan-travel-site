@@ -7,6 +7,8 @@ export type DailyFocusSource = {
   work_item_key: string;
   review_lane: string;
   sail_date: string | null;
+  source_stage?: string | null;
+  source_review_date?: string | null;
 };
 
 export type DailyFocus<T extends DailyFocusSource> = {
@@ -14,6 +16,7 @@ export type DailyFocus<T extends DailyFocusSource> = {
   departuresWithin14Days: T[];
   departures15To45Days: T[];
   serviceWithoutDepartureDate: T[];
+  recentIntakeReviews: T[];
 };
 
 function dateOrdinal(iso: string): number | null {
@@ -49,9 +52,22 @@ export function buildDailyFocus<T extends DailyFocusSource>(
     departuresWithin14Days: [],
     departures15To45Days: [],
     serviceWithoutDepartureDate: [],
+    recentIntakeReviews: [],
   };
 
   for (const item of items) {
+    // Intake review dates are signals, not proof of a new qualified lead.
+    // Surface only recent review_intake records for manual quality checks;
+    // never treat quote reactivation or historical quotes as fresh inquiries.
+    if (item.review_lane === "quote_queue_review" && item.source_stage === "review_intake") {
+      const reviewDay = item.source_review_date
+        ? dateOrdinal(item.source_review_date.slice(0, 10))
+        : null;
+      if (reviewDay !== null && reviewDay <= today && reviewDay >= today - 7) {
+        focus.recentIntakeReviews.push(item);
+      }
+      continue;
+    }
     if (item.review_lane === "reservation_hold_verification") {
       focus.holdsToVerify.push(item);
       continue;
@@ -80,5 +96,9 @@ export function buildDailyFocus<T extends DailyFocusSource>(
   focus.departures15To45Days.sort(bySailing);
   focus.holdsToVerify.sort((a, b) => a.work_item_key.localeCompare(b.work_item_key));
   focus.serviceWithoutDepartureDate.sort((a, b) => a.work_item_key.localeCompare(b.work_item_key));
+  focus.recentIntakeReviews.sort((a, b) =>
+    (b.source_review_date ?? "").localeCompare(a.source_review_date ?? "") ||
+    a.work_item_key.localeCompare(b.work_item_key)
+  );
   return focus;
 }
