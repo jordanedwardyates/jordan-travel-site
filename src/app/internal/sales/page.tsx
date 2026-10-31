@@ -139,6 +139,7 @@ export default async function AdvisorSalesPage() {
     { title: "Departures within 14 days", items: dailyFocus.departuresWithin14Days },
     { title: "Departures in 15–45 days", items: dailyFocus.departures15To45Days },
     { title: "Booking-service records missing departure dates", items: dailyFocus.serviceWithoutDepartureDate },
+    { title: "Recent intake reviews · qualify before any outreach", items: dailyFocus.recentIntakeReviews },
   ];
   const focusCount = focusGroups.reduce((total, group) => total + group.items.length, 0);
 
@@ -176,6 +177,9 @@ export default async function AdvisorSalesPage() {
             identify booking-service reviews, not confirmed incomplete tasks. Missing dates
             are shown explicitly so they cannot disappear from the workflow.
             No sales follow-up is automatically promoted into this service list.
+            Intake records with review dates in the last seven days appear after
+            booking-service priorities for a manual quality check only. A review
+            date does not prove the inquiry is new or qualified; no outreach is authorized.
           </p>
           {focusGroups.map((group) => (
             <div key={group.title} className="mt-5">
