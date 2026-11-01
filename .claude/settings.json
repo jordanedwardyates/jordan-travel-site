@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "shadcn-ui": {
+      "command": "npx",
+      "args": ["-y", "@jpisnice/shadcn-ui-mcp-server"],
+      "description": "React components from shadcn/ui v4",
+      "env": {
+        "FRAMEWORK": "react"
+      }
+    }
+  }
+}
