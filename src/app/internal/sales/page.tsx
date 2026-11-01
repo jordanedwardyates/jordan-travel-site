@@ -116,10 +116,11 @@ export default async function AdvisorSalesPage() {
   const authorization = (await headers()).get("authorization");
   if (!(await isAuthorizedAdvisor(authorization))) notFound();
 
+  const todayISO = easternDateISO(new Date());
   const [items, promotionFeed, quoteCandidates] = await Promise.all([
     listAdvisorReviewItems(),
     getPromotionFeedHealth(),
-    listQuoteLinkCandidates(),
+    listQuoteLinkCandidates(todayISO),
   ]);
   const unknownLanes = items.filter(
     (item) => !LANES.some((lane) => lane.id === item.review_lane)
@@ -129,11 +130,13 @@ export default async function AdvisorSalesPage() {
   const autoOutreach = items.filter((item) => item.eligible_for_automated_outreach).length;
   const candidateClients = new Set(quoteCandidates.map((item) => item.pipelineId)).size;
   const emailCandidates = quoteCandidates.filter((item) => item.matchMethod === "exact_email").length;
+  const missingVoyageEvidence = quoteCandidates.filter((item) => item.noStructuredVoyageData).length;
+  const departedQuoteOptions = quoteCandidates.filter((item) => item.allLinkedDeparturesPast).length;
   const flaggedCandidates = quoteCandidates.filter((item) =>
     item.differentRecordedNames || item.quoteMatchesMultiplePipelineRecords
   ).length;
   // Advisor-local calendar date: UTC can already be tomorrow in the evening.
-  const dailyFocus = buildDailyFocus(items, easternDateISO(new Date()));
+  const dailyFocus = buildDailyFocus(items, todayISO);
   const focusGroups = [
     { title: "Reservation holds · confirm status", items: dailyFocus.holdsToVerify },
     { title: "Departures within 14 days", items: dailyFocus.departuresWithin14Days },
@@ -211,6 +214,7 @@ export default async function AdvisorSalesPage() {
             {quoteCandidates.length - emailCandidates} name-only candidate{quoteCandidates.length - emailCandidates === 1 ? "" : "s"}.
             These are possible connections, not confirmed client or voyage matches.
             {flaggedCandidates > 0 && ` ${flaggedCandidates} candidate(s) need extra identity or duplicate-record review.`}
+            {` ${missingVoyageEvidence} lack structured voyage evidence; ${departedQuoteOptions} contain only departed sailings.`}
             No records are linked or changed by this page.
           </p>
           {quoteCandidates.length ? (
@@ -236,6 +240,19 @@ export default async function AdvisorSalesPage() {
                       ? ` · Pipeline departure: ${displayDate(candidate.pipelineSailDate)}`
                       : ""}
                   </p>
+                  <p className="mt-2 text-xs text-aegean-ink/70">
+                    {candidate.noStructuredVoyageData
+                      ? "No structured voyage attached to this quote. Verify its original source before linking."
+                      : `${candidate.linkedVoyageCount} distinct linked voyage option(s) in the archive.`}
+                  </p>
+                  {(candidate.allLinkedDeparturesPast || candidate.pipelineDateNotInQuote || candidate.pipelineYearNotInQuote) && (
+                    <p className="mt-2 border-l-4 border-compass-gold pl-3 text-xs font-medium text-deep-harbor">
+                      {candidate.allLinkedDeparturesPast && "All structured sailing options have already departed. Historical quote only. "}
+                      {candidate.pipelineDateNotInQuote && "No structured sailing date matches the pipeline departure date. "}
+                      {candidate.pipelineYearNotInQuote && "Linked sailings differ from the single year mentioned in the pipeline description. "}
+                      Reconcile the voyage before treating this as the same trip.
+                    </p>
+                  )}
                   {(candidate.differentRecordedNames || candidate.quoteMatchesMultiplePipelineRecords) && (
                     <p className="mt-2 border-l-4 border-compass-gold pl-3 text-xs font-medium text-deep-harbor">
                       {candidate.differentRecordedNames && "Recorded names differ despite an email match. Verify identity or a shared inbox. "}
