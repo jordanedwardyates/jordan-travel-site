@@ -43,16 +43,15 @@ type PackageRow = {
   quoted_at: string | null;
 };
 
-type QuoteItemVoyageRow = {
-  quote_package_id: string;
-  price_offers: { accommodations: { voyages: LinkedQuoteVoyage | null } | null } | null;
-};
+type QuoteItemRow = { quote_package_id: string; price_offer_id: string | null };
+type OfferRow = { id: string; accommodation_id: string | null };
+type AccommodationRow = { id: string; voyage_id: string | null };
 
 const MAX_ROWS_PER_SOURCE = 1000;
 
 export async function listQuoteLinkCandidates(todayISO: string): Promise<QuoteLinkCandidate[]> {
   const supabase = createAdminClient();
-  const [pipelineResult, quoteResult, voyageResult] = await Promise.all([
+  const [pipelineResult, quoteResult, quoteItemsResult, offersResult, accommodationsResult, voyageResult] = await Promise.all([
     supabase
       .from("sales_pipeline")
       .select("id,client_name,client_email,sailing,sail_date,quote_package_id")
@@ -63,34 +62,48 @@ export async function listQuoteLinkCandidates(todayISO: string): Promise<QuoteLi
       .select("id,client_name,client_email,title,quoted_at")
       .order("id", { ascending: true })
       .limit(MAX_ROWS_PER_SOURCE + 1),
-    // Trace quote items through their offer, accommodation and actual voyage.
-    // Do not infer a sailing from the quote title alone.
-    supabase
-      .from("quote_items")
-      .select("quote_package_id,price_offers(accommodations(voyages(id,embarkation_date)))")
-      .order("id", { ascending: true })
-      .limit(MAX_ROWS_PER_SOURCE + 1),
+    // Trace normalized quote items through offers and accommodations to
+    // actual voyage records; do not infer a sailing from a quote title.
+    supabase.from("quote_items").select("quote_package_id,price_offer_id")
+      .order("id", { ascending: true }).limit(MAX_ROWS_PER_SOURCE + 1),
+    supabase.from("price_offers").select("id,accommodation_id")
+      .order("id", { ascending: true }).limit(MAX_ROWS_PER_SOURCE + 1),
+    supabase.from("accommodations").select("id,voyage_id")
+      .order("id", { ascending: true }).limit(MAX_ROWS_PER_SOURCE + 1),
+    supabase.from("voyages").select("id,embarkation_date")
+      .order("id", { ascending: true }).limit(MAX_ROWS_PER_SOURCE + 1),
   ]);
 
-  if (pipelineResult.error || quoteResult.error || voyageResult.error) {
+  if ([pipelineResult, quoteResult, quoteItemsResult, offersResult, accommodationsResult, voyageResult].some((result) => result.error)) {
     throw new Error("Quote reconciliation is unavailable");
   }
 
   const pipelineRows = (pipelineResult.data ?? []) as PipelineRow[];
   const quoteRows = (quoteResult.data ?? []) as PackageRow[];
-  const quoteItemRows = (voyageResult.data ?? []) as unknown as QuoteItemVoyageRow[];
+  const quoteItemRows = (quoteItemsResult.data ?? []) as QuoteItemRow[];
+  const offerRows = (offersResult.data ?? []) as OfferRow[];
+  const accommodationRows = (accommodationsResult.data ?? []) as AccommodationRow[];
+  const voyageRows = (voyageResult.data ?? []) as LinkedQuoteVoyage[];
   if (
     pipelineRows.length > MAX_ROWS_PER_SOURCE ||
     quoteRows.length > MAX_ROWS_PER_SOURCE ||
-    quoteItemRows.length > MAX_ROWS_PER_SOURCE
+    quoteItemRows.length > MAX_ROWS_PER_SOURCE ||
+    offerRows.length > MAX_ROWS_PER_SOURCE ||
+    accommodationRows.length > MAX_ROWS_PER_SOURCE ||
+    voyageRows.length > MAX_ROWS_PER_SOURCE
   ) {
     // Never present an incomplete reconciliation as exhaustive.
     throw new Error("Quote reconciliation exceeded its review limit");
   }
 
+  const offersById = new Map(offerRows.map((row) => [row.id, row]));
+  const accommodationsById = new Map(accommodationRows.map((row) => [row.id, row]));
+  const voyagesById = new Map(voyageRows.map((row) => [row.id, row]));
   const voyagesByPackage = new Map<string, LinkedQuoteVoyage[]>();
   for (const row of quoteItemRows) {
-    const voyage = row.price_offers?.accommodations?.voyages;
+    const offer = offersById.get(row.price_offer_id ?? "");
+    const accommodation = accommodationsById.get(offer?.accommodation_id ?? "");
+    const voyage = voyagesById.get(accommodation?.voyage_id ?? "");
     if (!voyage) continue;
     const voyages = voyagesByPackage.get(row.quote_package_id) ?? [];
     voyages.push(voyage);
