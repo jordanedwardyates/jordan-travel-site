@@ -2,6 +2,7 @@ import "server-only";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { matchQuoteIdentity, type QuoteMatchMethod } from "@/lib/quote-match";
 import { assessQuoteReviewRisks, type QuoteReviewEvidence, type QuoteReviewFlags } from "@/lib/quote-review";
+import { assessQuoteVoyageReview, type LinkedQuoteVoyage, type QuoteVoyageReview } from "@/lib/quote-voyage-review";
 
 /**
  * Suggested quote links, NOT confirmed client/voyage relationships.
@@ -23,7 +24,7 @@ export type QuoteLinkCandidate = {
   quoteTitle: string;
   quotedAt: string | null;
   matchMethod: QuoteMatchMethod;
-} & QuoteReviewFlags;
+} & QuoteReviewFlags & QuoteVoyageReview;
 
 type PipelineRow = {
   id: string;
@@ -42,11 +43,16 @@ type PackageRow = {
   quoted_at: string | null;
 };
 
+type QuoteItemVoyageRow = {
+  quote_package_id: string;
+  price_offers: { accommodations: { voyages: LinkedQuoteVoyage | null } | null } | null;
+};
+
 const MAX_ROWS_PER_SOURCE = 1000;
 
-export async function listQuoteLinkCandidates(): Promise<QuoteLinkCandidate[]> {
+export async function listQuoteLinkCandidates(todayISO: string): Promise<QuoteLinkCandidate[]> {
   const supabase = createAdminClient();
-  const [pipelineResult, quoteResult] = await Promise.all([
+  const [pipelineResult, quoteResult, voyageResult] = await Promise.all([
     supabase
       .from("sales_pipeline")
       .select("id,client_name,client_email,sailing,sail_date,quote_package_id")
@@ -57,23 +63,41 @@ export async function listQuoteLinkCandidates(): Promise<QuoteLinkCandidate[]> {
       .select("id,client_name,client_email,title,quoted_at")
       .order("id", { ascending: true })
       .limit(MAX_ROWS_PER_SOURCE + 1),
+    // Trace quote items through their offer, accommodation and actual voyage.
+    // Do not infer a sailing from the quote title alone.
+    supabase
+      .from("quote_items")
+      .select("quote_package_id,price_offers(accommodations(voyages(id,embarkation_date)))")
+      .order("id", { ascending: true })
+      .limit(MAX_ROWS_PER_SOURCE + 1),
   ]);
 
-  if (pipelineResult.error || quoteResult.error) {
+  if (pipelineResult.error || quoteResult.error || voyageResult.error) {
     throw new Error("Quote reconciliation is unavailable");
   }
 
   const pipelineRows = (pipelineResult.data ?? []) as PipelineRow[];
   const quoteRows = (quoteResult.data ?? []) as PackageRow[];
+  const quoteItemRows = (voyageResult.data ?? []) as unknown as QuoteItemVoyageRow[];
   if (
     pipelineRows.length > MAX_ROWS_PER_SOURCE ||
-    quoteRows.length > MAX_ROWS_PER_SOURCE
+    quoteRows.length > MAX_ROWS_PER_SOURCE ||
+    quoteItemRows.length > MAX_ROWS_PER_SOURCE
   ) {
     // Never present an incomplete reconciliation as exhaustive.
     throw new Error("Quote reconciliation exceeded its review limit");
   }
 
-  const candidates: Omit<QuoteLinkCandidate, keyof QuoteReviewFlags>[] = [];
+  const voyagesByPackage = new Map<string, LinkedQuoteVoyage[]>();
+  for (const row of quoteItemRows) {
+    const voyage = row.price_offers?.accommodations?.voyages;
+    if (!voyage) continue;
+    const voyages = voyagesByPackage.get(row.quote_package_id) ?? [];
+    voyages.push(voyage);
+    voyagesByPackage.set(row.quote_package_id, voyages);
+  }
+
+  const candidates: Omit<QuoteLinkCandidate, keyof QuoteReviewFlags | keyof QuoteVoyageReview>[] = [];
   const evidence: QuoteReviewEvidence[] = [];
   for (const pipeline of pipelineRows) {
     // Already linked records are excluded from the unresolved review queue.
@@ -106,6 +130,12 @@ export async function listQuoteLinkCandidates(): Promise<QuoteLinkCandidate[]> {
   return candidates.map((candidate, index) => ({
     ...candidate,
     ...risks[index],
+    ...assessQuoteVoyageReview(
+      candidate.pipelineSailDate,
+      candidate.pipelineSailing,
+      voyagesByPackage.get(candidate.quotePackageId) ?? [],
+      todayISO
+    ),
   })).sort(
     (a, b) =>
       a.clientName.localeCompare(b.clientName) ||
