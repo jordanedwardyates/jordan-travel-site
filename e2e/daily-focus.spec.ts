@@ -68,3 +68,12 @@ test("intake review dates sort newest first and never authorize outreach", () =>
   expect(focus.recentIntakeReviews.map(x => x.work_item_key)).toEqual(["c", "a", "b"]);
   expect(focus.holdsToVerify).toHaveLength(0);
 });
+
+
+test("Eastern review date remains correct across the November daylight-saving fallback", () => {
+  // 01:30 occurs twice, first in EDT and then in EST.
+  expect(easternDateISO(new Date("2026-11-01T05:30:00Z"))).toBe("2026-11-01");
+  expect(easternDateISO(new Date("2026-11-01T06:30:00Z"))).toBe("2026-11-01");
+  // 23:30 Eastern is already November 2 in UTC.
+  expect(easternDateISO(new Date("2026-11-02T04:30:00Z"))).toBe("2026-11-01");
+});
