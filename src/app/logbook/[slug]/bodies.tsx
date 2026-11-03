@@ -463,4 +463,274 @@ export const LOGBOOK_BODIES: Record<string, ReactNode> = {
       </P>
     </>
   ),
+  "scenic-river-cruises-what-the-fare-covers": (
+    <>
+      <Lead>
+        Scenic is a river line that decided early that a fare should mean
+        something close to the whole trip. Where most lines print a base price
+        and then a long menu of additions, Scenic folds the additions in: the
+        drinks, the gratuities, the excursions, the butler. Whether that is worth
+        having depends entirely on how you like to travel, which is why I would
+        rather explain how the fare is built than simply recommend the name.
+      </Lead>
+
+      <H>The ship</H>
+      <P>
+        Scenic&rsquo;s European river ships, which the line calls Space-Ships,
+        carry up to 163 guests. That is small enough that the crew knows your name
+        and your coffee by the second morning, and large enough to have a proper
+        spa, a fitness room, and several places to dine rather than one room at
+        one hour. The suites are the standard here rather than an upgrade, and
+        every one of them comes with a butler. In the balcony suites and above,
+        what Scenic calls the Sun Lounge is a window wall that lowers, so the
+        terrace becomes a sheltered extension of the room and the river stays in
+        view on a grey morning.
+      </P>
+
+      <H>What the fare folds in</H>
+      <P>
+        All meals aboard, with a choice of venues. Premium drinks through the day,
+        not only at the table. A minibar restocked daily. Wi-Fi. Gratuities. And
+        Scenic Freechoice, the line&rsquo;s name for a menu of included excursions
+        along the route, so two people on the same ship are not obliged to spend
+        the same morning in the same way.
+      </P>
+      <P>
+        None of this is exotic on its own. The sum of it is the point. There is
+        no tipping envelope on the last night and no running tally of the drinks,
+        and a week with that friction removed feels like a different kind of
+        holiday from one where every small decision has a price attached.
+      </P>
+
+      <H>Who it suits</H>
+      <P>
+        Scenic suits the traveller who would like to stop doing arithmetic. If you
+        would order wine with dinner, take most of the excursions, and dislike
+        paying for things one at a time, the inclusive fare tends to be the better
+        value and almost always the calmer week. It also suits couples and small
+        groups who want room to breathe: for a river ship the suites are
+        generous, and there is real space to be alone.
+      </P>
+
+      <H>Who it does not</H>
+      <P>
+        If you rarely drink, prefer to explore alone, and would skip half the
+        excursions, you are paying for inclusions you will not use, and a leaner
+        river line may serve you better. If you want evenings of big-ship
+        entertainment, a river ship of 163 guests is quiet by design. And rivers
+        have moods of their own. In late summer a low Danube can reshape part of
+        a route, with a coach joining the plan for a stretch, which is one reason
+        I am careful about which week I recommend.
+      </P>
+
+      <H>How I weigh it against the other river lines</H>
+      <P>
+        Among the good river lines, the difference is rarely the river or the
+        route. It is what is bundled, how much space you have, and what the
+        total looks like once everything is added back. I compare the all-in
+        number, not the headline fare, and I tell you plainly when a line with
+        fewer inclusions comes out ahead for the way you travel.
+      </P>
+
+      <H>The ocean sibling</H>
+      <P>
+        The same thinking runs through Scenic Eclipse and Eclipse II, the
+        line&rsquo;s two Discovery Yachts: 228 guests, 114 suites, butler service
+        throughout, built to bring that level of comfort to the Arctic and
+        Antarctica among other places. The principle holds there too, with one
+        honest footnote. A few of the headline experiences, the helicopters and
+        the submersible among them, sit outside the fare, and where they operate
+        at all depends on the region and the conditions. It is worth knowing
+        before you fall in love with a photograph.
+      </P>
+
+      <P>
+        Scenic&rsquo;s fares move, and so do the promotions around them, which is
+        the part I handle quietly. If a river or a Discovery voyage is on your
+        mind,{" "}
+        <TextLink href="/journeys">see what I have quoted this season</TextLink>{" "}
+        and tell me how you like to spend a morning.
+      </P>
+    </>
+  ),
+  "celebrity-cruises-the-honest-middle": (
+    <>
+      <Lead>
+        People ask me about Celebrity more than almost any other line, and usually
+        with the same hesitation. They want something better than a mainstream
+        cruise and are not sure they need to pay for ultra-luxury. Celebrity is
+        the line built for that hesitation. It is a large-ship line that behaves,
+        at its best, like a considered hotel, and it is worth understanding
+        exactly what that means before you compare it with anything else.
+      </Lead>
+
+      <H>What Celebrity actually is</H>
+      <P>
+        The five ships of the Edge Series, Edge, Apex, Beyond, Ascent and Xcel,
+        carry between roughly 2,900 and 3,300 guests each. That is not small, and
+        I will not dress it up as small. What changes is the design. These ships
+        were drawn outward-facing, opening to the water instead of turning inward
+        around an atrium. Staterooms with what the line calls Infinite Verandas
+        bring the balcony into the room itself. There is a Rooftop Garden, and
+        the Magic Carpet, a cantilevered platform that rises up the side of the
+        ship and hangs out over the water. You feel the sea more than you expect
+        to on a ship this size, which is the hardest thing for a large ship to
+        achieve.
+      </P>
+
+      <H>The Retreat is the real argument</H>
+      <P>
+        When I recommend Celebrity to someone who wants a luxury-adjacent week, I
+        am almost always recommending a suite in The Retreat. It is a
+        ship-within-a-ship: a butler, a suites-only restaurant called Luminae, a
+        private lounge, a private sundeck, and premium drinks and Wi-Fi for
+        everyone in the suite. You sail on a large ship with a small ship&rsquo;s
+        worth of it set aside for you, quieter, better served, and with a more
+        careful table.
+      </P>
+      <P>
+        The price is a real step up from a standard stateroom, and whether that
+        step is worth taking, set beside a line like Regent or Scenic, is the
+        comparison I run for you rather than assume.
+      </P>
+
+      <H>Where the standard stateroom lands</H>
+      <P>
+        In a standard stateroom, Celebrity is a very good premium cruise, not a
+        luxury one, and I would say so to anyone thinking of paying luxury money
+        for it. What is bundled into the fare, whether drinks, Wi-Fi or
+        gratuities, tends to change from season to season on the large lines, and
+        that is exactly where two quotes that look alike stop being alike. I
+        compare the all-in number and never the headline.
+      </P>
+
+      <H>Where it is the right call</H>
+      <P>
+        Celebrity earns its place in a few situations. A mixed group, where one
+        couple wants quiet and another wants a show. A first step into this level
+        of cruising, where the stakes are lower and the surprises are pleasant.
+        And itineraries where the ship is a good base rather than the whole
+        point, such as Alaska, the Mediterranean or the Caribbean. If the group
+        is wide in age as well, my note on{" "}
+        <TextLink href="/logbook/when-a-big-ship-is-the-right-call">
+          when a big ship is the right call
+        </TextLink>{" "}
+        applies here too.
+      </P>
+
+      <H>Where it is not</H>
+      <P>
+        If the size of the ship is the very thing you hope to leave behind,
+        Celebrity is not the answer, however handsome the design. If you want
+        every excursion included and a hull small enough for the quieter
+        harbours, I would point you to a smaller line. There is one exception
+        inside the fleet: Celebrity Flora, an all-suite ship of about a hundred
+        guests built for the Galapagos. It is a different proposition from the
+        Edge Series entirely, and a lovely one for that one place.
+      </P>
+
+      <P>
+        Choosing between lines is most of the work, and it is the part I enjoy.
+        If you are weighing Celebrity against something smaller,{" "}
+        <TextLink href="/logbook/one-line-or-the-right-line">
+          here is how I think about one line versus the right line
+        </TextLink>
+        , or <TextLink href="/journeys">see what I have quoted this season</TextLink>.
+      </P>
+    </>
+  ),
+  "regent-seven-seas-what-all-inclusive-covers": (
+    <>
+      <Lead>
+        Regent Seven Seas calls its fare the most inclusive in luxury cruising,
+        and for once the superlative survives a close reading. The more useful
+        question is not whether the claim is true but what it is worth to you,
+        because an inclusion only saves money if you would otherwise have bought
+        it.
+      </Lead>
+
+      <H>What the fare covers</H>
+      <P>
+        Unlimited shore excursions come first, and they are the headline: the
+        line&rsquo;s programme runs to thousands of tours, and on many
+        itineraries you can take one in every port without a charge. All dining
+        is included, specialty restaurants among them, with no cover charges.
+        Beverages are unlimited, wines, champagne and spirits included, and the
+        in-suite minibar is restocked daily to your preferences.
+      </P>
+      <P>
+        Wi-Fi is unlimited and gratuities are pre-paid. Valet laundry is covered,
+        which sounds minor until the fourth day of a trip you packed light for.
+        There is 24-hour in-suite dining, unlimited access to the spa facilities,
+        and a one-night hotel stay before the cruise for guests in Concierge
+        suites and above.
+      </P>
+
+      <H>What it does not cover</H>
+      <P>
+        Airfare. Regent publishes some fares that bundle flights, but the fares I
+        arrange are cruise-only, so flights are a separate line, and I would
+        rather you hear that from me now than discover it at checkout. Spa
+        treatments and shopping are your own, as they are anywhere.
+      </P>
+
+      <H>The ships</H>
+      <P>
+        Regent&rsquo;s ships are small by modern standards. The newest, Seven
+        Seas Prestige, carries 822 guests, and the rest of the fleet carries
+        fewer. Nearly every suite has a private balcony. That scale lets the
+        ships into harbours the megaships cannot enter, and it shows at dinner,
+        where a table is never a negotiation. The trade is the one you would
+        expect: fewer venues than a big ship, a quieter evening, and no pretence
+        of a theme park. For the traveller I have in mind, that is not a
+        trade at all.
+      </P>
+
+      <H>The arithmetic I run</H>
+      <P>
+        Before anyone books, I price the same week the way you would actually
+        live it on a line that charges for things separately. How many ports
+        would you want a guided tour in, and what does a good tour cost there?
+        How many evenings with wine, and how many dinners in a specialty room?
+        What would gratuities and Wi-Fi come to over the whole voyage? Add it up
+        honestly, not hopefully, and set it beside the Regent fare. Sometimes
+        the gap closes entirely. Sometimes it does not, and then I will tell
+        you that too.
+      </P>
+      <P>
+        The itineraries where the fare earns its keep are the port-heavy ones,
+        a fortnight in the Mediterranean or a long run up the coast of Northern
+        Europe, where tours are a daily line item elsewhere and the ship is
+        a base more than a destination.
+      </P>
+
+      <H>Who gets the most from it</H>
+      <P>
+        The fare rewards people who use it. Someone who takes the tours, pours
+        wine with dinner, eats in the specialty restaurants without checking the
+        menu for a surcharge, and prefers one number at the start to a running
+        total at the end. For that traveller Regent often comes out ahead of
+        lines with a lower headline fare, once everything is added back.
+      </P>
+      <P>
+        If you rarely drink, skip most tours, and would be happiest finding your
+        own way through every port, the inclusions are paid for and unused, and a
+        different line will serve you better. That honesty is the whole reason to
+        ask an advisor rather than read a brochure.
+      </P>
+
+      <H>What I do with it</H>
+      <P>
+        Regent&rsquo;s fares move with promotions I watch closely, and the
+        sensible comparison is always the all-in figure set beside the
+        alternatives. I explain how that works in my note on{" "}
+        <TextLink href="/logbook/what-negotiated-fare-really-means">
+          what &ldquo;negotiated fare&rdquo; really means
+        </TextLink>
+        . If Regent is on your list,{" "}
+        <TextLink href="/journeys">tell me where you want to go</TextLink> and
+        I&rsquo;ll put the real number beside the others.
+      </P>
+    </>
+  ),
 };

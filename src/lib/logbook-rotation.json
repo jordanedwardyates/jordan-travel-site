@@ -1,0 +1,24 @@
+{
+  "_comment": "Weekly cruise-line Logbook rotation. 'queue' is consumed front-to-back, one per week. Set 'overrideNext' to a string to force that week's topic instead (Jordan can just tell Claude 'next Logbook topic should be X' in any session, and Claude sets this field). It's cleared automatically after use.",
+  "overrideNext": null,
+  "queue": [
+    "Norwegian Cruise Line",
+    "Oceania Cruises",
+    "Viking River Cruises",
+    "MSC Cruises",
+    "Seabourn",
+    "Holland America Line",
+    "Carnival Cruise Line",
+    "AmaWaterways",
+    "Silversea",
+    "Azamara",
+    "Princess Cruises",
+    "Crystal Cruises",
+    "Royal Caribbean"
+  ],
+  "completed": [
+    "Scenic (river)",
+    "Celebrity Cruises",
+    "Regent Seven Seas"
+  ]
+}
