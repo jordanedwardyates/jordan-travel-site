@@ -17,6 +17,7 @@ export type DailyFocus<T extends DailyFocusSource> = {
   departures15To45Days: T[];
   serviceWithoutDepartureDate: T[];
   recentIntakeReviews: T[];
+  proposedDeparturesWithin45Days: T[];
 };
 
 function dateOrdinal(iso: string): number | null {
@@ -53,6 +54,7 @@ export function buildDailyFocus<T extends DailyFocusSource>(
     departures15To45Days: [],
     serviceWithoutDepartureDate: [],
     recentIntakeReviews: [],
+    proposedDeparturesWithin45Days: [],
   };
 
   for (const item of items) {
@@ -70,6 +72,15 @@ export function buildDailyFocus<T extends DailyFocusSource>(
     }
     if (item.review_lane === "reservation_hold_verification") {
       focus.holdsToVerify.push(item);
+      continue;
+    }
+    if (item.review_lane === "sales_followup_verification") {
+      // Proposed sailings are NOT confirmed bookings. Supplier pricing and
+      // availability must be rechecked before discussing an offer.
+      const proposedDay = item.sail_date ? dateOrdinal(item.sail_date.slice(0, 10)) : null;
+      if (proposedDay !== null && proposedDay >= today && proposedDay <= today + 45) {
+        focus.proposedDeparturesWithin45Days.push(item);
+      }
       continue;
     }
     if (item.review_lane !== "booking_service_verification") continue;
@@ -93,6 +104,7 @@ export function buildDailyFocus<T extends DailyFocusSource>(
     (a.sail_date ?? "").localeCompare(b.sail_date ?? "") ||
     a.work_item_key.localeCompare(b.work_item_key);
   focus.departuresWithin14Days.sort(bySailing);
+  focus.proposedDeparturesWithin45Days.sort(bySailing);
   focus.departures15To45Days.sort(bySailing);
   focus.holdsToVerify.sort((a, b) => a.work_item_key.localeCompare(b.work_item_key));
   focus.serviceWithoutDepartureDate.sort((a, b) => a.work_item_key.localeCompare(b.work_item_key));
