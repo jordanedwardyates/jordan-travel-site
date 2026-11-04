@@ -101,7 +101,7 @@ function ReviewCard({ item }: { item: AdvisorReviewItem }) {
 
       <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-aegean-ink/70">
         <span>Recorded review: {displayDate(item.source_review_date)}</span>
-        {item.sail_date && <span>Sailing: {displayDate(item.sail_date)}</span>}
+        {item.sail_date && <span>{item.review_lane === "sales_followup_verification" ? "Proposed/quoted sailing" : "Recorded sailing"}: {displayDate(item.sail_date)}</span>}
         {item.needs_quote_reconciliation && (
           <span className="font-medium text-deep-harbor">Quote linkage needs review</span>
         )}
@@ -142,6 +142,7 @@ export default async function AdvisorSalesPage() {
     { title: "Departures within 14 days", items: dailyFocus.departuresWithin14Days },
     { title: "Departures in 15–45 days", items: dailyFocus.departures15To45Days },
     { title: "Booking-service records missing departure dates", items: dailyFocus.serviceWithoutDepartureDate },
+    { title: "Proposed sailings within 45 days · sales leads, not confirmed bookings", items: dailyFocus.proposedDeparturesWithin45Days },
     { title: "Recent intake reviews · qualify before any outreach", items: dailyFocus.recentIntakeReviews },
   ];
   const focusCount = focusGroups.reduce((total, group) => total + group.items.length, 0);
@@ -179,7 +180,7 @@ export default async function AdvisorSalesPage() {
             Holds require status checks, not assumptions of availability. Departure windows
             identify booking-service reviews, not confirmed incomplete tasks. Missing dates
             are shown explicitly so they cannot disappear from the workflow.
-            No sales follow-up is automatically promoted into this service list.
+            Sales leads with proposed departures are shown in a separate lane, never as confirmed bookings; recheck supplier inventory and pricing before discussing an offer.
             Intake records with review dates in the last seven days appear after
             booking-service priorities for a manual quality check only. A review
             date does not prove the inquiry is new or qualified; no outreach is authorized.
