@@ -19,3 +19,16 @@ test("fare basis mismatch held",()=>assert.equal(run({}, {}, {occupancy_basis:"t
 test("unknown taxes held",()=>assert.equal(run({}, {}, {taxes_fees_known:false}).decision,"HOLD_COMPARABILITY"));
 test("opt-out blocks",()=>assert.equal(run({consent:"opt_out"}).decision,"NO_OUTREACH"));
 test("cooldown blocks",()=>assert.equal(run({cooldown_active:true}).decision,"NO_OUTREACH"));
+
+test("date-only promotion remains valid through its final UTC day",()=>{
+  const r=evaluate({client,quote,promotion:{...promotion,valid_through:"2026-11-08"},now:new Date("2026-11-08T23:30:00Z")});
+  assert.equal(r.decision,"ADVISOR_REVIEW");
+});
+test("date-only promotion expires at start of following UTC day",()=>{
+  const r=evaluate({client,quote,promotion:{...promotion,valid_through:"2026-11-08"},now:new Date("2026-11-09T00:00:00Z")});
+  assert.equal(r.decision,"VERIFY_SUPPLIER");
+});
+test("explicit timestamp expiry is not extended to end of day",()=>{
+  const r=evaluate({client,quote,promotion:{...promotion,valid_through:"2026-11-08T15:00:00Z"},now:new Date("2026-11-08T15:00:01Z")});
+  assert.equal(r.decision,"VERIFY_SUPPLIER");
+});
