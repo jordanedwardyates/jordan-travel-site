@@ -18,9 +18,18 @@ export function evaluatePromotionEligibility({ client, quote, promotion, now = n
   if (!promotion?.official_source_url || !/^https:\/\//i.test(promotion.official_source_url)
       || !promotion.valid_from || !promotion.valid_through)
     return hold("HOLD_SOURCE", "Official HTTPS source and validity dates required", lane);
-  const from = Date.parse(promotion.valid_from);
-  const through = Date.parse(promotion.valid_through);
-  const checkedAt = Date.parse(now);
+  // Date-only validity represents whole supplier-local calendar days, not midnight UTC.
+  // Until supplier timezone is known, use UTC calendar dates conservatively and
+  // require explicit timestamps for intraday deadlines.
+  const validityInstant = (value, endOfDay) => {
+    if (typeof value !== "string") return NaN;
+    const dayOnly = /^\d{4}-\d{2}-\d{2}$/.test(value);
+    const instant = Date.parse(dayOnly ? `${value}T${endOfDay ? "23:59:59.999" : "00:00:00.000"}Z` : value);
+    return Number.isFinite(instant) ? instant : NaN;
+  };
+  const from = validityInstant(promotion.valid_from, false);
+  const through = validityInstant(promotion.valid_through, true);
+  const checkedAt = new Date(now).getTime();
   if (![from, through, checkedAt].every(Number.isFinite) || from > through)
     return hold("HOLD_SOURCE", "Invalid promotion validity dates", lane);
   if (checkedAt < from || checkedAt > through || !promotion.inventory_verified_for_exact_sailing)
