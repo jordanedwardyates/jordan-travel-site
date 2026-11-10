@@ -38,7 +38,7 @@ export function evaluatePromotionEligibility({ client, quote, promotion, now = n
   // midnight instant against the current time would wrongly reject sailings
   // later today. Use UTC day comparison until a sailing timezone is supplied.
   const departureDay = typeof quote.departure_date === "string"
-    && /^\\d{4}-\\d{2}-\\d{2}$/.test(quote.departure_date)
+    && /^\d{4}-\d{2}-\d{2}$/.test(quote.departure_date)
     && Number.isFinite(Date.parse(quote.departure_date))
     && new Date(quote.departure_date).toISOString().slice(0, 10) === quote.departure_date;
   const todayUTC = Number.isFinite(checkedAt) ? new Date(checkedAt).toISOString().slice(0, 10) : null;
