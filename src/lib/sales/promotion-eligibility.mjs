@@ -34,9 +34,16 @@ export function evaluatePromotionEligibility({ client, quote, promotion, now = n
     return hold("HOLD_SOURCE", "Invalid promotion validity dates", lane);
   if (checkedAt < from || checkedAt > through || !promotion.inventory_verified_for_exact_sailing)
     return hold("VERIFY_SUPPLIER", "Promotion validity or exact sailing inventory needs verification", lane);
-  if (!quote.departure_date || !promotion.departure_date
-      || !Number.isFinite(Date.parse(quote.departure_date))
-      || Date.parse(quote.departure_date) < checkedAt
+  // A departure date without a time denotes a calendar day. Comparing its
+  // midnight instant against the current time would wrongly reject sailings
+  // later today. Use UTC day comparison until a sailing timezone is supplied.
+  const departureDay = typeof quote.departure_date === "string"
+    && /^\\d{4}-\\d{2}-\\d{2}$/.test(quote.departure_date)
+    && Number.isFinite(Date.parse(quote.departure_date))
+    && new Date(quote.departure_date).toISOString().slice(0, 10) === quote.departure_date;
+  const todayUTC = Number.isFinite(checkedAt) ? new Date(checkedAt).toISOString().slice(0, 10) : null;
+  if (!departureDay || !promotion.departure_date
+      || quote.departure_date < todayUTC
       || quote.departure_date !== promotion.departure_date
       || (quote.supplier && promotion.supplier && quote.supplier !== promotion.supplier))
     return hold("REJECT_VOYAGE", "Sailing departed or exact departure/supplier mismatch", lane);
