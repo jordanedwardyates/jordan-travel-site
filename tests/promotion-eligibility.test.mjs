@@ -32,3 +32,18 @@ test("explicit timestamp expiry is not extended to end of day",()=>{
   const r=evaluate({client,quote,promotion:{...promotion,valid_through:"2026-11-08T15:00:00Z"},now:new Date("2026-11-08T15:00:01Z")});
   assert.equal(r.decision,"VERIFY_SUPPLIER");
 });
+
+test("same-day departure remains eligible for advisor review",()=>{
+  const today = new Date("2026-11-10T18:00:00Z");
+  const r=evaluate({client,quote:{...quote,departure_date:"2026-11-10"},promotion:{...promotion,departure_date:"2026-11-10"},now:today});
+  assert.equal(r.decision,"ADVISOR_REVIEW");
+  assert.equal(r.outreach_allowed,false);
+});
+test("yesterday's departure is rejected",()=>{
+  const r=evaluate({client,quote:{...quote,departure_date:"2026-11-09"},promotion:{...promotion,departure_date:"2026-11-09"},now:new Date("2026-11-10T00:01:00Z")});
+  assert.equal(r.decision,"REJECT_VOYAGE");
+});
+test("invalid calendar departure date is rejected",()=>{
+  const r=evaluate({client,quote:{...quote,departure_date:"2027-02-30"},promotion:{...promotion,departure_date:"2027-02-30"},now});
+  assert.equal(r.decision,"REJECT_VOYAGE");
+});
