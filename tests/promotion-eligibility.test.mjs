@@ -47,3 +47,12 @@ test("invalid calendar departure date is rejected",()=>{
   const r=evaluate({client,quote:{...quote,departure_date:"2027-02-30"},promotion:{...promotion,departure_date:"2027-02-30"},now});
   assert.equal(r.decision,"REJECT_VOYAGE");
 });
+
+test("missing quote supplier blocks exact voyage matching",()=>assert.equal(run({}, {supplier:null}).decision,"REJECT_VOYAGE"));
+test("missing promotion supplier blocks exact voyage matching",()=>assert.equal(run({}, {}, {supplier:null}).decision,"REJECT_VOYAGE"));
+test("invalid promotion calendar date is held",()=>assert.equal(run({}, {}, {valid_through:"2026-11-31"}).decision,"HOLD_SOURCE"));
+test("ambiguous timestamp without timezone is held",()=>assert.equal(run({}, {}, {valid_through:"2026-11-08T15:00:00"}).decision,"HOLD_SOURCE"));
+test("timestamp with explicit offset is accepted",()=>{
+  const r=evaluate({client,quote,promotion:{...promotion,valid_through:"2026-11-08T08:00:00-05:00"},now:new Date("2026-11-08T12:00:00Z")});
+  assert.equal(r.decision,"ADVISOR_REVIEW");
+});
