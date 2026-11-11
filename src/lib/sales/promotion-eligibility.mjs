@@ -21,10 +21,10 @@ export function evaluatePromotionEligibility({ client, quote, promotion, now = n
   // Date-only validity represents whole supplier-local calendar days, not midnight UTC.
   // Until supplier timezone is known, use UTC calendar dates conservatively and
   // require explicit timestamps for intraday deadlines.
-  const validityInstant = (value, endOfDay) => {
+  const validCalendarDay = (day) => /^\d{4}-\d{2}-\d{2}$/.test(day) && Number.isFinite(Date.parse(day))\n    && new Date(day).toISOString().slice(0, 10) === day;\n  const validityInstant = (value, endOfDay) => {
     if (typeof value !== "string") return NaN;
     const dayOnly = /^\d{4}-\d{2}-\d{2}$/.test(value);
-    const instant = Date.parse(dayOnly ? `${value}T${endOfDay ? "23:59:59.999" : "00:00:00.000"}Z` : value);
+    if (dayOnly && !validCalendarDay(value)) return NaN;\n    // Require an explicit offset for timestamp deadlines; never assume server-local time.\n    if (!dayOnly && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:\d{2})$/.test(value)) return NaN;\n    const instant = Date.parse(dayOnly ? `${value}T${endOfDay ? "23:59:59.999" : "00:00:00.000"}Z` : value);
     return Number.isFinite(instant) ? instant : NaN;
   };
   const from = validityInstant(promotion.valid_from, false);
@@ -45,7 +45,7 @@ export function evaluatePromotionEligibility({ client, quote, promotion, now = n
   if (!departureDay || !promotion.departure_date
       || quote.departure_date < todayUTC
       || quote.departure_date !== promotion.departure_date
-      || (quote.supplier && promotion.supplier && quote.supplier !== promotion.supplier))
+      || !quote.supplier || !promotion.supplier || quote.supplier !== promotion.supplier)
     return hold("REJECT_VOYAGE", "Sailing departed or exact departure/supplier mismatch", lane);
   if (!quote.currency || !promotion.currency || quote.currency !== promotion.currency
       || !quote.occupancy_basis || quote.occupancy_basis !== promotion.occupancy_basis
