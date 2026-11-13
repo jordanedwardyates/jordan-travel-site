@@ -56,3 +56,26 @@ test("timestamp with explicit offset is accepted",()=>{
   const r=evaluate({client,quote,promotion:{...promotion,valid_through:"2026-11-08T08:00:00-05:00"},now:new Date("2026-11-08T12:00:00Z")});
   assert.equal(r.decision,"ADVISOR_REVIEW");
 });
+
+test("leap-day validity in a leap year is accepted",()=>{
+  const r=run({}, {}, {valid_from:"2024-02-29"});
+  assert.equal(r.decision,"ADVISOR_REVIEW");
+});
+test("non-leap February 29 validity is rejected",()=>{
+  const r=run({}, {}, {valid_from:"2026-02-29"});
+  assert.equal(r.decision,"HOLD_SOURCE");
+});
+test("promotion starting tomorrow is not yet actionable",()=>{
+  const r=run({}, {}, {valid_from:"2026-11-09"});
+  assert.equal(r.decision,"VERIFY_SUPPLIER");
+  assert.equal(r.outreach_allowed,false);
+});
+test("promotion validity window with start after end is held",()=>{
+  const r=run({}, {}, {valid_from:"2026-12-01",valid_through:"2026-11-30"});
+  assert.equal(r.decision,"HOLD_SOURCE");
+});
+test("booked client with an expired offer stays in repricing lane",()=>{
+  const r=run({lifecycle:"booked"},{},{valid_through:"2026-11-07"});
+  assert.equal(r.lane,"service_reprice");
+  assert.equal(r.outreach_allowed,false);
+});
