@@ -26,7 +26,8 @@ export function evaluatePromotionEligibility({ client, quote, promotion, now = n
   const validityInstant = (value, endOfDay) => {
     if (typeof value !== "string") return NaN;
     const dayOnly = /^\d{4}-\d{2}-\d{2}$/.test(value);
-    if (dayOnly && !validCalendarDay(value)) return NaN;
+    if (!validCalendarDay(value.slice(0, 10))) return NaN;
+    // Reject impossible calendar dates in offset timestamps; Date.parse may normalize them.
     // Require an explicit offset for timestamp deadlines; never assume server-local time.
     if (!dayOnly && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+-]\d{2}:\d{2})$/.test(value)) return NaN;
     const instant = Date.parse(dayOnly ? `${value}T${endOfDay ? "23:59:59.999" : "00:00:00.000"}Z` : value);
