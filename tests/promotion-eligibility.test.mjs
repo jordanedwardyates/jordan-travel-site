@@ -79,3 +79,13 @@ test("booked client with an expired offer stays in repricing lane",()=>{
   assert.equal(r.lane,"service_reprice");
   assert.equal(r.outreach_allowed,false);
 });
+
+test("invalid February 30 timestamp with UTC offset is held",()=>{
+  assert.equal(run({}, {}, {valid_through:"2026-02-30T15:00:00-05:00"}).decision,"HOLD_SOURCE");
+});
+test("invalid non-leap February 29 timestamp is held",()=>{
+  assert.equal(run({}, {}, {valid_from:"2026-02-29T00:00:00Z"}).decision,"HOLD_SOURCE");
+});
+test("valid leap-day timestamp remains accepted",()=>{
+  assert.equal(run({}, {}, {valid_from:"2024-02-29T00:00:00Z"}).decision,"ADVISOR_REVIEW");
+});
