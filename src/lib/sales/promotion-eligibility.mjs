@@ -15,6 +15,9 @@ export function evaluatePromotionEligibility({ client, quote, promotion, now = n
   if (!["prospect", "booked"].includes(client.lifecycle))
     return hold("HOLD_LIFECYCLE", "Client lifecycle must be verified");
   const lane = client.lifecycle === "booked" ? "service_reprice" : "prospect_review";
+  // Contact restrictions take precedence over offer evidence and must never be masked.
+  if (client.consent !== "opt_in" || client.cooldown_active === true)
+    return hold("NO_OUTREACH", "Consent or contact cooldown prevents outreach", lane);
   if (!promotion?.official_source_url || !/^https:\/\//i.test(promotion.official_source_url)
       || !promotion.valid_from || !promotion.valid_through)
     return hold("HOLD_SOURCE", "Official HTTPS source and validity dates required", lane);
@@ -58,8 +61,6 @@ export function evaluatePromotionEligibility({ client, quote, promotion, now = n
       || !quote.category || !promotion.category || quote.category !== promotion.category
       || promotion.taxes_fees_known !== true)
     return hold("HOLD_COMPARABILITY", "Fare basis, taxes, currency, or category not comparable", lane);
-  if (client.consent !== "opt_in" || client.cooldown_active === true)
-    return hold("NO_OUTREACH", "Consent or contact cooldown prevents outreach", lane);
   // Passing eligibility means advisor review only, never sending permission.
   reasons.push("Identity, lifecycle, supplier, sailing and fare evidence passed");
   return { decision: "ADVISOR_REVIEW", lane, score: null, reasons, warnings,
