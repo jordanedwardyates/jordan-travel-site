@@ -89,3 +89,20 @@ test("invalid non-leap February 29 timestamp is held",()=>{
 test("valid leap-day timestamp remains accepted",()=>{
   assert.equal(run({}, {}, {valid_from:"2024-02-29T00:00:00Z"}).decision,"ADVISOR_REVIEW");
 });
+
+// Contact restrictions must outrank stale or incomplete offer evidence.
+test("opt-out takes precedence over expired promotion",()=>{
+  const r=run({consent:"opt_out"},{},{valid_through:"2026-11-07"});
+  assert.equal(r.decision,"NO_OUTREACH");
+  assert.equal(r.outreach_allowed,false);
+});
+test("cooldown takes precedence over missing supplier evidence",()=>{
+  const r=run({cooldown_active:true},{},{official_source_url:null});
+  assert.equal(r.decision,"NO_OUTREACH");
+});
+test("booked opt-out stays in service lane without outreach",()=>{
+  const r=run({lifecycle:"booked",consent:"opt_out"},{},{inventory_verified_for_exact_sailing:false});
+  assert.equal(r.decision,"NO_OUTREACH");
+  assert.equal(r.lane,"service_reprice");
+  assert.equal(r.outreach_allowed,false);
+});
