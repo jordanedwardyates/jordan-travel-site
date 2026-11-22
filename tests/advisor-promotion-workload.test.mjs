@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { summarizeAdvisorPromotionWorkload } from "../src/lib/sales/advisor-promotion-workload.mjs";
+import { summarizeAdvisorPromotionWorkload, compareAdvisorWorkloadSnapshots } from "../src/lib/sales/advisor-promotion-workload.mjs";
 
 const now = new Date("2026-11-21T17:00:00Z");
 function candidate(lifecycle = "prospect", consent = "opt_in") {
@@ -20,4 +20,20 @@ test("empty input returns zero counts and no outreach authorization", () => {
 });
 test("invalid input fails closed", () => {
   assert.throws(() => summarizeAdvisorPromotionWorkload(null, { now }), TypeError);
+});
+
+test("compares two daily workloads without exposing identities", () => {
+  const previous = summarizeAdvisorPromotionWorkload([candidate(), candidate("booked")], { now });
+  const current = summarizeAdvisorPromotionWorkload([candidate(), candidate("prospect", "opt_out"), candidate("prospect", "opt_out")], { now });
+  assert.deepEqual(compareAdvisorWorkloadSnapshots(previous, current), {
+    prospect_review_delta: 0, service_reprice_delta: -1, verification_holds_delta: 2,
+    total_delta: 1, outreach_authorized: false, live_supplier_pricing_verified: false
+  });
+});
+test("rejects inconsistent and unsafe workload snapshots", () => {
+  const safe = summarizeAdvisorPromotionWorkload([], { now });
+  assert.throws(() => compareAdvisorWorkloadSnapshots({ ...safe, total: 1 }, safe), TypeError);
+  assert.throws(() => compareAdvisorWorkloadSnapshots(safe, { ...safe, outreach_authorized: true }), TypeError);
+  assert.throws(() => compareAdvisorWorkloadSnapshots(safe, { ...safe, prospect_review: -1, total: -1 }), TypeError);
+  assert.throws(() => compareAdvisorWorkloadSnapshots(null, safe), TypeError);
 });
